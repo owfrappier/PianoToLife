@@ -224,7 +224,7 @@ The resonance you hear is then only SympResHost's, following your playing.
 | **Kontakt pianos** | Should work | Turn off the sustain / sympathetic resonance options of the instrument; **uncheck Force Sustain Samples Off**. |
 | **VSL Synchron Concert D 1887** | Being tested | SR capture in progress — should work. Feedback welcome. |
 | **VSL Synchron CFX** | Incompatible by default | work with HOST sustain mode only
-| **VSL Synchron Imperial** | Not tested yet | Feedback welcome. |
+| **VSL Synchron Imperial** | Not tested yet | Feedback welcome. | perhaps some low registers partials missing
 
 Other VSL pianos: try **Force Sustain Samples Off** if the pedal still triggers the library's sustain samples.
 
