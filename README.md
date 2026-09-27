@@ -131,12 +131,10 @@ How fast you let a key come up changes how the damper lands, so SympResHost list
 
 | | |
 |---|---|
-| **Mac** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. |
-| **macOS** | 14 Sonoma or later |
-| **Formats** | Audio Unit, VST3, Standalone application |
-| **Hosted piano** | Any AU or VST3 piano plug-in built for Apple Silicon |
-
-The plug-in does not load in a host running under Rosetta.
+| **Mac** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. macOS 14 Sonoma or later. |
+| **Windows (experimental)** | Windows 10 / 11, 64-bit (x64). VST3 pianos must be in `C:\Program Files\Common Files\VST3`. |
+| **Formats** | Mac: Audio Unit, VST3, Standalone — Windows: VST3, Standalone (ASIO) |
+| **Hosted piano** | Any AU or VST3 piano plug-in (Mac: built for Apple Silicon — Windows: x64) |
 
 ## Installation
 
@@ -216,22 +214,21 @@ The resonance you hear is then only SympResHost's, following your playing.
 > off the sustain samples / pedal resonance in the piano itself. Left on with a piano
 > that does not need it, it can make some notes start damped or sound uneven from one
 > register to another.
-
-### Tested pianos
+>
+> **Tested pianos**
 
 | Piano | Status | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Reference | Default settings are tuned on it. Enable **Force Sustain Samples Off** in SympResHost so VSL does not play its own sustain samples. |
+| **VSL Synchron Steinway D-274** | Reference | Default settings are tuned on it. Enable **Force Sustain Samples Off** in SympResHost so VSL does not play its own sustain samples. Use the **close mics** as much as possible and disable **all reverb and compression** in VSL. Confirmed on Mac and on Windows (Intel Ultra 9 285H, 64-sample buffer, no crackling). |
 | **Ivory 3** (Synthogy) | Works very well | In the Ivory preset, turn off *Sustain* and *Sympathetic Resonance*; **uncheck Force Sustain Samples Off** in SympResHost. To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
+| **Pianoteq** (Modartt) | Works | Turn off Pianoteq's *Sympathetic resonance*; **uncheck Force Sustain Samples Off** (Pianoteq is a modelled piano: its pedal acts continuously, so the trick does not apply). |
 | **Kontakt pianos** | Should work | Turn off the sustain / sympathetic resonance options of the instrument; **uncheck Force Sustain Samples Off**. |
-| **VSL Synchron CFX / Imperial** | Possibly incompatible | Not tested yet — feedback welcome. |
+| **VSL Synchron Concert D 1887** | Being tested | SR capture in progress — should work. Feedback welcome. |
+| **VSL Synchron CFX** | Incompatible by default | Its sustain programming is not linear: notes below middle C sound wrong with the pedal held. Worth trying: **Sustain Off Split Length** at **256**, then adjust **Half Pedal Damping Start** step by step (the safe pedal value sent at note-on is this value − 1). Feedback welcome. |
+| **VSL Synchron Imperial** | Not tested yet | Feedback welcome. |
 
-Other VSL pianos: try **Force Sustain Samples Off** if the pedal still triggers the
-library's sustain samples.
+Other VSL pianos: try **Force Sustain Samples Off** if the pedal still triggers the library's sustain samples.
 
-**Golden rule:** in the hosted piano, sustain resonance, sympathetic resonance, reverb,
-effects and compression all **off**; half-pedal options **on**. In SympResHost,
-**Force Sustain Samples Off only for VSL pianos**.
 
 ## Enjoying SympResHost?
 
