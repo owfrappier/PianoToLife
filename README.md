@@ -223,7 +223,7 @@ The resonance you hear is then only SympResHost's, following your playing.
 | **Ivory 3** (Synthogy) | Works very well | In the Ivory preset, turn off *Sustain* and *Sympathetic Resonance*; **uncheck Force Sustain Samples Off** in SympResHost. To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Kontakt pianos** | Should work | Turn off the sustain / sympathetic resonance options of the instrument; **uncheck Force Sustain Samples Off**. |
 | **VSL Synchron Concert D 1887** | Being tested | SR capture in progress — should work. Feedback welcome. |
-| **VSL Synchron CFX** | Incompatible by default | Its sustain programming is not linear: notes below middle C sound wrong with the pedal held. Worth trying: **Sustain Off Split Length** at **256**, then adjust **Half Pedal Damping Start** step by step (the safe pedal value sent at note-on is this value − 1). Feedback welcome. |
+| **VSL Synchron CFX** | Incompatible by default | work with HOST sustain mode only
 | **VSL Synchron Imperial** | Not tested yet | Feedback welcome. |
 
 Other VSL pianos: try **Force Sustain Samples Off** if the pedal still triggers the library's sustain samples.
