@@ -127,17 +127,26 @@ How fast you let a key come up changes how the damper lands, so SympResHost list
   P-525 sends and turns it into release velocity, with its own curve.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
+  - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
+  release, or half-pedalling — silences the upper partials first while the fundamental
+  lingers, like a real grand. A firm contact stops every partial together. Turn
+  **Progressive** off to get the previous damping.
+- **Pedal Damper Curve** does for the pedal what the note-off curve does for the keys: it
+  sets how the speed and position of your foot become damper contact (default 16; lower =
+  gentler, more lingering; higher = firm contact sooner).
 
 ## Requirements
 
-| | |
-|---|---|
-| **Mac** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. macOS 14 Sonoma or later. |
-| **Windows (experimental)** | Windows 10 / 11, 64-bit (x64). VST3 pianos must be in `C:\Program Files\Common Files\VST3`. |
-| **Formats** | Mac: Audio Unit, VST3, Standalone — Windows: VST3, Standalone (ASIO) |
-| **Hosted piano** | Any AU or VST3 piano plug-in (Mac: built for Apple Silicon — Windows: x64) |
+| | macOS | Windows (experimental) |
+|---|---|---|
+| **System** | macOS 14 Sonoma or later | Windows 10 / 11, 64-bit (x64) |
+| **Processor** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. | Intel / AMD x64 (also runs on Windows on ARM through emulation) |
+| **Formats** | Audio Unit, VST3, Standalone application | VST3, Standalone application (ASIO) |
+| **Hosted piano** | Any AU or VST3 piano plug-in built for Apple Silicon | Any x64 VST3 piano plug-in, installed in `C:\Program Files\Common Files\VST3` |
 
-## Installation
+On macOS, the plug-in does not load in a host running under Rosetta.
+
+### macOS
 
 1. Download `SympResHost-<version>-macOS-AppleSilicon.pkg` from
    [Releases](../../releases/latest).
@@ -151,6 +160,20 @@ Optional integrity check:
 shasum -a 256 SympResHost-<version>-macOS-AppleSilicon.pkg
 ```
 and compare with the `.sha256` file of the release.
+
+### Windows (experimental)
+
+1. Download `SympResHost-<version>-Windows-x64-Experimental.zip` from
+   [Releases](../../releases/latest) and unzip it.
+2. **VST3 location:** SympResHost only scans `C:\Program Files\Common Files\VST3`. Make sure
+   your piano's VST3 is there (move it or re-run its installer if needed).
+3. To use SympResHost in a DAW, copy the **whole** `SympResHost.vst3` folder to
+   `C:\Program Files\Common Files\VST3`.
+4. The `.exe` is not digitally signed yet: if Windows shows *"Windows protected your PC"*,
+   click **More info → Run anyway**.
+5. Standalone: **Options → Audio/MIDI Settings…**, choose **ASIO** and your audio
+   interface's driver (or ASIO4ALL / FlexASIO), then **Scan VST3** and load your piano.
+
 
 ## Setting up your piano (important)
 
