@@ -2,7 +2,7 @@
 <p align="center"><b>Bring your VST / AU piano to life — and to realism.</b></p>
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="SympResHost interface" width="900">
+  <img src="docs/screenshot.png?v=2" alt="SympResHost interface" width="900">
 </p>
 
 <p align="center">
