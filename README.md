@@ -5,9 +5,10 @@
   <img src="docs/screenshot.png?v=2" alt="SympResHost interface" width="900">
 </p>
 
+
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
-  macOS 14+ · Apple Silicon · AU · VST3 · Standalone
+  macOS 14+ (Apple Silicon) · Windows 10/11 x64 (experimental) · AU · VST3 · Standalone
 </p>
 
 ---
