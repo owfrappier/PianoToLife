@@ -161,6 +161,23 @@ shasum -a 256 SympResHost-<version>-macOS-AppleSilicon.pkg
 ```
 and compare with the `.sha256` file of the release.
 
+### AU or VST3? (macOS)
+
+Use SympResHost in the **same format as your DAW**, and host a piano **in that same format**:
+
+| You use | SympResHost to insert | Pianos offered |
+|---|---|---|
+| Logic Pro, GarageBand, MainStage | **AU** | AU pianos |
+| Cubase, Reaper, Studio One, Live… | **VST3** | VST3 pianos |
+| Standalone app | — | AU and VST3 pianos |
+
+- An older session or preset whose piano is in the other format reopens with its
+  SympResHost settings, but **without the piano**: just choose the piano again in the
+  right format.
+- Instruments that exist only as VST3 cannot be hosted in SympResHost AU (and vice versa).
+- In the standalone app, avoid switching from the VST3 to the AU of the same instrument:
+  SympResHost will offer to restart.
+
 ### Windows (experimental)
 
 1. Download `SympResHost-<version>-Windows-x64-Experimental.zip` from
