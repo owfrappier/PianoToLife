@@ -2,7 +2,7 @@
 <p align="center"><b>Bring your VST / AU piano to life — and to realism.</b></p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=2" alt="SympResHost interface" width="900">
+  <img src="docs/screenshot.png?v=3" alt="SympResHost interface" width="900">
 </p>
 
 
@@ -12,6 +12,22 @@
 </p>
 
 ---
+
+## What's new in 8.0.96
+
+- **Two pedal modes, one clear choice.** **Host Sustain** (default) for pianos that do not
+  let you turn off their sustain samples, such as VSL Synchron. It also works with most
+  other pianos, Kontakt libraries included. **Pass-through** for the rare pianos that do not
+  suit Host Sustain (e.g. Korg SX2 VST). See
+  [Pedal mode](#pedal-mode-host-sustain-or-pass-through).
+- **Sustain Samples Off has been retired.** In VST3 it could raise the CPU load a lot while
+  playing with the pedal down. Older sessions and presets that used it now open in Host
+  Sustain.
+- **Host Sustain: restriking a note under the pedal** no longer sends a Note Off to the
+  piano. The new strike rings over the previous one, as on a real string: no damper noise
+  in the middle of the pedal, and no more phantom notes in some Kontakt pianos.
+- **Cleaner interface:** a setup hint for the selected pedal mode, resonance controls
+  grouped by theme, a Keyboard menu, and the same DEFAULT buttons everywhere.
 
 ## What it does
 
@@ -33,9 +49,9 @@ as the soundboard of a real piano carries the vibration of one string to the oth
 
 ### Calibrated for each piano
 
-Each piano can be **calibrated precisely** with the built-in **automatic capture**:
-SympResHost plays the **88 notes pedal up**, one by one, analyses the real partials,
-their tuning, their inharmonicity and their decay times, and builds a resonance model
+Each piano can be **calibrated precisely** with the built-in **automatic capture**.
+SympResHost plays the **88 notes pedal up**, one by one, and analyses the real partials,
+their tuning, their inharmonicity and their decay times. It then builds a resonance model
 unique to that instrument (about 35 minutes, done once). A model of the VSL Synchron
 Steinway D-274 is included and ready to use.
 
@@ -50,9 +66,9 @@ Steinway D-274 is included and ready to use.
 - **Pedal catch.** Press the pedal just *after* the notes and the strings still sounding
   feed the freed strings — gently, as on a real instrument.
 - **Natural string release.** When a damper falls, the partials of the string die away
-  progressively instead of being cut — with the high harmonics, the duplex scale, the
-  undamped treble strings and the slow beating of the bass unisons. It can replace weak or
-  missing release samples, or blend with the ones your piano already has.
+  progressively instead of being cut. This includes the high harmonics, the duplex scale,
+  the undamped treble strings and the slow beating of the bass unisons. It can replace
+  weak or missing release samples, or blend with the ones your piano already has.
 - **Honest colour.** Measured inharmonicity, per-string decay times, the colour of strings
   driven through the bridge (not by the hammer), and an optional microphone-pair stereo
   image.
@@ -75,7 +91,7 @@ pedal does nothing more than lift every damper at once:
 One physical mechanism, simply more or fewer free strings, more or less damping.
 SympResHost models exactly that, with a single engine. That is why pedal-up / pedal-down
 transitions, half-pedalling, chords caught in the pedal and a single held note all sound
-natural: there is no switching or cross-fading between two effects, only the same strings
+natural. There is no switching or cross-fading between two effects, only the same strings
 being freed or damped.
 
 ### The release, too
@@ -83,7 +99,7 @@ being freed or damped.
 When a key is released or the pedal comes up, the dampers do not cut the sound like a
 switch. The felt lands on the vibrating string and damps it progressively, some partials
 dying faster than others depending on where the damper touches the string.
-SympResHost **re-creates this release**: the string's own partials, taken from the real
+SympResHost **re-creates this release**. The string's own partials, taken from the real
 sound of your piano, die away gently as the damper settles, with a lighter or firmer touch
 depending on how you release the key or the pedal. With half-pedalling, the dampers resting
 lightly on the strings keep damping them softly instead of stopping them.
@@ -95,8 +111,8 @@ weak, some are missing altogether. The release re-simulated by SympResHost adapt
 three cases:
 
 - **Missing or very weak release samples** (e.g. Ivory 3, or a release you turned off):
-  raise **Release Noise** — SympResHost then provides the whole release on its own.
-- **Average release samples**: keep a low setting (the default is 3 %) — the simulation
+  raise **Release Noise**, and SympResHost provides the whole release on its own.
+- **Average release samples**: keep a low setting (the default is 3 %). The simulation
   blends with the samples and adds what they lack: brighter high harmonics, the shimmer of
   the duplex scale, and a longer, beating decay in the bass.
 - **Rich release samples**: turn it down further or off, and let the samples speak.
@@ -120,17 +136,20 @@ How fast you let a key come up changes how the damper lands, so SympResHost list
 - **Note-off (release) velocity** from any keyboard that sends it: a slow release gives a
   softer, longer damping; a quick one stops the string more firmly. An adjustable curve
   lets you match your keyboard.
-- **Yamaha N1X and similar Yamaha hybrids**: these instruments report the key release
-  through polyphonic aftertouch. **N1X mode** turns it into release velocity, and can
-  filter the aftertouch and CC19 messages so the hosted piano does not receive them.
-- **Yamaha P-525**: **P525 mode** measures the timing of the release information the
-  P-525 sends and turns it into release velocity, with its own curve.
+- The **Keyboard** menu adapts SympResHost to keyboards that report the release in their
+  own way:
+  - **N1X or others** (Yamaha N1X and similar Yamaha hybrids): these instruments report
+    the key release through polyphonic aftertouch. This mode turns it into release
+    velocity, and can filter the aftertouch and CC19 messages so the hosted piano does not
+    receive them.
+  - **Yamaha P-525**: measures the timing of the release information the P-525 sends and
+    turns it into release velocity, with its own curve.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
   - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
-  release, or half-pedalling — silences the upper partials first while the fundamental
-  lingers, like a real grand. A firm contact stops every partial together. Turn
-  **Progressive** off to get the previous damping.
+    release, or half-pedalling — silences the upper partials first while the fundamental
+    lingers, like a real grand. A firm contact stops every partial together. Turn
+    **Progressive** off to get the previous damping.
 - **Pedal Damper Curve** does for the pedal what the note-off curve does for the keys: it
   sets how the speed and position of your foot become damper contact (default 16; lower =
   gentler, more lingering; higher = firm contact sooner).
@@ -191,83 +210,86 @@ Use SympResHost in the **same format as your DAW**, and host a piano **in that s
 5. Standalone: **Options → Audio/MIDI Settings…**, choose **ASIO** and your audio
    interface's driver (or ASIO4ALL / FlexASIO), then **Scan VST3** and load your piano.
 
+Tested in Ableton Live 12 (VST3).
+
 
 ## Setting up your piano (important)
 
 SympResHost provides the resonance and the sustain behaviour itself, and it listens to
 the **dry** sound of your piano to drive the strings. So, **in the hosted piano**:
 
-- **turn off** every *sympathetic resonance*, *sustain resonance*, *pedal resonance* or
-  *sustain samples* option;
+- **turn off** every *sympathetic resonance*, *string resonance*, *sustain resonance* or
+  *pedal resonance* option;
 - **turn off all reverb, effects and compression** (convolution rooms, ambience, EQ /
   "tone" effects, limiters, stereo wideners…). Otherwise the resonating strings would be
   fed with the room and the effects instead of the strings, and the calibration capture
   would measure them too;
-- **keep** the *half-pedal* and *pedal catch* related options if your piano has them.
+- then follow the setup of your **pedal mode** below (sustain samples, key noise).
 
 Need a room or some compression? Use **SympResHost's own Piano Comp and Reverb**
 instead: they are placed *after* the resonance engine, so the resonance stays clean and
 the whole instrument goes through the same room. Any other effect can of course be
 inserted after SympResHost in your DAW.
 
-### Force Sustain Samples Off — mainly for VSL pianos
+Remember that the CPU load shown by your DAW for SympResHost **includes the hosted piano**,
+with its own settings and number of microphones.
+
+### Pedal mode: Host Sustain or Pass-through?
 
 **What are "sustain samples"?** Many sampled pianos contain two sets of recordings of
-every note: one played with the pedal **up**, and one played with the pedal **down**.
-The pedal-down recordings include the sympathetic resonance of the whole instrument,
-*frozen at the moment of the recording*: all the strings ringing freely, whatever you
-are actually playing.
+every note: one played with the pedal **up**, and one with the pedal **down**. The
+pedal-down recordings include the sympathetic resonance of the whole instrument,
+*frozen at the moment of the recording*. SympResHost builds this resonance itself, live,
+from the strings that are really free at each instant. If the piano also plays its
+pedal-down samples, the resonance is there twice, and the frozen one does not follow
+your pedalling.
 
-**Why is that a problem with SympResHost?** SympResHost builds this resonance itself,
-live, from the strings that are really free at each instant: pedal, half-pedal,
-repedalling, held keys, sostenuto. If the piano also plays its pedal-down samples, the
-resonance is there twice, and the frozen one does not follow your pedalling.
+The pedal section of SympResHost shows what to turn off in the piano for the selected
+mode.
 
-**The normal solution:** turn off the sustain samples (or "pedal resonance") in your
-piano's own interface. Most pianos offer this option — then you do not need anything
-else, and **Force Sustain Samples Off must be unchecked**.
+**Pedal: Host Sustain (default) — designed for pianos that do not let you turn off their sustain.**
+Some pianos, such as the **VSL Synchron** pianos, give no way to turn off their sustain
+effect or their pedal-down samples. Host Sustain keeps the pedal away from the piano: it
+only plays its pedal-up (dry) samples, and SympResHost holds the notes itself. Half
+pedal, pedal catch, sostenuto and restriking are all included. It works with most pianos,
+**VSL and Kontakt libraries included**.
+In the piano, turn off:
+- **all Key Noise / release noise** (SympResHost sends the Note Offs when the pedal comes
+  up, so these noises would come at the wrong moment);
+- its **sympathetic resonance / string resonance**, including pedal-up resonance.
 
-**The VSL case:** the VSL Synchron pianos, in their current versions, do not let you
-turn off their pedal-down samples. **Force Sustain Samples Off** solves this without
-taking the pedal away from the piano:
+With Host Sustain, half-pedalling keeps the piano's clean pedal-up sound while
+SympResHost's resonance fades progressively (treble dampers first). The result is a real
+gradient, even with pianos whose own half pedal only switches between full samples.
 
-1. When you play a note with the pedal down, SympResHost sends the piano a pedal-up
-   value for an instant, exactly at the note.
-2. The piano starts the note with its **pedal-up** sample (dry, no frozen resonance).
-3. The real pedal value is sent back immediately after, so the piano keeps controlling
-   its dampers, half-pedalling, repedalling and releases as usual.
+**Pedal: Pass-through.**
+The piano receives your pedal and handles its own dampers, half-pedal and releases.
+In the piano:
+- turn off its **sustain samples** (pedal-down samples / "pedal resonance");
+- turn off its **sympathetic resonance / string resonance**;
+- **keep** its *half-pedal* and *repedalling* options.
 
-The resonance you hear is then only SympResHost's, following your playing.
+> **Host Sustain replaces the piano's own pedal behaviour, so a few pianos may not suit
+> it** — so far the **Korg SX2 VST**. With such a piano, turn off its sustain samples and
+> resonance and **choose Pass-through**.
 
-**Settings:**
-- The pedal-up value sent at the note depends on **Half Pedal Damping Start**: set the
-  Half Pedal values to match your piano (defaults match the VSL Steinway D-274).
-- Works with **AU and VST3**. In VST3 the pedal reaches the piano as a parameter, so
-  SympResHost splits the piano's processing at the note to make sure it is seen; this is
-  automatic. **AU Split** applies the same method to AU pianos (off by default, not
-  needed for the VSL D-274). **Split Length** sets how long the pedal-up value lasts
-  (default 16 samples, 0.4 ms).
-- Tested with the **VSL Synchron Steinway D-274**.
+Set **Half Pedal Damping Start / Full** to match your piano (defaults match the VSL
+Steinway D-274).
 
-> **Important — all other pianos: uncheck Force Sustain Samples Off.**
-> The option is checked by default because it is needed for the VSL pianos. With any
-> other piano (Ivory, Kontakt libraries, Garritan, Pianoteq…), **uncheck it** and turn
-> off the sustain samples / pedal resonance in the piano itself. Left on with a piano
-> that does not need it, it can make some notes start damped or sound uneven from one
-> register to another.
->
-> **Tested pianos**
+### Tested pianos
 
-| Piano | Status | Notes |
+| Piano | Pedal mode | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Reference | Default settings are tuned on it. Enable **Force Sustain Samples Off** in SympResHost so VSL does not play its own sustain samples. Use the **close mics** as much as possible and disable **all reverb and compression** in VSL. Confirmed on Mac and on Windows (Intel Ultra 9 285H, 64-sample buffer, no crackling). |
-| **Ivory 3** (Synthogy) | Works very well | In the Ivory preset, turn off *Sustain* and *Sympathetic Resonance*; **uncheck Force Sustain Samples Off** in SympResHost. To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
-| **Kontakt pianos** | Should work | Turn off the sustain / sympathetic resonance options of the instrument; **uncheck Force Sustain Samples Off**. |
-| **VSL Synchron Concert D 1887** | Being tested | SR capture in progress — should work. Feedback welcome. |
-| **VSL Synchron CFX** | warning| Works with Host Sustain (recommended, default). Alternative: Sustain Samples Off with Split Length ≥ 92 
-| **VSL Synchron Imperial** | Not tested yet | Feedback welcome. | perhaps some low registers partials missing
+| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). |
+| **VSL Synchron CFX** | Host Sustain | Works well ("they sound really good"). Key Noise off in VSL. |
+| **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
+| **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
+| **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
+| **Ivory 3** (Synthogy) | Pass-through | Turn off *Sustain* and *Sympathetic Resonance* in the Ivory preset. To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
+| **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
+| **Korg SX2 VST** | Pass-through | Does not suit Host Sustain: turn off its sustain / resonance options and use Pass-through. |
 
-Other VSL pianos: try **Force Sustain Samples Off** if the pedal still triggers the library's sustain samples.
+Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
 
 ## Enjoying SympResHost?
@@ -285,7 +307,8 @@ Every contribution, however small, is read, appreciated and turned into new vers
 ## Feedback
 
 Found a piano that works (or doesn't)? Please open an
-[issue](../../issues) with the piano name, its version and your SympResHost settings.
+[issue](../../issues) with the piano name, its version, your pedal mode and your
+SympResHost settings.
 
 ## About
 
@@ -301,7 +324,8 @@ The source code is not public; this repository hosts the official releases only.
 <sub>
 © 2026 Olivier Frappier. All rights reserved.<br>
 Steinway, Vienna Symphonic Library / VSL, Synchron, Ivory / Synthogy, Kontakt / Native
-Instruments, Yamaha CFX and Bösendorfer Imperial are trademarks of their respective owners.
+Instruments, Korg, Pianoteq / Modartt, Yamaha CFX and Bösendorfer Imperial are trademarks
+of their respective owners.
 SympResHost is an independent product and is not affiliated with, endorsed by or
 sponsored by any of them. "Steinway D-274" designates the sampled instrument used for the
 built-in resonance model.<br>
