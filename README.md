@@ -15,7 +15,24 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.2.0
+## What's new in 8.2.1
+
+- **Key Noise** (off by default): the mechanical noise of the key coming back up — the
+  hammer falling back on its rail, then the key landing 115 to 285 ms later depending on
+  how fast you release it. Triggered by the **real key release** (even with the pedal
+  down) and following your note-off velocity; same timbre over the keyboard, heavier
+  hammer in the bass.
+- **Pedal Noise** (off by default): when the dampers lift, the pedal's thump sets the
+  **freed strings ringing** through SympResHost's resonance engine — the real partials of
+  your calibrated piano, fed progressively as the dampers lift (a slow pedal gives a soft,
+  slow attack). A very light mechanical noise completes it (dampers lifting and landing,
+  pedal stops). Needs **SYMPATHETIC RESONANCE** on for the strings; the label turns orange
+  when it is off.
+- Each noise has a **VOL** and a **COLOR** knob on one compact row, plus a **DEFAULT**
+  button (both off, knobs at 0). Turn the hosted piano's own key and pedal noises off when
+  you use them.
+
+### Also in 8.2.0
 
 - **Release velocity for Yamaha N1X — now sent to your piano.** SympResHost measures how
   fast each key comes back (the N1X reports the key position only while it returns) and
@@ -89,6 +106,8 @@ Steinway D-274 is included and ready to use.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost.
 - **Compact view.** Fold the interface into a small bar while you play.
+- **Key and pedal noises.** Key release noise, and a sustain pedal whose thump sets the
+  freed strings ringing — each with its own level and color.
 
 ## Why sustain is not a separate effect
 
@@ -216,6 +235,9 @@ Use SympResHost in the **same format as your DAW**, and host a piano **in that s
 - In the standalone app, avoid switching from the VST3 to the AU of the same instrument:
   SympResHost will offer to restart.
 
+Tested on macOS in **Logic Pro and GarageBand (AU)** and **Reaper (VST3)**, with very good
+performance in Reaper.
+
 ### Windows (experimental)
 
 1. Download `SympResHost-<version>-Windows-x64-Experimental.zip` from
@@ -255,6 +277,26 @@ with its own settings and number of microphones.
 On a slower computer, or if the CPU load is too high with the pedal down, lower
 **Max Free Strings (CPU)**: fewer strings resonate at the same time, for a slightly
 thinner halo.
+
+#### About CPU meters
+
+Each DAW measures the load differently, so the same work can look very different:
+
+- **Logic Pro** shows one bar **per core**, for the track played live with the small I/O
+  buffer — the most demanding case. 50–60 % on one bar with the pedal down is normal and
+  safe as long as there are no crackles. Helpful: a larger **I/O Buffer Size**,
+  **Process Buffer Range: Large**, **Multithreading: Playback & Live Tracks**.
+- **Reaper** shows by default an average over **all cores** (a few % can mean 30–40 % of
+  one core), and computes tracks ahead of time. For a closer comparison, open
+  **View → Performance Meter** (per-track and RT CPU).
+- **Cubase** shows an average and a real-time **peak** (the peak behaves like Logic's
+  bar); **ASIO-Guard** lowers the load of tracks that are not played live.
+- **Ableton Live** shows the average time spent against the buffer; Live 12 can also show
+  the load per track.
+
+What matters is **no crackles and no overload message**. The heaviest case is playing
+long glissandos with the pedal held down (hundreds of partials ringing at once). If you
+hear crackles: raise the buffer size, then lower **Max Free Strings (CPU)**.
 
 ### Pedal mode: Host Sustain, Host Sustain 2 or Pass-through?
 
@@ -314,9 +356,8 @@ Steinway D-274).
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
-| **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
-| **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
+| **Korg SX2 VST** | Host Sustain or Pass-through | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
+| **UVI Modern D** |Host Sustain or Pass-through  | Works, and a restruck key no longer stays drawn down. |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
