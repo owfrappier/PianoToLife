@@ -294,9 +294,9 @@ Steinway D-274).
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
-| **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
+| **Pianoteq** | Host Sustain or Pass-through | Turn off Pianoteq's sympathetic resonance. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
+| **UVI Modern D** | Host Sustain or Pass-through | Works, and a restruck key no longer stays drawn down. |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
