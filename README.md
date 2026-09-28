@@ -1,5 +1,7 @@
 <h1 align="center">SympResHost</h1>
 <p align="center"><b>Bring your VST / AU piano to life — and to realism.</b></p>
+<p align="center">Replace your piano's static sympathetic resonance samples and canned pedal behaviour<br>
+with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
   <img src="docs/screenshot.png?v=3" alt="SympResHost interface" width="900">
@@ -13,13 +15,13 @@
 
 ---
 
-## What's new in 8.0.96
+## What's new in 8.0.98
 
-- **Two pedal modes, one clear choice.** **Host Sustain** (default) for pianos that do not
-  let you turn off their sustain samples, such as VSL Synchron. It also works with most
-  other pianos, Kontakt libraries included. **Pass-through** for the rare pianos that do not
-  suit Host Sustain (e.g. Korg SX2 VST). See
-  [Pedal mode](#pedal-mode-host-sustain-or-pass-through).
+- **Clearer pedal modes.** **Host Sustain** (default) for pianos that do not let you turn
+  off their sustain samples, such as VSL Synchron. It works with every piano tested: VSL,
+  Kontakt libraries, Ivory, Korg SX2 VST and UVI pianos. **Host Sustain 2** keeps the
+  previous restrike behaviour as a fallback. **Pass-through** for pianos that handle the
+  pedal themselves. See [Pedal mode](#pedal-mode-host-sustain-host-sustain-2-or-pass-through).
 - **Sustain Samples Off has been retired.** In VST3 it could raise the CPU load a lot while
   playing with the pedal down. Older sessions and presets that used it now open in Host
   Sustain.
@@ -234,7 +236,7 @@ inserted after SympResHost in your DAW.
 Remember that the CPU load shown by your DAW for SympResHost **includes the hosted piano**,
 with its own settings and number of microphones.
 
-### Pedal mode: Host Sustain or Pass-through?
+### Pedal mode: Host Sustain, Host Sustain 2 or Pass-through?
 
 **What are "sustain samples"?** Many sampled pianos contain two sets of recordings of
 every note: one played with the pedal **up**, and one with the pedal **down**. The
@@ -251,8 +253,11 @@ mode.
 Some pianos, such as the **VSL Synchron** pianos, give no way to turn off their sustain
 effect or their pedal-down samples. Host Sustain keeps the pedal away from the piano: it
 only plays its pedal-up (dry) samples, and SympResHost holds the notes itself. Half
-pedal, pedal catch, sostenuto and restriking are all included. It works with most pianos,
-**VSL and Kontakt libraries included**.
+pedal, pedal catch, sostenuto and restriking are all included. When you restrike a note
+under the pedal, **every strike gets its own Note Off** when the note is finally released,
+so pianos that keep one voice per strike (Korg SX2 VST) or count the keys (UVI pianos)
+never keep a note hanging. It works with every piano tested: **VSL, Kontakt libraries,
+Ivory, Korg SX2 VST and UVI pianos**.
 In the piano, turn off:
 - **all Key Noise / release noise** (SympResHost sends the Note Offs when the pedal comes
   up, so these noises would come at the wrong moment);
@@ -262,16 +267,19 @@ With Host Sustain, half-pedalling keeps the piano's clean pedal-up sound while
 SympResHost's resonance fades progressively (treble dampers first). The result is a real
 gradient, even with pianos whose own half pedal only switches between full samples.
 
+**Pedal: Host Sustain 2 — fallback.**
+Same as Host Sustain, but a note restruck under the pedal gets a **single Note Off** when
+it is released (the previous behaviour). Set up the piano exactly as for Host Sustain.
+
+> Start with **Host Sustain**. Choose **Host Sustain 2** only if a piano plays extra
+> release noises or misbehaves when restruck notes are released.
+
 **Pedal: Pass-through.**
 The piano receives your pedal and handles its own dampers, half-pedal and releases.
 In the piano:
 - turn off its **sustain samples** (pedal-down samples / "pedal resonance");
 - turn off its **sympathetic resonance / string resonance**;
 - **keep** its *half-pedal* and *repedalling* options.
-
-> **Host Sustain replaces the piano's own pedal behaviour, so a few pianos may not suit
-> it** — so far the **Korg SX2 VST**. With such a piano, turn off its sustain samples and
-> resonance and **choose Pass-through**.
 
 Set **Half Pedal Damping Start / Full** to match your piano (defaults match the VSL
 Steinway D-274).
@@ -285,9 +293,10 @@ Steinway D-274).
 | **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
-| **Ivory 3** (Synthogy) | Pass-through | Turn off *Sustain* and *Sympathetic Resonance* in the Ivory preset. To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
+| **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
-| **Korg SX2 VST** | Pass-through | Does not suit Host Sustain: turn off its sustain / resonance options and use Pass-through. |
+| **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
+| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
