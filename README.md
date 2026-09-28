@@ -15,21 +15,33 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.0.98
+## What's new in 8.2.0
 
-- **Clearer pedal modes.** **Host Sustain** (default) for pianos that do not let you turn
-  off their sustain samples, such as VSL Synchron. It works with every piano tested: VSL,
-  Kontakt libraries, Ivory, Korg SX2 VST and UVI pianos. **Host Sustain 2** keeps the
-  previous restrike behaviour as a fallback. **Pass-through** for pianos that handle the
-  pedal themselves. See [Pedal mode](#pedal-mode-host-sustain-host-sustain-2-or-pass-through).
-- **Sustain Samples Off has been retired.** In VST3 it could raise the CPU load a lot while
-  playing with the pedal down. Older sessions and presets that used it now open in Host
-  Sustain.
-- **Host Sustain: restriking a note under the pedal** no longer sends a Note Off to the
-  piano. The new strike rings over the previous one, as on a real string: no damper noise
-  in the middle of the pedal, and no more phantom notes in some Kontakt pianos.
-- **Cleaner interface:** a setup hint for the selected pedal mode, resonance controls
-  grouped by theme, a Keyboard menu, and the same DEFAULT buttons everywhere.
+- **Release velocity for Yamaha N1X — now sent to your piano.** SympResHost measures how
+  fast each key comes back (the N1X reports the key position only while it returns) and
+  turns it into a real note-off velocity. SympResHost's dampers, its simulated release
+  **and the hosted piano** (Pianoteq, VSL, Kontakt…) all receive it. The Yamaha P-525 mode
+  already worked this way.
+- **Keyboard Note-Off Curve** (N1X and P-525): shapes the note-off velocity sent to the
+  hosted piano — useful with pianos that have no release-velocity curve of their own.
+- **Compact view:** fold SympResHost into a small bar (pedal mode and resonance level) and
+  expand it again with one click. Sound and settings are not affected.
+- **Max Free Strings (CPU):** the main CPU control, now named as such — lower it on a
+  slower computer.
+- The pedal **DEFAULT** button also brings the pedal mode back to **Host Sustain**.
+
+### Also in 8.0.98
+
+- **Clearer pedal modes:** **Host Sustain** (default) works with every piano tested — VSL,
+  Kontakt libraries, Ivory, Korg SX2 VST, UVI pianos; **Host Sustain 2** is a fallback;
+  **Pass-through** for pianos that handle the pedal themselves. See
+  [Pedal mode](#pedal-mode-host-sustain-host-sustain-2-or-pass-through).
+- **Sustain Samples Off retired** (it could raise the CPU load a lot in VST3 with the
+  pedal down). Older sessions open in Host Sustain.
+- **Restriking under the pedal:** no damper noise in the middle of the pedal, and no more
+  hanging or phantom notes (Kontakt, Korg SX2, UVI).
+- **Cleaner interface:** setup hint for the selected pedal mode, grouped resonance
+  controls, Keyboard menu, uniform DEFAULT buttons.
 
 ## What it does
 
@@ -76,6 +88,7 @@ Steinway D-274 is included and ready to use.
   image.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost.
+- **Compact view.** Fold the interface into a small bar while you play.
 
 ## Why sustain is not a separate effect
 
@@ -141,11 +154,15 @@ How fast you let a key come up changes how the damper lands, so SympResHost list
 - The **Keyboard** menu adapts SympResHost to keyboards that report the release in their
   own way:
   - **N1X or others** (Yamaha N1X and similar Yamaha hybrids): these instruments report
-    the key release through polyphonic aftertouch. This mode turns it into release
-    velocity, and can filter the aftertouch and CC19 messages so the hosted piano does not
-    receive them.
+    the key position through polyphonic aftertouch, only while the key comes back.
+    SympResHost measures the time the key takes to return and turns it into release
+    velocity (no aftertouch at all = a very fast release). It can filter the aftertouch
+    and CC19 messages so the hosted piano does not receive them.
   - **Yamaha P-525**: measures the timing of the release information the P-525 sends and
-    turns it into release velocity, with its own curve.
+    turns it into release velocity.
+  - In both modes the result **replaces the note-off velocity sent to the hosted piano**,
+    shaped by the **Keyboard Note-Off Curve**. The **Note-Off Velocity Curve** only shapes
+    how SympResHost's own dampers and release respond.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
   - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
@@ -235,6 +252,9 @@ inserted after SympResHost in your DAW.
 
 Remember that the CPU load shown by your DAW for SympResHost **includes the hosted piano**,
 with its own settings and number of microphones.
+On a slower computer, or if the CPU load is too high with the pedal down, lower
+**Max Free Strings (CPU)**: fewer strings resonate at the same time, for a slightly
+thinner halo.
 
 ### Pedal mode: Host Sustain, Host Sustain 2 or Pass-through?
 
@@ -294,9 +314,9 @@ Steinway D-274).
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
-| **Pianoteq** | Host Sustain or Pass-through | Turn off Pianoteq's sympathetic resonance. |
+| **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** | Host Sustain or Pass-through | Works, and a restruck key no longer stays drawn down. |
+| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
