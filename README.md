@@ -10,7 +10,8 @@ with one live, physically modelled string engine — from a single held key to e
 
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
-  macOS 14+ (Apple Silicon) · Windows 10/11 x64 (experimental) · AU · VST3 · Standalone
+ macOS 14+ (Apple Silicon) (Signed) · Windows 10/11 x64 (Unsigned) · AU · VST3 · Standalone
+
 </p>
 
 ---
