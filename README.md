@@ -18,7 +18,8 @@ with one live, physically modelled string engine — from a single held key to e
 
 ## What's new in 8.2.4
 - Windows inno Installer
--Ambience : hidden room ambience in samples for Sympathetic resonance and release
+  
+- Ambience : hidden room ambience in samples for Sympathetic resonance and release
 - Velocity Curve 
 - **Key Noise** (off by default): the mechanical noise of the key coming back up — the
   hammer falling back on its rail, then the key landing 115 to 285 ms later depending on
