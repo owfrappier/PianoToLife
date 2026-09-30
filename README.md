@@ -10,59 +10,52 @@ with one live, physically modelled string engine — from a single held key to e
 
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
- macOS 14+ (Apple Silicon) (Signed) · Windows 10/11 x64 (Unsigned) · AU · VST3 · Standalone
-
+  macOS 14+ (Apple Silicon) · Windows 10/11 x64 · AU · VST3 · Standalone
 </p>
 
 ---
 
-## What's new in 8.2.4
-- Windows inno Installer
-  
-- Ambience : hidden room ambience in samples for Sympathetic resonance and release
-- Velocity Curve 
-- **Key Noise** (off by default): the mechanical noise of the key coming back up — the
-  hammer falling back on its rail, then the key landing 115 to 285 ms later depending on
-  how fast you release it. Triggered by the **real key release** (even with the pedal
-  down) and following your note-off velocity; same timbre over the keyboard, heavier
-  hammer in the bass.
-- **Pedal Noise** (off by default): when the dampers lift, the pedal's thump sets the
-  **freed strings ringing** through SympResHost's resonance engine — the real partials of
-  your calibrated piano, fed progressively as the dampers lift (a slow pedal gives a soft,
-  slow attack). A very light mechanical noise completes it (dampers lifting and landing,
-  pedal stops). Needs **SYMPATHETIC RESONANCE** on for the strings; the label turns orange
-  when it is off.
-- Each noise has a **VOL** and a **COLOR** knob on one compact row, plus a **DEFAULT**
-  button (both off, knobs at 0). Turn the hosted piano's own key and pedal noises off when
-  you use them.
+## What's new in 8.2.6
 
-### Also in 8.2.0
+- **More natural re-pedaling (Host Sustain).** Play staccato, then catch the notes with the
+  pedal: as on a real grand, the pedal now brings back the **note's own string**, already
+  half damped by the felt — a clear fundamental, about −20 dB for the quickest re-pedal and
+  lower the later you catch it — built from the partials SympResHost measures in your piano.
+  It then rings naturally while the pedal is down. Legato re-pedaling works the same way.
+  No more jump between "the whole note" and "almost nothing".
+- **Damper Slope** (new, on the Damper Damping row): on a real piano the heavy bass strings
+  keep ringing a while under the damper, the treble stops almost at once. **Damper Damping**
+  is now the time at the centre of the keyboard (E4); **Slope** makes the bass longer and the
+  treble a little shorter. Default **−30 %** (about 530 ms at A0, 215 ms at G6). Sessions saved
+  before 8.2.6 open at 0 % (one time for the whole keyboard).
+- **Release Decay** (new, next to Release Noise): the length of the release tail
+  (100 % = previous versions, lower = shorter).
+- Switching **SYMPATHETIC RESONANCE** off now also switches off the release.
+- **Pedal Damper Curve**: new default **8** (was 16), a gentler, more musical damper landing.
+- **CPU**: releasing keys, releasing the pedal and half-pedaling cost less; re-pressing the pedal
+  after long glissandos no longer causes load spikes.
 
-- **Release velocity for Yamaha N1X — now sent to your piano.** SympResHost measures how
-  fast each key comes back (the N1X reports the key position only while it returns) and
-  turns it into a real note-off velocity. SympResHost's dampers, its simulated release
-  **and the hosted piano** (Pianoteq, VSL, Kontakt…) all receive it. The Yamaha P-525 mode
-  already worked this way.
-- **Keyboard Note-Off Curve** (N1X and P-525): shapes the note-off velocity sent to the
-  hosted piano — useful with pianos that have no release-velocity curve of their own.
-- **Compact view:** fold SympResHost into a small bar (pedal mode and resonance level) and
-  expand it again with one click. Sound and settings are not affected.
-- **Max Free Strings (CPU):** the main CPU control, now named as such — lower it on a
-  slower computer.
-- The pedal **DEFAULT** button also brings the pedal mode back to **Host Sustain**.
+### Also in 8.2.4
 
-### Also in 8.0.98
+- **Ambience** (off by default, right under Resonance Level): reproduces the hidden room
+  ambience of pianos recorded in a hall, for the sympathetic resonance, the sustain and the
+  release. SympResHost's own sound is computed dry; with Ambience it sits in the same hall as
+  your piano's samples, and after each key or pedal release the room keeps ringing, as it does in
+  the piano's own release samples. Your piano's samples never go through it, so the room is not
+  doubled. Start around **50 %**.
+- **Velocity** panel: **Curve** (right = louder with less effort) and **Slope** (right = more
+  contrast between soft and loud) of the Note-On velocity, with a small graph. Both at **0** by
+  default (unchanged); velocities 1-3 (Silent Key) are never changed.
+- **Ring** (release): new intensity control, **50 %** by default (the previous ring was a little
+  strong).
+- **Windows**: no longer experimental, now with an **installer** (for all users, or for you only
+  without administrator rights).
 
-- **Clearer pedal modes:** **Host Sustain** (default) works with every piano tested — VSL,
-  Kontakt libraries, Ivory, Korg SX2 VST, UVI pianos; **Host Sustain 2** is a fallback;
-  **Pass-through** for pianos that handle the pedal themselves. See
-  [Pedal mode](#pedal-mode-host-sustain-host-sustain-2-or-pass-through).
-- **Sustain Samples Off retired** (it could raise the CPU load a lot in VST3 with the
-  pedal down). Older sessions open in Host Sustain.
-- **Restriking under the pedal:** no damper noise in the middle of the pedal, and no more
-  hanging or phantom notes (Kontakt, Korg SX2, UVI).
-- **Cleaner interface:** setup hint for the selected pedal mode, grouped resonance
-  controls, Keyboard menu, uniform DEFAULT buttons.
+### Earlier versions
+
+Key Noise and Pedal Noise (8.2.1), N1X release velocity and Compact view (8.2.0), the pedal
+modes (8.0.98) and everything before: see the notes of each version in
+[Releases](../../releases).
 
 ## What it does
 
@@ -99,7 +92,11 @@ Steinway D-274 is included and ready to use.
   first touch of the dampers to full sustain. Pedal-up / pedal-down transitions, chords
   caught in the pedal, syncopated pedalling and sostenuto behave naturally.
 - **Pedal catch.** Press the pedal just *after* the notes and the strings still sounding
-  feed the freed strings — gently, as on a real instrument.
+  feed the freed strings — gently, as on a real instrument. In Host Sustain, a note caught
+  just after its release comes back through its own string, half damped, with a clear
+  fundamental.
+- **Bass and treble dampers.** Damper Damping and Slope set how fast the dampers stop the
+  strings, longer in the bass, shorter in the treble.
 - **Natural string release.** When a damper falls, the partials of the string die away
   progressively instead of being cut. This includes the high harmonics, the duplex scale,
   the undamped treble strings and the slow beating of the bass unisons. It can replace
@@ -166,6 +163,10 @@ What the re-simulated release contains:
 - **Release Weights** balances the colour of the release: 100 % keeps the partials as
   recorded; lower values bring up the high harmonics without changing the overall level
   (default 50 %). It works like **Mode Weights** does for the resonance.
+- **Decay** (next to Release Noise) sets the length of the release tail; it also follows
+  Damper Damping and Slope, so it is longer in the bass.
+- The release belongs to the resonance engine: switching **SYMPATHETIC RESONANCE** off
+  switches it off too.
 
 ### Your release gesture counts
 
@@ -193,12 +194,12 @@ How fast you let a key come up changes how the damper lands, so SympResHost list
     lingers, like a real grand. A firm contact stops every partial together. Turn
     **Progressive** off to get the previous damping.
 - **Pedal Damper Curve** does for the pedal what the note-off curve does for the keys: it
-  sets how the speed and position of your foot become damper contact (default 16; lower =
+  sets how the speed and position of your foot become damper contact (default 8; lower =
   gentler, more lingering; higher = firm contact sooner).
 
 ## Requirements
 
-| | macOS | Windows (experimental) |
+| | macOS | Windows |
 |---|---|---|
 | **System** | macOS 14 Sonoma or later | Windows 10 / 11, 64-bit (x64) |
 | **Processor** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. | Intel / AMD x64 (also runs on Windows on ARM through emulation) |
@@ -242,33 +243,13 @@ Use SympResHost in the **same format as your DAW**, and host a piano **in that s
 Tested on macOS in **Logic Pro and GarageBand (AU)** and **Reaper (VST3)**, with very good
 performance in Reaper.
 
-### Windows (experimental)
+### Windows
 
-1. How to install on Windows
-
-This app is free and isn't digitally signed. Code-signing certificates cost money every year, and I'd rather keep the app free, supported only by optional contributions. Because of this, Windows may show a warning the first time you run the installer. The app is safe and virus-free.
-
-If you see "Windows protected your PC" (SmartScreen)
-
-Click More info.
-Click Run anyway.
-
-If the installer doesn't open
-
-Right-click the setup file and choose Properties.
-At the bottom of the General tab, check Unblock, then click OK.
-Launch the installer again.
-
-If Windows Defender blocked or deleted the file
-
-Open Windows Security, then Virus & threat protection, then Protection history.
-Select the blocked item and choose Allow on device (or Restore).
-Run the installer again.
-
-Want extra peace of mind? You can scan the file at virustotal.com before installing.
-
-You only need to do this once. After installation, the app runs normally.
-
+1. Download `SympResHost-<version>-Windows-Setup.exe` from [Releases](../../releases/latest)
+   and run it: **Install for all users** (recommended: the VST3 goes to the standard folder
+   every DAW scans) or **for me only** (no administrator rights: the VST3 goes to
+   `%LOCALAPPDATA%\Programs\Common\VST3`; add this folder in your DAW if needed).
+   Or download the `.zip` and copy the files yourself (steps 2 and 3).
 2. **VST3 location:** SympResHost only scans `C:\Program Files\Common Files\VST3`. Make sure
    your piano's VST3 is there (move it or re-run its installer if needed).
 3. To use SympResHost in a DAW, copy the **whole** `SympResHost.vst3` folder to
@@ -383,8 +364,9 @@ Steinway D-274).
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
-| **Korg SX2 VST** | Host Sustain or Pass-through | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** |Host Sustain or Pass-through  | Works, and a restruck key no longer stays drawn down. |
+| **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
+| **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
+| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
