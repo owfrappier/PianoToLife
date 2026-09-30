@@ -244,8 +244,31 @@ performance in Reaper.
 
 ### Windows (experimental)
 
-1. Download `SympResHost-<version>-Windows-x64-Experimental.zip` from
-   [Releases](../../releases/latest) and unzip it.
+1. How to install on Windows
+
+This app is free and isn't digitally signed. Code-signing certificates cost money every year, and I'd rather keep the app free, supported only by optional contributions. Because of this, Windows may show a warning the first time you run the installer. The app is safe and virus-free.
+
+If you see "Windows protected your PC" (SmartScreen)
+
+Click More info.
+Click Run anyway.
+
+If the installer doesn't open
+
+Right-click the setup file and choose Properties.
+At the bottom of the General tab, check Unblock, then click OK.
+Launch the installer again.
+
+If Windows Defender blocked or deleted the file
+
+Open Windows Security, then Virus & threat protection, then Protection history.
+Select the blocked item and choose Allow on device (or Restore).
+Run the installer again.
+
+Want extra peace of mind? You can scan the file at virustotal.com before installing.
+
+You only need to do this once. After installation, the app runs normally.
+
 2. **VST3 location:** SympResHost only scans `C:\Program Files\Common Files\VST3`. Make sure
    your piano's VST3 is there (move it or re-run its installer if needed).
 3. To use SympResHost in a DAW, copy the **whole** `SympResHost.vst3` folder to
