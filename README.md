@@ -15,7 +15,18 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.2.6
+## What's new in 8.2.8
+
+- **Enable Multicore Processing** (new, off by default, on the hosted-instrument line), like the
+  option of the same name in VSL: SympResHost's resonance is shared between several CPU cores
+  instead of one. **Same sound** — the output is identical. In our tests the resonance took 2 to 3
+  times less time on the audio thread, even with very small buffers. Most useful with the pedal
+  down and many notes ringing. It does not change the hosted piano's own load. Try it, and keep it
+  if your DAW's CPU meter is lower and there are no crackles.
+- **Damper view:** the strings of the keys you are still holding are drawn in golden orange, so
+  you can tell them apart from the strings freed by the pedal.
+
+### Also in 8.2.6
 
 - **More natural re-pedaling (Host Sustain).** Play staccato, then catch the notes with the
   pedal: as on a real grand, the pedal now brings back the **note's own string**, already
@@ -35,26 +46,10 @@ with one live, physically modelled string engine — from a single held key to e
 - **CPU**: releasing keys, releasing the pedal and half-pedaling cost less; re-pressing the pedal
   after long glissandos no longer causes load spikes.
 
-### Also in 8.2.4
-
-- **Ambience** (off by default, right under Resonance Level): reproduces the hidden room
-  ambience of pianos recorded in a hall, for the sympathetic resonance, the sustain and the
-  release. SympResHost's own sound is computed dry; with Ambience it sits in the same hall as
-  your piano's samples, and after each key or pedal release the room keeps ringing, as it does in
-  the piano's own release samples. Your piano's samples never go through it, so the room is not
-  doubled. Start around **50 %**.
-- **Velocity** panel: **Curve** (right = louder with less effort) and **Slope** (right = more
-  contrast between soft and loud) of the Note-On velocity, with a small graph. Both at **0** by
-  default (unchanged); velocities 1-3 (Silent Key) are never changed.
-- **Ring** (release): new intensity control, **50 %** by default (the previous ring was a little
-  strong).
-- **Windows**: no longer experimental, now with an **installer** (for all users, or for you only
-  without administrator rights).
-
 ### Earlier versions
 
-Key Noise and Pedal Noise (8.2.1), N1X release velocity and Compact view (8.2.0), the pedal
-modes (8.0.98) and everything before: see the notes of each version in
+Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
+(8.2.1), N1X release velocity and Compact view (8.2.0), the pedal modes (8.0.98) and everything before: see the notes of each version in
 [Releases](../../releases).
 
 ## What it does
@@ -105,7 +100,8 @@ Steinway D-274 is included and ready to use.
   driven through the bridge (not by the hammer), and an optional microphone-pair stereo
   image.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
-  CPU cost.
+  CPU cost; the strings of the keys still held are shown in orange.
+- **Multicore.** An optional multicore engine shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
 - **Key and pedal noises.** Key release noise, and a sustain pedal whose thump sets the
   freed strings ringing — each with its own level and color.
@@ -282,14 +278,20 @@ inserted after SympResHost in your DAW.
 
 Remember that the CPU load shown by your DAW for SympResHost **includes the hosted piano**,
 with its own settings and number of microphones.
-On a slower computer, or if the CPU load is too high with the pedal down, lower
-**Max Free Strings (CPU)**: fewer strings resonate at the same time, for a slightly
+On a slower computer, or if the CPU load is too high with the pedal down, try
+**Enable Multicore Processing** first (same sound, the resonance is shared between cores), then
+lower **Max Free Strings (CPU)**: fewer strings resonate at the same time, for a slightly
 thinner halo.
 
 #### About CPU meters
 
 Each DAW measures the load differently, so the same work can look very different:
 
+- **Activity Monitor (Mac)** shows the % of **one core** for each process (it can go above
+  100 %); the **Windows Task Manager** shows by default the % of the **whole processor**. A plug-in
+  computes on its track's audio thread, so its own work looks concentrated on one core while a
+  multicore engine like VSL's looks spread out. Compare the whole CPU, and above all listen for
+  crackles.
 - **Logic Pro** shows one bar **per core**, for the track played live with the small I/O
   buffer — the most demanding case. 50–60 % on one bar with the pedal down is normal and
   safe as long as there are no crackles. Helpful: a larger **I/O Buffer Size**,
@@ -304,7 +306,8 @@ Each DAW measures the load differently, so the same work can look very different
 
 What matters is **no crackles and no overload message**. The heaviest case is playing
 long glissandos with the pedal held down (hundreds of partials ringing at once). If you
-hear crackles: raise the buffer size, then lower **Max Free Strings (CPU)**.
+hear crackles: raise the buffer size, try **Enable Multicore Processing**, then lower
+**Max Free Strings (CPU)**.
 
 ### Pedal mode: Host Sustain, Host Sustain 2 or Pass-through?
 
@@ -367,6 +370,7 @@ Steinway D-274).
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
 | **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
+| **AcousticSamples C7** | — | "Flawless" (user report, Windows). |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
