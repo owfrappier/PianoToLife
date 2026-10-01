@@ -4,7 +4,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=3" alt="SympResHost interface" width="900">
+  <img src="docs/screenshot.png?v=4" alt="SympResHost interface" width="900">
 </p>
 
 
@@ -15,40 +15,28 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.2.8
+## What's new in 8.2.10
 
-- **Enable Multicore Processing** (new, off by default, on the hosted-instrument line), like the
-  option of the same name in VSL: SympResHost's resonance is shared between several CPU cores
-  instead of one. **Same sound** — the output is identical. In our tests the resonance took 2 to 3
-  times less time on the audio thread, even with very small buffers. Most useful with the pedal
-  down and many notes ringing. It does not change the hosted piano's own load. Try it, and keep it
-  if your DAW's CPU meter is lower and there are no crackles.
-- **Damper view:** the strings of the keys you are still holding are drawn in golden orange, so
-  you can tell them apart from the strings freed by the pedal.
+<table>
+<tr><td>⚡ <b>About 2× faster</b></td><td>The resonance engine was rewritten at its core: about half the CPU with the pedal down — and not a single sample of the sound changes.</td></tr>
+<tr><td>🎹 <b>Wooden key action</b></td><td>New Key Noise: hammer back on its rest, then the key landing; it follows how long and how fast you release, with real repetition in the escapement.</td></tr>
+<tr><td>🦶 <b>Wooden pedal</b></td><td>New Pedal Noise: wood-on-wood knocks, felts on the strings and freed strings, each with its own volume (VOL / MECH / DAMPER).</td></tr>
+<tr><td>🛡 <b>Output Ceiling</b></td><td>A transparent true-peak limiter at −1 dBFS: no more overs, untouched sound below the ceiling.</td></tr>
+<tr><td>📈 <b>Meters</b></td><td>Real TRUE PEAK, LUFS short-term and long-term, a reliable compressor GR.</td></tr>
+<tr><td>✨ <b>Interface</b></td><td>The hosted piano's window no longer floats over your other apps; COMPACT hides it too.</td></tr>
+</table>
 
-### Also in 8.2.6
+All the details in the <a href="../../releases/latest">release notes</a>.
 
-- **More natural re-pedaling (Host Sustain).** Play staccato, then catch the notes with the
-  pedal: as on a real grand, the pedal now brings back the **note's own string**, already
-  half damped by the felt — a clear fundamental, about −20 dB for the quickest re-pedal and
-  lower the later you catch it — built from the partials SympResHost measures in your piano.
-  It then rings naturally while the pedal is down. Legato re-pedaling works the same way.
-  No more jump between "the whole note" and "almost nothing".
-- **Damper Slope** (new, on the Damper Damping row): on a real piano the heavy bass strings
-  keep ringing a while under the damper, the treble stops almost at once. **Damper Damping**
-  is now the time at the centre of the keyboard (E4); **Slope** makes the bass longer and the
-  treble a little shorter. Default **−30 %** (about 530 ms at A0, 215 ms at G6). Sessions saved
-  before 8.2.6 open at 0 % (one time for the whole keyboard).
-- **Release Decay** (new, next to Release Noise): the length of the release tail
-  (100 % = previous versions, lower = shorter).
-- Switching **SYMPATHETIC RESONANCE** off now also switches off the release.
-- **Pedal Damper Curve**: new default **8** (was 16), a gentler, more musical damper landing.
-- **CPU**: releasing keys, releasing the pedal and half-pedaling cost less; re-pressing the pedal
-  after long glissandos no longer causes load spikes.
+### Also in 8.2.8
+
+- **Enable Multicore Processing** (off by default): the resonance is shared between several
+  CPU cores, same sound.
+- **Damper view:** the strings of the keys still held are drawn in golden orange.
 
 ### Earlier versions
 
-Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
+Re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
 (8.2.1), N1X release velocity and Compact view (8.2.0), the pedal modes (8.0.98) and everything before: see the notes of each version in
 [Releases](../../releases).
 
@@ -101,10 +89,14 @@ Steinway D-274 is included and ready to use.
   image.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
-- **Multicore.** An optional multicore engine shares the resonance between CPU cores.
+- **Efficient.** A highly optimised engine (about 2× faster in 8.2.10), plus an optional
+  multicore mode that shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
-- **Key and pedal noises.** Key release noise, and a sustain pedal whose thump sets the
-  freed strings ringing — each with its own level and color.
+- **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
+  repetition in the escapement), and a sustain pedal with its wooden knocks, the felts on the
+  strings and the freed strings ringing — each with its own volume.
+- **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
+  LUFS short-term / long-term.
 
 ## Why sustain is not a separate effect
 
@@ -361,7 +353,7 @@ Steinway D-274).
 
 | Piano | Pedal mode | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). |
+| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). |
 | **VSL Synchron CFX** | Host Sustain | Works well ("they sound really good"). Key Noise off in VSL. |
 | **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
