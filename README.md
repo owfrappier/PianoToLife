@@ -15,7 +15,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.2.10
+## What's new in 8.2.11
 
 <table>
 <tr><td>⚡ <b>About 2× faster</b></td><td>The resonance engine was rewritten at its core: about half the CPU with the pedal down — and not a single sample of the sound changes.</td></tr>
@@ -24,6 +24,7 @@ with one live, physically modelled string engine — from a single held key to e
 <tr><td>🛡 <b>Output Ceiling</b></td><td>A transparent true-peak limiter at −1 dBFS: no more overs, untouched sound below the ceiling.</td></tr>
 <tr><td>📈 <b>Meters</b></td><td>Real TRUE PEAK, LUFS short-term and long-term, a reliable compressor GR.</td></tr>
 <tr><td>✨ <b>Interface</b></td><td>The hosted piano's window no longer floats over your other apps; COMPACT hides it too.</td></tr>
+<tr><td>🔧 <b>Fixes</b></td><td>The release always follows what the note really played (no more loud release after a Silent Key); Silent Key is velocity 1 only, 2 and 3 are real soft notes.</td></tr>
 </table>
 
 All the details in the <a href="../../releases/latest">release notes</a>.
@@ -89,7 +90,7 @@ Steinway D-274 is included and ready to use.
   image.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
-- **Efficient.** A highly optimised engine (about 2× faster in 8.2.10), plus an optional
+- **Efficient.** A highly optimised engine (about 2× faster in 8.2.11), plus an optional
   multicore mode that shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
