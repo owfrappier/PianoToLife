@@ -1,10 +1,10 @@
-<h1 align="center">SympResHost</h1>
+<h1 align="center">PianoToLife (SympResHost)</h1>
 <p align="center"><b>Bring your VST / AU piano to life — and to realism.</b></p>
 <p align="center">Replace your piano's static sympathetic resonance samples and canned pedal behaviour<br>
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=4" alt="SympResHost interface" width="900">
+  <img src="docs/screenshot.png?v=4" alt="PianoToLife (SympResHost) interface" width="900">
 </p>
 
 
