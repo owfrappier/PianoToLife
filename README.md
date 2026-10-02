@@ -19,12 +19,14 @@ with one live, physically modelled string engine — from a single held key to e
 ## What's new in 9.0.2
 
 <table>
-<tr><td>✨ <b>New name</b></td><td>PianoToLife is now <b>PianoToLife</b>. Same plug-in: your sessions and presets open as before.</td></tr>
+<tr><td>✨ <b>New name</b></td><td>SympResHost is now <b>PianoToLife</b>. Same plug-in: your sessions and presets open as before.</td></tr>
 <tr><td>🔁 <b>Repeated notes</b></td><td>In Host Sustain, a note restruck under the pedal replaces its previous strike: repeats and diminuendos follow what you play.</td></tr>
 <tr><td>🎹 <b>Upright key noise</b></td><td>GRAND or UPRIGHT action under KEY NOISE.</td></tr>
 <tr><td>🦶 <b>Half pedal</b></td><td>A held half pedal decays naturally in one slope; the resonance follows the dampers through the whole zone; slow pedal-ups are seamless.</td></tr>
+<tr><td>🎼 <b>Pedal on held notes</b></td><td>Press the pedal after the attack while still holding the keys (syncopated pedalling): the resonance now blooms in about a second, a little less the later the pedal comes, richer on chords. New <b>Held</b> control next to Pedal Catch to make it bolder or subtler.</td></tr>
 <tr><td>🎯 <b>Re-pedalling and catch</b></td><td>Quick re-pedals keep their energy like a real piano; the catch is crisper in the treble, fuller in the bass.</td></tr>
-<tr><td>🎚 <b>Better defaults</b></td><td>Resonance Level 0 dB is 3 dB richer (old sessions sound the same); Harmonic Balance (formerly Mode Weights) centred on a natural balance of octaves and harmonics; Pedal Damper Curve 32.</td></tr>
+<tr><td>🎚 <b>Better defaults</b></td><td>Resonance Level 0 dB is 3 dB richer (old sessions sound the same); Harmonic Balance (formerly Mode Weights) centred on a natural balance of octaves and harmonics; Pedal Damper Curve 32; Inharmonicity 50 ct; Half Pedal Damping 25–95; quieter Key / Pedal Noise at 0 dB (old sessions sound the same).</td></tr>
+<tr><td>🖥 <b>Standalone</b></td><td>First launch opens at your audio card's own sample rate with a 256-sample buffer.</td></tr>
 <tr><td>🎨 <b>Themes</b></td><td>NOIR &amp; OR, GRAPHITE, NOIR &amp; ROUGE or CLASSIC, chosen in the title bar.</td></tr>
 </table>
 
@@ -85,7 +87,8 @@ Steinway D-274 is included and ready to use.
 - **Pedal catch.** Press the pedal just *after* the notes and the strings still sounding
   feed the freed strings — gently, as on a real instrument. In Host Sustain, a note caught
   just after its release comes back through its own string, at a level that depends on how
-  quickly you catch it; quick re-pedals fade naturally from one to the next.
+  quickly you catch it; quick re-pedals fade naturally from one to the next. Keys still held when the
+  pedal goes down (syncopated pedalling) bloom in about a second, with their own **Held** control.
 - **Bass and treble dampers.** Damper Damping and Slope set how fast the dampers stop the
   strings, longer in the bass, shorter in the treble.
 - **Natural string release.** When a damper falls, the partials of the string die away
