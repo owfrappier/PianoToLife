@@ -15,29 +15,26 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 8.2.11
+## What's new in 8.2.12
 
 <table>
-<tr><td>⚡ <b>About 2× faster</b></td><td>The resonance engine was rewritten at its core: about half the CPU with the pedal down — and not a single sample of the sound changes.</td></tr>
-<tr><td>🎹 <b>Wooden key action</b></td><td>New Key Noise: hammer back on its rest, then the key landing; it follows how long and how fast you release, with real repetition in the escapement.</td></tr>
-<tr><td>🦶 <b>Wooden pedal</b></td><td>New Pedal Noise: wood-on-wood knocks, felts on the strings and freed strings, each with its own volume (VOL / MECH / DAMPER).</td></tr>
-<tr><td>🛡 <b>Output Ceiling</b></td><td>A transparent true-peak limiter at −1 dBFS: no more overs, untouched sound below the ceiling.</td></tr>
-<tr><td>📈 <b>Meters</b></td><td>Real TRUE PEAK, LUFS short-term and long-term, a reliable compressor GR.</td></tr>
-<tr><td>✨ <b>Interface</b></td><td>The hosted piano's window no longer floats over your other apps; COMPACT hides it too.</td></tr>
-<tr><td>🔧 <b>Fixes</b></td><td>The release always follows what the note really played (no more loud release after a Silent Key); Silent Key is velocity 1 only, 2 and 3 are real soft notes.</td></tr>
+<tr><td>🦶 <b>Musical half pedal</b></td><td>Two kinds of damping like a real grand: part of the sound dies fast, a residue rings on. Held notes carry on as their own string and follow your foot, without a cut or a bump.</td></tr>
+<tr><td>🎯 <b>Realistic pedal catch</b></td><td>A caught note comes back at a level that depends on how fast you catch it; quick re-pedals fade naturally, and only the right notes come back.</td></tr>
+<tr><td>🔇 <b>Damper Noise</b></td><td>The buzz of the felts landing on the vibrating strings, made from each note's real partials, with its own ON / VOL.</td></tr>
+<tr><td>▶ <b>MIDI player</b></td><td>Standalone app: load, play, record and save MIDI, and bounce to a 16-bit / 44.1 kHz WAV.</td></tr>
 </table>
 
 All the details in the <a href="../../releases/latest">release notes</a>.
 
-### Also in 8.2.8
+### Also in 8.2.11
 
-- **Enable Multicore Processing** (off by default): the resonance is shared between several
-  CPU cores, same sound.
-- **Damper view:** the strings of the keys still held are drawn in golden orange.
+- **About 2× faster** resonance engine, same sound.
+- **Wooden key action** and **wooden pedal** (Key Noise, Pedal Noise with VOL / MECH).
+- **Output Ceiling** (true-peak limiter), TRUE PEAK and LUFS meters.
 
 ### Earlier versions
 
-Re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
+Multicore Processing (8.2.8), re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
 (8.2.1), N1X release velocity and Compact view (8.2.0), the pedal modes (8.0.98) and everything before: see the notes of each version in
 [Releases](../../releases).
 
@@ -73,12 +70,13 @@ Steinway D-274 is included and ready to use.
   each string, measured from the piano you host. A held key frees its string; the pedal
   frees them all — exactly like the dampers of a real grand.
 - **Real half-pedalling.** Resonance and damping follow the pedal continuously, from the
-  first touch of the dampers to full sustain. Pedal-up / pedal-down transitions, chords
+  first touch of the dampers to full sustain. In Host Sustain, held notes carry on as their
+  own string with a fast-dying part and a long residue, like a real grand. Pedal-up / pedal-down transitions, chords
   caught in the pedal, syncopated pedalling and sostenuto behave naturally.
 - **Pedal catch.** Press the pedal just *after* the notes and the strings still sounding
   feed the freed strings — gently, as on a real instrument. In Host Sustain, a note caught
-  just after its release comes back through its own string, half damped, with a clear
-  fundamental.
+  just after its release comes back through its own string, at a level that depends on how
+  quickly you catch it; quick re-pedals fade naturally from one to the next.
 - **Bass and treble dampers.** Damper Damping and Slope set how fast the dampers stop the
   strings, longer in the bass, shorter in the treble.
 - **Natural string release.** When a damper falls, the partials of the string die away
@@ -90,12 +88,16 @@ Steinway D-274 is included and ready to use.
   image.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
-- **Efficient.** A highly optimised engine (about 2× faster in 8.2.11), plus an optional
+- **Efficient.** A highly optimised engine (about 2× faster since 8.2.11), plus an optional
   multicore mode that shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
   repetition in the escapement), and a sustain pedal with its wooden knocks, the felts on the
   strings and the freed strings ringing — each with its own volume.
+- **Damper Noise.** The buzz of the felts landing on the vibrating strings, made from each
+  note's real partials.
+- **MIDI player (standalone).** Load, play, record and save MIDI, and bounce to a 16-bit /
+  44.1 kHz WAV — to compare settings on exactly the same performance.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
   LUFS short-term / long-term.
 
