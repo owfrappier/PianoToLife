@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=4" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=5" alt="PianoToLife interface" width="900">
 </p>
 
 
@@ -16,15 +16,26 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.0.4
+## What's new in 9.1.2
+
+<table>
+<tr><td>🎨 <b>A new interface</b></td><td>Envelope, Timbre, Strings and Pedal &amp; Release fold away in one <b>Resonance drawer</b>; closed, it shows the strings and dampers of a grand piano with the resonance rising from them. Level &amp; Pitch and Pedal Noise stay in view.</td></tr>
+<tr><td>🎯 <b>0 % = our setting</b></td><td>Every setting in the drawer reads <b>0 % at its default</b>, from −100 % to +100 %. Double-click (or Delete) to go back; the tooltip still shows the real value.</td></tr>
+<tr><td>🔁 <b>Natural repeated notes</b></td><td>In Host Sustain, a softer strike under the pedal now rings over the previous one, as on a real piano: a soft repeat no longer cuts a loud note still sounding (most audible in the bass). A strike at least as loud replaces them.</td></tr>
+<tr><td>♿ <b>Screen readers</b></td><td>Windows Narrator / NVDA and macOS VoiceOver: every control has a spoken name and help, Tab follows a logical order, and sliders can be moved from the keyboard.</td></tr>
+<tr><td>🪶 <b>Damper Noise COLOR</b></td><td>New knob: darker or brighter felts, same level.</td></tr>
+<tr><td>🪟 <b>Hosted piano window</b></td><td>Opens by itself when an instrument or a preset you chose has finished loading, centred on PianoToLife.</td></tr>
+<tr><td>✨ <b>And more</b></td><td>Shorter tooltips, message boxes and menus in the interface colours, Ambience at 25 % when switched on, a simpler pedal menu (Host Sustain 2 removed: its sessions open in Host Sustain).</td></tr>
+</table>
+
+### Also in 9.0.4
 
 🐞 **Important fix:** no more stray notes when changing chords with the pedal (old notes could come back as pure, slightly out-of-tune tones).
 
-## Also in 9.0.2
+### Also in 9.0.2
 
 <table>
 <tr><td>✨ <b>New name</b></td><td>SympResHost is now <b>PianoToLife</b>. Same plug-in: your sessions and presets open as before.</td></tr>
-<tr><td>🔁 <b>Repeated notes</b></td><td>In Host Sustain, a note restruck under the pedal replaces its previous strike: repeats and diminuendos follow what you play.</td></tr>
 <tr><td>🎹 <b>Upright key noise</b></td><td>GRAND or UPRIGHT action under KEY NOISE.</td></tr>
 <tr><td>🦶 <b>Half pedal</b></td><td>A held half pedal decays naturally in one slope; the resonance follows the dampers through the whole zone; slow pedal-ups are seamless.</td></tr>
 <tr><td>🎼 <b>Pedal on held notes</b></td><td>Press the pedal after the attack while still holding the keys (syncopated pedalling): the resonance now blooms in about a second, a little less the later the pedal comes, richer on chords. New <b>Held</b> control next to Pedal Catch to make it bolder or subtler.</td></tr>
@@ -102,6 +113,9 @@ Steinway D-274 is included and ready to use.
 - **Honest colour.** Measured inharmonicity, per-string decay times, the colour of strings
   driven through the bridge (not by the hammer), and an optional microphone-pair stereo
   image.
+- **Clear, accessible interface.** The detailed resonance settings fold away in a drawer and
+  read 0 % at their default; the whole interface works with screen readers (Narrator / NVDA,
+  VoiceOver) and from the keyboard.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
 - **Efficient.** A highly optimised engine (about 2× faster since 8.2.11), plus an optional
@@ -111,7 +125,7 @@ Steinway D-274 is included and ready to use.
   repetition in the escapement), and a sustain pedal with its wooden knocks, the felts on the
   strings and the freed strings ringing — each with its own volume.
 - **Damper Noise.** The buzz of the felts landing on the vibrating strings, made from each
-  note's real partials.
+  note's real partials, with its own volume and colour.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce to a 16-bit /
   44.1 kHz WAV — to compare settings on exactly the same performance.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
@@ -320,7 +334,7 @@ long glissandos with the pedal held down (hundreds of partials ringing at once).
 hear crackles: raise the buffer size, try **Enable Multicore Processing**, then lower
 **Max Free Strings (CPU)**.
 
-### Pedal mode: Host Sustain, Host Sustain 2 or Pass-through?
+### Pedal mode: Host Sustain, Host Sustain (stacked) or Pass-through?
 
 **What are "sustain samples"?** Many sampled pianos contain two sets of recordings of
 every note: one played with the pedal **up**, and one with the pedal **down**. The
@@ -333,12 +347,14 @@ your pedalling.
 The pedal section of PianoToLife shows what to turn off in the piano for the selected
 mode.
 
-**Pedal: Host Sustain (default) — designed for pianos that do not let you turn off their sustain.**
+**Pedal: Host Sustain (default) — recommended for most pianos.**
 Some pianos, such as the **VSL Synchron** pianos, give no way to turn off their sustain
 effect or their pedal-down samples. Host Sustain keeps the pedal away from the piano: it
 only plays its pedal-up (dry) samples, and PianoToLife holds the notes itself. Half
-pedal, pedal catch, sostenuto and restriking are all included. When you restrike a note
-under the pedal, **every strike gets its own Note Off** when the note is finally released,
+pedal, pedal catch, sostenuto and restriking are all included. A note struck again under the
+pedal behaves like a hammer on a string that still vibrates: a **softer** strike rings over the
+previous one (a loud note is never cut by a soft repeat), a strike **at least as loud** replaces
+it. **Every strike gets its own Note Off** when the note is finally released,
 so pianos that keep one voice per strike (Korg SX2 VST) or count the keys (UVI pianos)
 never keep a note hanging. It works with every piano tested: **VSL, Kontakt libraries,
 Ivory, Korg SX2 VST and UVI pianos**.
@@ -351,12 +367,10 @@ With Host Sustain, half-pedalling keeps the piano's clean pedal-up sound while
 PianoToLife's resonance fades progressively (treble dampers first). The result is a real
 gradient, even with pianos whose own half pedal only switches between full samples.
 
-**Pedal: Host Sustain 2 — fallback.**
-Same as Host Sustain, but a note restruck under the pedal gets a **single Note Off** when
-it is released (the previous behaviour). Set up the piano exactly as for Host Sustain.
-
-> Start with **Host Sustain**. Choose **Host Sustain 2** only if a piano plays extra
-> release noises or misbehaves when restruck notes are released.
+**Pedal: Host Sustain (stacked).**
+Same as Host Sustain, but every strike under the pedal rings over the previous ones, even a
+louder one. For pianos that play a damper / release noise at each restrike. Set up the piano
+exactly as for Host Sustain.
 
 **Pedal: Pass-through.**
 The piano receives your pedal and handles its own dampers, half-pedal and releases.
@@ -409,7 +423,8 @@ PianoToLife settings.
 PianoToLife is developed by **Olivier Frappier**, pianist.
 The code was designed and written with the help of **Claude** (Anthropic) and other AI
 assistants, guided by many hours of listening tests and comparisons with real pianos.
-Built with the JUCE framework.
+Built with the JUCE framework. Photo in the Resonance drawer: Pexels, "Inside of a piano"
+(Pexels licence).
 
 The source code is not public; this repository hosts the official releases only.
 
