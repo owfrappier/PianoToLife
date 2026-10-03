@@ -16,7 +16,11 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.0.2
+## What's new in 9.0.4
+
+🐞 **Important fix:** no more stray notes when changing chords with the pedal (old notes could come back as pure, slightly out-of-tune tones).
+
+## Also in 9.0.2
 
 <table>
 <tr><td>✨ <b>New name</b></td><td>SympResHost is now <b>PianoToLife</b>. Same plug-in: your sessions and presets open as before.</td></tr>
