@@ -5,13 +5,16 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=9.1.2" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=5" alt="PianoToLife interface" width="900">
 </p>
 
 
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
   macOS 14+ (Apple Silicon) · Windows 10/11 x64 · AU · VST3 · Standalone
+</p>
+<p align="center">
+  PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.
 </p>
 
 ---
@@ -400,14 +403,14 @@ Steinway D-274).
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
 
 
-## Enjoying PianoToLife?
+## Enjoying PianoToLife? Donate
 
 PianoToLife is free, and it took months of listening, measuring and comparing with real
 pianos. If it has given your piano a new life, you can say thank you — the price of a
 couple of coffees, **10 € or 20 €**, keeps the project moving:
 
 <p align="center">
-  <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Support PianoToLife on PayPal</b></a>
+  <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate to PianoToLife (PayPal)</b></a>
 </p>
 
 Every contribution, however small, is read, appreciated and turned into new versions.
