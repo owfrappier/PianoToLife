@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=9.1.2" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=6" alt="PianoToLife interface" width="900">
 </p>
 
 
@@ -19,7 +19,15 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.1.2
+## What's new in 9.1.4
+
+<table>
+<tr><td>🤫 <b>Silent Key list</b></td><td>Off, ≤ 1 (default), ≤ 2, ≤ 3, or <b>Disklavier / N1</b>: silent presses sent as aftertouch 127 (Yamaha AvantGrand N1, Disklavier XP) lift the damper so the string resonates, without playing a note. A real strike on a key held silently takes over smoothly.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor</b></td><td>See the MIDI received (<b>Before</b>) and the MIDI sent to your piano (<b>After</b>), side by side; silent keys in grey.</td></tr>
+<tr><td>🪟 <b>Comfort</b></td><td><b>ALL DEFAULT</b> button, zoom remembered (90 % the first time), an <b>Auto open</b> check box to choose whether the piano's window opens by itself after loading, and Multicore Processing on by default.</td></tr>
+</table>
+
+### Also in 9.1.2
 
 <table>
 <tr><td>🎨 <b>A new interface</b></td><td>Envelope, Timbre, Strings and Pedal &amp; Release fold away in one <b>Resonance drawer</b>; closed, it shows the strings and dampers of a grand piano with the resonance rising from them. Level &amp; Pitch and Pedal Noise stay in view.</td></tr>
@@ -211,6 +219,12 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
   - In both modes the result **replaces the note-off velocity sent to the hosted piano**,
     shaped by the **Keyboard Note-Off Curve**. The **Note-Off Velocity Curve** only shapes
     how PianoToLife's own dampers and release respond.
+- **Silent Key** (list next to SYMPATHETIC RESONANCE): a silent key press lifts the damper
+  without playing a note, so the string is free to resonate (play a chord over it, or hold it
+  while lifting the pedal). **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower;
+  **Disklavier / N1** = polyphonic aftertouch 127 / 0, as sent by the Yamaha AvantGrand N1 and
+  Disklavier XP (all velocities play in that mode); **Off** = none. The **MIDI Monitor** button
+  shows what arrives and what is sent to the piano.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
   - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
