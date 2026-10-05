@@ -19,7 +19,16 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.1.4
+## What's new in 9.1.6
+
+<table>
+<tr><td>🎹 <b>Yamaha hybrids: repeated notes</b></td><td>N1, N1X and P-525 repeat a note before the key is fully up, like a real grand. PianoToLife now follows it: the release velocity is measured on the key's last movement (a key that stops halfway no longer counts as a very slow release), and in Host Sustain a note struck again replaces the previous strike if at least as loud, or rings over it if softer.</td></tr>
+<tr><td>🤫 <b>Disklavier / N1 silent key</b></td><td>Aftertouch 127 frees the string and aftertouch 0 lets the damper fall back, read directly as the keyboard sends them: no hidden note, no changed velocity. Tested on a real AvantGrand N1.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor export</b></td><td>Times in seconds, a resizable window and <b>Export...</b> to a text file, to see exactly what your keyboard sends and what reaches your piano.</td></tr>
+<tr><td>✨ <b>And more</b></td><td>One key noise per release, the standalone MIDI player plays files exactly as recorded, Stop never leaves a note stuck.</td></tr>
+</table>
+
+### Also in 9.1.4
 
 <table>
 <tr><td>🤫 <b>Silent Key list</b></td><td>Off, ≤ 1 (default), ≤ 2, ≤ 3, or <b>Disklavier / N1</b>: silent presses sent as aftertouch 127 (Yamaha AvantGrand N1, Disklavier XP) lift the damper so the string resonates, without playing a note. A real strike on a key held silently takes over smoothly.</td></tr>
