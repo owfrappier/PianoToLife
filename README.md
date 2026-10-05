@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=6" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=914" alt="PianoToLife interface" width="900">
 </p>
 
 
