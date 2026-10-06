@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=914" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=914" alt="PianoToLife interface" width="900">
 </p>
 
 
@@ -19,7 +19,17 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.1.6
+## What's new in 9.1.7
+
+<table>
+<tr><td>🎹 <b>Every damped string, up to your piano's last damper</b></td><td>Sustain Free To and Max Free Strings now follow <b>Undamped Keys Above</b>: at their maximum they read <b>All</b> and free every damped string, up to the last damper of your piano (Steinway D: G6, Shigeru Kawai: A#6...). Moving Undamped Keys Above sets them to All; you can still lower them.</td></tr>
+<tr><td>🎼 <b>Bösendorfer Imperial</b></td><td>Sustain Free To now has two handles. Drag the left one below A0, down to C0, and the pedal also frees the 9 extra bass strings of an Imperial (C0 to G#0), made from the A0 of the resonance model. A subtle, richer bass halo.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor, side by side</b></td><td>What PianoToLife receives and what it sends to your piano are on the same line, with one scroll bar. Every difference is in amber: a changed value, a message sent later (with the reason), one added or not sent. The export uses the same two columns. Thanks to Elvis for the idea.</td></tr>
+<tr><td>🎵 <b>Crisper staccato in Host Sustain</b></td><td>The short pedal-catch window (about 40 ms) is now only used during a pedal change, where a catch is likely. The rest of the time the Note Off reaches the piano at once, so a staccato played without the pedal is not lengthened.</td></tr>
+<tr><td>🎁 <b>Example presets for VSL D-274</b></td><td><code>PianoToLife-Example-Presets-VSL-D274.zip</code> in the release: two Synchron Pianos player presets (STANDARD and FULL) set up to be played through PianoToLife, with a screenshot of the matching PianoToLife settings.</td></tr>
+</table>
+
+### Also in 9.1.6
 
 <table>
 <tr><td>🎹 <b>Yamaha hybrids: repeated notes</b></td><td>N1, N1X and P-525 repeat a note before the key is fully up, like a real grand. PianoToLife now follows it: the release velocity is measured on the key's last movement (a key that stops halfway no longer counts as a very slow release), and in Host Sustain a note struck again replaces the previous strike if at least as loud, or rings over it if softer.</td></tr>
@@ -120,10 +130,15 @@ Steinway D-274 is included and ready to use.
   own string with a fast-dying part and a long residue, like a real grand. Pedal-up / pedal-down transitions, chords
   caught in the pedal, syncopated pedalling and sostenuto behave naturally.
 - **Pedal catch.** Press the pedal just *after* the notes and the strings still sounding
-  feed the freed strings — gently, as on a real instrument. In Host Sustain, a note caught
-  just after its release comes back through its own string, at a level that depends on how
+  feed the freed strings — gently, as on a real instrument. In Host Sustain, during a pedal
+  change, a key released just before the pedal comes back down keeps its piano note; a note
+  caught just after its release comes back through its own string, at a level that depends on how
   quickly you catch it; quick re-pedals fade naturally from one to the next. Keys still held when the
   pedal goes down (syncopated pedalling) bloom in about a second, with their own **Held** control.
+- **Your piano's dampers.** **Undamped Keys Above** sets the last key with a damper, as on
+  your piano: the strings above it ring freely and are never damped. The pedal frees every
+  damped string below it (**Sustain Free To**), and with a **Bösendorfer Imperial** the left
+  handle of Sustain Free To goes down to C0 to free its extra bass strings too.
 - **Bass and treble dampers.** Damper Damping and Slope set how fast the dampers stop the
   strings, longer in the bass, shorter in the treble.
 - **Natural string release.** When a damper falls, the partials of the string die away
@@ -233,7 +248,7 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
   while lifting the pedal). **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower;
   **Disklavier / N1** = polyphonic aftertouch 127 / 0, as sent by the Yamaha AvantGrand N1 and
   Disklavier XP (all velocities play in that mode); **Off** = none. The **MIDI Monitor** button
-  shows what arrives and what is sent to the piano.
+  shows, side by side, what arrives and what is sent to the piano, with every difference in amber.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
   - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
@@ -320,7 +335,10 @@ the **dry** sound of your piano to drive the strings. So, **in the hosted piano*
   "tone" effects, limiters, stereo wideners…). Otherwise the resonating strings would be
   fed with the room and the effects instead of the strings, and the calibration capture
   would measure them too;
-- then follow the setup of your **pedal mode** below (sustain samples, key noise).
+- then follow the setup of your **pedal mode** below (sustain samples, key noise);
+- set **Undamped Keys Above** to the last key with a damper on that piano (Steinway D: G6,
+  Shigeru Kawai: A#6...), and with a Bösendorfer Imperial drag the left handle of
+  **Sustain Free To** down to C0.
 
 Need a room or some compression? Use **PianoToLife's own Piano Comp and Reverb**
 instead: they are placed *after* the resonance engine, so the resonance stays clean and
@@ -412,10 +430,10 @@ Steinway D-274).
 
 | Piano | Pedal mode | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). |
+| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). Example player presets: `PianoToLife-Example-Presets-VSL-D274.zip` in the 9.1.7 release. |
 | **VSL Synchron CFX** | Host Sustain | Works well ("they sound really good"). Key Noise off in VSL. |
 | **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
-| **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Some low-register partials may be missing. |
+| **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Drag the left handle of Sustain Free To down to C0 to free its 9 extra bass strings. |
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
