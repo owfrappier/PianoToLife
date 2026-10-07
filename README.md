@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=917" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=914" alt="PianoToLife interface" width="900">
 </p>
 
 
@@ -19,7 +19,22 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.1.7
+## What's new in 9.1.8
+
+The idea of 9.1.8: make the **release** clear. On a real piano, the release is part of the resonance: when a
+damper lands, the string and its harmonics die away with the rest of the instrument. PianoToLife now shows it
+that way, and the choice is simple: your piano's own release, PianoToLife's release (recommended), or a blend
+of both.
+
+<table>
+<tr><td>🎚 <b>Three levels, side by side</b></td><td><b>Resonance Level</b>, <b>Release Level</b> (formerly Release Noise) and <b>Ambience</b> now sit together at the top, with a bracket showing that the Ambience is the room around both the resonance and the release. The Compact view shows all three.</td></tr>
+<tr><td>🔘 <b>Release Level on / off</b></td><td>On by default. Turn it off if you prefer your piano's own release samples; keep it on (recommended) to get the release from the real partials of each string, or lower your piano's release and blend the two.</td></tr>
+<tr><td>🎯 <b>"Default" instead of 0</b></td><td>The three levels are in dB around <b>Default</b> (our reference setting, tuned by ear), in the middle of each slider: +3 dB, −6 dB… or Off. In the drawer, every setting reads <b>Default</b> at its default value. Double-click (or Delete) to go back.</td></tr>
+</table>
+
+Your sessions and presets open with the same sound.
+
+### Also in 9.1.7
 
 <table>
 <tr><td>🎹 <b>Every damped string, up to your piano's last damper</b></td><td>Sustain Free To and Max Free Strings now follow <b>Undamped Keys Above</b>: at their maximum they read <b>All</b> and free every damped string, up to the last damper of your piano (Steinway D: G6, Shigeru Kawai: A#6...). Moving Undamped Keys Above sets them to All; you can still lower them.</td></tr>
@@ -149,7 +164,7 @@ Steinway D-274 is included and ready to use.
   driven through the bridge (not by the hammer), and an optional microphone-pair stereo
   image.
 - **Clear, accessible interface.** The detailed resonance settings fold away in a drawer and
-  read 0 % at their default; the whole interface works with screen readers (Narrator / NVDA,
+  read **Default** at their default value; the whole interface works with screen readers (Narrator / NVDA,
   VoiceOver) and from the keyboard.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
@@ -195,18 +210,20 @@ sound of your piano, die away gently as the damper settles, with a lighter or fi
 depending on how you release the key or the pedal. With half-pedalling, the dampers resting
 lightly on the strings keep damping them softly instead of stopping them.
 
-### Replace, complete or blend your piano's release samples
+### Your piano's release, PianoToLife's release, or both
 
-Release samples vary a lot from one virtual piano to another: some are rich, some are
-weak, some are missing altogether. The release re-simulated by PianoToLife adapts to all
-three cases:
+The release is part of the resonance: when a damper lands, the string and its harmonics die
+away with the rest of the instrument. Release samples vary a lot from one virtual piano to
+another (rich, weak or missing), so PianoToLife lets you choose with **Release Level**, right
+under Resonance Level:
 
-- **Missing or very weak release samples** (e.g. Ivory 3, or a release you turned off):
-  raise **Release Noise**, and PianoToLife provides the whole release on its own.
-- **Average release samples**: keep a low setting (the default is 3 %). The simulation
-  blends with the samples and adds what they lack: brighter high harmonics, the shimmer of
-  the duplex scale, and a longer, beating decay in the bass.
-- **Rich release samples**: turn it down further or off, and let the samples speak.
+- **PianoToLife's release (recommended)**: turn the release off in your piano (e.g. VSL:
+  Release at −inf) and keep **Release Level** on. The release comes from the real partials of
+  each string and follows the resonance, the dampers and the **Ambience**.
+- **Your piano's own release**: untick **Release Level**, and keep the release of your piano.
+- **A blend of both**: keep your piano's release a little lower and adjust **Release Level**
+  around **Default**: PianoToLife adds what the samples lack (brighter high harmonics, the
+  shimmer of the duplex scale, a longer, beating decay in the bass).
 
 What the re-simulated release contains:
 
@@ -219,7 +236,7 @@ What the re-simulated release contains:
 - **Release Weights** balances the colour of the release: 100 % keeps the partials as
   recorded; lower values bring up the high harmonics without changing the overall level
   (default 50 %). It works like **Harmonic Balance** does for the resonance.
-- **Decay** (next to Release Noise) sets the length of the release tail; it also follows
+- **Release Decay** (in the drawer) sets the length of the release tail; it also follows
   Damper Damping and Slope, so it is longer in the bass.
 - The release belongs to the resonance engine: switching **SYMPATHETIC RESONANCE** off
   switches it off too.
@@ -430,7 +447,7 @@ Steinway D-274).
 
 | Piano | Pedal mode | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). Example player presets: `PianoToLife-Example-Presets-VSL-D274.zip` in the 9.1.7 release. |
+| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). Example player presets: `PianoToLife-Example-Presets-VSL-D274.zip` in the latest release. |
 | **VSL Synchron CFX** | Host Sustain | Works well ("they sound really good"). Key Noise off in VSL. |
 | **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Drag the left handle of Sustain Free To down to C0 to free its 9 extra bass strings. |
