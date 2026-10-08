@@ -30,7 +30,7 @@ Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from
 <tr><td>🏛 <b>Ambience follows Release Level</b></td><td>Release Level off: no end of note in the Ambience. Notes caught by the pedal and strings carried on in half-pedal now go into the Ambience too.</td></tr>
 </table>
 
-At the same setting, Pedal Noise and Felt-Contact are louder and fuller than before; everything else opens with the same sound.
+
 
 ### Also in 9.1.8
 
