@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=918" alt="PianoToLife interface" width="900">
+  <img src="docs/screenshot.png?v=914" alt="PianoToLife interface" width="900">
 </p>
 
 
@@ -19,7 +19,20 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.1.8
+## What's new in 9.2.0
+
+Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from measurements case by case.
+
+<table>
+<tr><td>🎧 <b>Full Piano = Piano Only + PianoToLife DSP Only</b></td><td>A listening selector at the top: hear your hosted piano alone, only what PianoToLife adds (resonance, release, Ambience, noises), or the whole. Comp, Reverb and Ceiling stay on; no latency. It always comes back to Full Piano (opening, ALL DEFAULT, preset, new piano).</td></tr>
+<tr><td>🪶 <b>Felt-Contact (formerly Damper Noise)</b></td><td>The felt touching a string that still vibrates: made from the note's own partials, it now beats gently against the string instead of sounding like a second strike, follows your release speed, and starts as soon as the pedal's dampers first touch the strings (half-pedal too).</td></tr>
+<tr><td>🦶 <b>Pedal Noise</b></td><td>A deeper wooden thump, dampers lifting and landing at the right point of the pedal travel, the mechanism's natural delay, a softer slow pedal, and mostly the bass strings ringing after the pedal, as on a real grand.</td></tr>
+<tr><td>🏛 <b>Ambience follows Release Level</b></td><td>Release Level off: no end of note in the Ambience. Notes caught by the pedal and strings carried on in half-pedal now go into the Ambience too.</td></tr>
+</table>
+
+At the same setting, Pedal Noise and Felt-Contact are louder and fuller than before; everything else opens with the same sound.
+
+### Also in 9.1.8
 
 The idea of 9.1.8: make the **release** clear. On a real piano, the release is part of the resonance: when a
 damper lands, the string and its harmonics die away with the rest of the instrument. PianoToLife now shows it
@@ -31,8 +44,6 @@ of both.
 <tr><td>🔘 <b>Release Level on / off</b></td><td>On by default. Turn it off if you prefer your piano's own release samples; keep it on (recommended) to get the release from the real partials of each string, or lower your piano's release and blend the two.</td></tr>
 <tr><td>🎯 <b>"Default" instead of 0</b></td><td>The three levels are in dB around <b>Default</b> (our reference setting, tuned by ear), in the middle of each slider: +3 dB, −6 dB… or Off. In the drawer, every setting reads <b>Default</b> at its default value. Double-click (or Delete) to go back.</td></tr>
 </table>
-
-Your sessions and presets open with the same sound.
 
 ### Also in 9.1.7
 
@@ -68,7 +79,7 @@ Your sessions and presets open with the same sound.
 <tr><td>🎯 <b>0 % = our setting</b></td><td>Every setting in the drawer reads <b>0 % at its default</b>, from −100 % to +100 %. Double-click (or Delete) to go back; the tooltip still shows the real value.</td></tr>
 <tr><td>🔁 <b>Natural repeated notes</b></td><td>In Host Sustain, a softer strike under the pedal now rings over the previous one, as on a real piano: a soft repeat no longer cuts a loud note still sounding (most audible in the bass). A strike at least as loud replaces them.</td></tr>
 <tr><td>♿ <b>Screen readers</b></td><td>Windows Narrator / NVDA and macOS VoiceOver: every control has a spoken name and help, Tab follows a logical order, and sliders can be moved from the keyboard.</td></tr>
-<tr><td>🪶 <b>Damper Noise COLOR</b></td><td>New knob: darker or brighter felts, same level.</td></tr>
+<tr><td>🪶 <b>Damper Noise COLOR</b></td><td>New knob: darker or brighter felts, same level (Damper Noise is now Felt-Contact).</td></tr>
 <tr><td>🪟 <b>Hosted piano window</b></td><td>Opens by itself when an instrument or a preset you chose has finished loading, centred on PianoToLife.</td></tr>
 <tr><td>✨ <b>And more</b></td><td>Shorter tooltips, message boxes and menus in the interface colours, Ambience at 25 % when switched on, a simpler pedal menu (Host Sustain 2 removed: its sessions open in Host Sustain).</td></tr>
 </table>
@@ -172,10 +183,14 @@ Steinway D-274 is included and ready to use.
   multicore mode that shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
-  repetition in the escapement), and a sustain pedal with its wooden knocks, the felts on the
-  strings and the freed strings ringing — each with its own volume.
-- **Damper Noise.** The buzz of the felts landing on the vibrating strings, made from each
-  note's real partials, with its own volume and colour.
+  repetition in the escapement), and a sustain pedal with its wooden thumps, the felts on the
+  strings and the freed (mostly bass) strings ringing — following the pedal's travel and speed,
+  each with its own volume.
+- **Felt-Contact.** The felt touching a string that still vibrates when a key or the pedal lets
+  the damper fall, made from each note's real partials and following your release speed, with
+  its own volume and colour.
+- **Listen to each part.** Full Piano = Piano Only + PianoToLife DSP Only: hear your piano alone
+  or only what PianoToLife adds, with one click.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce to a 16-bit /
   44.1 kHz WAV — to compare settings on exactly the same performance.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
