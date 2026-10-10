@@ -21,6 +21,12 @@ with one live, physically modelled string engine — from a single held key to e
 ## What's new in 9.4.0
 
 > **Recapture your piano (recommended).** The resonance capture is much richer: up to 255 partials per note instead of 48, so the bass strings keep the high harmonics that make the bright "harp" of a real sustain. Your own `.srpiano` models still work, but click **Capture** again to get the new sound. The built-in Steinway D-274 model is already recaptured.
+>
+> **For a clean capture**, set up the hosted piano before clicking **Capture**:
+> - its output **as loud as possible without clipping** (no red on its meters);
+> - **no reverb, no compression, no EQ or other effect** in the piano;
+> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises;
+> - preferably the **close microphones**: room microphones put the hall into the model.
 
 <table>
 <tr><td>🎶 <b>A truer sustain "harp"</b></td><td>On a real grand, most of the sustain shimmer comes from the high harmonics of the bass strings. The new capture and model bring them in at their real level: a brighter, calmer sustain. New built-in Steinway D-274 model (1487 partials).</td></tr>
@@ -164,6 +170,11 @@ PianoToLife plays the **88 notes pedal up**, one by one, and analyses the real p
 their tuning, their inharmonicity and their decay times. It then builds a resonance model
 unique to that instrument (about 35 minutes, done once). A model of the VSL Synchron
 Steinway D-274 is included and ready to use.
+
+Before capturing, set the hosted piano **as loud as possible without clipping**, with **no reverb,
+compression or other effect**, and with **everything switched off that is not the plain note**
+(release samples, sustain / pedal resonance, sympathetic resonance, key and pedal noises).
+Prefer the close microphones.
 
 **Models captured before 9.4.0:** they still work, but the capture is much richer since 9.4.0
 (up to 255 partials per note instead of 48, the high harmonics of the bass strings that make
