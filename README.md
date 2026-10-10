@@ -5,9 +5,8 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=920" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=930" alt="PianoToLife interface" width="900">
 </p>
-
 
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
@@ -19,7 +18,27 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.2.0
+## What's new in 9.4.0
+
+> **Recapture your piano (recommended).** The resonance capture is much richer: up to 255 partials per note instead of 48, so the bass strings keep the high harmonics that make the bright "harp" of a real sustain. Your own `.srpiano` models still work, but click **Capture** again to get the new sound. The built-in Steinway D-274 model is already recaptured.
+
+<table>
+<tr><td>🎶 <b>A truer sustain "harp"</b></td><td>On a real grand, most of the sustain shimmer comes from the high harmonics of the bass strings. The new capture and model bring them in at their real level: a brighter, calmer sustain. New built-in Steinway D-274 model (1487 partials).</td></tr>
+<tr><td>🎛 <b>Harmonic Balance and Coupling</b></td><td>Harmonic Balance 0-50 %, default 25 % (tuned by ear against the real sustain; older sessions open at 25 %). New <b>Coupling</b>: how evenly the note feeds every free string (default 20 %). Inharmonicity shown in cents. Stereo Phase removed.</td></tr>
+<tr><td>🎹 <b>A cleaner bass release</b></td><td>Release Weights now 100 % by default (the colour as measured): the weak upper harmonics of the bass no longer stand out after the key release, and the Ring of the undamped strings fades out below E4, as on the reference library. Older sessions open at 100 %.</td></tr>
+<tr><td>🦶 <b>Pedal Release Time</b></td><td>Letting the pedal go at once no longer stops the strings abruptly: the dampers land as if the pedal took 80 ms (adjustable 30-200 ms). Slower releases and key releases unchanged. Progressive Dampers is now on for every session.</td></tr>
+<tr><td>🎹 <b>A fuller release</b></td><td>The release added after the key release is 6.5 dB stronger, with the register balance measured on a concert grand library: strongest in the low bass (up to 18 dB more from A0 to C1, less and less up to E2). Release Level keeps its Default.</td></tr>
+<tr><td>🎸 <b>A truer bass release</b></td><td>Below C3 the release continues up to 48 harmonics (bright wound-string colour up to 1.3-2 kHz) and dies away like a real damper. C3 and above unchanged.</td></tr>
+<tr><td>🏛️ <b>Ambience closer to the piano's own room</b></td><td>Measured against the room in a concert grand library's release samples: shorter in the middle range (2.2 s instead of 2.9 s) and much less wide, nearly mono in the low bass. Its Default is now 9 dB higher, matched by ear to VSL's own release room (older sessions open at the new Default).</td></tr>
+<tr><td>🔉 <b>Pedal Noise</b></td><td>Optimisations.</td></tr>
+<tr><td>🚪 <b>Room choice for Ambience</b></td><td>Next to the Ambience slider: Small, Medium, Default or Hall, same level. The room now surrounds everything PianoToLife adds, noises included; only your piano's own samples stay out.</td></tr>
+<tr><td>🎹 <b>The felt plateau</b></td><td>When the damper falls, the string keeps its level for 20-40 ms while the felt settles, then dies away; a slow key release holds it longer. PianoToLife adds this plateau to your piano's notes, on their own harmonics, only adding sound.</td></tr>
+<tr><td>🔔 <b>A more natural Ring</b></td><td>After the key release, Ring now mostly makes the undamped top strings sound through their matching harmonics; the beating copies that dominated it below F4 are gone.</td></tr>
+<tr><td>📟 <b>Sample rate and buffer at a glance</b></td><td>In the standalone, under the title: the sample rate and buffer the audio really runs at; red with a warning below 44.1 kHz.</td></tr>
+<tr><td>🔊 <b>The standalone follows your sound card</b></td><td>At every launch it uses the sample rate your card is running at, not the one saved from the last session; your card, buffer and outputs are still remembered.</td></tr>
+</table>
+
+### Also in 9.2.0
 
 Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from measurements case by case.
 
@@ -30,7 +49,7 @@ Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from
 <tr><td>🏛 <b>Ambience follows Release Level</b></td><td>Release Level off: no end of note in the Ambience. Notes caught by the pedal and strings carried on in half-pedal now go into the Ambience too.</td></tr>
 </table>
 
-
+At the same setting, Pedal Noise and Felt-Contact are louder and fuller than before; everything else opens with the same sound.
 
 ### Also in 9.1.8
 
@@ -146,6 +165,10 @@ their tuning, their inharmonicity and their decay times. It then builds a resona
 unique to that instrument (about 35 minutes, done once). A model of the VSL Synchron
 Steinway D-274 is included and ready to use.
 
+**Models captured before 9.4.0:** they still work, but the capture is much richer since 9.4.0
+(up to 255 partials per note instead of 48, the high harmonics of the bass strings that make
+the "harp" of the sustain). Capture your piano again to get the new sound.
+
 ### Features
 
 - **Every string can resonate.** The resonance comes from a model of the real partials of
@@ -171,9 +194,8 @@ Steinway D-274 is included and ready to use.
   progressively instead of being cut. This includes the high harmonics, the duplex scale,
   the undamped treble strings and the slow beating of the bass unisons. It can replace
   weak or missing release samples, or blend with the ones your piano already has.
-- **Honest colour.** Measured inharmonicity, per-string decay times, the colour of strings
-  driven through the bridge (not by the hammer), and an optional microphone-pair stereo
-  image.
+- **Honest colour.** Measured inharmonicity, per-string decay times, and the colour of strings
+  driven through the bridge (not by the hammer), with up to 255 measured partials per note.
 - **Clear, accessible interface.** The detailed resonance settings fold away in a drawer and
   read **Default** at their default value; the whole interface works with screen readers (Narrator / NVDA,
   VoiceOver) and from the keyboard.
@@ -250,7 +272,7 @@ What the re-simulated release contains:
   because they are never damped at exactly the same instant.
 - **Release Weights** balances the colour of the release: 100 % keeps the partials as
   recorded; lower values bring up the high harmonics without changing the overall level
-  (default 50 %). It works like **Harmonic Balance** does for the resonance.
+  (default 100 % since 9.4.0). It works like **Harmonic Balance** does for the resonance.
 - **Release Decay** (in the drawer) sets the length of the release tail; it also follows
   Damper Damping and Slope, so it is longer in the bass.
 - The release belongs to the resonance engine: switching **SYMPATHETIC RESONANCE** off
@@ -287,6 +309,9 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
     release, or half-pedalling — silences the upper partials first while the fundamental
     lingers, like a real grand. A firm contact stops every partial together. Turn
     **Progressive** off to get the previous damping.
+  - **Pedal Release Time** (default 80 ms): the fastest a released pedal can come back up. A
+    pedal let go at once, or an on/off pedal, lands the dampers as if it took this long, so
+    the sound does not stop abruptly; slower releases are measured as they are.
 - **Pedal Damper Curve** does for the pedal what the note-off curve does for the keys: it
   sets how the speed and position of your foot become damper contact (default 32 = linear; lower =
   gentler, more lingering; higher = firm contact sooner).
@@ -354,7 +379,6 @@ performance in Reaper.
    interface's driver (or ASIO4ALL / FlexASIO), then **Scan VST3** and load your piano.
 
 Tested in Ableton Live 12 (VST3).
-
 
 ## Setting up your piano (important)
 
@@ -462,7 +486,7 @@ Steinway D-274).
 
 | Piano | Pedal mode | Notes |
 |---|---|---|
-| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Set **Ambience to about 20 %**: the D-274 samples already contain the hall, even on the close mics (condenser, tube or ribbon). Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). Example player presets: `PianoToLife-Example-Presets-VSL-D274.zip` in the latest release. |
+| **VSL Synchron Steinway D-274** | Host Sustain | Reference: default settings are tuned on it. VSL does not let you turn off its sustain samples. Turn off Key Noise, reverb and compression in VSL; use the **close mics** as much as possible. Keep **Ambience** at its **Default** with VSL's release at −inf: PianoToLife's release then carries the room the VSL release samples had. Confirmed on Mac and Windows (Intel Ultra 9 285H, 64-sample buffer). Example player presets: `PianoToLife-Example-Presets-VSL-D274.zip` in the latest release. |
 | **VSL Synchron CFX** | Host Sustain | Works well ("they sound really good"). Key Noise off in VSL. |
 | **VSL Synchron Concert D 1887** | Host Sustain | Works well with a captured SR model. |
 | **VSL Synchron Imperial** | Host Sustain | Not tested yet — feedback welcome. Drag the left handle of Sustain Free To down to C0 to free its 9 extra bass strings. |
@@ -474,7 +498,6 @@ Steinway D-274).
 | **AcousticSamples C7** | — | "Flawless" (user report, Windows). |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
-
 
 ## Enjoying PianoToLife? Donate
 
