@@ -20,7 +20,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 ## What's new in 9.4.2
 
-> **Capture a model of each piano you use.** The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click **Capture** on each of your pianos (see "For a clean capture" below). The built-in Steinway D-274 model is ready to use.
+> **Capture a model of each piano you use. The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click Capture on each of your pianos. Models captured before 9.4.0 should be captured again: the capture is much richer since 9.4.0. The built-in Steinway D-274 model is ready to use.
 
 <table>
 <tr><td>🎶 <b>A selective resonance</b></td><td>Each free string now answers only the partials of the notes that really match it, within about 1.5 Hz (a little more in the high treble), as on a real grand: a clearer sustain "harp", cleaner chords, and the small detunings between strings that make a real piano sound alive.</td></tr>
