@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=942" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=943" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,9 +18,16 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.2
+## What's new in 9.4.3
 
-> **Capture a model of each piano you use. The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click Capture on each of your pianos. Models captured before 9.4.0 should be captured again: the capture is much richer since 9.4.0. The built-in Steinway D-274 model is ready to use.
+<table>
+<tr><td>🎹 <b>Kawai VPC1 mode</b></td><td>For Kawai VPC1 owners. The VPC1 measures the key release, but never above about 100, and a slightly slow release easily sends 1 (sometimes 0): taken literally, ordinary releases ring on much too long. The new <b>Keyboard: Kawai VPC1</b> mode reads it so that normal releases sound like a normal damper and slow releases stay natural, never endless. If it does not suit your playing, adjust the <b>Note-Off Velocity Curve</b>, or go back to <b>Keyboard: Standard</b>.</td></tr>
+<tr><td>🔌 <b>Standalone: MIDI reconnects by itself</b></td><td>After a short USB drop (heavy CPU load, another audio application), the MIDI keyboard could stay silent until the application was restarted. It now reopens on its own.</td></tr>
+</table>
+
+### Also in 9.4.2
+
+> **Capture a model of each piano you use.** The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click **Capture** on each of your pianos (see "For a clean capture" below). **Models captured before 9.4.0 should be captured again**: the capture is much richer since 9.4.0. The built-in Steinway D-274 model is ready to use.
 
 <table>
 <tr><td>🎶 <b>A selective resonance</b></td><td>Each free string now answers only the partials of the notes that really match it, within about 1.5 Hz (a little more in the high treble), as on a real grand: a clearer sustain "harp", cleaner chords, and the small detunings between strings that make a real piano sound alive.</td></tr>
@@ -324,6 +331,10 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
     (many Roland, Kawai, Kurzweil...) or behave in their own way. Their 1-127 range drives
     PianoToLife's dampers and release, fine-tuned with the **Note-Off Velocity Curve**.
     Check in the **MIDI Monitor**: your key releases should show many different values.
+  - **Kawai VPC1**: made for the VPC1, whose release velocity stops around 100 and easily
+    drops to 1 on a slightly slow release. Normal releases sound normal, slow ones stay
+    natural. If it does not suit your playing, adjust the Note-Off Velocity Curve or go back
+    to Standard.
   - **N1X or others** (Yamaha N1X and similar Yamaha hybrids): these instruments report
     the key position through polyphonic aftertouch, only while the key comes back.
     PianoToLife measures the time the key takes to return and turns it into release
