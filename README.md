@@ -24,7 +24,7 @@ with one live, physically modelled string engine — from a single held key to e
 >
 > **For a clean capture**, set up the hosted piano before clicking **Capture**:
 > - its output **as loud as possible without clipping** (no red on its meters);
-> - **no reverb, no compression, no EQ or other effect** in the piano;
+> - **no reverb, no compression, no EQ or other effect (release, SR, sustain...)** in the piano;
 > - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises;
 > - preferably the **close microphones**: room microphones put the hall into the model.
 
