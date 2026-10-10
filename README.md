@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="docs/screenshot.png?v=940" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=942" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,9 +18,22 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.0
+## What's new in 9.4.2
 
-> **Recapture your piano (recommended).** The resonance capture is much richer: up to 255 partials per note instead of 48, so the bass strings keep the high harmonics that make the bright "harp" of a real sustain. Your own `.srpiano` models still work, but click **Capture** again to get the new sound. The built-in Steinway D-274 model is already recaptured.
+> **Capture a model of each piano you use.** The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click **Capture** on each of your pianos (see "For a clean capture" below). The built-in Steinway D-274 model is ready to use.
+
+<table>
+<tr><td>🎶 <b>A selective resonance</b></td><td>Each free string now answers only the partials of the notes that really match it, within about 1.5 Hz (a little more in the high treble), as on a real grand: a clearer sustain "harp", cleaner chords, and the small detunings between strings that make a real piano sound alive.</td></tr>
+<tr><td>🎛 <b>Fullness and Shimmer</b></td><td>Two settings replace Coupling. <b>Fullness</b> (default 100 %): how much every free string answers on its lowest partials, the body and the bass fundamentals. <b>Shimmer</b> (default 25 %): how much the free strings answer on their upper partials, the brilliance of the harp; the bass strings get less of it. Inharmonicity is no longer needed and has been removed.</td></tr>
+<tr><td>🎚 <b>Resonance Level recalibrated</b></td><td>3 dB lower at the same setting, matched to the real sustain of a concert grand library.</td></tr>
+<tr><td>🎹 <b>Keyboard modes</b></td><td><b>Standard</b> (default) works with every keyboard: a key release always sounds like a normal release. Choose <b>Release Velocity 1-127</b> if your keyboard sends real release velocities or behaves in its own way. N1X and P-525 unchanged. A keyboard that still behaves differently? Please tell us.</td></tr>
+<tr><td>🐞 <b>No more long release tails</b></td><td>Keyboards that send a release velocity of 0 no longer make some harmonics ring for seconds after short notes.</td></tr>
+<tr><td>⚙️ <b>New defaults</b></td><td>Sessions and presets saved with earlier versions open with Harmonic Balance 25 %, Fullness 100 % and Shimmer 25 %.</td></tr>
+</table>
+
+### Also in 9.4.0
+
+> **The capture is much richer since 9.4.0**: up to 255 partials per note instead of 48, so the bass strings keep the high harmonics that make the bright "harp" of a real sustain. Models captured before 9.4.0 still work, but capture again to get the new sound.
 >
 > **For a clean capture**, set up the hosted piano before clicking **Capture**:
 > - its output **as loud as possible without clipping** (no red on its meters);
@@ -30,7 +43,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 <table>
 <tr><td>🎶 <b>A truer sustain "harp"</b></td><td>On a real grand, most of the sustain shimmer comes from the high harmonics of the bass strings. The new capture and model bring them in at their real level: a brighter, calmer sustain. New built-in Steinway D-274 model (1487 partials).</td></tr>
-<tr><td>🎛 <b>Harmonic Balance and Coupling</b></td><td>Harmonic Balance 0-50 %, default 25 % (tuned by ear against the real sustain; older sessions open at 25 %). New <b>Coupling</b>: how evenly the note feeds every free string (default 20 %). Inharmonicity shown in cents. Stereo Phase removed.</td></tr>
+<tr><td>🎛 <b>Harmonic Balance</b></td><td>Harmonic Balance 0-50 %, default 25 % (tuned by ear against the real sustain). Stereo Phase removed. (Coupling, added in 9.4.0, is replaced by Fullness and Shimmer in 9.4.2.)</td></tr>
 <tr><td>🎹 <b>A cleaner bass release</b></td><td>Release Weights now 100 % by default (the colour as measured): the weak upper harmonics of the bass no longer stand out after the key release, and the Ring of the undamped strings fades out below E4, as on the reference library. Older sessions open at 100 %.</td></tr>
 <tr><td>🦶 <b>Pedal Release Time</b></td><td>Letting the pedal go at once no longer stops the strings abruptly: the dampers land as if the pedal took 80 ms (adjustable 30-200 ms). Slower releases and key releases unchanged. Progressive Dampers is now on for every session.</td></tr>
 <tr><td>🎹 <b>A fuller release</b></td><td>The release added after the key release is 6.5 dB stronger, with the register balance measured on a concert grand library: strongest in the low bass (up to 18 dB more from A0 to C1, less and less up to E2). Release Level keeps its Default.</td></tr>
@@ -171,10 +184,15 @@ their tuning, their inharmonicity and their decay times. It then builds a resona
 unique to that instrument (about 35 minutes, done once). A model of the VSL Synchron
 Steinway D-274 is included and ready to use.
 
+Since 9.4.2 the resonance follows the exact partials of the model, string by string: **capture
+a model for each piano you use**. With the model of another piano, many strings no longer
+match and the resonance is clearly poorer.
+
 Before capturing, set the hosted piano **as loud as possible without clipping**, with **no reverb,
 compression or other effect**, and with **everything switched off that is not the plain note**
 (release samples, sustain / pedal resonance, sympathetic resonance, key and pedal noises).
-Prefer the close microphones.
+Preferably the close microphones: room microphones put the hall into the model. If you play with hall microphones,
+use PianoToLife's Ambience (next to Resonance and Release) to put the hall back.
 
 **Models captured before 9.4.0:** they still work, but the capture is much richer since 9.4.0
 (up to 255 partials per note instead of 48, the high harmonics of the bass strings that make
@@ -207,6 +225,9 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
   weak or missing release samples, or blend with the ones your piano already has.
 - **Honest colour.** Measured inharmonicity, per-string decay times, and the colour of strings
   driven through the bridge (not by the hammer), with up to 255 measured partials per note.
+- **Selective coupling.** A free string answers only the partials that really match it, so
+  neighbouring strings beat gently against each other as on a real piano. **Fullness** and
+  **Shimmer** set how much the free strings answer on their low and upper partials.
 - **Clear, accessible interface.** The detailed resonance settings fold away in a drawer and
   read **Default** at their default value; the whole interface works with screen readers (Narrator / NVDA,
   VoiceOver) and from the keyboard.
@@ -293,11 +314,16 @@ What the re-simulated release contains:
 
 How fast you let a key come up changes how the damper lands, so PianoToLife listens to it:
 
-- **Note-off (release) velocity** from any keyboard that sends it: a slow release gives a
-  softer, longer damping; a quick one stops the string more firmly. An adjustable curve
-  lets you match your keyboard.
-- The **Keyboard** menu adapts PianoToLife to keyboards that report the release in their
-  own way:
+- **Note-off (release) velocity** from keyboards that send it (Keyboard: **Release Velocity
+  1-127**): a slow release gives a softer, longer damping; a quick one stops the string more
+  firmly. An adjustable curve lets you match your keyboard.
+- The **Keyboard** menu adapts PianoToLife to your keyboard:
+  - **Standard** (default): works with every keyboard. Keyboards without release velocity
+    send 0, 64 or 127 on every key release; PianoToLife reads them all as a normal release.
+  - **Release Velocity 1-127**: for keyboards that measure how fast you release the keys
+    (many Roland, Kawai, Kurzweil...) or behave in their own way. Their 1-127 range drives
+    PianoToLife's dampers and release, fine-tuned with the **Note-Off Velocity Curve**.
+    Check in the **MIDI Monitor**: your key releases should show many different values.
   - **N1X or others** (Yamaha N1X and similar Yamaha hybrids): these instruments report
     the key position through polyphonic aftertouch, only while the key comes back.
     PianoToLife measures the time the key takes to return and turns it into release
@@ -305,7 +331,7 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
     and CC19 messages so the hosted piano does not receive them.
   - **Yamaha P-525**: measures the timing of the release information the P-525 sends and
     turns it into release velocity.
-  - In both modes the result **replaces the note-off velocity sent to the hosted piano**,
+  - In these two modes the result **replaces the note-off velocity sent to the hosted piano**,
     shaped by the **Keyboard Note-Off Curve**. The **Note-Off Velocity Curve** only shapes
     how PianoToLife's own dampers and release respond.
 - **Silent Key** (list next to SYMPATHETIC RESONANCE): a silent key press lifts the damper
@@ -505,7 +531,7 @@ Steinway D-274).
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** | Host Sustain | UVI Modern D — Host Sustain — Works, and a restruck key no longer stays drawn down. Keep Modern D’s own release on and switch PianoToLife’s Release Level off: Modern D’s release cannot be switched off cleanly (Off also cuts the note before its natural decay). Switch off Sustain and Sympathetic Resonance / noises in Modern D and let PianoToLife play them.
+| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. **Keep Modern D's own release on and switch PianoToLife's Release Level off**: Modern D's release cannot be switched off cleanly (Off also cuts the note before its natural decay). Switch off Sustain and Sympathetic Resonance in Modern D and let PianoToLife play them. |
 | **AcousticSamples C7** | — | "Flawless" (user report, Windows). |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
