@@ -25,8 +25,8 @@ with one live, physically modelled string engine — from a single held key to e
 > **For a clean capture**, set up the hosted piano before clicking **Capture**:
 > - its output **as loud as possible without clipping** (no red on its meters);
 > - **no reverb, no compression, no EQ or other effect** in the piano;
-> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises;
-> - preferably the **close microphones**: room microphones put the hall into the model.
+> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises.
+> - Preferably the **close microphones**: room microphones put the hall into the model. If you play with hall microphones, use PianoToLife's **Ambience** (next to Resonance and Release) to put the hall back.
 
 <table>
 <tr><td>🎶 <b>A truer sustain "harp"</b></td><td>On a real grand, most of the sustain shimmer comes from the high harmonics of the bass strings. The new capture and model bring them in at their real level: a brighter, calmer sustain. New built-in Steinway D-274 model (1487 partials).</td></tr>
