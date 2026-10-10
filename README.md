@@ -505,7 +505,7 @@ Steinway D-274).
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
-| **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. |
+| **UVI Modern D** | Host Sustain | UVI Modern D — Host Sustain — Works, and a restruck key no longer stays drawn down. Keep Modern D’s own release on and switch PianoToLife’s Release Level off: Modern D’s release cannot be switched off cleanly (Off also cuts the note before its natural decay). Switch off Sustain and Sympathetic Resonance / noises in Modern D and let PianoToLife play them.
 | **AcousticSamples C7** | — | "Flawless" (user report, Windows). |
 
 Other VSL pianos: use **Host Sustain**, with Key Noise turned off in VSL.
