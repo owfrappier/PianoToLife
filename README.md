@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=943" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=944" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,7 +18,17 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.3
+## What's new in 9.4.4
+
+<table>
+<tr><td>🎵 <b>No more phantom staccato</b></td><td>In Host Sustain, a note struck again at the very moment the pedal comes up could be cut short, even with the key still held. Fixed.</td></tr>
+<tr><td>🔔 <b>Ring follows the dampers</b></td><td>With fast dampers, the Ring of the undamped strings could ring on alone after the release and sound too bright. It now follows the damper speed; at the default setting nothing changes.</td></tr>
+<tr><td>🪶 <b>Damper Damping stops at -40 %</b></td><td>Faster dampers don't exist on a real grand and could give a bright or rubbing release. Older sessions below -40 % open at -40 %. For a drier staccato, use <b>Release Decay</b>.</td></tr>
+<tr><td>🎹 <b>Keyboard: Standard = the reference release</b></td><td>In Standard, every key release sounds like the calibrated normal release, whatever your keyboard sends; the Note-Off curves have no effect there and are greyed out. Before 9.4.2, keyboards sending high release values got a firmer, shorter release and low values a longer one; now all sound the same in Standard. To shorten or lengthen the release, use <b>Release Decay</b>; to play with your keyboard's real release speed, choose <b>Release Velocity 1-127</b> (or your keyboard's own mode) and shape it with the <b>Note-Off Velocity Curve</b>.</td></tr>
+<tr><td>⌨️ <b>Release Velocity 1-127 and Key Noise</b></td><td>Very low release values, often sent by mistake on an ordinary release, are read as a slow release, never an endless one. The Key Noise now follows the Note-Off Velocity Curve too (a normal release sounds as before). The Keyboard Note-Off Curve is only active in the N1X and P-525 modes.</td></tr>
+</table>
+
+### Also in 9.4.3
 
 <table>
 <tr><td>🎹 <b>Kawai VPC1 mode</b></td><td>For Kawai VPC1 owners. The VPC1 measures the key release, but never above about 100, and a slightly slow release easily sends 1 (sometimes 0): taken literally, ordinary releases ring on much too long. The new <b>Keyboard: Kawai VPC1</b> mode reads it so that normal releases sound like a normal damper and slow releases stay natural, never endless. If it does not suit your playing, adjust the <b>Note-Off Velocity Curve</b>, or go back to <b>Keyboard: Standard</b>.</td></tr>
@@ -326,11 +336,15 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
   firmly. An adjustable curve lets you match your keyboard.
 - The **Keyboard** menu adapts PianoToLife to your keyboard:
   - **Standard** (default): works with every keyboard. Keyboards without release velocity
-    send 0, 64 or 127 on every key release; PianoToLife reads them all as a normal release.
+    send 0, 64 or 127 on every key release; PianoToLife reads every release as the calibrated
+    normal release (the Note-Off curves have no effect in this mode). Use **Release Decay** to
+    make the release shorter or longer.
   - **Release Velocity 1-127**: for keyboards that measure how fast you release the keys
     (many Roland, Kawai, Kurzweil...) or behave in their own way. Their 1-127 range drives
-    PianoToLife's dampers and release, fine-tuned with the **Note-Off Velocity Curve**.
-    Check in the **MIDI Monitor**: your key releases should show many different values.
+    PianoToLife's dampers, release and key noise, fine-tuned with the **Note-Off Velocity Curve**
+    (above 32 = firmer releases). Very low values, often sent by mistake, are read as a slow
+    release, never an endless one. Check in the **MIDI Monitor**: your key releases should show
+    many different values.
   - **Kawai VPC1**: made for the VPC1, whose release velocity stops around 100 and easily
     drops to 1 on a slightly slow release. Normal releases sound normal, slow ones stay
     natural. If it does not suit your playing, adjust the Note-Off Velocity Curve or go back
