@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=944b" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=944" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,7 +18,11 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.4
+## What's new in 9.4.6
+
+Some fixes and half pedal improvements.
+
+### Also in 9.4.4
 
 <table>
 <tr><td>🎵 <b>No more phantom staccato</b></td><td>In Host Sustain, a note struck again at the very moment the pedal comes up could be cut short, even with the key still held. Fixed.</td></tr>
@@ -246,7 +250,7 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
   neighbouring strings beat gently against each other as on a real piano. **Fullness** and
   **Shimmer** set how much the free strings answer on their low and upper partials.
 - **Clear, accessible interface.** The detailed resonance settings fold away in a drawer and
-  read **Default** at their default value; the whole interface works with screen readers (Narrator / NVDA,
+  read **Default** at their default value, and the **DEFAULT** button in the drawer bar resets them all; the whole interface works with screen readers (Narrator / NVDA,
   VoiceOver) and from the keyboard.
 - **Damper mechanics view.** A live, realistic view of the dampers and strings, at no
   CPU cost; the strings of the keys still held are shown in orange.
@@ -367,16 +371,12 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
   shows, side by side, what arrives and what is sent to the piano, with every difference in amber.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
-  - **Progressive dampers** (on by default): a light damper contact — a slow key or pedal
+  - **Progressive dampers** (always on): a light damper contact — a slow key or pedal
     release, or half-pedalling — silences the upper partials first while the fundamental
-    lingers, like a real grand. A firm contact stops every partial together. Turn
-    **Progressive** off to get the previous damping.
+    lingers, like a real grand. A firm contact stops every partial together.
   - **Pedal Release Time** (default 80 ms): the fastest a released pedal can come back up. A
     pedal let go at once, or an on/off pedal, lands the dampers as if it took this long, so
     the sound does not stop abruptly; slower releases are measured as they are.
-- **Pedal Damper Curve** does for the pedal what the note-off curve does for the keys: it
-  sets how the speed and position of your foot become damper contact (default 32 = linear; lower =
-  gentler, more lingering; higher = firm contact sooner).
 
 ## Requirements
 
