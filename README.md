@@ -22,7 +22,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 <table>
 <tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in the same format as Pianoteq, so you can reuse a curve made for your keyboard in Pianoteq, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
-<tr><td>🦶 <b>Cleaner damper lift</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
+<tr><td>🦶 <b>Cleaner Pedal Noise</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
 </table>
 
 ### Also in 9.4.6
