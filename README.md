@@ -18,7 +18,14 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.6
+## What's new in 9.4.7
+
+<table>
+<tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in the same format as Pianoteq, so you can reuse a curve made for your keyboard in Pianoteq, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
+<tr><td>🦶 <b>Cleaner damper lift</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
+</table>
+
+### Also in 9.4.6
 
 Some fixes and half pedal improvements.
 
@@ -175,7 +182,7 @@ All the details in the <a href="../../releases/latest">release notes</a>.
 
 ### Earlier versions
 
-Multicore Processing (8.2.8), re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve / Slope and the Windows installer (8.2.4), Key Noise and Pedal Noise
+Multicore Processing (8.2.8), re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve and the Windows installer (8.2.4), Key Noise and Pedal Noise
 (8.2.1), N1X release velocity and Compact view (8.2.0), the pedal modes (8.0.98) and everything before: see the notes of each version in
 [Releases](../../releases).
 
