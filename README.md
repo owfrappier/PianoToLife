@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=946" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=950" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,11 +18,20 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.4.7
+## What's new in 9.5.0
+
+<table>
+<tr><td>🎹 <b>Una corda for every piano</b></td><td>A new <b>Una Corda</b> selector next to the pedal mode. <b>BP</b> (default) sends the soft pedal (CC67) to your piano, as before: use it if your piano has its own una corda samples. <b>Simu</b>: PianoToLife makes the una corda itself, for any piano. Each note struck with the soft pedal is played at the velocity that gives <i>this</i> piano the softer, rounder sound of a una corda (measured on real una corda recordings, then adapted to each piano from its model), and the string the hammer no longer strikes rings in sympathy, as on a real grand. Your velocity curve is respected.</td></tr>
+<tr><td>🎚 <b>Layer detector</b></td><td>In the Velocity panel, choose a note and click <b>LAYERS</b>: PianoToLife plays it at the 127 velocities (about 1 min 20 s) and finds your piano's real velocity layers, whatever their volume. Useful to shape your velocity curve. The result is shown in the tooltip; <b>EXPORT</b> saves it as a text file. Before running, switch off in the piano anything that varies or blends the samples (smear, progressive velocity, key noise, resonance, reverb).</td></tr>
+<tr><td>🎙 <b>A richer capture</b></td><td>The capture now also records short strikes at 8 velocities (about 45 minutes in total, done once), warns you if anything clipped, and cleans the model automatically. These strikes adapt the una corda to your piano. Models captured before still work (they use a general una corda). New built-in Steinway D-274 model.</td></tr>
+<tr><td>📁 <b>Remembered folders</b></td><td>Load MIDI, Save MIDI and Bounce open the last folder you used.</td></tr>
+</table>
+
+### Also in 9.4.7
 
 <table>
 <tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in the same format as Pianoteq, so you can reuse a curve made for your keyboard in Pianoteq, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
-<tr><td>🦶 <b>Cleaner Pedal Noise</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
+<tr><td>🦶 <b>Cleaner damper lift</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
 </table>
 
 ### Also in 9.4.6
@@ -209,7 +218,9 @@ as the soundboard of a real piano carries the vibration of one string to the oth
 Each piano can be **calibrated precisely** with the built-in **automatic capture**.
 PianoToLife plays the **88 notes pedal up**, one by one, and analyses the real partials,
 their tuning, their inharmonicity and their decay times. It then builds a resonance model
-unique to that instrument (about 35 minutes, done once). A model of the VSL Synchron
+unique to that instrument (about 45 minutes, done once). Since 9.5.0 it also records
+short strikes at 8 velocities, which adapt the una corda to your piano, warns you if anything
+clipped and cleans the model automatically. A model of the VSL Synchron
 Steinway D-274 is included and ready to use.
 
 Since 9.4.2 the resonance follows the exact partials of the model, string by string: **capture
@@ -264,6 +275,11 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Efficient.** A highly optimised engine (about 2× faster since 8.2.11), plus an optional
   multicore mode that shares the resonance between CPU cores.
 - **Compact view.** Fold the interface into a small bar while you play.
+- **Una corda.** With **Una Corda: Simu**, the soft pedal works with any piano: a softer,
+  rounder note adapted to each piano, and the unstruck string ringing in sympathy. With
+  **Una Corda: BP**, your piano's own una corda samples play as before.
+- **Layer detector.** Find your piano's real velocity layers in about 1 min 20 s, to shape
+  your velocity curve; export the result as text.
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
   repetition in the escapement), and a sustain pedal with its wooden thumps, the felts on the
   strings and the freed (mostly bass) strings ringing — following the pedal's travel and speed,
