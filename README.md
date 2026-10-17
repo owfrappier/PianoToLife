@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=952" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=953" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,7 +18,17 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.5.2
+## What's new in 9.5.3
+
+<table>
+<tr><td>🎯 <b>Automatic velocity calibration</b></td><td>In the Velocity panel, click <b>ANALYSE</b>: PianoToLife plays A4 to your piano at the 127 velocities (about 1 min 20 s), finds its real layers and their levels, then proposes a velocity curve calibrated for <i>your</i> piano (<b>Apply</b> / <b>Keep my curve</b>). The CAL button is gone. Before ANALYSE, set the piano's own velocity curve to <b>linear</b> and its dynamics to <b>100 %</b>.</td></tr>
+<tr><td>🎹 <b>The dynamics of a real piano</b></td><td>Choose the curve in the list: <b>Even</b> (each velocity the same step louder), <b>Grand D</b> (concert grand, Steinway D type), <b>Grand B</b> (grand, Steinway B type) or <b>Upright</b> (Yamaha U4 type). These come from the loudness of A4 measured on real piano models, stretched onto your piano's own range from softest to loudest; no real layer is skipped. Choosing a curve applies it at once. Many VST pianos are played with a much wider range than a real piano has (ppp that no real piano makes): the calibration brings back a natural touch.</td></tr>
+<tr><td>🎛 <b>CURVE adapts it to your keyboard</b></td><td>The CURVE knob no longer replaces the curve: it bends what you play before it. Right = louder with less effort (heavy keyboard), left = you must play harder (light keyboard). The calibrated or hand-drawn points stay; the preview shows the points (dim line) and what really plays (bright line). Older sessions open with the same touch.</td></tr>
+<tr><td>⚠️ <b>Clear warnings</b></td><td>If the piano varies or blends its samples (Smear, round robin, humanize, velocity or timbre variation), or if too many layers are found, PianoToLife tells you what to switch off instead of calibrating wrongly. With VSL Synchron Pianos, set <b>Smear off</b> before ANALYSE.</td></tr>
+<tr><td>🛡 <b>Anti-crash on preset loading</b></td><td>When a hosted VST3 / AU could not load its preset or settings (missing or corrupted files, e.g. Kontakt 7), previous versions could crash, and crash again on every relaunch. Now the piano shows its own warning and PianoToLife goes on loading.</td></tr>
+</table>
+
+### Also in 9.5.2
 
 <table>
 <tr><td>🎚 <b>CAL: a velocity curve made for your piano</b></td><td>In the Velocity panel, click <b>ANALYSE</b> (the layer detector, formerly LAYERS), then <b>CAL</b>: PianoToLife writes a velocity curve with even loudness steps, from the softest to the loudest sound of <i>your</i> piano, without skipping any of its real layers. On the VSL Steinway it matches the curve we had tuned by ear for hours. CAL stays greyed out until the layers of the hosted piano are known.</td></tr>
@@ -293,8 +303,9 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Una corda.** With **Una Corda: Simu**, the soft pedal works with any piano: a softer,
   rounder note adapted to each piano, and the unstruck string ringing in sympathy. With
   **Una Corda: BP**, your piano's own una corda samples play as before.
-- **Layer detector.** Find your piano's real velocity layers in about 1 min 20 s, to shape
-  your velocity curve; export the result as text.
+- **Layer detector and velocity calibration.** Find your piano's real velocity layers on A4
+  in about 1 min 20 s, then calibrate its dynamics on a real concert grand, grand or upright;
+  export the result as text.
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
   repetition in the escapement), and a sustain pedal with its wooden thumps, the felts on the
   strings and the freed (mostly bass) strings ringing — following the pedal's travel and speed,
