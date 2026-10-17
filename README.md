@@ -5,7 +5,7 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=950" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=952" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -18,12 +18,25 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.5.0
+## What's new in 9.5.2
+
+<table>
+<tr><td>🎚 <b>CAL: a velocity curve made for your piano</b></td><td>In the Velocity panel, click <b>ANALYSE</b> (the layer detector, formerly LAYERS), then <b>CAL</b>: PianoToLife writes a velocity curve with even loudness steps, from the softest to the loudest sound of <i>your</i> piano, without skipping any of its real layers. On the VSL Steinway it matches the curve we had tuned by ear for hours. CAL stays greyed out until the layers of the hosted piano are known.</td></tr>
+<tr><td>📊 <b>Your piano's layers on the curve</b></td><td>The real velocity layers are drawn on the left of the velocity curve, with light lines across. A layer your curve never reaches turns <b>orange</b>, and the tooltip lists them.</td></tr>
+<tr><td>🎙 <b>Faster, cleaner capture (about 35 min)</b></td><td>The capture now starts by finding the piano's real layers on A4, then strikes each velocity in the middle of a layer, never in a crossfade. Held notes stop as soon as nothing more can be measured (the treble no longer waits 20 s): about 35 minutes instead of 45, same model. Before capturing, set the piano's own <b>velocity curve to linear</b>.</td></tr>
+<tr><td>🎹 <b>New built-in Steinway D-274 model (V8)</b></td><td>Captured again with the Synchron velocity curve linear: 60 layers found on A4, 1730 partials.</td></tr>
+<tr><td>🦶 <b>Pedal: Host Sustain (strict)</b></td><td>For scripted libraries that ignore a softer restrike of a note they still hold, such as <b>Native Instruments Session Keys</b>: every restrike first releases the previous one, and a softer restrike starts at the level the previous note still had, so the sound never drops. To our ears, Session Keys sounds even better this way than with its own pedal (Pass-through).</td></tr>
+<tr><td>🔄 <b>Changing pedal mode = pedals up</b></td><td>Switching between Pass-through and Host Sustain, or between una corda BP and Simu, now lifts the pedals for everyone (the piano and PianoToLife) until you move the pedal again. No more notes left hanging or a pedal stuck down after a switch.</td></tr>
+<tr><td>🚨 <b>"HOSTED PIANO CLIPPING!"</b></td><td>If the hosted piano itself clips (its own output reaches 0 dBFS or is flattened), PianoToLife shows it in red in place of TRUE PEAK MAX: lower the volume in the piano, then raise the level in PianoToLife if needed.</td></tr>
+<tr><td>🖥 <b>Standalone: safer audio</b></td><td>On first launch the buffer is never under 64 samples, the sample rate is never under 44.1 kHz, and if the audio device stalls (after a CPU overload in another application, sleep or a sample-rate change), PianoToLife reopens it by itself within about 2 s.</td></tr>
+</table>
+
+### Also in 9.5.0
 
 <table>
 <tr><td>🎹 <b>Una corda for every piano</b></td><td>A new <b>Una Corda</b> selector next to the pedal mode. <b>BP</b> (default) sends the soft pedal (CC67) to your piano, as before: use it if your piano has its own una corda samples. <b>Simu</b>: PianoToLife makes the una corda itself, for any piano. Each note struck with the soft pedal is played at the velocity that gives <i>this</i> piano the softer, rounder sound of a una corda (measured on real una corda recordings, then adapted to each piano from its model). PianoToLife also adds the soft halo of a real grand: with the soft pedal, the hammer strikes one string less, and that free string rings in sympathy with the others. Your velocity curve still applies: the una corda velocity is computed after it.</td></tr>
-<tr><td>🎚 <b>Layer detector</b></td><td>In the Velocity panel, choose a note and click <b>LAYERS</b>: PianoToLife plays it at the 127 velocities (about 1 min 20 s) and finds your piano's real velocity layers, whatever their volume. Useful to shape your velocity curve. The result is shown in the tooltip; <b>EXPORT</b> saves it as a text file. Before running, switch off in the piano anything that varies or blends the samples (smear, progressive velocity, key noise, resonance, reverb).</td></tr>
-<tr><td>🎙 <b>A richer capture</b></td><td>The capture now also records short strikes at 8 velocities (about 45 minutes in total, done once), warns you if anything clipped, and cleans the model automatically. These strikes adapt the una corda to your piano. Models captured before still work (they use a general una corda). New built-in Steinway D-274 model.</td></tr>
+<tr><td>🎚 <b>Layer detector</b></td><td>In the Velocity panel, choose a note and click <b>ANALYSE</b> (LAYERS in 9.5.0): PianoToLife plays it at the 127 velocities (about 1 min 20 s) and finds your piano's real velocity layers, whatever their volume. Useful to shape your velocity curve. The result is shown in the tooltip; <b>EXPORT</b> saves it as a text file. Before running, switch off in the piano anything that varies or blends the samples (smear, progressive velocity, key noise, resonance, reverb).</td></tr>
+<tr><td>🎙 <b>A richer capture</b></td><td>The capture now also records short strikes at 8 velocities (about 35 minutes in total since 9.5.2, done once), warns you if anything clipped, and cleans the model automatically. These strikes adapt the una corda to your piano. Models captured before still work (they use a general una corda). New built-in Steinway D-274 model.</td></tr>
 <tr><td>📁 <b>Remembered folders</b></td><td>Load MIDI, Save MIDI and Bounce open the last folder you used.</td></tr>
 </table>
 
@@ -75,7 +88,8 @@ Some fixes and half pedal improvements.
 > **For a clean capture**, set up the hosted piano before clicking **Capture**:
 > - its output **as loud as possible without clipping** (no red on its meters);
 > - **no reverb, no compression, no EQ or other effect** in the piano;
-> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises.
+> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises;
+> - its **velocity curve set to linear** (no smear or progressive velocity), so the layers found are the piano's real ones (since 9.5.2).
 > - Preferably the **close microphones**: room microphones put the hall into the model. If you play with hall microphones, use PianoToLife's **Ambience** (next to Resonance and Release) to put the hall back.
 
 <table>
@@ -218,10 +232,10 @@ as the soundboard of a real piano carries the vibration of one string to the oth
 Each piano can be **calibrated precisely** with the built-in **automatic capture**.
 PianoToLife plays the **88 notes pedal up**, one by one, and analyses the real partials,
 their tuning, their inharmonicity and their decay times. It then builds a resonance model
-unique to that instrument (about 45 minutes, done once). Since 9.5.0 it also records
-short strikes at 8 velocities, which adapt the una corda to your piano, warns you if anything
+unique to that instrument (about 35 minutes, done once). Since 9.5.0 it also records
+short strikes at up to 8 velocities (since 9.5.2 in the middle of the piano's real layers, found first on A4), which adapt the una corda to your piano, warns you if anything
 clipped and cleans the model automatically. A model of the VSL Synchron
-Steinway D-274 is included and ready to use.
+Steinway D-274 (V8) is included and ready to use.
 
 Since 9.4.2 the resonance follows the exact partials of the model, string by string: **capture
 a model for each piano you use**. With the model of another piano, many strings no longer
@@ -229,7 +243,8 @@ match and the resonance is clearly poorer.
 
 Before capturing, set the hosted piano **as loud as possible without clipping**, with **no reverb,
 compression or other effect**, and with **everything switched off that is not the plain note**
-(release samples, sustain / pedal resonance, sympathetic resonance, key and pedal noises).
+(release samples, sustain / pedal resonance, sympathetic resonance, key and pedal noises),
+and with the piano's own **velocity curve set to linear** (no smear or progressive velocity).
 Preferably the close microphones: room microphones put the hall into the model. If you play with hall microphones,
 use PianoToLife's Ambience (next to Resonance and Release) to put the hall back.
 
@@ -519,7 +534,7 @@ long glissandos with the pedal held down (hundreds of partials ringing at once).
 hear crackles: raise the buffer size, try **Enable Multicore Processing**, then lower
 **Max Free Strings (CPU)**.
 
-### Pedal mode: Host Sustain, Host Sustain (stacked) or Pass-through?
+### Pedal mode: Host Sustain, Host Sustain (stacked), Host Sustain (strict) or Pass-through?
 
 **What are "sustain samples"?** Many sampled pianos contain two sets of recordings of
 every note: one played with the pedal **up**, and one with the pedal **down**. The
@@ -557,6 +572,15 @@ Same as Host Sustain, but every strike under the pedal rings over the previous o
 louder one. For pianos that play a damper / release noise at each restrike. Set up the piano
 exactly as for Host Sustain.
 
+**Pedal: Host Sustain (strict).**
+Same as Host Sustain, but every restrike under the pedal first gets the Note Off of the previous
+strike, even a softer one. For scripted libraries that ignore a softer restrike of a note they still
+hold (e.g. **Native Instruments Session Keys**). A softer restrike starts at the level the previous
+strike still had (from its decay in the piano model), so the sound does not drop. Set up the piano
+exactly as for Host Sustain.
+
+Changing pedal mode (or una corda mode) lifts the pedals for everyone until you move the pedal again.
+
 **Pedal: Pass-through.**
 The piano receives your pedal and handles its own dampers, half-pedal and releases.
 In the piano:
@@ -578,6 +602,8 @@ Steinway D-274).
 | **Kontakt pianos** (e.g. The Grandeur) | Host Sustain | Work well. Turn off Key Noise and the sympathetic / string resonance of the instrument. Pass-through also works if the instrument lets you turn off its sustain samples. |
 | **Ivory 3** (Synthogy) | Host Sustain or Pass-through | Works in both modes. Turn off *Sympathetic Resonance* in the Ivory preset (and *Sustain* in Pass-through). To our ears the resonance and sustain even sound better than Ivory's built-in ones — a subjective opinion, not a promise. |
 | **Pianoteq** | Pass-through | Turn off Pianoteq's sympathetic resonance. |
+| **Session Keys** (Native Instruments, Kontakt) | Host Sustain (strict) | Its script ignores a softer restrike of a held note: use **Host Sustain (strict)**. Pass-through also works if you turn off its own pedal / resonance options. |
+| **Galaxy Vintage D** (Kontakt) | Host Sustain | Works well; ANALYSE finds its 16 layers. Turn off its own resonance, pedal noises and reverb. |
 | **Korg SX2 VST** | Host Sustain | Keeps one voice per strike; Host Sustain gives each strike its own Note Off, so restruck notes stop correctly. |
 | **UVI Modern D** | Host Sustain | Works, and a restruck key no longer stays drawn down. **Keep Modern D's own release on and switch PianoToLife's Release Level off**: Modern D's release cannot be switched off cleanly (Off also cuts the note before its natural decay). Switch off Sustain and Sympathetic Resonance in Modern D and let PianoToLife play them. |
 | **AcousticSamples C7** | — | "Flawless" (user report, Windows). |
