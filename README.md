@@ -16,6 +16,13 @@ with one live, physically modelled string engine — from a single held key to e
   PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.
 </p>
 
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=aNzbEqNP4QE">
+    <img src="https://img.youtube.com/vi/aNzbEqNP4QE/maxresdefault.jpg" alt="Video: 4 sampled pianos through PianoToLife" width="640">
+  </a><br>
+  <b>▶ Video: 4 sampled pianos through PianoToLife</b> (VSL D-274, Ivory 3, a 3-layer Steinway B, VSL 1887) — which one do you prefer?
+</p>
+
 ---
 
 ## What's new in 9.5.3
