@@ -12,7 +12,7 @@ with one live, physically modelled string engine — from a single held key to e
 > has little to add to them: it is not intended for hosting them.
 
 <p align="center">
-  <img src="screenshot.png?v=1010" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1012" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -32,7 +32,26 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 10.1.0 — the built-in sampler
+## What's new in 10.1.2
+
+**This update is mainly for the SAMPLER.** Its automatic functions were made much stronger, above all for **misleading, normalised sample libraries** — where every layer was raised to the same peak, so that an ff can measure quieter than a pp. PianoToLife no longer trusts the levels of such samples: it **looks at each strike's attack and brightness** (its timbre) to know how hard it was played, then rebuilds the real dynamics. HOST mode is unchanged.
+
+- **AUTO KEY** is now right in the extreme treble too (a soft, strongly stretched C8 / A#7 used to land two octaves low).
+- **RECAL A4 understands normalised samples**: it reads the attack and brightness of each layer instead of its level, places the layers by their timbre and rebuilds the real levels (see below).
+- **AUTO NAME** (on by default): when the file names carry the dynamics (pp, p, mp, mf, f, ff...), they set the order of the layers — no more inverted layers when two dynamics sound alike (an f as bright as its ff). Switching it on puts every key back in order at once.
+- **COLOR of SOFT / HARD TIMBRE** now acts on every note: up to a strike 24 velocities softer (more felted) or brighter, even at a layer's own velocity.
+- **NEW**: start an empty set in one click (no sample, no password).
+- **SAVE AS VARIANT**: several sets (.ptlset) on the same protected samples (.wptl), without copying them.
+- **STRETCH**: a sample can also play the keys around it (transposed) — **FILL GAPS** completes a library sampled every 2 or 3 notes in one click; by hand, Cmd / Ctrl + drag.
+
+### Auto-mapping that copes with real-world libraries
+Mapping a sampled piano by hand takes days. PianoToLife does it in minutes, by **listening** to your samples rather than trusting their names or levels:
+- **AUTO KEY** finds each sample's key from its sound — down to the stretched, fast-decaying top octave (a soft C8 tuned +70 cents is still a C8), whatever the file names say.
+- **AUTO LAYERS** and **RECAL A4** place the velocity layers on the dynamics of a real grand: RECAL listens to A4, puts every layer where its loudness belongs, levels it, then sets every key the same way.
+- **Normalised libraries are handled**: when every layer was normalised to the same peak (the real loudness is gone — an ff can even measure quieter than a pp), PianoToLife notices it and stops trusting the levels: it reads the **attack and the brightness** of each strike, places the layers by that timbre and rebuilds their real levels from the reference curve.
+- **SOFT TIMBRE / HARD TIMBRE** and **FIX STEPS** then join the layers so smoothly that the boundary map turns green: a 3- to 6-layer library plays like a deeply sampled piano.
+
+### Also in 10.1.0 — the built-in sampler
 
 PianoToLife can now **play your own piano samples**, without a hosted piano. Switch **HOST / SAMPLER** at the top of the window: in SAMPLER, the hosted piano is set aside and PianoToLife's own sampler plays, with all of PianoToLife's engines on it (sympathetic resonance, release, una corda, pedals).
 
