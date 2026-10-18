@@ -5,8 +5,14 @@
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.</p>
 
+> **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
+> which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
+> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.
+> Purely modelled pianos such as Pianoteq 9 already compute their own resonance and pedal behaviour, so PianoToLife
+> has little to add to them: it is not intended for hosting them.
+
 <p align="center">
-  <img src="screenshot.png?v=1000" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1010" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -26,16 +32,22 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 10.0.0 — the built-in sampler
+## What's new in 10.1.0 — the built-in sampler
 
 PianoToLife can now **play your own piano samples**, without a hosted piano. Switch **HOST / SAMPLER** at the top of the window: in SAMPLER, the hosted piano is set aside and PianoToLife's own sampler plays, with all of PianoToLife's engines on it (sympathetic resonance, release, una corda, pedals).
 
 - **Your samples, a few clicks**: load your WAV / AIFF samples in **EDIT** (Kontakt-style key / velocity map). **AUTO KEY** finds each sample's note, **AUTO LAYERS** builds the velocity layers, **RECAL A4** measures the tuning and the loudness of your layers by listening to them. Fine edits per key: tune, gain, low-pass, envelope; **SELECT BY MIDI**, **UNDO / REDO**.
 - **Smooth dynamics even with few layers**: **SOFT TIMBRE** gives the notes softer than a layer the spectrum of a softer strike, **HARD TIMBRE** (option) brightens the strikes above it. A map shows the step at every layer boundary (green / orange / red) and **FIX STEPS** evens it out, smoothed between neighbouring keys (one UNDO). A 3-layer Steinway B now plays like a deeply sampled piano.
+- **Attacks aligned (ALIGN ATTACKS)**: after the mapping, one click finds the strike in every sample and makes every strike of the whole keyboard come 3 ms after the key is played, whatever the layer — no more flutter when the dynamics change, no flam on repeated notes. The microphones keep their own delays (image and depth intact); the files are not changed; one UNDO.
+- **COLOR of SOFT TIMBRE and HARD TIMBRE**: how much darker the soft strikes and how much brighter the loud ones, for the whole set (-100 % to +100 %, 0 = as measured).
 - **A real piano release**: **AUTO RELEASE** sets each key's damper time by register; the release velocity counts (a slow key release lands the damper later and softer); keys without dampers ring on.
-- **A native half pedal**: under a half pedal the released notes are damped by the samples themselves, continuously, with the two-part decay of a real damper (fast part + long residue); re-pedalling keeps the level reached. SAMPLER always uses Host Sustain and Una Corda Simu (both greyed there; your HOST choices are kept). Sostenuto works.
+- **A native half pedal**: under a half pedal the released notes are damped by the samples themselves, continuously, with the two-part decay of a real damper (fast part + long residue); re-pedalling keeps the level reached.
+- **A native una corda**: each voice keeps the velocity played and gets the una corda measured on the real una corda samples of a concert grand (level and partials, per register and velocity), plus the halo of the string not struck.
+- **Sustain: Progressive / Switch**: for keyboards whose pedal should act as on / off (Switch: 64 and above = down). Progressive (the half pedal) stays the default. SAMPLER always uses Host Sustain and Una Corda Simu (both greyed there; your HOST choices are kept). Sostenuto works.
 - **Large sets stream from the disk** (DFD): only the beginning of each sample stays in memory. Choose the preload, the cache and the polyphony (60…256, Max 512) in **MIX**; a disk test tells you if your drive is fast enough.
 - **Microphones**: **MIX** mixes up to 5 microphone positions (level, pan, width, delay, meters); a microphone switched off is not loaded.
+- **BODY** (MIX): the perceived size of the piano — every note's own fundamental raised or lowered, fully in the bass and the middle, fading out in the treble.
+- **TRUE PEAK** (MIX): per microphone and for all 5 together, 4 x oversampled; red as soon as it clipped, until you reset it.
 - **Protected sets**: every save hides the samples in an encrypted container (`.wptl`), rewritten only when samples change. A password protects **EDIT**, never playing. A set saved on Mac opens on Windows and back.
 - **Presets**: SAMPLER presets are marked `[SAMP]` and kept in `Presets/Sampler`; the preset list follows the mode.
 - **Tuning**: SR Transpose, SR Fine Pitch and SR A4 Tuning play on the sampler; the A4 measured by RECAL is sent to SR A4 Tuning, so 440 Hz plays the set as recorded.
