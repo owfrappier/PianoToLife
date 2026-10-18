@@ -3,9 +3,10 @@
 <p align="center"><b>Bring your VST / AU piano to life — and to realism.</b></p>
 <p align="center">Replace your piano's static sympathetic resonance samples and canned pedal behaviour<br>
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
+<p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.</p>
 
 <p align="center">
-  <img src="screenshot.png?v=953" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1000" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -25,7 +26,23 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 9.5.3
+## What's new in 10.0.0 — the built-in sampler
+
+PianoToLife can now **play your own piano samples**, without a hosted piano. Switch **HOST / SAMPLER** at the top of the window: in SAMPLER, the hosted piano is set aside and PianoToLife's own sampler plays, with all of PianoToLife's engines on it (sympathetic resonance, release, una corda, pedals).
+
+- **Your samples, a few clicks**: load your WAV / AIFF samples in **EDIT** (Kontakt-style key / velocity map). **AUTO KEY** finds each sample's note, **AUTO LAYERS** builds the velocity layers, **RECAL A4** measures the tuning and the loudness of your layers by listening to them. Fine edits per key: tune, gain, low-pass, envelope; **SELECT BY MIDI**, **UNDO / REDO**.
+- **Smooth dynamics even with few layers**: **SOFT TIMBRE** gives the notes softer than a layer the spectrum of a softer strike, **HARD TIMBRE** (option) brightens the strikes above it. A map shows the step at every layer boundary (green / orange / red) and **FIX STEPS** evens it out, smoothed between neighbouring keys (one UNDO). A 3-layer Steinway B now plays like a deeply sampled piano.
+- **A real piano release**: **AUTO RELEASE** sets each key's damper time by register; the release velocity counts (a slow key release lands the damper later and softer); keys without dampers ring on.
+- **A native half pedal**: under a half pedal the released notes are damped by the samples themselves, continuously, with the two-part decay of a real damper (fast part + long residue); re-pedalling keeps the level reached. SAMPLER always uses Host Sustain and Una Corda Simu (both greyed there; your HOST choices are kept). Sostenuto works.
+- **Large sets stream from the disk** (DFD): only the beginning of each sample stays in memory. Choose the preload, the cache and the polyphony (60…256, Max 512) in **MIX**; a disk test tells you if your drive is fast enough.
+- **Microphones**: **MIX** mixes up to 5 microphone positions (level, pan, width, delay, meters); a microphone switched off is not loaded.
+- **Protected sets**: every save hides the samples in an encrypted container (`.wptl`), rewritten only when samples change. A password protects **EDIT**, never playing. A set saved on Mac opens on Windows and back.
+- **Presets**: SAMPLER presets are marked `[SAMP]` and kept in `Presets/Sampler`; the preset list follows the mode.
+- **Tuning**: SR Transpose, SR Fine Pitch and SR A4 Tuning play on the sampler; the A4 measured by RECAL is sent to SR A4 Tuning, so 440 Hz plays the set as recorded.
+
+HOST mode is unchanged: everything from 9.5.3 is there.
+
+### Also in 9.5.3
 
 <table>
 <tr><td>🎯 <b>Automatic velocity calibration</b></td><td>In the Velocity panel, click <b>ANALYSE</b>: PianoToLife plays A4 to your piano at the 127 velocities (about 1 min 20 s), finds its real layers and their levels, then proposes a velocity curve calibrated for <i>your</i> piano (<b>Apply</b> / <b>Keep my curve</b>). The CAL button is gone. Before ANALYSE, set the piano's own velocity curve to <b>linear</b> and its dynamics to <b>100 %</b>.</td></tr>
@@ -639,6 +656,14 @@ couple of coffees, **10 € or 20 €**, keeps the project moving:
 </p>
 
 Every contribution, however small, is read, appreciated and turned into new versions.
+
+## Distributing sampled pianos made with PianoToLife
+
+Making sample sets with PianoToLife and playing them for your own use is free.
+**Any public distribution of a sampled piano made for PianoToLife's sampler** (sample sets,
+`.ptlset` / `.wptl` files, `[SAMP]` presets), **free or paid, requires my prior authorization.**
+Please contact me at [olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) before publishing anything: together we will set up its
+protection (encrypted container, password) and the way it is distributed.
 
 ## Feedback
 
