@@ -12,7 +12,7 @@ with one live, physically modelled string engine — from a single held key to e
 > has little to add to them: it is not intended for hosting them.
 
 <p align="center">
-  <img src="screenshot.png?v=1015" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1016" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -32,11 +32,28 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 10.1.5
+## What's new in 10.1.6
+
+**A piano is now two files: its preset and its samples.** A `[SAMP]` preset carries its mapping and its resonance
+model; only the samples (`.wptl`) stay apart. Double-click a preset (standalone) or drop it on the PianoToLife window
+(plug-in too): it loads at once and joins your preset list. Its `.wptl` is found beside it, in your library or where it
+was; if not, PianoToLife asks where it is (as Kontakt does) and remembers it. Presets are also saved beside their
+`.wptl`, so a piano's folder is complete to move or to send.
+
+**AUTO KEY:** the extreme treble of far microphones is now placed right (soft F#7..C8 used to land octaves low), and
+note names in small letters are read (`pp_f#7`, `c8`). Tip: put the note in the file name as a separate word (`C4`,
+`F#7`, `Bb3`, `f#7` or `060`) and every sample lands on its key, with or without AUTO KEY.
+
+Also: **Delete password** in EDIT > PASSWORD, and **pianos for sale**: a sample set can be protected and opened only
+with a licence in the buyer's name (contact me if you publish sampled pianos).
+
+### Also in 10.1.5
 
 **ALIGN ATTACKS now aligns every microphone.** Each sample of each microphone starts 3 ms before its own strike.
 Badly cut libraries (strikes up to 15 ms late, microphones cut separately) now play tight and in phase: no more clicks
 on the distant microphones, steady timing across the velocity layers. Run ALIGN ATTACKS again on your sets to get it.
+
+Also: RENAME and SAVE use the name of the set's file (no more "My piano").
 
 ### Also in 10.1.4
 
