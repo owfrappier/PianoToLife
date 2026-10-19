@@ -12,7 +12,7 @@ with one live, physically modelled string engine — from a single held key to e
 > has little to add to them: it is not intended for hosting them.
 
 <p align="center">
-  <img src="screenshot.png?v=1012" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1014" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -32,7 +32,15 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 10.1.2
+## What's new in 10.1.4
+
+**Important fix — repeated notes in SAMPLER mode**, keys up and under the sustain pedal: a new strike no longer cuts
+the previous one; it goes on, a little lower, as on a real piano (up to 4 voices per key, "Per key" in MIX).
+
+Also: **AUTO NAME** reads more naming styles (see *Naming your samples*), **RENAME** of a set in EDIT, and a red
+**velocity line** with SELECT BY MIDI.
+
+### Also in 10.1.2
 
 **This update is mainly for the SAMPLER.** Its automatic functions were made much stronger, above all for **misleading, normalised sample libraries** — where every layer was raised to the same peak, so that an ff can measure quieter than a pp. PianoToLife no longer trusts the levels of such samples: it **looks at each strike's attack and brightness** (its timbre) to know how hard it was played, then rebuilds the real dynamics. HOST mode is unchanged.
 
@@ -687,6 +695,13 @@ couple of coffees, **10 € or 20 €**, keeps the project moving:
 </p>
 
 Every contribution, however small, is read, appreciated and turned into new versions.
+
+## Naming your samples (AUTO NAME)
+
+The key is found from the sound; the **layer** is safest from the name. AUTO NAME (on by default) uses it when every
+layer of a key carries one of these, as a separate word: dynamics `Piano_C4_mp.wav` (ppp … fff), velocity range
+`Piano_C4_033-064.wav`, velocity `Piano_C4_v64.wav`, layer number `Piano_C4_L3.wav`. Use one style for the whole
+library; a note, a microphone (`mic2`) or a round robin (`rr2`) is never read as a layer.
 
 ## Distributing sampled pianos made with PianoToLife
 
