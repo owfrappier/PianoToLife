@@ -8,11 +8,11 @@ with one live, physically modelled string engine — from a single held key to e
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
 > and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.
-> Purely modelled pianos such as Pianoteq 9 already compute their own resonance and pedal behaviour, so PianoToLife
+> Purely modelled pianos already compute their own resonance and pedal behaviour, so PianoToLife
 > has little to add to them: it is not intended for hosting them.
 
 <p align="center">
-  <img src="screenshot.png?v=1014" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1015" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -32,7 +32,15 @@ with one live, physically modelled string engine — from a single held key to e
 
 ---
 
-## What's new in 10.1.4
+## What's new in 10.1.5
+
+**ALIGN ATTACKS now aligns every microphone.** Each sample of each microphone starts 3 ms before its own strike.
+Badly cut libraries (strikes up to 15 ms late, microphones cut separately) now play tight and in phase: no more clicks
+on the distant microphones, steady timing across the velocity layers. Run ALIGN ATTACKS again on your sets to get it.
+
+Also: RENAME and SAVE use the name of the set's file (no more "My piano").
+
+### Also in 10.1.4
 
 **Important fix — repeated notes in SAMPLER mode**, keys up and under the sustain pedal: a new strike no longer cuts
 the previous one; it goes on, a little lower, as on a real piano (up to 4 voices per key, "Per key" in MIX).
@@ -65,7 +73,7 @@ PianoToLife can now **play your own piano samples**, without a hosted piano. Swi
 
 - **Your samples, a few clicks**: load your WAV / AIFF samples in **EDIT** (Kontakt-style key / velocity map). **AUTO KEY** finds each sample's note, **AUTO LAYERS** builds the velocity layers, **RECAL A4** measures the tuning and the loudness of your layers by listening to them. Fine edits per key: tune, gain, low-pass, envelope; **SELECT BY MIDI**, **UNDO / REDO**.
 - **Smooth dynamics even with few layers**: **SOFT TIMBRE** gives the notes softer than a layer the spectrum of a softer strike, **HARD TIMBRE** (option) brightens the strikes above it. A map shows the step at every layer boundary (green / orange / red) and **FIX STEPS** evens it out, smoothed between neighbouring keys (one UNDO). A 3-layer Steinway B now plays like a deeply sampled piano.
-- **Attacks aligned (ALIGN ATTACKS)**: after the mapping, one click finds the strike in every sample and makes every strike of the whole keyboard come 3 ms after the key is played, whatever the layer — no more flutter when the dynamics change, no flam on repeated notes. The microphones keep their own delays (image and depth intact); the files are not changed; one UNDO.
+- **Attacks aligned (ALIGN ATTACKS)**: after the mapping, one click finds the strike in every sample and makes every strike of the whole keyboard come 3 ms after the key is played, whatever the layer — no more flutter when the dynamics change, no flam on repeated notes. Every microphone is aligned on its own strike too (10.1.5): in phase, no clicks; the files are not changed; one UNDO.
 - **COLOR of SOFT TIMBRE and HARD TIMBRE**: how much darker the soft strikes and how much brighter the loud ones, for the whole set (-100 % to +100 %, 0 = as measured).
 - **A real piano release**: **AUTO RELEASE** sets each key's damper time by register; the release velocity counts (a slow key release lands the damper later and softer); keys without dampers ring on.
 - **A native half pedal**: under a half pedal the released notes are damped by the samples themselves, continuously, with the two-part decay of a real damper (fast part + long residue); re-pedalling keeps the level reached.
@@ -116,7 +124,7 @@ HOST mode is unchanged: everything from 9.5.3 is there.
 ### Also in 9.4.7
 
 <table>
-<tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in the same format as Pianoteq, so you can reuse a curve made for your keyboard in Pianoteq, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
+<tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in a common text format, so you can reuse a curve made for your keyboard in other piano software, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
 <tr><td>🦶 <b>Cleaner damper lift</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
 </table>
 
@@ -731,7 +739,7 @@ The source code is not public; this repository hosts the official releases only.
 <sub>
 © 2026 Olivier Frappier. All rights reserved.<br>
 Steinway, Vienna Symphonic Library / VSL, Synchron, Ivory / Synthogy, Kontakt / Native
-Instruments, Korg, Pianoteq / Modartt, Yamaha CFX and Bösendorfer Imperial are trademarks
+Instruments, Korg, Yamaha CFX and Bösendorfer Imperial are trademarks
 of their respective owners.
 PianoToLife (formerly SympResHost) is an independent product and is not affiliated with, endorsed by or
 sponsored by any of them. "Steinway D-274" designates the sampled instrument used for the
