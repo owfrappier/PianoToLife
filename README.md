@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1016" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1018" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -48,7 +48,24 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.1.6
+## What's new in 10.1.8
+
+**Piano Models at the same resonance level.** A captured Piano Model (.srpiano) was levelled on the piano's loudest
+strike, so a piano with sharp attacks got a weaker resonance and had to be compensated by hand. Now every model is
+matched to the same resonance level when it is loaded, your existing captures included (the gain is shown after the
+model's name). Each piano keeps its own character: its balance between bass and middle and its decay times.
+
+**LEVEL TEST** (next to Capture): plays A0, C2, C4, C6 and C8 at velocity 127 and tells you the loudest strike and
+whether the piano clips, before a capture or a concert. The capture's saturation warning now reports real clipping only.
+
+**BODY on the main window, for HOST too** (left of the SOFT pedal): the perceived size of the piano, now also on a
+hosted piano, with no latency.
+
+Also: stereo meters per microphone in MIX, the limiter's meter (LIM) under CEILING, **FADE IN** option in EDIT (a 1 ms
+fade at the start of every sample), with AUTO LAYERS off the velocity ranges written in the file names (`033-064`)
+are applied exactly, and on Windows a preset double-clicked while PianoToLife is open goes to the open window.
+
+### Also in 10.1.6
 
 **A piano is now two files: its preset and its samples.** A `[SAMP]` preset carries its mapping and its resonance
 model; only the samples (`.wptl`) stay apart. Double-click a preset (standalone) or drop it on the PianoToLife window
@@ -112,7 +129,7 @@ PianoToLife can now **play your own piano samples**, without a hosted piano. Swi
 - **Sustain: Progressive / Switch**: for keyboards whose pedal should act as on / off (Switch: 64 and above = down). Progressive (the half pedal) stays the default. SAMPLER always uses Host Sustain and Una Corda Simu (both greyed there; your HOST choices are kept). Sostenuto works.
 - **Large sets stream from the disk** (DFD): only the beginning of each sample stays in memory. Choose the preload, the cache and the polyphony (60…256, Max 512) in **MIX**; a disk test tells you if your drive is fast enough.
 - **Microphones**: **MIX** mixes up to 5 microphone positions (level, pan, width, delay, meters); a microphone switched off is not loaded.
-- **BODY** (MIX): the perceived size of the piano — every note's own fundamental raised or lowered, fully in the bass and the middle, fading out in the treble.
+- **BODY** (main window, left of SOFT; was in MIX before 10.1.7): the perceived size of the piano — every note's own fundamental raised or lowered, fully in the bass and the middle, fading out in the treble.
 - **TRUE PEAK** (MIX): per microphone and for all 5 together, 4 x oversampled; red as soon as it clipped, until you reset it.
 - **Protected sets**: every save hides the samples in an encrypted container (`.wptl`), rewritten only when samples change. A password protects **EDIT**, never playing. A set saved on Mac opens on Windows and back.
 - **Presets**: SAMPLER presets are marked `[SAMP]` and kept in `Presets/Sampler`; the preset list follows the mode.
