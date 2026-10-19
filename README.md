@@ -38,8 +38,6 @@ with one live, physically modelled string engine — from a single held key to e
 Badly cut libraries (strikes up to 15 ms late, microphones cut separately) now play tight and in phase: no more clicks
 on the distant microphones, steady timing across the velocity layers. Run ALIGN ATTACKS again on your sets to get it.
 
-Also: RENAME and SAVE use the name of the set's file (no more "My piano").
-
 ### Also in 10.1.4
 
 **Important fix — repeated notes in SAMPLER mode**, keys up and under the sustain pedal: a new strike no longer cuts
