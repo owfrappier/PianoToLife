@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1020" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1030" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -48,7 +48,28 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.2.0
+## What's new in 10.3.0
+
+**A much stronger streaming engine for large pianos.** The sampler now reads its samples from the disk with several
+threads, and every voice reads its own file in order (no more jumping back and forth when several notes play the same
+FLAC sample). On the same heavy test (sustain pedal down, notes everywhere), the busiest disk thread went from 90 % to
+20 % of its time: far more headroom for deep libraries, slower disks and dense playing.
+
+**Fast loading, even for huge sets.** The beginnings of the samples are read by several cores at once, and a hidden
+slowdown that grew very fast with the number of samples is gone: a 5,192-sample piano (87 GB of WAV, 7 GB once in
+FLAC) that froze the window for minutes now loads quickly, with a progress bar.
+
+**Cleaner voice management.** When the polyphony is reached, the quietest voice no longer cuts off with a click: it
+fades out in 8 ms while the new note takes a spare voice.
+
+**Missing samples handled.** When a session or the last state points to a piano whose samples were deleted, moved,
+or are on a disk that is not connected, a clear window asks to LOCATE them or to FORGET that piano (it is then no
+longer asked about).
+
+**Progress bars everywhere.** Importing, SAVE SET (encoding, then writing), loading a set or a session, ALIGN ATTACKS,
+RECAL A4 and a new Preload in MIX all show a clear progress bar, in EDIT and on the main window.
+
+### Also in 10.2.0
 
 **Import your .sfz and Decent Sampler (.dspreset) pianos.** Drop the file in EDIT: its mapping is taken as written
 (keys, key ranges, velocity layers, level, tuning, start) on the displayed microphone. What PianoToLife models itself
