@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1018" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1019" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -48,7 +48,16 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.1.8
+## What's new in 10.1.9
+
+**Interface fixes, mainly for second screens.** The hosted piano's window, MIX, the MIDI monitor and every dialog now
+stay on PianoToLife's screen. They could end up on another screen (a virtual or switched-off display) and seem lost,
+and a hidden dialog could block the whole interface. They now come back on their own when a screen is added or removed.
+
+**MIX window (SAMPLER):** the microphone names, ON / OFF and the streaming and voice settings are always shown, presets
+from earlier versions included; an off microphone reads OFF. New defaults: SSD, Preload Auto, cache 128 MB, 256 voices.
+
+### Also in 10.1.8
 
 **Piano Models at the same resonance level.** A captured Piano Model (.srpiano) was levelled on the piano's loudest
 strike, so a piano with sharp attacks got a weaker resonance and had to be compensated by hand. Now every model is
