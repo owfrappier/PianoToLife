@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1019" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1020" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -48,7 +48,25 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.1.9
+## What's new in 10.2.0
+
+**Import your .sfz and Decent Sampler (.dspreset) pianos.** Drop the file in EDIT: its mapping is taken as written
+(keys, key ranges, velocity layers, level, tuning, start) on the displayed microphone. What PianoToLife models itself
+is left out: release samples, pedal-down samples, pedal noises and round robins. A Decent Sampler piano with several
+microphone groups goes to MIC 1, MIC 2... in order. WAV, AIFF and FLAC samples can still be dropped as before.
+
+**It repairs what the library got wrong.** Many free libraries are badly programmed. PianoToLife now detects a mapping
+written one octave off from the sound of the samples and moves it back, plays strikes that come up to 1.5 s late on time
+after ALIGN ATTACKS, and switches FADE IN on for samples whose start was cut inside the sound.
+
+**FLAC in your sample files** (FLAC switch in EDIT): the samples of a set are stored without any loss, identical to the
+bit, and piano samples shrink a lot (one 11 GB set became 1 GB). Less to read from the disk, no added latency. Samples
+above 48 kHz are converted to 44.1 / 48 kHz (a piano has nothing useful above 20 kHz).
+
+Also: a progress bar while importing (click the status line to stop; nothing changes before the end), large libraries
+no longer fill the memory while they are analysed, and RECAL A4 works when A4 has no sample of its own.
+
+### Also in 10.1.9
 
 **Interface fixes, mainly for second screens.** The hosted piano's window, MIX, the MIDI monitor and every dialog now
 stay on PianoToLife's screen. They could end up on another screen (a virtual or switched-off display) and seem lost,
