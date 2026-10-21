@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1030" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1031" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -48,7 +48,31 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.0
+## What's new in 10.3.1
+
+**Clearer release (Note Off) handling, one chain for every keyboard.** How fast you let a key come up now goes
+through a single, visible path. Two settings shape it for all keyboards that send a release: **Keyboard Note-Off
+Floor** (1 to 16, the value of your slowest release, so a very slow release can never ring on endlessly) and the
+**Keyboard Note-Off Curve**. The old Note-Off Velocity Curve is gone: no more two curves stacked on each other. PianoToLife's engine works internally on a 0 to 64 scale (64 = a normal release), whatever your keyboard sends
+(0 to 127): following the MIDI rule, 64 and above is a normal release, lower values are slower releases.
+
+**Choose what the hosted piano receives.** The new **Note-Off to Host** menu separates the release velocity used by
+PianoToLife's own engine from the one sent to your piano: **Var** (the same value for both), **64** (always a normal
+release: PianoToLife alone handles slow releases, no double treatment), **127**, or **Raw** (exactly what your keyboard
+sent). PianoToLife's engine always uses the shaped value.
+
+**Yamaha N1X, P-525 and other release-sensitive keyboards.** Keyboards that measure the release through aftertouch
+(N1X and similar Yamaha hybrids) or through their own timing (P-525), as well as keyboards that send a real Note-Off
+velocity (Release Velocity 1-127, Kawai VPC1), all go through the same Floor and Curve.
+
+**MIDI Monitor in three columns.** On the same line: what your **Keyboard** sends, the release velocity PianoToLife's
+**Engine** reads (with the measured release time on an N1X or P-525), and what goes to the **Host**. Any difference
+is highlighted, and the export uses the three columns too.
+
+Your keyboard has its own way of sending releases? Please contact me with an explanation of the MIDI it sends (a MIDI
+Monitor export is perfect), and I will look at supporting it.
+
+### Also in 10.3.0
 
 **A much stronger streaming engine for large pianos.** The sampler now reads its samples from the disk with several
 threads, and every voice reads its own file in order (no more jumping back and forth when several notes play the same
@@ -557,18 +581,19 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
 - The **Keyboard** menu adapts PianoToLife to your keyboard:
   - **Standard** (default): works with every keyboard. Keyboards without release velocity
     send 0, 64 or 127 on every key release; PianoToLife reads every release as the calibrated
-    normal release (the Note-Off curves have no effect in this mode). Use **Release Decay** to
+    normal release (the Note-Off Floor and Curve have no effect in this mode). Use **Release Decay** to
     make the release shorter or longer.
   - **Release Velocity 1-127**: for keyboards that measure how fast you release the keys
     (many Roland, Kawai, Kurzweil...) or behave in their own way. Their 1-127 range drives
-    PianoToLife's dampers, release and key noise, fine-tuned with the **Note-Off Velocity Curve**
-    (above 32 = firmer releases). Very low values, often sent by mistake, are read as a slow
-    release, never an endless one. Check in the **MIDI Monitor**: your key releases should show
+    PianoToLife's dampers, release and key noise, fine-tuned with the **Keyboard Note-Off Curve**
+    (above 32 = firmer releases). The **Keyboard Note-Off Floor** sets the value of the slowest
+    release, so very low values, often sent by mistake, are read as a slow release, never an
+    endless one. Check in the **MIDI Monitor**: your key releases should show
     many different values.
   - **Kawai VPC1**: made for the VPC1, whose release velocity stops around 100 and easily
     drops to 1 on a slightly slow release. Normal releases sound normal, slow ones stay
-    natural. If it does not suit your playing, adjust the Note-Off Velocity Curve or go back
-    to Standard.
+    natural. If it does not suit your playing, adjust the Keyboard Note-Off Floor and Curve or
+    go back to Standard.
   - **N1X or others** (Yamaha N1X and similar Yamaha hybrids): these instruments report
     the key position through polyphonic aftertouch, only while the key comes back.
     PianoToLife measures the time the key takes to return and turns it into release
@@ -576,15 +601,19 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
     and CC19 messages so the hosted piano does not receive them.
   - **Yamaha P-525**: measures the timing of the release information the P-525 sends and
     turns it into release velocity.
-  - In these two modes the result **replaces the note-off velocity sent to the hosted piano**,
-    shaped by the **Keyboard Note-Off Curve**. The **Note-Off Velocity Curve** only shapes
-    how PianoToLife's own dampers and release respond.
+  - In every mode but Standard, the release goes through the **Keyboard Note-Off Floor**
+    (1 to 16, default 16) and the **Keyboard Note-Off Curve**, on PianoToLife's internal 0 to 64 scale
+    (64 = a normal release; from a 1-127 keyboard, 64 and above = normal, as the MIDI rule says); PianoToLife's dampers, release and
+    key noise use the result. **Note-Off to Host** chooses what the hosted piano gets: **Var**
+    (the same value), **64** (always a normal release, no double treatment), **127**, or **Raw**
+    (what the keyboard sent).
 - **Silent Key** (list next to SYMPATHETIC RESONANCE): a silent key press lifts the damper
   without playing a note, so the string is free to resonate (play a chord over it, or hold it
   while lifting the pedal). **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower;
   **Disklavier / N1** = polyphonic aftertouch 127 / 0, as sent by the Yamaha AvantGrand N1 and
   Disklavier XP (all velocities play in that mode); **Off** = none. The **MIDI Monitor** button
-  shows, side by side, what arrives and what is sent to the piano, with every difference in amber.
+  shows, on the same line, what the keyboard sends, the release velocity PianoToLife's engine reads,
+  and what is sent to the piano, with every difference highlighted.
 - The speed at which you **lift your foot off the pedal** shapes the damping of all the
   strings in the same way.
   - **Progressive dampers** (always on): a light damper contact — a slow key or pedal
