@@ -1,0 +1,303 @@
+# Sampler de PianoToLife — Manuel d'utilisation
+
+*Version 10.3.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+
+Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
+par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
+bouton, et comment en tirer le meilleur.
+
+---
+
+## Sommaire
+
+1. [Le principe : des notes pédale levée, tout le reste modélisé](#1-le-principe--des-notes-pédale-levée-tout-le-reste-modélisé)
+2. [Démarrage rapide : un piano en 10 étapes](#2-démarrage-rapide--un-piano-en-10-étapes)
+3. [Préparer vos échantillons](#3-préparer-vos-échantillons)
+4. [La fenêtre EDIT](#4-la-fenêtre-edit)
+5. [Les outils de mapping, dans l'ordre conseillé](#5-les-outils-de-mapping-dans-lordre-conseillé)
+6. [Les réglages de chaque touche](#6-les-réglages-de-chaque-touche)
+7. [Enregistrer et gérer les sets](#7-enregistrer-et-gérer-les-sets)
+8. [La fenêtre MIX : micros et streaming](#8-la-fenêtre-mix--micros-et-streaming)
+9. [Jouer le sampler](#9-jouer-le-sampler)
+10. [Fichiers et dossiers](#10-fichiers-et-dossiers)
+11. [Dépannage](#11-dépannage)
+12. [Diffuser des pianos échantillonnés](#12-diffuser-des-pianos-échantillonnés)
+
+---
+
+## 1. Le principe : des notes pédale levée, tout le reste modélisé
+
+Un piano échantillonné demande en général des milliers de fichiers : notes pédale enfoncée, échantillons de
+relâchement, résonance, bruits de pédale… PianoToLife n'a besoin que **des notes pédale levée**. Tout ce qui se
+passe autour de la frappe est **modélisé en direct** :
+
+- la résonance sympathique des cordes libres ;
+- la pédale de sustain, la demi-pédale et le bruit de pédale ;
+- l'una corda (pédale douce) ;
+- le relâchement, les étouffoirs et la vélocité de relâchement ;
+- les notes répétées (une nouvelle frappe ne coupe pas la précédente).
+
+Une banque de **3 à 6 couches de vélocité** suffit : PianoToLife lisse les marches entre les couches pour qu'elle
+joue comme un piano très échantillonné. Les banques profondes (60 couches, plusieurs micros, des dizaines de
+gigaoctets) sont lues depuis le disque en streaming et jouent tout aussi bien.
+
+---
+
+## 2. Démarrage rapide : un piano en 10 étapes
+
+1. En haut de la fenêtre principale, passez **HOST / SAMPLER** sur **SAMPLER**, puis ouvrez **EDIT**.
+2. Cliquez sur **NEW** pour un set vide.
+3. Choisissez le micro (**MIC 1** pour une banque à un seul micro).
+4. **Déposez vos échantillons** n'importe où sur la fenêtre : fichiers WAV, AIFF ou FLAC, un dossier entier, un
+   `.sfz` ou un `.dspreset` de Decent Sampler. PianoToLife écoute chaque échantillon, trouve sa touche et place les
+   couches de vélocité. Une barre de progression suit l'import ; cliquez sur la ligne d'état pour l'arrêter.
+5. Pour les autres positions de micro, choisissez **MIC 2**, **MIC 3**… et déposez leurs échantillons de la même
+   façon.
+6. Cliquez sur **RECAL A4** : PianoToLife écoute le A4, place ses couches sur l'intensité d'un vrai piano à queue,
+   puis cale toutes les touches de la même façon.
+7. Cliquez sur **FIX STEPS** : les frontières orange et rouges entre couches deviennent vertes.
+8. Cliquez sur **ALIGN ATTACKS** : chaque frappe démarre au même instant, quels que soient la couche et le micro.
+9. Cliquez sur **BALANCE ▸ Smooth** : le volume est régulier d'une touche à l'autre.
+10. Cliquez sur **SAVE SET...** (activez d'abord **FLAC** si vous voulez un fichier plus petit, sans aucune perte).
+    Votre piano est prêt : choisissez-le dans la liste SAMPLER de la fenêtre principale et réglez ses micros dans
+    **MIX**.
+
+Chaque outil a son **UNDO** (Cmd / Ctrl + Z) et son **REDO** (Maj + Cmd / Ctrl + Z).
+
+---
+
+## 3. Préparer vos échantillons
+
+**Quoi enregistrer ou rassembler**
+
+- **Uniquement des notes pédale levée**, une frappe par fichier, assez longue pour entendre l'extinction.
+- Autant de couches de vélocité par touche que vous voulez. Plus il y en a, mieux c'est, mais 3 couches jouent déjà
+  bien.
+- Autant de touches que vous voulez : une banque échantillonnée toutes les 2 ou 3 notes est complétée par
+  **FILL GAPS**.
+- Jusqu'à **5 positions de micro** (une par MIC).
+
+**Formats** : WAV, AIFF, FLAC, mono ou stéréo, toute résolution. Les échantillons au-dessus de 48 kHz sont convertis
+en 44,1 / 48 kHz à l'enregistrement du set (un piano n'a rien d'utile au-dessus de 20 kHz).
+
+**Nommer vos fichiers** (facultatif mais conseillé). PianoToLife trouve la touche d'après le son lui-même, mais un
+nom clair rend tout plus sûr :
+
+| Quoi | À écrire comme un mot séparé | Exemple |
+|---|---|---|
+| La touche | nom de note ou numéro MIDI | `Piano_C4_mf.wav`, `Piano_F#7_p.wav`, `Piano_060_mf.wav` |
+| La couche : nuance | `ppp pp p mp mf f ff fff` | `Steinway_C4_mp.wav` |
+| La couche : plage de vélocité | `1-12`, `033-064` | `Steinway_C4_033-064.wav` |
+| La couche : vélocité | `v64`, `vel64` | `Steinway_C4_v64.wav` |
+| La couche : numéro | `layer3`, `L3`, `VL3`, `dyn3` | `Steinway_C4_L3.wav` |
+
+Utilisez **un seul style pour toute la banque**. Un micro (`mic2`) ou un round robin (`rr2`) n'est jamais lu comme
+une couche. Les noms de notes en minuscules fonctionnent aussi (`f#7`, `c8`).
+
+**Les banques imparfaites ne posent pas de problème.** PianoToLife gère les banques normalisées (chaque couche
+remontée au même pic), mal coupées (frappes jusqu'à 1,5 s en retard, débuts coupés dans le son), décalées d'une
+octave, ou dont les micros ont été coupés séparément.
+
+---
+
+## 4. La fenêtre EDIT
+
+### La carte
+
+La grande grille montre les **88 touches** (horizontalement) et les **vélocités 1 à 127** (verticalement). Chaque
+rectangle est une **zone** : un échantillon, sur une touche, pour une plage de vélocités. La grille montre le micro
+choisi avec **MIC 1 à 5**.
+
+La ligne entre deux couches d'une touche est colorée selon la **marche de timbre** entendue quand on joue de part et
+d'autre : **vert** sous 2 dB, **orange** sous 5 dB, **rouge** au-dessus.
+
+**Souris et clavier**
+
+| Action | Comment |
+|---|---|
+| Sélectionner des zones | Glisser n'importe où pour tracer un rectangle (comme Kontakt) ; un clic sélectionne une zone ; Maj ajoute ou retire |
+| Déplacer des zones | Glisser une zone sélectionnée (blanche) |
+| Changer les vélocités | Glisser le bord haut ou bas d'une zone sélectionnée ; ou flèches Haut / Bas (bord haut), Alt / Option + flèches (bord bas), Maj = 10 à la fois |
+| Étirer un échantillon sur les touches voisines | Cmd / Ctrl + glisser sur le côté (Cmd / Ctrl + clic : sans étirement) |
+| Supprimer | Suppr / Retour arrière : les zones sélectionnées ; sans sélection : toutes les couches de la touche choisie (ce MIC) |
+| Sélectionner en jouant | **SELECT BY MIDI** activé : la touche jouée est sélectionnée, avec la zone qui a sonné à cette vélocité (ligne rouge de vélocité) |
+
+Le **panneau latéral** montre les zones de la touche choisie : plage de vélocités, gain, fichier, touche entendue et
+son accord en cents, sa brillance, la vélocité dont elle a le timbre, la marche avec la couche du dessous, et où se
+trouve sa frappe. Une zone **orange** signale que la touche entendue diffère du nom de fichier : vérifiez-la.
+
+### Les options du haut
+
+| Option | Ce qu'elle fait | Par défaut |
+|---|---|---|
+| **Référence** (Grand D / Grand B / Upright) | Le piano dont les courbes d'intensité et de brillance servent à placer les couches et leurs gains | Grand B |
+| **AUTO KEY** | Chaque échantillon va sur la touche de son son (vérifiée avec le nom de fichier). Désactivé : touche du nom de fichier, sinon là où on le dépose | Activé |
+| **AUTO LAYERS** | Plages de vélocité et gains placés sur la référence. Désactivé : les couches d'une touche se partagent les vélocités à parts égales (ou prennent les plages écrites dans les noms) | Activé |
+| **AUTO NAME** | Les nuances ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent) | Activé |
+| **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce, pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
+| **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, vers une frappe plus dure (au plus +6 dB, rien dans l'extrême grave). Pour une couche du haut qui n'est pas vraiment fff | Désactivé, 0 % |
+| **FADE IN** | Chaque échantillon commence par un fondu de 1 ms : un début coupé dans le son ne claque jamais | Désactivé |
+| **FLAC** | Au prochain SAVE SET, les échantillons sont stockés compressés sans aucune perte (identiques au bit près, souvent 3 à 6 fois plus petits). Désactivé = WAV tels quels | Désactivé |
+
+---
+
+## 5. Les outils de mapping, dans l'ordre conseillé
+
+Les outils sont dans la barre du bas. Avec des zones sélectionnées, la plupart agissent **sur leurs touches
+seulement** ; sans sélection, **sur toutes les touches** du micro affiché.
+
+1. **RECAL A4** — écoute le A4 aux 127 vélocités, place ses couches là où leur intensité les met sur la courbe de
+   référence, les met à niveau, puis donne à chaque touche qui a le même nombre de couches les plages de vélocité du
+   A4 et l'écoute de la même façon. Il mesure aussi l'accord du A4 (envoyé à SR A4 Tuning : 440 Hz joue le set tel
+   qu'il a été enregistré). Fonctionne sur les banques normalisées : il lit alors l'attaque et la brillance de chaque
+   couche au lieu de son niveau.
+2. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
+   lissée sur les touches voisines. À lancer **après** RECAL A4 (RECAL replace les frontières selon l'intensité).
+3. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
+   avant : plus de flottement quand la nuance change, des micros en phase. Les fichiers ne sont pas modifiés.
+4. **FILL GAPS** — chaque touche sans échantillon est jouée par la touche échantillonnée la plus proche, transposée
+   (la moitié de l'écart de chaque côté). Les échantillons propres d'une touche gagnent toujours.
+5. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
+   suivent).
+   - **Smooth** : la courbe propre du set, sans les sauts (l'équilibre grave-aigu de l'enregistrement est gardé).
+   - **Grand D / Grand B / Upright** : l'équilibre grave-aigu d'un piano de référence, au niveau de votre set.
+
+   Il règle le gain des touches (au plus ±6 dB) ; plages de vélocité, gains des couches et dynamique ne sont pas
+   touchés.
+6. **AUTO RELEASE** — le temps de relâchement de chaque touche, mesuré sur un piano de concert (380 à 510 ms jusqu'à
+   −60 dB), Infinite au-dessus de la dernière touche à étouffoir.
+7. **LEVEL** et **AUTO** — le niveau de tout le set ; AUTO fait culminer la note la plus forte à la vélocité 127 à
+   −9 dBFS (de la marge pour les accords, la résonance et le relâchement).
+
+---
+
+## 6. Les réglages de chaque touche
+
+Choisissez une touche (ou plusieurs zones) et utilisez les boutons du panneau de touche. Ils s'appliquent à toutes
+les couches des touches choisies.
+
+| Bouton | Ce qu'il fait |
+|---|---|
+| **Gain** | Niveau de la touche, −24 à +12 dB (BALANCE l'écrit) |
+| **Dynamics** | 100 % = la plage dynamique du piano de référence. Moins : plage plus étroite (notes douces plus fortes) ; plus : plus large |
+| **Attack** | Temps de montée, 0 = l'échantillon tel qu'enregistré |
+| **Decay** / **Sustain** | Temps pour atteindre le niveau Sustain ; 0 = l'extinction naturelle de l'échantillon |
+| **Release** | 0 = **Auto** (le modèle d'étouffoirs de PianoToLife) ; un temps en ms ; tout à droite = **Infinite** (sans étouffoir : touches aiguës non étouffées) |
+| **Tune** | Accord fin en cents |
+| **LP** + fréquence + **LP Vel** | Passe-bas optionnel par voix ; LP Vel assombrit les notes douces (jusqu'à 3 octaves plus bas à 100 %) |
+
+---
+
+## 7. Enregistrer et gérer les sets
+
+| Bouton | Ce qu'il fait |
+|---|---|
+| **NEW** | Un set vide (le set ouvert n'est pas modifié sur le disque) |
+| **Nom** (sous le titre) | Cliquez pour **RENOMMER** le set et son fichier d'échantillons |
+| **SAVE SET...** | Enregistre le set dans votre bibliothèque : la carte (`.ptlset`) et ses échantillons dans un conteneur chiffré (`.wptl`), réécrit seulement quand les échantillons changent |
+| **SAVE AS VARIANT** | Un autre set sur **les mêmes échantillons** (partage le `.wptl`, sans copie), par exemple une version brillante et une version sombre |
+| **PASSWORD...** | Protège EDIT par un mot de passe (jouer le set ne le demande jamais). Vide = pas de mot de passe |
+| **DELETE** | Supprime les zones sélectionnées (voir le tableau plus haut) |
+| **BACK** | Revient à la fenêtre principale |
+
+Un set enregistré sur Mac s'ouvre sur Windows et inversement. Enregistrer un preset en mode SAMPLER crée un **preset
+`[SAMP]`** qui contient le mapping et le modèle de résonance ; seuls les échantillons (`.wptl`) restent à part.
+
+---
+
+## 8. La fenêtre MIX : micros et streaming
+
+### Micros
+
+Chacun des 5 micros a sa tranche : **nom** (double-clic pour renommer), **ON** (un micro éteint n'est pas chargé :
+ni mémoire, ni CPU), **solo**, **mute**, **niveau**, **panoramique**, **largeur**, **délai** (pour aligner un micro
+lointain sur les micros proches, ou garder son retard naturel de salle) et un indicateur **TRUE PEAK** (rouge = il a
+saturé ; cliquez pour le remettre à zéro). Mixages tout prêts : **Close**, **Player**, **Hall** (toucher un réglage
+le fait passer en Custom).
+
+**ALL MICS TRUE PEAK** surveille les 5 micros ensemble. **BODY** règle la taille perçue du piano (aussi sur la
+fenêtre principale).
+
+### Streaming
+
+Les grands sets sont joués depuis le disque : seul le début de chaque échantillon reste en mémoire.
+
+| Réglage | Ce qu'il fait | Par défaut |
+|---|---|---|
+| **Disk** | Où sont vos échantillons : Auto (mesuré), SSD, HDD, Slow | Auto |
+| **Preload** | Début de chaque échantillon gardé en mémoire ; Auto suit le disque (SSD 16 Ko, HDD 64 Ko, Slow 128 Ko) | Auto |
+| **Cache** | Mémoire partagée par les voix qui jouent, pour ce qui vient du disque ; plus grand = moins de décrochages avec beaucoup de voix | 128 Mo |
+| **Per key** | Combien de frappes d'une même touche peuvent sonner ensemble (notes répétées sous la pédale) | 4 |
+| **Voices** | Polyphonie, tous micros confondus (2 micros = 2 voix par note). Une fois atteinte, la voix la plus faible s'éteint en 8 ms | 256 (Max 512) |
+| **Test again** | Mesure le disque à nouveau (par exemple après avoir déplacé les échantillons) | |
+
+**LIBRARY** choisit le dossier de vos sets (mettez-le sur votre disque le plus rapide). Avec l'option de copie,
+SAVE SET copie les échantillons dans un dossier `Samples` à côté du set.
+
+---
+
+## 9. Jouer le sampler
+
+En mode SAMPLER, les moteurs de PianoToLife jouent sur vos échantillons :
+
+- **Résonance sympathique**, avec le Piano Model (`.srpiano`) du piano : vous pouvez en capturer un depuis votre set
+  (Capture), pour que la résonance ait la couleur de votre piano.
+- **Sustain** : toujours Host Sustain en SAMPLER, avec une **demi-pédale** native sur les voix elles-mêmes
+  (Progressive, ou Switch pour les pédales tout-ou-rien). La pédale tonale fonctionne.
+- **Una corda** : simulée sur chaque voix (niveau et partiels d'une vraie una corda, plus le halo de la corde non
+  frappée).
+- **Relâchement** : les étouffoirs de PianoToLife ; avec un clavier qui envoie une vélocité de relâchement, un
+  relâchement lent pose l'étouffoir plus tard (voir Keyboard Note-Off Floor et Curve dans la partie KEYBOARD).
+- **Notes répétées** : une nouvelle frappe ne coupe pas la précédente ; celle-ci continue un peu plus bas (Per key
+  dans MIX).
+- **Accord** : SR Transpose, SR Fine Pitch et SR A4 Tuning agissent sur le sampler.
+- **BODY** : la taille perçue du piano.
+
+**Détecteur de couches** (à côté de Capture) : joue une note aux 127 vélocités et liste les vraies couches du piano,
+pour vérifier un set. **LEVEL TEST** : joue A0, C2, C4, C6 et C8 à la vélocité 127 et indique si le piano sature.
+
+---
+
+## 10. Fichiers et dossiers
+
+| Fichier | Ce que c'est |
+|---|---|
+| `.ptlset` | Le set : la carte, les réglages des touches et les options (léger) |
+| `.wptl` | Les échantillons, dans un conteneur chiffré (à côté du set) |
+| Preset `[SAMP]` | Un preset du mode SAMPLER : mapping + modèle de résonance ; double-cliquez dessus (standalone) ou déposez-le sur la fenêtre |
+
+Gardez le dossier d'un piano complet (preset, `.ptlset`, `.wptl`) : il peut alors être déplacé ou sauvegardé tel
+quel.
+
+**Échantillons introuvables** : si une session ou un preset désigne un piano dont les échantillons ont été effacés,
+déplacés ou sont sur un disque non branché, une fenêtre propose de les **LOCATE** (PianoToLife retient le nouvel
+emplacement) ou de **FORGET** ce piano (il n'est alors plus demandé).
+
+---
+
+## 11. Dépannage
+
+| Problème | Solution |
+|---|---|
+| Un échantillon est sur la mauvaise touche ou octave | Vérifiez les zones orange dans le panneau latéral ; mettez la note dans le nom de fichier (`C4`, `060`) ; AUTO KEY activé |
+| Deux couches sont dans le mauvais ordre | AUTO NAME avec les nuances dans les noms ; sinon déplacez-les à la main |
+| Des marches en jouant crescendo (frontières orange / rouges) | RECAL A4, puis FIX STEPS ; SOFT TIMBRE activé ; HARD TIMBRE pour une couche du haut trop sombre |
+| Certaines touches plus fortes que leurs voisines | BALANCE ▸ Smooth (ou un piano de référence) |
+| Un clic au début de certaines notes | ALIGN ATTACKS ; FADE IN pour les débuts coupés dans le son |
+| Des notes en retard ou qui flottent entre les couches | ALIGN ATTACKS |
+| Décrochages ou craquements avec beaucoup de notes | MIX : Test again, un Cache plus grand, un cran de Preload en plus, moins de Voices, ou les échantillons sur un SSD |
+| Le piano sature | LEVEL ▸ AUTO ; surveillez TRUE PEAK dans MIX ; LEVEL TEST |
+| « Sample set not found » | LOCATE le dossier, ou FORGET le piano |
+
+Un clavier ou une banque qui se comporte à sa façon ? Contactez-moi avec une explication (un export du moniteur MIDI
+est idéal).
+
+---
+
+## 12. Diffuser des pianos échantillonnés
+
+Créer des sets avec PianoToLife et les jouer pour votre propre usage est gratuit. **Toute diffusion publique d'un
+piano échantillonné fait pour le sampler de PianoToLife** (sets, fichiers `.ptlset` / `.wptl`, presets `[SAMP]`),
+**gratuite ou payante, demande mon autorisation préalable.** Contactez-moi à
+[olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) avant de publier quoi que ce soit : nous mettrons en
+place ensemble sa protection (conteneur chiffré, mot de passe, licence au nom de l'acheteur) et sa diffusion.
