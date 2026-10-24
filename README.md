@@ -28,12 +28,16 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1031" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1032" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
   <a href="../../releases/latest"><b>⬇ Download the latest release</b></a> ·
   macOS 14+ (Apple Silicon) · Windows 10/11 x64 · AU · VST3 · Standalone
+</p>
+<p align="center">
+  📖 <a href="USER_MANUAL.md"><b>User Manual</b></a> · <a href="MANUEL.md">Manuel (FR)</a> ·
+  <a href="SAMPLER_MANUAL.md"><b>Sampler Manual</b></a> · <a href="MANUEL_SAMPLER.md">Manuel du sampler (FR)</a>
 </p>
 <p align="center">
   PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.
@@ -48,7 +52,27 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.1
+## What's new in 10.3.2
+
+**BALANCE: an even volume from one key to the next** (SAMPLER, EDIT). A piano sampled by hand is never struck with
+exactly the same force on every key, so some notes stick out. BALANCE measures every key at velocity 127 and brings
+it onto a smooth curve with the key's gain (at most 6 dB), all its layers following: **Smooth** keeps your
+recording's own balance from bass to treble and only removes the jumps; **Grand D**, **Grand B** and **Upright**
+follow the bass-to-treble balance of a reference piano. Velocity ranges, layer gains and dynamics are not touched;
+one UNDO.
+
+<p align="center">
+  <img src="screenshot1b.png?v=1032" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
+  HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
+</p>
+
+**User manuals, in English and French.** A general manual (how the modelling works in HOST and SAMPLER, and why the
+sampler only needs pedal-up samples) and a sampler manual (from a folder of samples to a playable piano, every
+button explained): [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.1
 
 **Clearer release (Note Off) handling, one chain for every keyboard.** How fast you let a key come up now goes
 through a single, visible path. Two settings shape it for all keyboards that send a release: **Keyboard Note-Off
