@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1032" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1034" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -47,12 +47,36 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   <a href="https://www.youtube.com/watch?v=aNzbEqNP4QE">
     <img src="https://img.youtube.com/vi/aNzbEqNP4QE/maxresdefault.jpg" alt="Video: 4 sampled pianos through PianoToLife" width="640">
   </a><br>
-  <b>▶ Video: 4 sampled pianos through PianoToLife</b> (VSL D-274, Ivory 3, a 3-layer Steinway B, VSL 1887) — which one do you prefer?
+  <b>▶ Video: 4 sampled pianos through PianoToLife</b> (VSL D-274, a second commercial grand, a 3-layer Steinway B, VSL 1887) — which one do you prefer?
 </p>
 
 ---
 
-## What's new in 10.3.2
+## What's new in 10.3.4
+
+**Colour between velocities, much improved** (SAMPLER). SOFT TIMBRE and HARD TIMBRE now follow the colour of the
+reference piano (Grand D, Grand B or Upright), measured on every key at every velocity: from the velocity a sample was
+recorded at to the velocity you play, the strike gets darker or brighter as the reference does — about twice as much
+in the 4–8 kHz range as in 2–4 kHz, up to +18 dB. Even a set with only 3 velocity layers now sounds like a real strike
+at every velocity in between, and the layer boundaries disappear.
+
+**REP — Real piano repetition** (below CAL: Off / Grand D / Grand B / Upright). On a real piano no two strikes sound
+exactly alike; a sampled piano replays the same recording every time — the "machine-gun" effect of repeated notes.
+The old cure of sample libraries is **round robin**: several recordings of every note at every velocity, played in
+turn — heavy, and rarely complete. REP simulates the repetition of a real piano instead, with the strike-to-strike
+differences measured on the reference. In SAMPLER, each strike gets its own small differences of level, brightness,
+decay and attack, a tiny detune in the bass, and a key struck again while it still sounds builds up naturally:
+**large round-robin sample sets are no longer needed**. In HOST, only the velocity varies slightly (never out of its
+velocity layer). Off by default; saved in presets and sessions (older ones open with REP Off).
+
+**Piano Model capture in minutes in SAMPLER.** Capture now reads your samples directly, offline, at the centres of
+your layers: a few minutes instead of a real-time recording. A window lets you tick the microphones of the model
+(MIC 1 by default; close microphones are recommended — the room microphones put the hall into the string decays).
+
+Manuals updated for 10.3.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.2
 
 **BALANCE: an even volume from one key to the next** (SAMPLER, EDIT). A piano sampled by hand is never struck with
 exactly the same force on every key, so some notes stick out. BALANCE measures every key at velocity 127 and brings
@@ -62,7 +86,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1032" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1034" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
