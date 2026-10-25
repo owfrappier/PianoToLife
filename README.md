@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1036" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1037" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,26 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.6
+## What's new in 10.3.7
+
+**MIDI monitoring and the MIDI player / recorder, redesigned: more consistent, simpler.**
+
+- **The recorder writes what PianoToLife plays** (ENGINE MIDI REC, under Disable CC19, on by default): every Note Off
+  carries the release as our engine reads it — the slow releases of an N1X, P-525 or VPC1 included (64 = a normal
+  release, lower = slower) — with the velocity curve applied. All the aftertouch is kept (the N1 / N1X release and
+  silent keys), so the files stay Disklavier / N1 compatible and replay the same in any DAW or piano. Off = the raw
+  keyboard input, as before.
+- **One rule:** Disable Aftertouch and Disable CC19 only keep these messages away from the hosted piano; PianoToLife's
+  engine and the recorder always see them.
+- **MIDI Monitor:** the Engine column also shows the aftertouch and CC19 the engine reads.
+- **Simpler recording:** after REC, the take starts on your first note or pedal (no silence at the start; pedals
+  already down are kept). Click REC again and the save window opens — no more SAVE MIDI button. PLAY plays the take
+  at once, without LOAD MIDI. LOAD MIDI and the save open the same folder.
+
+Manuals updated for 10.3.7: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.6
 
 **Important fix — stereo phase.** BALANCE (the key gains of the sample mapping) and the brightness used by SOFT /
 HARD TIMBRE, FIX STEPS and AUTO KEY were measured on L + R. With two spaced microphones a key can be out of phase
@@ -78,8 +97,6 @@ strike its own variation. A key written `109` is read as C8.
 
 Also: no more spinning wheel when switching from HOST to SAMPLER with a set made before 10.3.5.
 
-Manuals updated for 10.3.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.3.4
 
@@ -113,7 +130,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1036" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1037" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
