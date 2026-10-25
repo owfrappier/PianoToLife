@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1034" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1036" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,36 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.4
+## What's new in 10.3.6
+
+**Important fix — stereo phase.** BALANCE (the key gains of the sample mapping) and the brightness used by SOFT /
+HARD TIMBRE, FIX STEPS and AUTO KEY were measured on L + R. With two spaced microphones a key can be out of phase
+between the channels: it lost several dB and some partials in that sum, so BALANCE boosted it too much (A5 of a
+Steinway B: +6 dB, too loud by ear). **Every analysis is now made in stereo**, channel by channel. Sets made before are
+measured again in the background when they are opened (SAVE SET keeps it, then it is never done again).
+
+**Piano Model capture in stereo, new default model.** The capture of a Piano Model (.srpiano), in HOST and SAMPLER,
+now looks for the partials of every note in both channels: the partials out of phase between the microphones are no
+longer lost. Capture again the pianos recorded with spaced microphones. The built-in model (concert grand) was
+captured again this way (70 more partials, mostly in the bass), at the same resonance level as before.
+
+**Kontakt .ncw samples** (SAMPLER, EDIT): drop the `.ncw` files of a Kontakt library (not encrypted) like WAV files;
+they are rewritten as WAV or FLAC when the set is saved. Use only libraries whose licence allows it; encrypted
+libraries are not read.
+
+**Drop a whole folder** in EDIT: its samples and those of its sub-folders are imported, without the files whose name
+says they are not a pedal-up note (releases, noises, pedal down, una corda) — PianoToLife models those itself.
+**Round robins** in the names (`rr2`, `seq2`, or `..._Dyn1_..._21_02`) are left out after the first: REP gives every
+strike its own variation. A key written `109` is read as C8.
+
+**L↔R** in MIX: mirrors the stereo image of a microphone (the pianist's or the audience's view).
+
+Also: no more spinning wheel when switching from HOST to SAMPLER with a set made before 10.3.5.
+
+Manuals updated for 10.3.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.4
 
 **Colour between velocities, much improved** (SAMPLER). SOFT TIMBRE and HARD TIMBRE now follow the colour of the
 reference piano (Grand D, Grand B or Upright), measured on every key at every velocity: from the velocity a sample was
@@ -73,8 +102,6 @@ velocity layer). Off by default; saved in presets and sessions (older ones open 
 your layers: a few minutes instead of a real-time recording. A window lets you tick the microphones of the model
 (MIC 1 by default; close microphones are recommended — the room microphones put the hall into the string decays).
 
-Manuals updated for 10.3.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.3.2
 
@@ -86,7 +113,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1034" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1036" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
