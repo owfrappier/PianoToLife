@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1038" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1040" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,23 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.8
+## What's new in 10.4.0
+
+**See what you play: the chord name and a lit keyboard.**
+
+- **The chord you play**, in large letters left of BODY (DAMPER MECHANICS): the keys held and the notes the pedals
+  keep ringing. Only chord names (C, Am7, Cmaj7/E, G13…), never a list of notes. A chord held in the left hand stays
+  shown under a right-hand melody, and is completed when the melody adds to it. Read from MIDI: no CPU cost.
+- **An 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
+  orange = loud), paler for the notes kept by the pedal. **Click it to play** — lower on the key = louder, drag for a
+  glissando — in HOST and SAMPLER, through the same path as your keyboard (MIDI Monitor, ENGINE MIDI REC).
+- The dampers sit a little higher to make room.
+- **EDIT at 90 % / 80 %**: the window is now scaled as a whole; no more cut buttons.
+
+Manuals updated for 10.4.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.8
 
 **SAMPLER EDIT: more libraries mapped right, a handier sample list.**
 
@@ -75,9 +91,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - **Undamped Keys Above** is also in the EDIT key panel (the same setting as the main window). In SAMPLER, keys on
   release Auto above it have no damper, as on a real piano; moved by hand, the keys that cross it get AUTO RELEASE.
   Sets on release Auto: the keys above G6 (default) now ring without damper.
-
-Manuals updated for 10.3.8: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.3.7
 
@@ -154,7 +167,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1038" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1040" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
