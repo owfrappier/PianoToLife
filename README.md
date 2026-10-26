@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1037" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1038" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,34 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.3.7
+## What's new in 10.3.8
+
+**SAMPLER EDIT: more libraries mapped right, a handier sample list.**
+
+- **The sample list** (side panel): click a sample to select it (highlighted); leave the mouse on it to see its
+  information (file, audio format, key, velocities, gain, level, brightness, tuning, strike); **right-click to hear it
+  alone** (right-click again = stop; it works in the grid too). A long list scrolls (mouse wheel, ▲ / ▼) and follows
+  the selection.
+- **In EDIT you hear the microphone you are editing**, alone and neutral (0 dB, centred, full width, no delay, no L↔R,
+  BODY at 0), whatever the MIX. Back to the main window, the MIX drives the microphones again.
+- **AUTO LAYERS: Samples auto / Normalised / Not normalised.** A library that keeps its dynamics is now ordered and
+  placed by the **levels** of its layers: its brightness can mislead (the softest layers carry more hammer and
+  mechanical noise and measure "brighter" than a mezzo forte). Normalised libraries are still placed by brightness.
+  Auto decides key by key (layers more than 12 dB apart = not normalised).
+- **AUTO NAME reads more file names:** a velocity right after the note (`Piano-A2-40`, `NP60-103`); a MIDI key glued
+  after letters (`NP60`); a number that follows the loudness of the layers in either direction (a take or hammer-time
+  number); names one or two octaves off for the whole library (A0 named `A-2`) are corrected on import. With AUTO LAYERS
+  off, velocities ending at 127 are read as the top of each layer.
+- **AUTO KEY:** very soft treble notes (C8, B7…) no longer land in the bass — up there the hammer noise outlasts the
+  string; PianoToLife now also listens to their first 150 ms above 1.5 kHz.
+- **Undamped Keys Above** is also in the EDIT key panel (the same setting as the main window). In SAMPLER, keys on
+  release Auto above it have no damper, as on a real piano; moved by hand, the keys that cross it get AUTO RELEASE.
+  Sets on release Auto: the keys above G6 (default) now ring without damper.
+
+Manuals updated for 10.3.8: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.3.7
 
 **MIDI monitoring and the MIDI player / recorder, redesigned: more consistent, simpler.**
 
@@ -67,9 +94,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - **Simpler recording:** after REC, the take starts on your first note or pedal (no silence at the start; pedals
   already down are kept). Click REC again and the save window opens — no more SAVE MIDI button. PLAY plays the take
   at once, without LOAD MIDI. LOAD MIDI and the save open the same folder.
-
-Manuals updated for 10.3.7: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.3.6
 
@@ -130,7 +154,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1037" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1038" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
