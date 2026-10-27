@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1040" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1042" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,29 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.4.0
+## What's new in 10.4.2
+
+**Two EQs, a metronome, MIDI playlists, PANIC and a richer Compact view.**
+
+- **EQ1 / EQ2** — click **EQ** under REVERB: **EQ1** works before COMP and REVERB (the tone of the piano), **EQ2** after
+  them, before the Ceiling (to hear your **headphones flat**). Draw on the curve (double-click = a point, drag =
+  frequency / gain, mouse wheel = Q, right-click = remove), PREAMP, RESET — or **LOAD** a headphone preset: a
+  `ParametricEQ.txt` from AutoEq (oratory1990 measurements) or an Equalizer APO file. Kept in the preset and the session.
+- **METRO** (standalone): 30–360 BPM with TAP, every usual bar (1/1 … 12/8) with accents, wood or beep, volume and a
+  count-in. Heard only — never in a bounce. With the metronome on, REC starts on a bar and the MIDI file carries the
+  tempo and time signature, so the take sits on the grid of a DAW.
+- **MIDI playlists**: LOAD MIDI takes several files, a folder or an **.m3u** list; previous / next, the pieces follow
+  one another, loop, save the list.
+- **PANIC** (next to Silent Key): stops everything that sounds — stuck notes, resonance, sampler, room, player,
+  metronome — and sends All Notes Off / All Sound Off to the hosted piano.
+- **Compact view**: now with the MIDI player and METRO, the chord, a lit and clickable keyboard, TRUE PEAK and LUFS.
+- The keyboard of DAMPER MECHANICS is taller, with the proportions of a real keyboard.
+- SAMPLER EDIT: the number of layers of the key is shown; **RECAL A4 is now called AUTO DYN**.
+
+Manuals updated for 10.4.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.4.0
 
 **See what you play: the chord name and a lit keyboard.**
 
@@ -64,9 +86,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   glissando — in HOST and SAMPLER, through the same path as your keyboard (MIDI Monitor, ENGINE MIDI REC).
 - The dampers sit a little higher to make room.
 - **EDIT at 90 % / 80 %**: the window is now scaled as a whole; no more cut buttons.
-
-Manuals updated for 10.4.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.3.8
 
@@ -167,7 +186,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1040" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1042" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
