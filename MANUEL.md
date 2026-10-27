@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.3.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.4.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -148,8 +148,9 @@ La résonance suit les partiels exacts de chaque corde, d'après un **Piano Mode
 correspondent plus.
 
 **Capture** joue les 88 notes pédale levée, une par une, analyse leurs partiels, leur accord, leur inharmonicité et
-leur extinction, et enregistre de courtes frappes à jusqu'à 8 vélocités placées au milieu des vraies couches du piano
-(environ 35 minutes, une seule fois). Elle fonctionne sur un piano hébergé comme sur un set d'échantillons.
+leur extinction, et enregistre de courtes frappes à jusqu'à 8 vélocités placées au milieu des vraies couches du piano.
+Sur un piano hébergé, elle joue en temps réel (environ 35 minutes, une seule fois). En mode SAMPLER, elle **lit
+directement les échantillons**, hors temps réel, aux centres des couches du set : quelques minutes.
 
 Avant la capture :
 
@@ -178,7 +179,7 @@ Les réglages principaux :
 | **Resonance Level** | L'intensité de la résonance des cordes libres |
 | **Harmonic Balance** | La couleur de la résonance (partiels graves ↔ aigus) |
 | **Fullness** / **Shimmer** | Combien les cordes libres répondent sur leurs partiels graves / aigus |
-| **Undamped Keys Above** | Dernière touche à étouffoir : les cordes au-dessus sonnent librement, jamais étouffées |
+| **Undamped Keys Above** | Dernière touche à étouffoir : les cordes au-dessus sonnent librement, jamais étouffées. En SAMPLER, les touches au-dessus en release Auto n'ont pas d'étouffoir non plus ; le réglage est aussi dans le panneau de touche d'EDIT |
 | **Sustain Free From / To** | La plage de cordes libérées par la pédale |
 | **Inharmonicity** | L'étirement des partiels, tel que mesuré sur le piano |
 | **Max Free Strings (CPU)** | Combien de cordes peuvent résonner en même temps |
@@ -191,6 +192,9 @@ PianoToLife ajoute.
 **Silent Key** (à côté de SYMPATHETIC RESONANCE) : un appui silencieux lève l'étouffoir sans jouer de note, la corde
 est alors libre de résonner. **≤ 1** (par défaut), **≤ 2**, **≤ 3** = les notes à cette vélocité ou moins ;
 **Disklavier / N1** = aftertouch polyphonique 127 / 0 ; **Off** = aucun.
+
+**PANIC** (10.4.2, entre Silent Key et DEFAULT) : arrête d'un coup tout ce qui sonne — notes bloquées, résonance, voix
+du sampler, salle et lecteur MIDI — et envoie au piano hébergé All Notes Off, All Sound Off et les pédales relevées.
 
 ---
 
@@ -246,7 +250,8 @@ la valeur de votre relâchement le plus lent, jamais une note qui ne s'arrête p
 sur l'échelle interne 0–64 de PianoToLife (64 = un relâchement normal ; depuis un clavier 1-127, 64 et plus = normal).
 **Note-Off to Host** choisit ce que reçoit le piano hébergé : **Var** (la même valeur), **64** (toujours normal : pas
 de double traitement), **127**, ou **Raw** (ce que le clavier a envoyé). **Disable Aftertouch** / **Disable CC19**
-tiennent ces messages à l'écart du piano.
+tiennent ces messages à l'écart du **piano hébergé seulement** : le moteur de PianoToLife (touches muettes,
+relâchement N1X / P-525) et l'enregistreur MIDI les voient toujours.
 
 ### Vélocité
 
@@ -255,11 +260,30 @@ La courbe **VELOCITY** est une ligne de points à glisser (double-clic pour en a
 (jouée → envoyée). **CAL** calibre la dynamique de votre piano sur un piano de concert, un piano à queue ou un droit,
 d'après le résultat du détecteur de couches.
 
+### Répétition de piano réel (REP)
+
+Sur un vrai piano, deux frappes ne sonnent jamais tout à fait pareil, même à la même vélocité. Un piano échantillonné
+rejoue exactement le même enregistrement à chaque frappe — l'effet « mitraillette » des notes répétées rapides. Le
+vieux remède des banques d'échantillons est le **round robin** : plusieurs enregistrements de chaque note à chaque
+vélocité, joués à tour de rôle — lourd, et rarement complet. **REP** (sous CAL : **Off / Grand D / Grand B / Upright**)
+simule plutôt la répétition d'un vrai piano, avec les écarts d'une frappe à l'autre mesurés sur le piano de référence
+choisi :
+
+- **SAMPLER** : chaque frappe a ses petites différences de niveau, de brillance et d'extinction, une attaque un peu
+  différente dans le grave et le médium, un très léger désaccord dans le grave ; une touche refrappée pendant qu'elle
+  sonne encore (pédale enfoncée, répétitions rapides) monte comme sur la référence.
+- **HOST** : le piano hébergé fait le son, seule la vélocité varie donc (environ 1, au plus 3 ; jamais hors de sa
+  couche de vélocité, jamais sur une touche muette).
+
+Désactivé par défaut ; enregistré dans les presets et les sessions (les anciens s'ouvrent avec REP sur Off) ; coupé
+pendant les captures et les mesures. Choisissez la référence la plus proche de votre piano. Pour un piano qui varie
+déjà ses frappes (un piano modélisé, ou une banque avec round robins), laissez REP sur Off.
+
 ### Moniteur MIDI
 
-Trois colonnes sur la même ligne : ce qu'envoie votre **clavier** (Keyboard), la vélocité de relâchement que lit le
-**moteur** de PianoToLife (Engine, avec le temps de relâchement mesuré sur un N1X ou un P-525), et ce qui part vers le
-**piano hébergé** (Host). Les différences sont surlignées ; **Export...** enregistre un fichier texte, idéal pour
+Trois colonnes sur la même ligne : ce qu'envoie votre **clavier** (Keyboard), ce que lit le **moteur** de PianoToLife
+(Engine) — la vélocité de relâchement de chaque Note Off (avec le temps de relâchement mesuré sur un N1X ou un
+P-525), l'aftertouch et le CC19 — et ce qui part vers le **piano hébergé** (Host). Les différences sont surlignées ; **Export...** enregistre un fichier texte, idéal pour
 signaler un clavier qui se comporte à sa façon.
 
 ---
@@ -273,6 +297,7 @@ signaler un clavier qui se comporte à sa façon.
 | **BODY** | La taille perçue du piano (à gauche de SOFT) : la fondamentale de chaque note renforcée ou atténuée, en HOST et en SAMPLER |
 | **Ambience** | Une salle autour de la résonance et du relâchement, quand vous jouez avec les micros proches |
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
+| **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
 | **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM) |
 
 ---
@@ -282,11 +307,33 @@ signaler un clavier qui se comporte à sa façon.
 - Les **presets** gardent tous les réglages ; les presets SAMPLER sont marqués `[SAMP]` et contiennent le mapping des
   échantillons et le modèle de résonance. Double-cliquez sur un preset (application autonome) ou déposez-le sur la
   fenêtre.
-- **Lecteur MIDI** (application autonome) : charger, jouer, enregistrer et sauvegarder du MIDI, et exporter en WAV,
-  pour comparer des réglages sur exactement la même interprétation.
-- **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez.
+- **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (en WAV) —
+  pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
+  ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre ;
+  PLAY joue la prise aussitôt. LOAD MIDI et l'enregistrement ouvrent le même dossier. **ENGINE MIDI REC** (sous
+  Disable CC19, activé par défaut) : la prise est écrite telle que le moteur la joue — le relâchement converti dans
+  chaque Note Off (64 = normal, en dessous = plus lent), la courbe de vélocité appliquée, tout l'aftertouch gardé
+  (compatible Disklavier / N1). Désactivé : l'entrée brute du clavier. Dans PianoToLife, la prise se rejoue en mode
+  N1X ou Release Velocity 1-127.
+  **Listes de lecture** (10.4.2) : LOAD MIDI ouvre un menu — plusieurs fichiers MIDI d'un coup, un dossier, ou une
+  liste **.m3u** ; les morceaux s'enchaînent, **◀ / ▶** passent au précédent / suivant, et le menu permet de lire la
+  liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. BOUNCE enregistre le morceau chargé.
+  **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
+  TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
+  dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte
+  si coché) et le tempo et la mesure sont écrits dans le fichier MIDI : la prise tombe sur la grille d'un DAW.
+- **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
+  qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
+  TRUE PEAK et LUFS.
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
-  coût CPU.
+  coût CPU. Depuis la 10.4.0 :
+  - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
+    orange plein = fort), plus pâle pour les notes gardées par la pédale. **Cliquez dessus pour jouer** : plus bas sur
+    la touche = plus fort ; glissez sur les touches pour un glissando. Ces notes suivent le même chemin que votre
+    clavier (HOST et SAMPLER, MIDI Monitor, ENGINE MIDI REC) ;
+  - **l'accord joué**, en grand à gauche de BODY : les touches tenues et les notes que les pédales font sonner.
+    Seuls des noms d'accords s'affichent (C, Am7, Cmaj7/E…). Un accord tenu à la main gauche reste affiché pendant
+    une mélodie à la main droite, et se complète quand la mélodie l'enrichit.
 - **Accessibilité** : l'interface fonctionne avec les lecteurs d'écran (Narrator / NVDA, VoiceOver) et au clavier.
 
 ---
@@ -298,6 +345,7 @@ enfoncée (des centaines de partiels qui sonnent). Ce qui compte, c'est **aucun 
 Si vous entendez des craquements : augmentez la taille du buffer, activez **Enable Multicore Processing**, puis baissez
 **Max Free Strings (CPU)**. En mode SAMPLER, voir aussi les réglages de streaming dans MIX
 ([Manuel du sampler](MANUEL_SAMPLER.md#8-la-fenêtre-mix--micros-et-streaming)).
+REP et SOFT / HARD TIMBRE ajoutent quelques filtres par voix en mode SAMPLER : un petit coût (quelques %).
 
 ---
 

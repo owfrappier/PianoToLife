@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.3.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.4.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -142,8 +142,9 @@ The resonance follows the exact partials of each string, from a **Piano Model** 
 **Capture a model for each piano you use**: with another piano's model, many strings no longer match.
 
 **Capture** plays the 88 notes pedal up, one by one, analyses their partials, tuning, inharmonicity and decay, and
-records short strikes at up to 8 velocities placed in the middle of the piano's real layers (about 35 minutes, done
-once). It works on a hosted piano and on a sample set.
+records short strikes at up to 8 velocities placed in the middle of the piano's real layers. On a hosted piano it
+plays in real time (about 35 minutes, done once). In SAMPLER mode it is **read directly from the samples**, offline,
+at the centres of the set's own layers: a few minutes.
 
 Before capturing:
 
@@ -170,7 +171,7 @@ The main controls:
 | **Resonance Level** | How much the free strings ring |
 | **Harmonic Balance** | Colour of the resonance (low partials ↔ high partials) |
 | **Fullness** / **Shimmer** | How much the free strings answer on their low / upper partials |
-| **Undamped Keys Above** | Last key with a damper: the strings above ring freely, never damped |
+| **Undamped Keys Above** | Last key with a damper: the strings above ring freely, never damped. In SAMPLER, the keys above it on release Auto have no damper either; it is also in the EDIT key panel |
 | **Sustain Free From / To** | Range of strings freed by the pedal |
 | **Inharmonicity** | Stretch of the partials, as measured on the piano |
 | **Max Free Strings (CPU)** | How many strings may resonate at once |
@@ -183,6 +184,10 @@ adds.
 **Silent Key** (next to SYMPATHETIC RESONANCE): a silent key press lifts the damper without playing a note, so the
 string is free to resonate. **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower; **Disklavier /
 N1** = polyphonic aftertouch 127 / 0; **Off** = none.
+
+**PANIC** (10.4.2, between Silent Key and DEFAULT): stops everything that sounds at once — stuck notes, the resonance,
+the sampler's voices, the room and the MIDI player — and sends All Notes Off, All Sound Off and the pedals up to the
+hosted piano.
 
 ---
 
@@ -233,7 +238,8 @@ In every mode but Standard, the release goes through the **Keyboard Note-Off Flo
 of your slowest release, never an endless one) and the **Keyboard Note-Off Curve**, on PianoToLife's internal 0–64
 scale (64 = a normal release; from a 1-127 keyboard, 64 and above = normal). **Note-Off to Host** chooses what the
 hosted piano gets: **Var** (the same value), **64** (always normal: no double treatment), **127**, or **Raw** (what
-the keyboard sent). **Disable Aftertouch** / **Disable CC19** keep those messages away from the piano.
+the keyboard sent). **Disable Aftertouch** / **Disable CC19** keep those messages away from the **hosted piano
+only**: PianoToLife's engine (silent keys, N1X / P-525 release) and the MIDI recorder always see them.
 
 ### Velocity
 
@@ -242,10 +248,29 @@ writes a smooth curve; **COPY** / **PASTE** exchange it as text: `Velocity = [x0
 sent). **CAL** calibrates the dynamics of your piano on a concert grand, a grand or an upright, from the layer
 detector's result.
 
+### Real piano repetition (REP)
+
+On a real piano, no two strikes sound exactly the same, even at the same velocity. A sampled piano replays the very
+same recording at every strike — the "machine-gun" effect of fast repeated notes. The old cure of sample libraries
+is **round robin**: several recordings of every note at every velocity, played in turn — heavy, and rarely complete.
+**REP** (below CAL: **Off / Grand D / Grand B / Upright**) simulates the repetition of a real piano instead, with the
+strike-to-strike differences measured on the chosen reference piano:
+
+- **SAMPLER**: every strike gets its own small differences of level, brightness and decay, a slightly different
+  attack in the bass and middle, a tiny detune in the bass; a key struck again while it still sounds (pedal down,
+  fast repetitions) builds up as on the reference.
+- **HOST**: the hosted piano makes the sound, so only the velocity varies (about 1, at most 3; never out of its
+  velocity layer, never on a silent key).
+
+Off by default; saved in presets and sessions (older ones open with REP Off); off while capturing or measuring.
+Choose the reference closest to your piano. For a piano that already varies its strikes (a modelled piano, or a
+library with round robins), leave REP Off.
+
 ### MIDI Monitor
 
-Three columns on the same line: what your **Keyboard** sends, the release velocity PianoToLife's **Engine** reads
-(with the measured release time on an N1X or P-525), and what goes to the **Host**. Differences are highlighted;
+Three columns on the same line: what your **Keyboard** sends, what PianoToLife's **Engine** reads — the release
+velocity of each Note Off (with the measured release time on an N1X or P-525), the aftertouch and CC19 — and what
+goes to the **Host**. Differences are highlighted;
 **Export...** saves a text file — perfect to report a keyboard that behaves in its own way.
 
 ---
@@ -259,6 +284,7 @@ Three columns on the same line: what your **Keyboard** sends, the release veloci
 | **BODY** | The perceived size of the piano (left of SOFT): each note's fundamental raised or lowered, in HOST and SAMPLER |
 | **Ambience** | A hall around the resonance and release, when you play with close microphones |
 | **Piano Comp**, **Reverb** | Placed after the resonance, so the whole instrument goes through them |
+| **EQ1 / EQ2** (10.4.2) | Click **EQ** under REVERB: the EQs take the place of COMP / REVERB (the same button brings them back). **EQ1 BEFORE FX** works before COMP and REVERB, to shape the tone of the piano; **EQ2 AFTER FX** works at the very end, before the Ceiling, to correct headphones. Each: **draw it on the curve** (double-click = a new point, drag = frequency and gain, mouse wheel on a point = its width Q, right-click = remove), PREAMP, RESET = flat, or **LOAD** a preset — a `ParametricEQ.txt` from AutoEq (oratory1990 measurements, Harman target) or an Equalizer APO file; load headphone presets in EQ2 (switch it off for a bounce or on loudspeakers). Up to 20 points each. Kept in the preset and the session |
 | **Output Ceiling** | Transparent true-peak safety limiter, with TRUE PEAK MAX, LUFS and the limiter's meter (LIM) |
 
 ---
@@ -267,10 +293,31 @@ Three columns on the same line: what your **Keyboard** sends, the release veloci
 
 - **Presets** keep every setting; SAMPLER presets are marked `[SAMP]` and carry the sample mapping and the resonance
   model. Double-click a preset (standalone) or drop it on the window.
-- **MIDI player** (standalone): load, play, record and save MIDI, and bounce to WAV — to compare settings on exactly
-  the same performance.
-- **Compact view**: fold the interface into a small bar while you play.
-- **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost.
+- **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (to WAV) — to compare settings
+  on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
+  kept); click REC again and the save window opens; PLAY plays the take at once. LOAD MIDI and the save open the same
+  folder. **ENGINE MIDI REC** (under Disable CC19, on by default): the take is written as the engine plays it — the
+  converted release in every Note Off (64 = normal, lower = slower), the velocity curve applied, all the aftertouch
+  kept (Disklavier / N1 compatible). Off: the raw keyboard input. In PianoToLife it replays in the N1X mode or in
+  Release Velocity 1-127.
+  **Playlists** (10.4.2): LOAD MIDI opens a menu — load several MIDI files at once, a folder, or an **.m3u** list;
+  the pieces follow one another, **◀ / ▶** go to the previous / next one, and the menu can loop the playlist or save
+  it as an .m3u. A missing file is skipped. BOUNCE records the piece loaded.
+  **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
+  bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
+  bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
+  the tempo and time signature are written in the saved MIDI file, so the take sits on the grid of a DAW.
+- **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
+  playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS.
+- **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
+  10.4.0:
+  - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
+    orange = loud), paler for notes kept by the pedal. **Click it to play**: lower on the key = louder; drag across
+    the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
+    ENGINE MIDI REC);
+  - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
+    Only chord names are shown (C, Am7, Cmaj7/E…). A chord held in the left hand stays shown while the right hand
+    plays a melody over it, and is completed when the melody adds to it.
 - **Accessibility**: the interface works with screen readers (Narrator / NVDA, VoiceOver) and from the keyboard.
 
 ---
@@ -281,6 +328,7 @@ The CPU load shown by your DAW **includes the hosted piano**. The heaviest case 
 held (hundreds of partials ringing). What matters is **no crackles and no overload message**. If you hear crackles:
 raise the buffer size, turn on **Enable Multicore Processing**, then lower **Max Free Strings (CPU)**. In SAMPLER
 mode, see also the streaming settings in MIX ([Sampler Manual](SAMPLER_MANUAL.md#8-the-mix-window-microphones-and-streaming)).
+REP and SOFT / HARD TIMBRE add a few filters per voice in SAMPLER mode: a small cost (a few %).
 
 ---
 
