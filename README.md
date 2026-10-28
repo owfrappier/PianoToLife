@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1044" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1046" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,22 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.4.4
+## What's new in 10.4.6
+
+**AUTO DYN for libraries normalised by loudness, the Samples menu back, the velocity in SHOW BY MIDI.**
+
+- **AUTO DYN follows the Samples setting** (next to AUTO LAYERS): Normalised = the layers placed by their timbre,
+  Not normalised = by their levels. On **auto** it now also recognises a library normalised by loudness (layers of A4
+  less than 12 dB apart), whose layers were all piled at the top; libraries with few layers are often placed more
+  precisely too.
+- SAMPLER EDIT: the **Samples** menu (auto / Normalised / Not normalised) is back, next to AUTO LAYERS; the reference
+  menu shows "Grand B" in full again.
+- SAMPLER EDIT: with **SHOW BY MIDI**, the velocity you play is shown next to the number of layers.
+
+Manuals updated for 10.4.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.4.4
 
 **AUTO DYN: smooth and light on large libraries.**
 
@@ -61,9 +76,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   piano plays cleanly afterwards without restarting PianoToLife.
 - **SAMPLER EDIT is faster on large sets**: the timbre of the layers (SOFT / HARD TIMBRE, the coloured layer
   boundaries) is computed much faster when the set changes.
-
-Manuals updated for 10.4.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.4.3
 
@@ -208,7 +220,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1044" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1046" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
