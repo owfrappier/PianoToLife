@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1042" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1043" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,22 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.4.2
+## What's new in 10.4.3
+
+**AUTO DYN fixed on Windows, CLEAR ALL, SHOW BY MIDI.**
+
+- **AUTO DYN no longer crashes on Windows** (standalone and VST3): it now works on large libraries too.
+- SAMPLER EDIT: **CLEAR ALL** (left of DELETE) empties the whole set — every key, every microphone — after a warning
+  that gives the number of samples. UNDO brings it back; your files are not touched.
+- SAMPLER EDIT: **SELECT BY MIDI is now SHOW BY MIDI**. The key you play is shown in the side panel, with a red line
+  in the zone that sounded, but **the selection no longer changes**. ALIGN ATTACKS, BALANCE, FIX STEPS and AUTO
+  RELEASE work on the zones you selected, or on every key when nothing is selected (click an empty part of the grid
+  to clear a selection). AUTO DYN always works on every key.
+
+Manuals updated for 10.4.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.4.2
 
 **Two EQs, a metronome, MIDI playlists, PANIC and a richer Compact view.**
 
@@ -70,9 +85,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - **Compact view**: now with the MIDI player and METRO, the chord, a lit and clickable keyboard, TRUE PEAK and LUFS.
 - The keyboard of DAMPER MECHANICS is taller, with the proportions of a real keyboard.
 - SAMPLER EDIT: the number of layers of the key is shown; **RECAL A4 is now called AUTO DYN**.
-
-Manuals updated for 10.4.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.4.0
 
@@ -186,7 +198,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1042" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1043" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
