@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1043" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1044" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,20 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.4.3
+## What's new in 10.4.4
+
+**AUTO DYN: smooth and light on large libraries.**
+
+- **AUTO DYN reads only the beginning of each sample** — what it listens to — instead of the whole file. On a library
+  with many velocity layers it no longer goes through gigabytes of memory: the progress bar moves smoothly, and the
+  piano plays cleanly afterwards without restarting PianoToLife.
+- **SAMPLER EDIT is faster on large sets**: the timbre of the layers (SOFT / HARD TIMBRE, the coloured layer
+  boundaries) is computed much faster when the set changes.
+
+Manuals updated for 10.4.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.4.3
 
 **AUTO DYN fixed on Windows, CLEAR ALL, SHOW BY MIDI.**
 
@@ -63,9 +76,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   in the zone that sounded, but **the selection no longer changes**. ALIGN ATTACKS, BALANCE, FIX STEPS and AUTO
   RELEASE work on the zones you selected, or on every key when nothing is selected (click an empty part of the grid
   to clear a selection). AUTO DYN always works on every key.
-
-Manuals updated for 10.4.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.4.2
 
@@ -198,7 +208,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1043" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1044" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
