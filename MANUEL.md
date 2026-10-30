@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.5.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.5.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -187,8 +187,12 @@ Les réglages principaux :
 | **Enable Multicore Processing** | Partage la résonance entre les cœurs du processeur (même son) |
 
 Les réglages détaillés se replient dans un tiroir ; chacun affiche **Default** à sa valeur par défaut, et **DEFAULT**
-les remet tous. **Full Piano / Piano Only / PianoToLife DSP Only** permet d'écouter le piano seul, ou seulement ce que
-PianoToLife ajoute.
+les remet tous. **Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience** (10.5.3) : allumez une ou plusieurs parties
+pour n'entendre qu'elles - elles s'additionnent ; aucune allumée, ou un clic sur **Full Piano**, = tout. **Pedal FX** = les
+cordes que PianoToLife fait sonner pour la pédale (notes tenues par la mi-pédale, rattrapées tard, una corda) ; **Release**
+comprend le Felt-Contact ; **Noises** = Key et Pedal Noise. Le choix est gardé dans le preset et la session - par exemple
+une piste du DAW avec Piano Only + Pedal FX (vos micros préférés), une seconde avec le reste (des micros plus proches).
+Comp, Reverb, EQ et Ceiling restent actifs.
 
 **Silent Key** (à côté de SYMPATHETIC RESONANCE) : un appui silencieux lève l'étouffoir sans jouer de note, la corde
 est alors libre de résonner. **≤ 1** (par défaut), **≤ 2**, **≤ 3** = les notes à cette vélocité ou moins ;
@@ -225,7 +229,7 @@ ensemble.
 
 | Réglage | Ce qu'il fait |
 |---|---|
-| **Release Level** | Le relâchement de PianoToLife (conseillé : coupez le relâchement dans votre piano et gardez celui-ci). Décochez-le pour garder le relâchement de votre piano, ou mélangez les deux |
+| **Release Level** | Le relâchement de PianoToLife (conseillé : coupez le relâchement dans votre piano et gardez celui-ci). Décochez-le pour garder le relâchement de votre piano, ou mélangez les deux. En mode HOST, la pédale garde ses propres cordes même quand il est décoché (10.5.3) : les notes tenues par une pédale à demi enfoncée s'éteignent naturellement et une pédale enfoncée tard rattrape toujours les notes ; seul le son de relâchement de PianoToLife disparaît (le CPU reste à peu près le même) |
 | **Release Decay** | La longueur de la queue de relâchement (plus longue dans le grave) |
 | **Release Weights** | La couleur du relâchement (100 % = partiels tels qu'enregistrés) |
 | **Ring** | L'énergie qui passe dans les cordes aiguës non étouffées et la gamme duplex |

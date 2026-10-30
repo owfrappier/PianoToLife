@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.5.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.5.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and

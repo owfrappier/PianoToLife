@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.5.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.5.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -179,8 +179,11 @@ The main controls:
 | **Enable Multicore Processing** | Shares the resonance between CPU cores (same sound) |
 
 The detailed settings fold away in a drawer; each reads **Default** at its default value, and **DEFAULT** resets
-them all. **Full Piano / Piano Only / PianoToLife DSP Only** lets you hear the piano alone or only what PianoToLife
-adds.
+them all. **Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience** (10.5.3): light one or more parts to hear
+only them - they add up; none lit, or a click on **Full Piano**, = everything. **Pedal FX** = the strings PianoToLife plays
+for the pedal (notes held by a half pedal, notes caught late, una corda); **Release** includes the Felt-Contact; **Noises** =
+Key and Pedal Noise. The choice is kept in the preset and the session - e.g. one DAW track with Piano Only + Pedal FX (your
+favourite microphones), a second one with the rest (from closer microphones). Comp, Reverb, EQ and Ceiling stay on.
 
 **Silent Key** (next to SYMPATHETIC RESONANCE): a silent key press lifts the damper without playing a note, so the
 string is free to resonate. **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower; **Disklavier /
@@ -214,7 +217,7 @@ light contact silences the upper partials first, firm contact stops every partia
 
 | Control | What it does |
 |---|---|
-| **Release Level** | PianoToLife's release (recommended: turn the release off in your piano and keep this on). Untick it to keep your piano's own release, or blend both |
+| **Release Level** | PianoToLife's release (recommended: turn the release off in your piano and keep this on). Untick it to keep your piano's own release, or blend both. In HOST mode the pedal keeps its own strings even when this is off (10.5.3): the notes held by a half-lifted pedal die away naturally and a late pedal still catches the notes - only PianoToLife's release sound is gone (the CPU stays about the same) |
 | **Release Decay** | Length of the release tail (longer in the bass) |
 | **Release Weights** | Colour of the release (100 % = partials as recorded) |
 | **Ring** | Energy passing into the undamped treble strings and the duplex scale |
