@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1046" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1051" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,32 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.4.6
+## What's new in 10.5.1
+
+**Three automatic tools: the right resonance level, the right colour and the softest velocities put to use.**
+
+- **AUTO CAL** (next to Resonance Level): PianoToLife holds A3 silently, plays A4 once and measures how loud the
+  resonance is compared with the piano's own sound. Resonance Level 0 dB is then calibrated on the piano and the
+  resonance model you use: the same balance as the reference, whatever the piano, its volume, the sample set level or
+  the model. **If your recaptured .srpiano or your sample sets sounded too weak in resonance, run AUTO CAL once.**
+  - Takes about 3 s; don't play meanwhile. Resonance Level still turns it up or down around it.
+  - HOST and SAMPLER each keep their own calibration, saved in the preset / session; DEFAULT puts them back to 0.
+  - The button is lit while a calibration is in use; its value is shown on the Piano Model line.
+  - After a capture, PianoToLife offers to run it on the new model. Pedal Noise keeps its own level.
+- **AUTO COLOR** (SAMPLER EDIT): sets SOFT COLOR and HARD COLOR so that your layers open up from soft to loud like the
+  reference piano (brightness measured on A2, A3, A4, A5 at 13 velocities). Only the shape counts: a piano keeps its
+  own character, brighter or darker. Run it last: AUTO DYN, FIX STEPS, AUTO COLOR. UNDO puts the sliders back.
+- **AUTO DYN uses the softest velocities**: pp layers recorded softer than the reference ever plays are no longer piled
+  at v1-v8 - they are spread from v1 up to the first layer above v16, their levels set on the reference curve.
+  Libraries with very soft layers (and even the most detailed ones) gain real, playable pianissimos.
+- AUTO DYN now listens to the layers with SOFT / HARD COLOR, as they are played.
+- The built-in resonance model is labelled **default V9** (its data have been V9 since 10.3.6; only the label still
+  said V8).
+
+Manuals updated for 10.5.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.4.6
 
 **AUTO DYN for libraries normalised by loudness, the Samples menu back, the velocity in SHOW BY MIDI.**
 
@@ -63,9 +88,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - SAMPLER EDIT: the **Samples** menu (auto / Normalised / Not normalised) is back, next to AUTO LAYERS; the reference
   menu shows "Grand B" in full again.
 - SAMPLER EDIT: with **SHOW BY MIDI**, the velocity you play is shown next to the number of layers.
-
-Manuals updated for 10.4.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.4.4
 
@@ -220,7 +242,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1046" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1051" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
