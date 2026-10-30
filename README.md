@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1051" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1052" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,9 +52,9 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.5.1
+## What's new in 10.5.2
 
-**Three automatic tools: the right resonance level, the right colour and the softest velocities put to use.**
+**Three automatic tools - the right resonance level, the right colour, the softest velocities put to use - and a truer half pedal in HOST mode.**
 
 - **AUTO CAL** (next to Resonance Level): PianoToLife holds A3 silently, plays A4 once and measures how loud the
   resonance is compared with the piano's own sound. Resonance Level 0 dB is then calibrated on the piano and the
@@ -71,10 +71,12 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   at v1-v8 - they are spread from v1 up to the first layer above v16, their levels set on the reference curve.
   Libraries with very soft layers (and even the most detailed ones) gain real, playable pianissimos.
 - AUTO DYN now listens to the layers with SOFT / HARD COLOR, as they are played.
+- **Half pedal in HOST mode**: a note held by a half-lifted pedal now dies away like the real note in its first
+  seconds (it rang on far too long at mid pedal). HOST and SAMPLER now behave alike from CC 61 to 75.
 - The built-in resonance model is labelled **default V9** (its data have been V9 since 10.3.6; only the label still
   said V8).
 
-Manuals updated for 10.5.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+Manuals updated for 10.5.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
 [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.4.6
@@ -242,7 +244,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1051" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1052" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
