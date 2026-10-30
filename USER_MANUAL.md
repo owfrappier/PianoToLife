@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.4.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.5.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -169,6 +169,7 @@ The main controls:
 |---|---|
 | **SYMPATHETIC RESONANCE** on / off | The whole engine (resonance and PianoToLife's release) |
 | **Resonance Level** | How much the free strings ring |
+| **AUTO CAL** (10.5.0, next to Resonance Level) | Calibrates Resonance Level 0 dB on the piano and the resonance model loaded, in about 3 s (A3 held silently, A4 played once; don't play meanwhile). The resonance then keeps the same level compared with the piano's own sound, whatever the piano, its volume, the sample set level or the model. The button is lit while a calibration is in use and the Piano Model line shows it (e.g. AUTO CAL +4.8 dB); click it again any time to recalibrate; Resonance Level still turns it up or down around it. HOST and SAMPLER each keep their own calibration (the right one is used when you change mode). Kept in the preset / session; DEFAULT puts both back to 0. After a capture, PianoToLife offers to run it on the new model. Run it again after changing the piano, its volume or the model |
 | **Harmonic Balance** | Colour of the resonance (low partials ↔ high partials) |
 | **Fullness** / **Shimmer** | How much the free strings answer on their low / upper partials |
 | **Undamped Keys Above** | Last key with a damper: the strings above ring freely, never damped. In SAMPLER, the keys above it on release Auto have no damper either; it is also in the EDIT key panel |

@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.4.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.5.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -125,7 +125,7 @@ The line between two layers of a key is coloured by the **timbre step** heard wh
 | Change velocities | Drag the top or bottom edge of a selected zone; or Up / Down arrows (top edge), Alt / Option + arrows (bottom edge), Shift = 10 at a time |
 | Stretch a sample over neighbour keys | Cmd / Ctrl + drag sideways (Cmd / Ctrl + click: no stretch) |
 | Delete | Delete / Backspace: the selected zones; nothing selected: all the layers of the selected key (this MIC) |
-| Select by playing | **SELECT BY MIDI** on: the key you play is selected, with the zone that sounded at that velocity (red velocity line) |
+| Show by playing | **SHOW BY MIDI** on (10.4.3): the key you play is shown in the side panel, with a red line in the zone that sounded at that velocity, and the velocity played next to the number of layers (10.4.6). The selection is not changed. |
 | Listen to one sample | Right-click it in the side panel or in the grid (green ▶); right-click again = stop |
 
 The **side panel** shows, in its title, the key, the microphone and the number of layers mapped on it (10.4.2), then the zones of the selected key: velocity range, gain, file, the key heard and its tuning in
@@ -145,7 +145,7 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 | **Reference** (Grand D / Grand B / Upright) | The piano whose loudness and brightness curves are used to place the layers and their gains | Grand B |
 | **AUTO KEY** | Each sample goes to the key of its sound (checked against its file name). Off: key from the file name, else where you drop it | On |
 | **AUTO LAYERS** | Velocity ranges and gains placed on the reference. Off: the layers of a key share the velocities equally (or take the ranges written in the names) | On |
-| **Samples** (auto / Normalised / Not normalised, 10.3.8) | How AUTO LAYERS orders and places the layers of a key. **Not normalised** (the library keeps its dynamics): by their levels, on the reference's loudness curve. **Normalised** (every layer raised to the same level): by their brightness. **Auto**: by the levels when the layers of the key are more than 12 dB apart. A change places every key again (keys set by hand kept) | Auto |
+| **Samples** (auto / Normalised / Not normalised, 10.3.8; next to AUTO LAYERS since 10.4.6) | How AUTO LAYERS and AUTO DYN order and place the layers of a key. **Not normalised** (the library keeps its dynamics): by their levels, on the reference's loudness curve. **Normalised** (every layer raised to the same level): by their brightness. **Auto**: by the levels when the layers of the key are more than 12 dB apart. AUTO DYN in auto also treats A4 as normalised when its layers peak at the same level. A change places every key again (keys set by hand kept) | Auto |
 | **AUTO NAME** | The dynamics, velocities or layer numbers in the file names set the order of the layers (safer when two layers sound alike) | On |
 | **SOFT TIMBRE** + COLOR | A note played below its layer's own velocity gets the darker timbre of a softer strike (the 2–4 kHz and 4–8 kHz colour of the reference piano, measured on every key and velocity), not only a lower level: pp under the softest layer and smooth boundaries. COLOR (−100 to +100 %) sets how much | On, 0 % |
 | **HARD TIMBRE** + COLOR | A note played above its layer's velocity gets brighter, like a harder strike on the reference piano (measured on every key, up to +18 dB): with few layers, the velocities in between sound like real strikes. For a top layer that is not really fff, or a set with few layers | Off, 0 % |
@@ -170,13 +170,17 @@ or set its COLOR to −100 %. With SOFT TIMBRE on, the steps between velocity la
 ## 5. The mapping tools, in the recommended order
 
 The tools are in the bottom bar. With zones selected, most of them work on **their keys only**; with nothing
-selected, on **every key** of the displayed microphone.
+selected, on **every key** of the displayed microphone. AUTO DYN always works on every key. **SHOW BY MIDI** never
+selects anything: click an empty part of the grid to clear a selection before working on every key.
 
 1. **AUTO DYN** (called RECAL A4 before 10.4.2) — listens to A4 at all 127 velocities, places its layers where their loudness belongs on the
    reference curve, levels them, then gives every key with the same number of layers A4's velocity ranges and
    listens to it the same way. It also measures A4's tuning (sent to SR A4 Tuning, so 440 Hz plays the set as
-   recorded). Works on normalised libraries: it then reads the attack and brightness of each layer instead of its
-   level.
+   recorded). Works on normalised libraries (peak or loudness): it then reads the attack and brightness of each layer
+   instead of its level. It follows the **Samples** setting (10.4.6). Since 10.5.1 it listens with SOFT / HARD COLOR as
+   they are played, and when two or more soft layers would be piled under v16 (a pp recorded softer than the reference
+   ever plays) they are spread evenly from v1 up to the first layer above, their gains set on the reference curve
+   (Dynamics is not changed; a very soft layer's noise comes up with its gain).
 2. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
    neighbouring keys. Run it **after** AUTO DYN (AUTO DYN places the boundaries by loudness again).
 3. **ALIGN ATTACKS** — finds the strike in every sample and makes every layer and every microphone start 3 ms before
@@ -193,6 +197,10 @@ selected, on **every key** of the displayed microphone.
    moved by hand, the keys that cross it get AUTO RELEASE again (10.3.8).
 7. **LEVEL** and **AUTO** — the level of the whole set; AUTO makes the loudest note at velocity 127 peak at −9 dBFS
    (room for chords, resonance and release).
+8. **AUTO COLOR** (10.5.1) — sets SOFT COLOR and HARD COLOR so that the brightness of the layers follows the colour of
+   the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz, as on the
+   reference; only the shape counts, a piano may stay brighter or darker overall). SOFT / HARD TIMBRE on. Run it **last**:
+   AUTO DYN → FIX STEPS → AUTO COLOR (run it again after AUTO DYN). UNDO puts the sliders back.
 
 ---
 
@@ -223,6 +231,7 @@ keys.
 | **SAVE SET...** | Saves the set in your library: the map (`.ptlset`) and its samples in an encrypted container (`.wptl`), rewritten only when samples change |
 | **SAVE AS VARIANT** | Another set on the **same samples** (shares the `.wptl`, no copy) — e.g. a bright and a dark version |
 | **PASSWORD...** | Protects EDIT with a password (playing the set never asks for it). Empty = no password |
+| **CLEAR ALL** (10.4.3) | Empties the whole set (every key, every microphone), after a warning that gives the number of samples. UNDO brings it back; the files are not touched |
 | **DELETE** | Removes the selected zones (see the table above) |
 | **BACK** | Returns to the main window |
 

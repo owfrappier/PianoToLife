@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.4.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.5.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -177,6 +177,7 @@ Les réglages principaux :
 |---|---|
 | **SYMPATHETIC RESONANCE** on / off | Tout le moteur (résonance et relâchement de PianoToLife) |
 | **Resonance Level** | L'intensité de la résonance des cordes libres |
+| **AUTO CAL** (10.5.0, à côté de Resonance Level) | Cale le 0 dB de Resonance Level sur le piano et le modèle de résonance chargés, en 3 s environ (A3 tenu sans le faire sonner, A4 joué une fois ; ne jouez pas pendant ce temps). La résonance garde alors le même niveau par rapport au son du piano, quels que soient le piano, son volume, le niveau du set ou le modèle. Le bouton s'allume quand une calibration est active et la ligne Piano Model l'affiche (par ex. AUTO CAL +4.8 dB) ; recliquez quand vous voulez pour recalibrer ; Resonance Level monte ou baisse toujours autour. HOST et SAMPLER gardent chacun leur calibration (la bonne s'applique quand vous changez de mode). Gardé dans le preset / la session ; DEFAULT remet les deux à 0. Après une capture, PianoToLife propose de le lancer sur le nouveau modèle. À relancer après un changement de piano, de volume ou de modèle |
 | **Harmonic Balance** | La couleur de la résonance (partiels graves ↔ aigus) |
 | **Fullness** / **Shimmer** | Combien les cordes libres répondent sur leurs partiels graves / aigus |
 | **Undamped Keys Above** | Dernière touche à étouffoir : les cordes au-dessus sonnent librement, jamais étouffées. En SAMPLER, les touches au-dessus en release Auto n'ont pas d'étouffoir non plus ; le réglage est aussi dans le panneau de touche d'EDIT |

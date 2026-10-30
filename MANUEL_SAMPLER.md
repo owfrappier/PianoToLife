@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.4.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.5.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -133,7 +133,7 @@ d'autre : **vert** sous 2 dB, **orange** sous 5 dB, **rouge** au-dessus.
 | Changer les vélocités | Glisser le bord haut ou bas d'une zone sélectionnée ; ou flèches Haut / Bas (bord haut), Alt / Option + flèches (bord bas), Maj = 10 à la fois |
 | Étirer un échantillon sur les touches voisines | Cmd / Ctrl + glisser sur le côté (Cmd / Ctrl + clic : sans étirement) |
 | Supprimer | Suppr / Retour arrière : les zones sélectionnées ; sans sélection : toutes les couches de la touche choisie (ce MIC) |
-| Sélectionner en jouant | **SELECT BY MIDI** activé : la touche jouée est sélectionnée, avec la zone qui a sonné à cette vélocité (ligne rouge de vélocité) |
+| Afficher en jouant | **SHOW BY MIDI** activé (10.4.3) : la touche jouée s'affiche dans le panneau de droite, avec une ligne rouge dans la zone qui a sonné à cette vélocité, et la vélocité jouée à côté du nombre de couches (10.4.6). La sélection ne change pas. |
 | Écouter un échantillon | Clic droit dessus dans le panneau latéral ou dans la grille (▶ vert) ; nouveau clic droit = arrêt |
 
 Le **panneau latéral** montre dans son titre la touche, le micro et le nombre de couches qui y sont placées (10.4.2), puis les zones de la touche choisie : plage de vélocités, gain, fichier, touche entendue et
@@ -154,7 +154,7 @@ des micros.
 | **Référence** (Grand D / Grand B / Upright) | Le piano dont les courbes d'intensité et de brillance servent à placer les couches et leurs gains | Grand B |
 | **AUTO KEY** | Chaque échantillon va sur la touche de son son (vérifiée avec le nom de fichier). Désactivé : touche du nom de fichier, sinon là où on le dépose | Activé |
 | **AUTO LAYERS** | Plages de vélocité et gains placés sur la référence. Désactivé : les couches d'une touche se partagent les vélocités à parts égales (ou prennent les plages écrites dans les noms) | Activé |
-| **Samples** (auto / Normalised / Not normalised, 10.3.8) | Comment AUTO LAYERS range et place les couches d'une touche. **Not normalised** (la banque garde sa dynamique) : selon leurs niveaux, sur la courbe d'intensité de la référence. **Normalised** (chaque couche remontée au même niveau) : selon leur brillance. **Auto** : selon les niveaux quand les couches de la touche ont plus de 12 dB d'écart. Un changement replace toutes les touches (les touches réglées à la main sont gardées) | Auto |
+| **Samples** (auto / Normalised / Not normalised, 10.3.8 ; à côté d'AUTO LAYERS depuis la 10.4.6) | Comment AUTO LAYERS et AUTO DYN rangent et placent les couches d'une touche. **Not normalised** (la banque garde sa dynamique) : selon leurs niveaux, sur la courbe d'intensité de la référence. **Normalised** (chaque couche remontée au même niveau) : selon leur brillance. **Auto** : selon les niveaux quand les couches de la touche ont plus de 12 dB d'écart. En auto, AUTO DYN traite aussi le A4 comme normalisé quand ses couches culminent au même niveau. Un changement replace toutes les touches (les touches réglées à la main sont gardées) | Auto |
 | **AUTO NAME** | Les nuances, vélocités ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent) | Activé |
 | **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce (la couleur 2–4 kHz et 4–8 kHz du piano de référence, mesurée sur chaque touche et chaque vélocité), pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
 | **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, comme une frappe plus dure sur le piano de référence (mesuré sur chaque touche, jusqu'à +18 dB) : avec peu de couches, les vélocités intermédiaires sonnent comme de vraies frappes. Pour une couche du haut qui n'est pas vraiment fff, ou un set avec peu de couches | Désactivé, 0 % |
@@ -180,13 +180,19 @@ vélocité.
 ## 5. Les outils de mapping, dans l'ordre conseillé
 
 Les outils sont dans la barre du bas. Avec des zones sélectionnées, la plupart agissent **sur leurs touches
-seulement** ; sans sélection, **sur toutes les touches** du micro affiché.
+seulement** ; sans sélection, **sur toutes les touches** du micro affiché. AUTO DYN agit toujours sur toutes les
+touches. **SHOW BY MIDI** ne sélectionne rien : cliquez dans une partie vide de la grille pour vider la sélection
+avant de travailler sur toutes les touches.
 
 1. **AUTO DYN** (appelé RECAL A4 avant la 10.4.2) — écoute le A4 aux 127 vélocités, place ses couches là où leur intensité les met sur la courbe de
    référence, les met à niveau, puis donne à chaque touche qui a le même nombre de couches les plages de vélocité du
    A4 et l'écoute de la même façon. Il mesure aussi l'accord du A4 (envoyé à SR A4 Tuning : 440 Hz joue le set tel
-   qu'il a été enregistré). Fonctionne sur les banques normalisées : il lit alors l'attaque et la brillance de chaque
-   couche au lieu de son niveau.
+   qu'il a été enregistré). Fonctionne sur les banques normalisées (en crête ou en volume) : il lit alors l'attaque et
+   la brillance de chaque couche au lieu de son niveau. Il suit le réglage **Samples** (10.4.6). Depuis la 10.5.1, il
+   écoute avec SOFT / HARD COLOR tels qu'ils sont joués, et quand deux couches douces ou plus seraient entassées sous
+   v16 (un pp enregistré plus doux que ce que joue la référence), elles sont réparties régulièrement de v1 jusqu'à la
+   première couche au-dessus, leurs gains calés sur la courbe de référence (Dynamics ne change pas ; le souffle d'une
+   couche très douce monte avec son gain).
 2. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
    lissée sur les touches voisines. À lancer **après** AUTO DYN (AUTO DYN replace les frontières selon l'intensité).
 3. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
@@ -206,6 +212,10 @@ seulement** ; sans sélection, **sur toutes les touches** du micro affiché.
    reçoivent de nouveau AUTO RELEASE (10.3.8).
 7. **LEVEL** et **AUTO** — le niveau de tout le set ; AUTO fait culminer la note la plus forte à la vélocité 127 à
    −9 dBFS (de la marge pour les accords, la résonance et le relâchement).
+8. **AUTO COLOR** (10.5.1) — règle SOFT COLOR et HARD COLOR pour que la brillance des couches suive la couleur du piano
+   de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme sur la référence ;
+   seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). SOFT / HARD TIMBRE activés.
+   À lancer **en dernier** : AUTO DYN → FIX STEPS → AUTO COLOR (à relancer après un AUTO DYN). UNDO remet les curseurs.
 
 ---
 
@@ -236,6 +246,7 @@ les couches des touches choisies.
 | **SAVE SET...** | Enregistre le set dans votre bibliothèque : la carte (`.ptlset`) et ses échantillons dans un conteneur chiffré (`.wptl`), réécrit seulement quand les échantillons changent |
 | **SAVE AS VARIANT** | Un autre set sur **les mêmes échantillons** (partage le `.wptl`, sans copie), par exemple une version brillante et une version sombre |
 | **PASSWORD...** | Protège EDIT par un mot de passe (jouer le set ne le demande jamais). Vide = pas de mot de passe |
+| **CLEAR ALL** (10.4.3) | Vide tout le set (toutes les touches, tous les micros), après un avertissement qui donne le nombre d'échantillons. UNDO le remet ; les fichiers ne sont pas touchés |
 | **DELETE** | Supprime les zones sélectionnées (voir le tableau plus haut) |
 | **BACK** | Revient à la fenêtre principale |
 
