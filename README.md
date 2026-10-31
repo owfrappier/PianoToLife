@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1054" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1056" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,25 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.5.4
+## What's new in 10.5.6
+
+**AUTO DYN places every key, and the SAMPLER EDIT tools in the order to use them.**
+
+- **AUTO DYN listens to every key** and places its layers on the reference curve (Grand D / Grand B / Upright),
+  whatever its number of layers, then smooths the boundaries with the neighbouring keys and levels them. Libraries
+  with uneven velocities from key to key, manually sampled pianos, or a layer missing in a register now play evenly
+  along the keyboard. A4 stays the anchor; key gains (BALANCE) are kept. The AUTO DYN curve is now shown relative
+  (0 dB = A4 at v127).
+- **SAMPLER EDIT**: the tools are in the order to use them, with > between them: FILL GAPS > ALIGN ATTACKS >
+  AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE.
+- The listening part **Pedal FX** is now called **Half/rel/catch Pedal**.
+- **Pedal catch**: with the pedal fully up for more than 220 ms (was 300 ms), the caught strings are now really
+  damped - closer to the reference piano. Quick pedal changes are unchanged.
+
+Manuals updated for 10.5.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.5.4
 
 **Fix: unorthodox MIDI file endings (BOUNCE / PLAY / REC).** A file ending with notes still held now rings out to
 the end instead of being cut.
@@ -64,14 +82,12 @@ the end instead of being cut.
 - **HOST mode: half pedal and late pedal catch now work even with Release Level off.** The pedal keeps its own
   strings: no release sound, but notes held by a half-lifted pedal and notes caught late by the pedal still ring as
   they should, for about the same CPU. With Ambience on, these strings also feed the room.
-- **Listening selector**: *Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience*. Light one or
+- **Listening selector**: *Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience*. Light one or
   several parts to hear only them - they add up; with none lit you hear the full piano. The selection is kept in the
   preset / session. (Release includes Felt-Contact; Noises = Key Noise and Pedal Noise.) The old right-click menu is
   gone.
 - Release Level tooltip: in HOST mode the pedal keeps its strings even when Release is off.
 
-Manuals updated for 10.5.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.5.2
 
@@ -263,7 +279,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1054" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1056" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
@@ -539,7 +555,7 @@ Some fixes and half pedal improvements.
 Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from measurements case by case.
 
 <table>
-<tr><td>🎧 <b>Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience</b></td><td>A listening selector at the top: light one or several parts to hear only them (they add up; none lit = the full piano). Comp, Reverb and Ceiling stay on; no latency. The selection is kept in the preset and the session - e.g. one DAW track per group of parts.</td></tr>
+<tr><td>🎧 <b>Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience</b></td><td>A listening selector at the top: light one or several parts to hear only them (they add up; none lit = the full piano). Comp, Reverb and Ceiling stay on; no latency. The selection is kept in the preset and the session - e.g. one DAW track per group of parts.</td></tr>
 <tr><td>🪶 <b>Felt-Contact (formerly Damper Noise)</b></td><td>The felt touching a string that still vibrates: made from the note's own partials, it now beats gently against the string instead of sounding like a second strike, follows your release speed, and starts as soon as the pedal's dampers first touch the strings (half-pedal too).</td></tr>
 <tr><td>🦶 <b>Pedal Noise</b></td><td>A deeper wooden thump, dampers lifting and landing at the right point of the pedal travel, the mechanism's natural delay, a softer slow pedal, and mostly the bass strings ringing after the pedal, as on a real grand.</td></tr>
 <tr><td>🏛 <b>Ambience follows Release Level</b></td><td>Release Level off: no end of note in the Ambience. Notes caught by the pedal and strings carried on in half-pedal now go into the Ambience too.</td></tr>
@@ -729,7 +745,7 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Felt-Contact.** The felt touching a string that still vibrates when a key or the pedal lets
   the damper fall, made from each note's real partials and following your release speed, with
   its own volume and colour.
-- **Listen to each part.** Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience:
+- **Listen to each part.** Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience:
   hear any combination of parts, kept in the preset.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce to a 16-bit /
   44.1 kHz WAV — to compare settings on exactly the same performance.
