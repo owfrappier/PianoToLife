@@ -179,10 +179,10 @@ The main controls:
 | **Enable Multicore Processing** | Shares the resonance between CPU cores (same sound) |
 
 The detailed settings fold away in a drawer; each reads **Default** at its default value, and **DEFAULT** resets
-them all. **Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience** (10.5.3): light one or more parts to hear
-only them - they add up; none lit, or a click on **Full Piano**, = everything. **Pedal FX** = the strings PianoToLife plays
+them all. **Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience** (10.5.3; Half/rel/catch Pedal was called Pedal FX before 10.5.6): light one or more parts to hear
+only them - they add up; none lit, or a click on **Full Piano**, = everything. **Half/rel/catch Pedal** = the strings PianoToLife plays
 for the pedal (notes held by a half pedal, notes caught late, una corda); **Release** includes the Felt-Contact; **Noises** =
-Key and Pedal Noise. The choice is kept in the preset and the session - e.g. one DAW track with Piano Only + Pedal FX (your
+Key and Pedal Noise. The choice is kept in the preset and the session - e.g. one DAW track with Piano Only + Half/rel/catch Pedal (your
 favourite microphones), a second one with the rest (from closer microphones). Comp, Reverb, EQ and Ceiling stay on.
 
 **Silent Key** (next to SYMPATHETIC RESONANCE): a silent key press lifts the damper without playing a note, so the

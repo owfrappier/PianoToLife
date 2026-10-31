@@ -169,38 +169,45 @@ or set its COLOR to −100 %. With SOFT TIMBRE on, the steps between velocity la
 
 ## 5. The mapping tools, in the recommended order
 
-The tools are in the bottom bar. With zones selected, most of them work on **their keys only**; with nothing
-selected, on **every key** of the displayed microphone. AUTO DYN always works on every key. **SHOW BY MIDI** never
-selects anything: click an empty part of the grid to clear a selection before working on every key.
+The tools are in the bottom bar, **in the order to use them**, with **>** between them (10.5.6):
+**FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. With zones selected,
+most of them work on **their keys only**; with nothing selected, on **every key** of the displayed microphone.
+AUTO DYN always works on every key. **SHOW BY MIDI** never selects anything: click an empty part of the grid to clear
+a selection before working on every key.
 
-1. **AUTO DYN** (called RECAL A4 before 10.4.2) — listens to A4 at all 127 velocities, places its layers where their loudness belongs on the
-   reference curve, levels them, then gives every key with the same number of layers A4's velocity ranges and
-   listens to it the same way. It also measures A4's tuning (sent to SR A4 Tuning, so 440 Hz plays the set as
-   recorded). Works on normalised libraries (peak or loudness): it then reads the attack and brightness of each layer
-   instead of its level. It follows the **Samples** setting (10.4.6). Since 10.5.1 it listens with SOFT / HARD COLOR as
+1. **FILL GAPS** — every key without a sample is played by the nearest sampled key, transposed (half the gap each
+   way). A key's own samples always win.
+2. **ALIGN ATTACKS** — finds the strike in every sample and makes every layer and every microphone start 3 ms before
+   it: no flam when the dynamics change, microphones in phase. The files are not changed. Before AUTO DYN, so that it
+   listens to well-aligned strikes.
+3. **AUTO DYN** (called RECAL A4 before 10.4.2) — listens to A4 at all 127 velocities, places its layers where their
+   loudness belongs on the reference curve and levels them. It also measures A4's tuning (sent to SR A4 Tuning, so
+   440 Hz plays the set as recorded). **Since 10.5.6 every other key is listened to and placed on its own**, whatever
+   its number of layers, on the same reference curve (the reference's level curve is the same on every key), then
+   **smoothed with its neighbours** (2 keys each side) so that the boundaries do not jump from one key to the next, and
+   levelled. Uneven libraries (a layer played louder on some keys, manual sampling, a layer missing in a register)
+   become even along the keyboard. A4 stays the anchor; key gains (BALANCE) are kept. Works on normalised libraries
+   (peak or loudness): A4 is then placed by the attack and brightness of its layers, and the other keys take A4's
+   placement by rank. It follows the **Samples** setting (10.4.6). Since 10.5.1 it listens with SOFT / HARD COLOR as
    they are played, and when two or more soft layers would be piled under v16 (a pp recorded softer than the reference
    ever plays) they are spread evenly from v1 up to the first layer above, their gains set on the reference curve
    (Dynamics is not changed; a very soft layer's noise comes up with its gain).
-2. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
+4. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
    neighbouring keys. Run it **after** AUTO DYN (AUTO DYN places the boundaries by loudness again).
-3. **ALIGN ATTACKS** — finds the strike in every sample and makes every layer and every microphone start 3 ms before
-   it: no flam when the dynamics change, microphones in phase. The files are not changed.
-4. **FILL GAPS** — every key without a sample is played by the nearest sampled key, transposed (half the gap each
-   way). A key's own samples always win.
-5. **BALANCE** — evens out the volume from one key to the next, measured at velocity 127 (each key's layers follow).
+5. **AUTO COLOR** (10.5.1) — sets SOFT COLOR and HARD COLOR so that the brightness of the layers follows the colour of
+   the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz, as on the
+   reference; only the shape counts, a piano may stay brighter or darker overall). SOFT / HARD TIMBRE on. Run it again
+   after AUTO DYN. UNDO puts the sliders back.
+6. **BALANCE** — evens out the volume from one key to the next, measured at velocity 127 (each key's layers follow).
    - **Smooth**: the set's own curve without the jumps (the register balance of the recording is kept).
    - **Grand D / Grand B / Upright**: the bass-to-treble balance of a reference piano, at your set's level.
 
    It sets the key gains (at most ±6 dB); velocity ranges, layer gains and dynamics are not touched.
-6. **AUTO RELEASE** — each key's release time as measured on a concert grand (380–510 ms to −60 dB), Infinite above
+7. **AUTO RELEASE** — each key's release time as measured on a concert grand (380–510 ms to −60 dB), Infinite above
    **Undamped Keys Above**. That setting is also in the key panel (**Undamped**, the same as the main window's);
    moved by hand, the keys that cross it get AUTO RELEASE again (10.3.8).
-7. **LEVEL** and **AUTO** — the level of the whole set; AUTO makes the loudest note at velocity 127 peak at −9 dBFS
-   (room for chords, resonance and release).
-8. **AUTO COLOR** (10.5.1) — sets SOFT COLOR and HARD COLOR so that the brightness of the layers follows the colour of
-   the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz, as on the
-   reference; only the shape counts, a piano may stay brighter or darker overall). SOFT / HARD TIMBRE on. Run it **last**:
-   AUTO DYN → FIX STEPS → AUTO COLOR (run it again after AUTO DYN). UNDO puts the sliders back.
+8. **LEVEL** and **AUTO** (left of the tools, by the level slider) — the level of the whole set; AUTO makes the loudest
+   note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end.
 
 ---
 

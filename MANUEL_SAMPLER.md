@@ -179,43 +179,51 @@ vélocité.
 
 ## 5. Les outils de mapping, dans l'ordre conseillé
 
-Les outils sont dans la barre du bas. Avec des zones sélectionnées, la plupart agissent **sur leurs touches
-seulement** ; sans sélection, **sur toutes les touches** du micro affiché. AUTO DYN agit toujours sur toutes les
-touches. **SHOW BY MIDI** ne sélectionne rien : cliquez dans une partie vide de la grille pour vider la sélection
-avant de travailler sur toutes les touches.
+Les outils sont dans la barre du bas, **dans l'ordre où les utiliser**, avec un **>** entre eux (10.5.6) :
+**FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. Avec des zones
+sélectionnées, la plupart agissent **sur leurs touches seulement** ; sans sélection, **sur toutes les touches** du
+micro affiché. AUTO DYN agit toujours sur toutes les touches. **SHOW BY MIDI** ne sélectionne rien : cliquez dans une
+partie vide de la grille pour vider la sélection avant de travailler sur toutes les touches.
 
-1. **AUTO DYN** (appelé RECAL A4 avant la 10.4.2) — écoute le A4 aux 127 vélocités, place ses couches là où leur intensité les met sur la courbe de
-   référence, les met à niveau, puis donne à chaque touche qui a le même nombre de couches les plages de vélocité du
-   A4 et l'écoute de la même façon. Il mesure aussi l'accord du A4 (envoyé à SR A4 Tuning : 440 Hz joue le set tel
-   qu'il a été enregistré). Fonctionne sur les banques normalisées (en crête ou en volume) : il lit alors l'attaque et
-   la brillance de chaque couche au lieu de son niveau. Il suit le réglage **Samples** (10.4.6). Depuis la 10.5.1, il
-   écoute avec SOFT / HARD COLOR tels qu'ils sont joués, et quand deux couches douces ou plus seraient entassées sous
-   v16 (un pp enregistré plus doux que ce que joue la référence), elles sont réparties régulièrement de v1 jusqu'à la
-   première couche au-dessus, leurs gains calés sur la courbe de référence (Dynamics ne change pas ; le souffle d'une
-   couche très douce monte avec son gain).
-2. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
-   lissée sur les touches voisines. À lancer **après** AUTO DYN (AUTO DYN replace les frontières selon l'intensité).
-3. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
-   avant : plus de flottement quand la nuance change, des micros en phase. Les fichiers ne sont pas modifiés.
-4. **FILL GAPS** — chaque touche sans échantillon est jouée par la touche échantillonnée la plus proche, transposée
+1. **FILL GAPS** — chaque touche sans échantillon est jouée par la touche échantillonnée la plus proche, transposée
    (la moitié de l'écart de chaque côté). Les échantillons propres d'une touche gagnent toujours.
-5. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
+2. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
+   avant : plus de flottement quand la nuance change, des micros en phase. Les fichiers ne sont pas modifiés. Avant
+   AUTO DYN, pour qu'il écoute des frappes bien alignées.
+3. **AUTO DYN** (appelé RECAL A4 avant la 10.4.2) — écoute le A4 aux 127 vélocités, place ses couches là où leur
+   intensité les met sur la courbe de référence et les met à niveau. Il mesure aussi l'accord du A4 (envoyé à SR A4
+   Tuning : 440 Hz joue le set tel qu'il a été enregistré). **Depuis la 10.5.6, chaque autre touche est écoutée et
+   placée pour elle-même**, quel que soit son nombre de couches, sur la même courbe de référence (la courbe de niveau
+   de la référence est la même sur toutes les touches), puis **lissée avec ses voisines** (2 touches de chaque côté)
+   pour que les frontières ne sautent pas d'une touche à l'autre, et mise à niveau. Les banques irrégulières (une
+   couche jouée plus fort sur certaines touches, un échantillonnage à la main, une couche absente dans un registre)
+   deviennent égales le long du clavier. Le A4 reste l'ancre ; les gains des touches (BALANCE) sont gardés.
+   Fonctionne sur les banques normalisées (en crête ou en volume) : le A4 est alors placé d'après l'attaque et la
+   brillance de ses couches, et les autres touches reprennent son placement par rang. Il suit le réglage **Samples**
+   (10.4.6). Depuis la 10.5.1, il écoute avec SOFT / HARD COLOR tels qu'ils sont joués, et quand deux couches douces ou
+   plus seraient entassées sous v16 (un pp enregistré plus doux que ce que joue la référence), elles sont réparties
+   régulièrement de v1 jusqu'à la première couche au-dessus, leurs gains calés sur la courbe de référence (Dynamics ne
+   change pas ; le souffle d'une couche très douce monte avec son gain).
+4. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
+   lissée sur les touches voisines. À lancer **après** AUTO DYN (AUTO DYN replace les frontières selon l'intensité).
+5. **AUTO COLOR** (10.5.1) — règle SOFT COLOR et HARD COLOR pour que la brillance des couches suive la couleur du piano
+   de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme sur la référence ;
+   seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). SOFT / HARD TIMBRE activés.
+   À relancer après un AUTO DYN. UNDO remet les curseurs.
+6. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
    suivent).
    - **Smooth** : la courbe propre du set, sans les sauts (l'équilibre grave-aigu de l'enregistrement est gardé).
    - **Grand D / Grand B / Upright** : l'équilibre grave-aigu d'un piano de référence, au niveau de votre set.
 
    Il règle le gain des touches (au plus ±6 dB) ; plages de vélocité, gains des couches et dynamique ne sont pas
    touchés.
-6. **AUTO RELEASE** — le temps de relâchement de chaque touche, mesuré sur un piano de concert (380 à 510 ms jusqu'à
+7. **AUTO RELEASE** — le temps de relâchement de chaque touche, mesuré sur un piano de concert (380 à 510 ms jusqu'à
    −60 dB), Infinite au-dessus de **Undamped Keys Above**. Ce réglage est aussi dans le panneau de touche
    (**Undamped**, le même que celui de la fenêtre principale) ; bougé à la main, les touches qui le franchissent
    reçoivent de nouveau AUTO RELEASE (10.3.8).
-7. **LEVEL** et **AUTO** — le niveau de tout le set ; AUTO fait culminer la note la plus forte à la vélocité 127 à
-   −9 dBFS (de la marge pour les accords, la résonance et le relâchement).
-8. **AUTO COLOR** (10.5.1) — règle SOFT COLOR et HARD COLOR pour que la brillance des couches suive la couleur du piano
-   de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme sur la référence ;
-   seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). SOFT / HARD TIMBRE activés.
-   À lancer **en dernier** : AUTO DYN → FIX STEPS → AUTO COLOR (à relancer après un AUTO DYN). UNDO remet les curseurs.
+8. **LEVEL** et **AUTO** (à gauche des outils, près du curseur de niveau) — le niveau de tout le set ; AUTO fait
+   culminer la note la plus forte à la vélocité 127 à −9 dBFS (de la marge pour les accords, la résonance et le
+   relâchement). De préférence à la fin.
 
 ---
 

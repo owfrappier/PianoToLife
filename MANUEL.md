@@ -187,11 +187,11 @@ Les réglages principaux :
 | **Enable Multicore Processing** | Partage la résonance entre les cœurs du processeur (même son) |
 
 Les réglages détaillés se replient dans un tiroir ; chacun affiche **Default** à sa valeur par défaut, et **DEFAULT**
-les remet tous. **Full Piano = Piano Only + Pedal FX + Symp Res + Release + Noises + Ambience** (10.5.3) : allumez une ou plusieurs parties
-pour n'entendre qu'elles - elles s'additionnent ; aucune allumée, ou un clic sur **Full Piano**, = tout. **Pedal FX** = les
+les remet tous. **Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience** (10.5.3 ; Half/rel/catch Pedal s'appelait Pedal FX avant la 10.5.6) : allumez une ou plusieurs parties
+pour n'entendre qu'elles - elles s'additionnent ; aucune allumée, ou un clic sur **Full Piano**, = tout. **Half/rel/catch Pedal** = les
 cordes que PianoToLife fait sonner pour la pédale (notes tenues par la mi-pédale, rattrapées tard, una corda) ; **Release**
 comprend le Felt-Contact ; **Noises** = Key et Pedal Noise. Le choix est gardé dans le preset et la session - par exemple
-une piste du DAW avec Piano Only + Pedal FX (vos micros préférés), une seconde avec le reste (des micros plus proches).
+une piste du DAW avec Piano Only + Half/rel/catch Pedal (vos micros préférés), une seconde avec le reste (des micros plus proches).
 Comp, Reverb, EQ et Ceiling restent actifs.
 
 **Silent Key** (à côté de SYMPATHETIC RESONANCE) : un appui silencieux lève l'étouffoir sans jouer de note, la corde
