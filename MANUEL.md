@@ -309,9 +309,9 @@ signaler un clavier qui se comporte à sa façon.
 
 ## 12. Presets, lecteur MIDI et affichages
 
-- Les **presets** gardent tous les réglages ; les presets SAMPLER sont marqués `[SAMP]` et contiennent le mapping des
-  échantillons et le modèle de résonance. Double-cliquez sur un preset (application autonome) ou déposez-le sur la
-  fenêtre.
+- Les **presets** gardent tous les réglages. En mode SAMPLER (10.6.0), les presets sont les **instruments** (`.ptlset`,
+  à côté de leurs échantillons `.wptl`, comme les `.nki` / `.nkx` de Kontakt) : voir le Manuel du sampler.
+  Double-cliquez sur un preset ou un instrument (application autonome) ou déposez-le sur la fenêtre.
 - **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (en WAV) —
   pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
   ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre ;

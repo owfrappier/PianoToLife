@@ -57,8 +57,10 @@ disk and play just as well.
 7. Click **FIX STEPS**: the orange and red layer boundaries become green.
 8. Click **ALIGN ATTACKS**: every strike starts at the same moment, whatever the layer and microphone.
 9. Click **BALANCE ▸ Smooth**: the volume is even from one key to the next.
-10. Click **SAVE SET...** (switch **FLAC** on first if you want a smaller file without any loss). Your piano is
-    ready: choose it in the SAMPLER list of the main window, and set its microphones in **MIX**.
+10. Click **SAVE SAMPLES...** (switch **FLAC** on first if you want a smaller file without any loss): the samples go
+    into their `.wptl`. Then, in the main window, set its microphones in **MIX** and click **SAVE AS**: the instrument
+    (`.ptlset`) is saved beside its samples with the mapping and every setting. Your piano is ready - two files, like a
+    Kontakt `.nki` and its `.nkx` (10.6.0).
 
 Every tool has **UNDO** (Cmd / Ctrl + Z) and **REDO** (Shift + Cmd / Ctrl + Z).
 
@@ -150,7 +152,7 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 | **SOFT TIMBRE** + COLOR | A note played below its layer's own velocity gets the darker timbre of a softer strike (the 2–4 kHz and 4–8 kHz colour of the reference piano, measured on every key and velocity), not only a lower level: pp under the softest layer and smooth boundaries. COLOR (−100 to +100 %) sets how much | On, 0 % |
 | **HARD TIMBRE** + COLOR | A note played above its layer's velocity gets brighter, like a harder strike on the reference piano (measured on every key, up to +18 dB): with few layers, the velocities in between sound like real strikes. For a top layer that is not really fff, or a set with few layers | Off, 0 % |
 | **FADE IN** | Every sample starts with a 1 ms fade: a start cut inside the sound never clicks | Off |
-| **FLAC** | At the next SAVE SET, the samples are stored compressed without any loss (identical to the bit, often 3 to 6 times smaller). Off = WAV as they are | Off |
+| **FLAC** | At the next SAVE SAMPLES, the samples are stored compressed without any loss (identical to the bit, often 3 to 6 times smaller). Off = WAV as they are | Off |
 
 **SOFT TIMBRE / HARD TIMBRE and their COLOR**
 
@@ -235,8 +237,9 @@ keys.
 |---|---|
 | **NEW** | An empty set (the set open now is not changed on disk) |
 | **Name** (under the title) | Click to **RENAME** the set and its sample file |
-| **SAVE SET...** | Saves the set in your library: the map (`.ptlset`) and its samples in an encrypted container (`.wptl`), rewritten only when samples change |
-| **SAVE AS VARIANT** | Another set on the **same samples** (shares the `.wptl`, no copy) — e.g. a bright and a dark version |
+| **SAVE SAMPLES...** (10.6.0, was SAVE SET) | Makes the instrument: the samples go into an encrypted container (`.wptl`) in your library, rewritten only when samples change. The **mapping and all the settings are saved in the instrument** (`.ptlset`, **SAVE AS** in the main window) and in the session, as you hear them |
+| Variants | A bright and a dark version of the same samples are simply **two instruments** (`.ptlset`) on the same `.wptl` - SAVE AS under another name (SAVE AS VARIANT is retired; old variants still open) |
+| **PICTURE...** (10.6.0) | The picture of the sample bank (PNG / JPEG, like a Kontakt wallpaper), kept encrypted in its `.wptl` and shown in the main window in place of the strings photo, for every instrument of these samples. Remove it from the same menu |
 | **PASSWORD...** | Protects EDIT with a password (playing the set never asks for it). Empty = no password |
 | **CLEAR ALL** (10.4.3) | Empties the whole set (every key, every microphone), after a warning that gives the number of samples. UNDO brings it back; the files are not touched |
 | **DELETE** | Removes the selected zones (see the table above) |
@@ -273,7 +276,7 @@ Large sets are played from the disk: only the beginning of each sample stays in 
 | **Voices** | Polyphony, all microphones together (2 microphones = 2 voices per note). When reached, the quietest voice fades out in 8 ms | 256 (Max 512) |
 | **Test again** | Measures the disk again (e.g. after moving the samples) | |
 
-**LIBRARY** chooses the folder of your sets (put it on your fastest disk). With the copy option, SAVE SET copies the
+**LIBRARY** chooses the folder of your sets (put it on your fastest disk). With the copy option, SAVE SAMPLES copies the
 samples into a `Samples` folder beside the set.
 
 ---
@@ -311,11 +314,17 @@ check a set.  **LEVEL TEST**: plays A0, C2, C4, C6, C8 at velocity 127 and tells
 
 | File | What it is |
 |---|---|
-| `.ptlset` | The set: the map, key settings and options (small) |
-| `.wptl` | The samples, in an encrypted container (beside the set) |
-| `[SAMP]` preset | A preset of the SAMPLER mode: mapping + resonance model; double-click it (standalone) or drop it on the window |
+| `.ptlset` | **The instrument** (like a Kontakt `.nki`): the mapping as you hear it (velocities, gains, key settings, AUTO DYN, BALANCE...), the resonance model and every PianoToLife setting. Always in the folder of its `.wptl`, which it names relatively |
+| `.wptl` | **The samples** (like a Kontakt `.nkx`), in an encrypted container (password if set), with the bank's picture |
 
-Keep a piano's folder together (preset, `.ptlset`, `.wptl`): it can then be moved or backed up as it is.
+Since 10.6.0 a sampled piano is **two files: the `.ptlset` and the `.wptl`**, in the same folder of your library. In
+SAMPLER mode the **PRESET list shows the instruments of your library** and the instrument's name is shown large above it;
+**SAVE AS** saves the instrument beside its samples, and saving over an instrument of **other samples** asks first (new
+name / replace / cancel). The library folder is asked the first time you use the SAMPLER (change it in MIX > LIBRARY).
+An instrument elsewhere opens by **double-clicking it** (standalone) or **dropping it on the window**. **PASSWORD...**
+(main window) locks / unlocks SAMPLER EDIT for a protected set. The `[SAMP]` presets of earlier versions are converted
+into instruments the first time (the old files go to the Trash). Keep a piano's folder together: it can then be moved
+or backed up as it is.
 
 **Missing samples**: if a session or a preset points to a piano whose samples were deleted, moved or are on a disk
 that is not connected, a window asks you to **LOCATE** them (PianoToLife remembers the new place) or to **FORGET**

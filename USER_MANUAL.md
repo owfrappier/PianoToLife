@@ -295,8 +295,9 @@ goes to the **Host**. Differences are highlighted;
 
 ## 12. Presets, MIDI player and views
 
-- **Presets** keep every setting; SAMPLER presets are marked `[SAMP]` and carry the sample mapping and the resonance
-  model. Double-click a preset (standalone) or drop it on the window.
+- **Presets** keep every setting. In SAMPLER mode (10.6.0) the presets are the **instruments** (`.ptlset`, beside their
+  samples `.wptl`, like Kontakt `.nki` / `.nkx`): see the Sampler Manual. Double-click a preset or an instrument
+  (standalone) or drop it on the window.
 - **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (to WAV) — to compare settings
   on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
   kept); click REC again and the save window opens; PLAY plays the take at once. LOAD MIDI and the save open the same

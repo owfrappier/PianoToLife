@@ -59,9 +59,10 @@ gigaoctets) sont lues depuis le disque en streaming et jouent tout aussi bien.
 7. Cliquez sur **FIX STEPS** : les frontières orange et rouges entre couches deviennent vertes.
 8. Cliquez sur **ALIGN ATTACKS** : chaque frappe démarre au même instant, quels que soient la couche et le micro.
 9. Cliquez sur **BALANCE ▸ Smooth** : le volume est régulier d'une touche à l'autre.
-10. Cliquez sur **SAVE SET...** (activez d'abord **FLAC** si vous voulez un fichier plus petit, sans aucune perte).
-    Votre piano est prêt : choisissez-le dans la liste SAMPLER de la fenêtre principale et réglez ses micros dans
-    **MIX**.
+10. Cliquez sur **SAVE SAMPLES...** (activez d'abord **FLAC** si vous voulez un fichier plus petit, sans aucune
+    perte) : les échantillons vont dans leur `.wptl`. Puis, dans la fenêtre principale, réglez ses micros dans **MIX**
+    et cliquez sur **SAVE AS** : l'instrument (`.ptlset`) est enregistré à côté de ses échantillons, avec le mapping et
+    tous les réglages. Votre piano est prêt - deux fichiers, comme un `.nki` Kontakt et son `.nkx` (10.6.0).
 
 Chaque outil a son **UNDO** (Cmd / Ctrl + Z) et son **REDO** (Maj + Cmd / Ctrl + Z).
 
@@ -159,7 +160,7 @@ des micros.
 | **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce (la couleur 2–4 kHz et 4–8 kHz du piano de référence, mesurée sur chaque touche et chaque vélocité), pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
 | **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, comme une frappe plus dure sur le piano de référence (mesuré sur chaque touche, jusqu'à +18 dB) : avec peu de couches, les vélocités intermédiaires sonnent comme de vraies frappes. Pour une couche du haut qui n'est pas vraiment fff, ou un set avec peu de couches | Désactivé, 0 % |
 | **FADE IN** | Chaque échantillon commence par un fondu de 1 ms : un début coupé dans le son ne claque jamais | Désactivé |
-| **FLAC** | Au prochain SAVE SET, les échantillons sont stockés compressés sans aucune perte (identiques au bit près, souvent 3 à 6 fois plus petits). Désactivé = WAV tels quels | Désactivé |
+| **FLAC** | Au prochain SAVE SAMPLES, les échantillons sont stockés compressés sans aucune perte (identiques au bit près, souvent 3 à 6 fois plus petits). Désactivé = WAV tels quels | Désactivé |
 
 **SOFT TIMBRE / HARD TIMBRE et leur COLOR**
 
@@ -251,8 +252,9 @@ les couches des touches choisies.
 |---|---|
 | **NEW** | Un set vide (le set ouvert n'est pas modifié sur le disque) |
 | **Nom** (sous le titre) | Cliquez pour **RENOMMER** le set et son fichier d'échantillons |
-| **SAVE SET...** | Enregistre le set dans votre bibliothèque : la carte (`.ptlset`) et ses échantillons dans un conteneur chiffré (`.wptl`), réécrit seulement quand les échantillons changent |
-| **SAVE AS VARIANT** | Un autre set sur **les mêmes échantillons** (partage le `.wptl`, sans copie), par exemple une version brillante et une version sombre |
+| **SAVE SAMPLES...** (10.6.0, anciennement SAVE SET) | Fabrique l'instrument : les échantillons vont dans un conteneur chiffré (`.wptl`) de votre bibliothèque, réécrit seulement quand les échantillons changent. **Le mapping et tous les réglages sont enregistrés dans l'instrument** (`.ptlset`, **SAVE AS** dans la fenêtre principale) et dans la session, tels que vous les entendez |
+| Variantes | Une version brillante et une version sombre des mêmes échantillons sont simplement **deux instruments** (`.ptlset`) sur le même `.wptl` - SAVE AS sous un autre nom (SAVE AS VARIANT est retiré ; les anciennes variantes s'ouvrent toujours) |
+| **PICTURE...** (10.6.0) | L'image de la banque d'échantillons (PNG / JPEG, comme le fond d'écran d'un instrument Kontakt), gardée chiffrée dans son `.wptl` et affichée dans la fenêtre principale à la place de la photo des cordes, pour tous les instruments de ces échantillons. Elle se retire depuis le même menu |
 | **PASSWORD...** | Protège EDIT par un mot de passe (jouer le set ne le demande jamais). Vide = pas de mot de passe |
 | **CLEAR ALL** (10.4.3) | Vide tout le set (toutes les touches, tous les micros), après un avertissement qui donne le nombre d'échantillons. UNDO le remet ; les fichiers ne sont pas touchés |
 | **DELETE** | Supprime les zones sélectionnées (voir le tableau plus haut) |
@@ -291,7 +293,7 @@ Les grands sets sont joués depuis le disque : seul le début de chaque échanti
 | **Test again** | Mesure le disque à nouveau (par exemple après avoir déplacé les échantillons) | |
 
 **LIBRARY** choisit le dossier de vos sets (mettez-le sur votre disque le plus rapide). Avec l'option de copie,
-SAVE SET copie les échantillons dans un dossier `Samples` à côté du set.
+SAVE SAMPLES copie les échantillons dans un dossier `Samples` à côté du set.
 
 ---
 
@@ -327,12 +329,18 @@ pour vérifier un set. **LEVEL TEST** : joue A0, C2, C4, C6 et C8 à la vélocit
 
 | Fichier | Ce que c'est |
 |---|---|
-| `.ptlset` | Le set : la carte, les réglages des touches et les options (léger) |
-| `.wptl` | Les échantillons, dans un conteneur chiffré (à côté du set) |
-| Preset `[SAMP]` | Un preset du mode SAMPLER : mapping + modèle de résonance ; double-cliquez dessus (standalone) ou déposez-le sur la fenêtre |
+| `.ptlset` | **L'instrument** (comme un `.nki` Kontakt) : le mapping tel que vous l'entendez (vélocités, gains, réglages des touches, AUTO DYN, BALANCE...), le modèle de résonance et tous les réglages de PianoToLife. Toujours dans le dossier de son `.wptl`, qu'il désigne en relatif |
+| `.wptl` | **Les échantillons** (comme un `.nkx` Kontakt), dans un conteneur chiffré (mot de passe si défini), avec l'image de la banque |
 
-Gardez le dossier d'un piano complet (preset, `.ptlset`, `.wptl`) : il peut alors être déplacé ou sauvegardé tel
-quel.
+Depuis la 10.6.0, un piano échantillonné, ce sont **deux fichiers : le `.ptlset` et le `.wptl`**, dans le même dossier
+de votre bibliothèque. En mode SAMPLER, **la liste PRESET affiche les instruments de votre bibliothèque** et le nom de
+l'instrument s'affiche en grand au-dessus ; **SAVE AS** enregistre l'instrument à côté de ses échantillons, et
+enregistrer par-dessus un instrument d'**autres échantillons** demande d'abord (nouveau nom / remplacer / annuler). Le
+dossier de la bibliothèque est demandé la première fois que vous utilisez le SAMPLER (modifiable dans MIX > LIBRARY).
+Un instrument rangé ailleurs s'ouvre par un **double-clic** (application autonome) ou en le **déposant sur la
+fenêtre**. **PASSWORD...** (fenêtre principale) verrouille / déverrouille SAMPLER EDIT pour un set protégé. Les presets
+`[SAMP]` des versions précédentes sont convertis en instruments la première fois (les anciens fichiers vont à la
+Corbeille). Gardez le dossier d'un piano complet : il peut alors être déplacé ou sauvegardé tel quel.
 
 **Échantillons introuvables** : si une session ou un preset désigne un piano dont les échantillons ont été effacés,
 déplacés ou sont sur un disque non branché, une fenêtre propose de les **LOCATE** (PianoToLife retient le nouvel
