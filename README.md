@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1053" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1054" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,12 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.5.3
+## What's new in 10.5.4
+
+**Fix: unorthodox MIDI file endings (BOUNCE / PLAY / REC).** A file ending with notes still held now rings out to
+the end instead of being cut.
+
+### Also in 10.5.3
 
 **The HOST pedal without Release, and a listening selector you can combine.**
 
@@ -258,7 +263,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1053" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1054" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
   <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
   HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
 </p>
