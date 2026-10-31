@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1056" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1060" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,27 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.5.6
+## What's new in 10.6.0
+
+**SAMPLER instruments like Kontakt: a `.ptlset` and its `.wptl`, with the bank's picture.**
+
+- **Two files per sampled piano**, like a Kontakt `.nki` and its `.nkx`: the **`.ptlset` is the instrument** (the
+  mapping as you hear it and every PianoToLife setting), always beside its **`.wptl`** (the encrypted samples). In
+  SAMPLER mode the **PRESET list shows the instruments** of your library and **SAVE AS** saves the instrument beside its
+  samples; several instruments on the same `.wptl` are your variants. The instrument's name is shown large.
+- Your **`[SAMP]` presets are converted** into instruments the first time (the old files go to the Trash).
+- **SAVE SAMPLES** (SAMPLER EDIT, was SAVE SET) makes the `.wptl`. Saving over an instrument of other samples asks
+  first. The set list, Load set and SAVE AS VARIANT are gone; PASSWORD stays.
+- A `.ptlset` opens by **double-click** (standalone) or **drag and drop**. The library folder is asked the first time
+  you use the SAMPLER.
+- **PICTURE...** (SAMPLER EDIT): the picture of the sample bank, kept encrypted in its `.wptl`, shown in the main window
+  in place of the strings photo.
+- In SAMPLER mode the status line no longer names the hosted piano.
+
+Manuals updated for 10.6.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.5.6
 
 **AUTO DYN places every key, and the SAMPLER EDIT tools in the order to use them.**
 
@@ -67,8 +87,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - **Pedal catch**: with the pedal fully up for more than 220 ms (was 300 ms), the caught strings are now really
   damped - closer to the reference piano. Quick pedal changes are unchanged.
 
-Manuals updated for 10.5.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.5.4
 
@@ -279,9 +297,9 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1056" alt="SAMPLER EDIT: a Steinway B sampled by hand with 3 velocity layers" width="900"><br>
-  <i>A Steinway B sampled by hand with only 3 velocity layers: placed on the Grand B reference, joined by SOFT and
-  HARD TIMBRE (green boundaries), and evened out key by key with BALANCE.</i>
+  <img src="screenshot1b.png?v=1060" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
+  the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
 
 **User manuals, in English and French.** A general manual (how the modelling works in HOST and SAMPLER, and why the
