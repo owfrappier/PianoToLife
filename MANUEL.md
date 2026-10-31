@@ -322,7 +322,7 @@ signaler un clavier qui se comporte à sa façon.
   N1X ou Release Velocity 1-127.
   **Listes de lecture** (10.4.2) : LOAD MIDI ouvre un menu — plusieurs fichiers MIDI d'un coup, un dossier, ou une
   liste **.m3u** ; les morceaux s'enchaînent, **◀ / ▶** passent au précédent / suivant, et le menu permet de lire la
-  liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. BOUNCE enregistre le morceau chargé.
+  liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
   **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
   dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte

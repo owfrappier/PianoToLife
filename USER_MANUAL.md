@@ -306,7 +306,7 @@ goes to the **Host**. Differences are highlighted;
   Release Velocity 1-127.
   **Playlists** (10.4.2): LOAD MIDI opens a menu — load several MIDI files at once, a folder, or an **.m3u** list;
   the pieces follow one another, **◀ / ▶** go to the previous / next one, and the menu can loop the playlist or save
-  it as an .m3u. A missing file is skipped. BOUNCE records the piece loaded.
+  it as an .m3u. A missing file is skipped. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
   **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
   bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
