@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1060" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1061" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,19 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.6.0
+## What's new in 10.6.1
+
+**Pedal: a quick re-pedal now catches the note again, and the caught strings fade like the real note.**
+
+- **Re-pedal catch fixed**: a key released with the pedal up, then caught by the pedal a few milliseconds later, was
+  not caught again at the next pedal dip - the note died. It is now caught again at each dip, like on a real piano.
+- **Caught strings fade like the real note**: they used to decay far too slowly early in the note. They now follow the
+  decay of the note itself, measured while it plays (HOST and SAMPLER). In SAMPLER mode a quick pedal dip now matches
+  the reference piano closely.
+- **Less memory in HOST mode**: the SAMPLER instrument's samples are no longer loaded while you are in HOST mode. They
+  load when you switch to SAMPLER and leave the memory when you go back to HOST.
+
+### Also in 10.6.0
 
 **SAMPLER instruments like Kontakt: a `.ptlset` and its `.wptl`, with the bank's picture.**
 
@@ -297,7 +309,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1060" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1061" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
