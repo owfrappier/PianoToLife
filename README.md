@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1061" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1062" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,26 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.6.1
+## What's new in 10.6.2
+
+**Playback from a clean piano, PAUSE for the MIDI player, and AUTO DYN in two.**
+
+- **A playback starts from a clean piano**: when your DAW starts or jumps to another place, and at the standalone's
+  PLAY / BOUNCE, the same passage now always sounds the same, wherever you start it. Live playing is unchanged.
+  PANIC also clears the caught strings.
+- **MIDI player**: a **PAUSE** button (II) - click again to go on from there - and MIDI files can be **dropped on the
+  window** (one, several = a playlist, or an .m3u).
+- **SAMPLER EDIT**: **AUTO DYN1** (global, as before 10.5.6, for libraries recorded evenly) and **AUTO DYN2** (key by
+  key, for uneven ones). **UNDO / REDO** are now just above the key's settings. **AUTO RELEASE** first asks whether
+  Undamped Keys Above is really your piano's last damped note, and lets you change it.
+- **SAMPLER**: an instrument is always named by its file (one saved under a new name could come back with its old
+  name), and the instrument list no longer shows "Last Session".
+- **Compact view**: the preset / instrument list.
+
+Manuals updated for 10.6.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.6.1
 
 **Pedal: a quick re-pedal now catches the note again, and the caught strings fade like the real note.**
 
@@ -309,7 +328,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1061" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1062" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
