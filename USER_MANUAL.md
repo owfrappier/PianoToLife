@@ -190,8 +190,12 @@ string is free to resonate. **≤ 1** (default), **≤ 2**, **≤ 3** = notes at
 N1** = polyphonic aftertouch 127 / 0; **Off** = none.
 
 **PANIC** (10.4.2, between Silent Key and DEFAULT): stops everything that sounds at once — stuck notes, the resonance,
-the sampler's voices, the room and the MIDI player — and sends All Notes Off, All Sound Off and the pedals up to the
-hosted piano.
+the sampler's voices, the room, the caught strings (10.6.2) and the MIDI player — and sends All Notes Off, All Sound
+Off and the pedals up to the hosted piano.
+
+**A playback starts from a clean piano** (10.6.2): when your DAW starts playing or jumps to another place (cursor moved,
+cycle), and at the standalone's PLAY / BOUNCE, PianoToLife stops what still sounds and puts the pedals up, then takes
+the pedals the DAW sends: the same passage always sounds the same, wherever you start it. Live playing is unchanged.
 
 ---
 
@@ -308,12 +312,17 @@ goes to the **Host**. Differences are highlighted;
   **Playlists** (10.4.2): LOAD MIDI opens a menu — load several MIDI files at once, a folder, or an **.m3u** list;
   the pieces follow one another, **◀ / ▶** go to the previous / next one, and the menu can loop the playlist or save
   it as an .m3u. A missing file is skipped. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
+  You can also **drop MIDI files on the window** (10.6.2): one file, several (a playlist, in the order of their names)
+  or an .m3u, as with LOAD MIDI. **II (PAUSE)** (10.6.2): the sound stops where it is and the place is kept; click
+  again to go on from there (from a clean piano, with the pedals the file has at that point). PLAY starts from the
+  beginning.
   **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
   bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
   the tempo and time signature are written in the saved MIDI file, so the take sits on the grid of a DAW.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
-  playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS.
+  playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
+  and since 10.6.2 the preset list (the instruments in SAMPLER mode).
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full

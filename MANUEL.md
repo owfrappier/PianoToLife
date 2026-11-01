@@ -199,7 +199,13 @@ est alors libre de résonner. **≤ 1** (par défaut), **≤ 2**, **≤ 3** = le
 **Disklavier / N1** = aftertouch polyphonique 127 / 0 ; **Off** = aucun.
 
 **PANIC** (10.4.2, entre Silent Key et DEFAULT) : arrête d'un coup tout ce qui sonne — notes bloquées, résonance, voix
-du sampler, salle et lecteur MIDI — et envoie au piano hébergé All Notes Off, All Sound Off et les pédales relevées.
+du sampler, salle, cordes rattrapées (10.6.2) et lecteur MIDI — et envoie au piano hébergé All Notes Off, All Sound
+Off et les pédales relevées.
+
+**Une lecture part d'un piano propre** (10.6.2) : quand votre DAW démarre ou saute ailleurs (curseur déplacé, boucle),
+et au PLAY / BOUNCE de l'application autonome, PianoToLife arrête ce qui sonne encore et remonte les pédales, puis
+reprend celles que le DAW envoie : un même passage sonne toujours pareil, où que vous le lanciez. Le jeu en direct ne
+change pas.
 
 ---
 
@@ -323,13 +329,17 @@ signaler un clavier qui se comporte à sa façon.
   **Listes de lecture** (10.4.2) : LOAD MIDI ouvre un menu — plusieurs fichiers MIDI d'un coup, un dossier, ou une
   liste **.m3u** ; les morceaux s'enchaînent, **◀ / ▶** passent au précédent / suivant, et le menu permet de lire la
   liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
+  Vous pouvez aussi **déposer des fichiers MIDI sur la fenêtre** (10.6.2) : un fichier, plusieurs (une liste de
+  lecture, dans l'ordre de leurs noms) ou un .m3u, comme avec LOAD MIDI. **II (PAUSE)** (10.6.2) : le son s'arrête là
+  où il est et la position est gardée ; recliquez pour reprendre de là (avec un piano propre et les pédales du fichier
+  à cet endroit). PLAY repart du début.
   **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
   dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte
   si coché) et le tempo et la mesure sont écrits dans le fichier MIDI : la prise tombe sur la grille d'un DAW.
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
-  TRUE PEAK et LUFS.
+  TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER).
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,

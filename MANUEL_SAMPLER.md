@@ -54,8 +54,9 @@ gigaoctets) sont lues depuis le disque en streaming et jouent tout aussi bien.
    couches de vélocité. Une barre de progression suit l'import ; cliquez sur la ligne d'état pour l'arrêter.
 5. Pour les autres positions de micro, choisissez **MIC 2**, **MIC 3**… et déposez leurs échantillons de la même
    façon.
-6. Cliquez sur **AUTO DYN** : PianoToLife écoute le A4, place ses couches sur l'intensité d'un vrai piano à queue,
-   puis cale toutes les touches de la même façon.
+6. Cliquez sur **AUTO DYN1** (une banque enregistrée de façon régulière d'une touche à l'autre) ou **AUTO DYN2** (une
+   banque irrégulière) : PianoToLife écoute le A4, place ses couches sur l'intensité d'un vrai piano à queue, puis cale
+   toutes les touches (10.6.2).
 7. Cliquez sur **FIX STEPS** : les frontières orange et rouges entre couches deviennent vertes.
 8. Cliquez sur **ALIGN ATTACKS** : chaque frappe démarre au même instant, quels que soient la couche et le micro.
 9. Cliquez sur **BALANCE ▸ Smooth** : le volume est régulier d'une touche à l'autre.
@@ -64,7 +65,8 @@ gigaoctets) sont lues depuis le disque en streaming et jouent tout aussi bien.
     et cliquez sur **SAVE AS** : l'instrument (`.ptlset`) est enregistré à côté de ses échantillons, avec le mapping et
     tous les réglages. Votre piano est prêt - deux fichiers, comme un `.nki` Kontakt et son `.nkx` (10.6.0).
 
-Chaque outil a son **UNDO** (Cmd / Ctrl + Z) et son **REDO** (Maj + Cmd / Ctrl + Z).
+Chaque outil a son **UNDO** (Cmd / Ctrl + Z) et son **REDO** (Maj + Cmd / Ctrl + Z) ; depuis la 10.6.2, les boutons
+UNDO et REDO sont dans le panneau de droite, juste au-dessus des réglages de la touche.
 
 ---
 
@@ -181,9 +183,9 @@ vélocité.
 ## 5. Les outils de mapping, dans l'ordre conseillé
 
 Les outils sont dans la barre du bas, **dans l'ordre où les utiliser**, avec un **>** entre eux (10.5.6) :
-**FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. Avec des zones
-sélectionnées, la plupart agissent **sur leurs touches seulement** ; sans sélection, **sur toutes les touches** du
-micro affiché. AUTO DYN agit toujours sur toutes les touches. **SHOW BY MIDI** ne sélectionne rien : cliquez dans une
+**FILL GAPS > ALIGN ATTACKS > AUTO DYN1 ou AUTO DYN2 > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. Avec des
+zones sélectionnées, la plupart agissent **sur leurs touches seulement** ; sans sélection, **sur toutes les touches**
+du micro affiché. AUTO DYN1 et AUTO DYN2 agissent toujours sur toutes les touches. **SHOW BY MIDI** ne sélectionne rien : cliquez dans une
 partie vide de la grille pour vider la sélection avant de travailler sur toutes les touches.
 
 1. **FILL GAPS** — chaque touche sans échantillon est jouée par la touche échantillonnée la plus proche, transposée
@@ -191,10 +193,15 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
 2. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
    avant : plus de flottement quand la nuance change, des micros en phase. Les fichiers ne sont pas modifiés. Avant
    AUTO DYN, pour qu'il écoute des frappes bien alignées.
-3. **AUTO DYN** (appelé RECAL A4 avant la 10.4.2) — écoute le A4 aux 127 vélocités, place ses couches là où leur
-   intensité les met sur la courbe de référence et les met à niveau. Il mesure aussi l'accord du A4 (envoyé à SR A4
-   Tuning : 440 Hz joue le set tel qu'il a été enregistré). **Depuis la 10.5.6, chaque autre touche est écoutée et
-   placée pour elle-même**, quel que soit son nombre de couches, sur la même courbe de référence (la courbe de niveau
+3. **AUTO DYN1 / AUTO DYN2** (10.6.2 ; un seul AUTO DYN avant, appelé RECAL A4 avant la 10.4.2) — tous deux écoutent
+   le A4 aux 127 vélocités, placent ses couches là où leur intensité les met sur la courbe de référence et les mettent
+   à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : 440 Hz joue le set tel qu'il a été enregistré).
+   Ensuite :
+   - **AUTO DYN1** (global, comme avant la 10.5.6) : chaque touche qui a **autant de couches que le A4** reçoit les
+     plages de vélocité du A4 et est mise à niveau ; les touches qui ont un autre nombre de couches restent telles
+     quelles (AUTO DYN2 les place). Pour une banque enregistrée de façon régulière d'une touche à l'autre.
+   - **AUTO DYN2** (par touche, l'AUTO DYN de la 10.5.6) : **chaque autre touche est écoutée et placée pour
+     elle-même**, quel que soit son nombre de couches, sur la même courbe de référence (la courbe de niveau
    de la référence est la même sur toutes les touches), puis **lissée avec ses voisines** (2 touches de chaque côté)
    pour que les frontières ne sautent pas d'une touche à l'autre, et mise à niveau. Les banques irrégulières (une
    couche jouée plus fort sur certaines touches, un échantillonnage à la main, une couche absente dans un registre)
@@ -206,7 +213,8 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    régulièrement de v1 jusqu'à la première couche au-dessus, leurs gains calés sur la courbe de référence (Dynamics ne
    change pas ; le souffle d'une couche très douce monte avec son gain).
 4. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
-   lissée sur les touches voisines. À lancer **après** AUTO DYN (AUTO DYN replace les frontières selon l'intensité).
+   lissée sur les touches voisines. À lancer **après** AUTO DYN1 / DYN2 (ils replacent les frontières selon
+   l'intensité).
 5. **AUTO COLOR** (10.5.1) — règle SOFT COLOR et HARD COLOR pour que la brillance des couches suive la couleur du piano
    de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme sur la référence ;
    seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). SOFT / HARD TIMBRE activés.
@@ -221,7 +229,9 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
 7. **AUTO RELEASE** — le temps de relâchement de chaque touche, mesuré sur un piano de concert (380 à 510 ms jusqu'à
    −60 dB), Infinite au-dessus de **Undamped Keys Above**. Ce réglage est aussi dans le panneau de touche
    (**Undamped**, le même que celui de la fenêtre principale) ; bougé à la main, les touches qui le franchissent
-   reçoivent de nouveau AUTO RELEASE (10.3.8).
+   reçoivent de nouveau AUTO RELEASE (10.3.8). Depuis la 10.6.2, AUTO RELEASE affiche d'abord la dernière touche avec
+   étouffoir et demande si c'est bien la dernière note étouffée de votre piano ; changez-la là si besoin (le même
+   réglage partout), puis AUTO RELEASE se lance.
 8. **LEVEL** et **AUTO** (à gauche des outils, près du curseur de niveau) — le niveau de tout le set ; AUTO fait
    culminer la note la plus forte à la vélocité 127 à −9 dBFS (de la marge pour les accords, la résonance et le
    relâchement). De préférence à la fin.

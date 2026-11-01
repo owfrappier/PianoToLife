@@ -52,8 +52,8 @@ disk and play just as well.
    Decent Sampler `.dspreset`. PianoToLife listens to each sample, finds its key, and places the velocity layers. A
    progress bar shows the import; click the status line to stop it.
 5. For other microphone positions, select **MIC 2**, **MIC 3**… and drop their samples the same way.
-6. Click **AUTO DYN**: PianoToLife listens to A4, places its layers on the loudness of a real grand, then maps every
-   key the same way.
+6. Click **AUTO DYN1** (a library recorded evenly key to key) or **AUTO DYN2** (an uneven one): PianoToLife listens
+   to A4, places its layers on the loudness of a real grand, then maps every key (10.6.2).
 7. Click **FIX STEPS**: the orange and red layer boundaries become green.
 8. Click **ALIGN ATTACKS**: every strike starts at the same moment, whatever the layer and microphone.
 9. Click **BALANCE ▸ Smooth**: the volume is even from one key to the next.
@@ -62,7 +62,8 @@ disk and play just as well.
     (`.ptlset`) is saved beside its samples with the mapping and every setting. Your piano is ready - two files, like a
     Kontakt `.nki` and its `.nkx` (10.6.0).
 
-Every tool has **UNDO** (Cmd / Ctrl + Z) and **REDO** (Shift + Cmd / Ctrl + Z).
+Every tool has **UNDO** (Cmd / Ctrl + Z) and **REDO** (Shift + Cmd / Ctrl + Z); since 10.6.2 the UNDO and REDO
+buttons are in the right panel, just above the key's settings.
 
 ---
 
@@ -172,9 +173,9 @@ or set its COLOR to −100 %. With SOFT TIMBRE on, the steps between velocity la
 ## 5. The mapping tools, in the recommended order
 
 The tools are in the bottom bar, **in the order to use them**, with **>** between them (10.5.6):
-**FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. With zones selected,
-most of them work on **their keys only**; with nothing selected, on **every key** of the displayed microphone.
-AUTO DYN always works on every key. **SHOW BY MIDI** never selects anything: click an empty part of the grid to clear
+**FILL GAPS > ALIGN ATTACKS > AUTO DYN1 or AUTO DYN2 > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE**. With
+zones selected, most of them work on **their keys only**; with nothing selected, on **every key** of the displayed
+microphone. AUTO DYN1 and AUTO DYN2 always work on every key. **SHOW BY MIDI** never selects anything: click an empty part of the grid to clear
 a selection before working on every key.
 
 1. **FILL GAPS** — every key without a sample is played by the nearest sampled key, transposed (half the gap each
@@ -182,9 +183,13 @@ a selection before working on every key.
 2. **ALIGN ATTACKS** — finds the strike in every sample and makes every layer and every microphone start 3 ms before
    it: no flam when the dynamics change, microphones in phase. The files are not changed. Before AUTO DYN, so that it
    listens to well-aligned strikes.
-3. **AUTO DYN** (called RECAL A4 before 10.4.2) — listens to A4 at all 127 velocities, places its layers where their
-   loudness belongs on the reference curve and levels them. It also measures A4's tuning (sent to SR A4 Tuning, so
-   440 Hz plays the set as recorded). **Since 10.5.6 every other key is listened to and placed on its own**, whatever
+3. **AUTO DYN1 / AUTO DYN2** (10.6.2; one AUTO DYN before, called RECAL A4 before 10.4.2) — both listen to A4 at all
+   127 velocities, place its layers where their loudness belongs on the reference curve and level them. They also
+   measure A4's tuning (sent to SR A4 Tuning, so 440 Hz plays the set as recorded). Then:
+   - **AUTO DYN1** (global, as before 10.5.6): every key with **as many layers as A4** gets A4's velocity ranges and is
+     levelled; keys with another number of layers are left as they are (AUTO DYN2 places them). For a library
+     recorded evenly key to key.
+   - **AUTO DYN2** (per key, the AUTO DYN of 10.5.6): **every other key is listened to and placed on its own**, whatever
    its number of layers, on the same reference curve (the reference's level curve is the same on every key), then
    **smoothed with its neighbours** (2 keys each side) so that the boundaries do not jump from one key to the next, and
    levelled. Uneven libraries (a layer played louder on some keys, manual sampling, a layer missing in a register)
@@ -195,7 +200,7 @@ a selection before working on every key.
    ever plays) they are spread evenly from v1 up to the first layer above, their gains set on the reference curve
    (Dynamics is not changed; a very soft layer's noise comes up with its gain).
 4. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
-   neighbouring keys. Run it **after** AUTO DYN (AUTO DYN places the boundaries by loudness again).
+   neighbouring keys. Run it **after** AUTO DYN1 / DYN2 (they place the boundaries by loudness again).
 5. **AUTO COLOR** (10.5.1) — sets SOFT COLOR and HARD COLOR so that the brightness of the layers follows the colour of
    the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz, as on the
    reference; only the shape counts, a piano may stay brighter or darker overall). SOFT / HARD TIMBRE on. Run it again
@@ -207,7 +212,9 @@ a selection before working on every key.
    It sets the key gains (at most ±6 dB); velocity ranges, layer gains and dynamics are not touched.
 7. **AUTO RELEASE** — each key's release time as measured on a concert grand (380–510 ms to −60 dB), Infinite above
    **Undamped Keys Above**. That setting is also in the key panel (**Undamped**, the same as the main window's);
-   moved by hand, the keys that cross it get AUTO RELEASE again (10.3.8).
+   moved by hand, the keys that cross it get AUTO RELEASE again (10.3.8). Since 10.6.2, AUTO RELEASE first shows the
+   last key with a damper and asks whether it really is your piano's last damped note; change it there if needed
+   (the same setting everywhere), then AUTO RELEASE runs.
 8. **LEVEL** and **AUTO** (left of the tools, by the level slider) — the level of the whole set; AUTO makes the loudest
    note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end.
 
