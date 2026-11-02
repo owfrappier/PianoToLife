@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1062" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1063" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,26 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.6.2
+## What's new in 10.6.3
+
+**SAMPLER: a real voicing (MEDIUM, HAMMER), XCOLOR for few-layer pianos, and LISTEN.**
+
+- **Voicing**, on its own row in SAMPLER EDIT: **MEDIUM TIMBRE** for the middle velocities (mp to mf) joins SOFT and
+  HARD, and **HAMMER** sets the hardness of the hammers for the whole piano - lower, a piano you find too bright becomes
+  softer, as if a technician had voiced its hammers. Measured on the reference piano's voicing; timbre only, the level
+  does not change.
+- **AUTO COLOR** now sets SOFT, MEDIUM and HARD together, and first asks which zones to set (all three by default).
+- **XCOLOR - Real layers transition enhancer**: at each boundary two layers blend over a few velocities, so a piano
+  with only a few layers goes from one real strike to the next smoothly. Never more than two layers at once. Then run
+  ALIGN ATTACKS: it also puts the layers in phase. Off by default; 16 is a good start.
+- **LISTEN**: plays the key shown from velocity 1 to 127, to hear its transitions as you will play them.
+- In SAMPLER mode the layer detector (ANALYSE / EXPORT) is hidden: the layers are already known.
+- Compact view: the listening parts show their "=" / "+" again, and the bar is always shown at 100 %.
+
+Manuals updated for 10.6.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.6.2
 
 **Playback from a clean piano, PAUSE for the MIDI player, and AUTO DYN in two.**
 
@@ -328,7 +347,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1062" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1063" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
