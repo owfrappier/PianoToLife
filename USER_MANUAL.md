@@ -158,6 +158,8 @@ Every model is matched to the same resonance level when it is loaded; each keeps
 concert grand is included.
 
 **Layer detector**: plays a note at the 127 velocities and lists the piano's real velocity layers (export as text).
+HOST mode only (10.6.3): in SAMPLER mode the layers are known and already placed on the reference by AUTO DYN, so
+ANALYSE and EXPORT are hidden.
 
 ---
 
@@ -322,7 +324,8 @@ goes to the **Host**. Differences are highlighted;
   the tempo and time signature are written in the saved MIDI file, so the take sits on the grid of a DAW.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
-  and since 10.6.2 the preset list (the instruments in SAMPLER mode).
+  and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
+  100 %; the view size you choose (90 / 80 %) is for the full window.
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full

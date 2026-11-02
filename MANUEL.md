@@ -166,6 +166,8 @@ de concert est fourni.
 
 **Détecteur de couches** : joue une note aux 127 vélocités et liste les vraies couches de vélocité du piano (export
 en texte).
+Mode HOST seulement (10.6.3) : en mode SAMPLER, les couches sont connues et déjà placées sur la référence par AUTO DYN,
+donc ANALYSE et EXPORT sont masqués.
 
 ---
 
@@ -339,7 +341,8 @@ signaler un clavier qui se comporte à sa façon.
   si coché) et le tempo et la mesure sont écrits dans le fichier MIDI : la prise tombe sur la grille d'un DAW.
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
-  TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER).
+  TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
+  barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète.
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,

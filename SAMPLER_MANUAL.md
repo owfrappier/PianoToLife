@@ -152,6 +152,9 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 | **AUTO NAME** | The dynamics, velocities or layer numbers in the file names set the order of the layers (safer when two layers sound alike) | On |
 | **SOFT TIMBRE** + COLOR | A note played below its layer's own velocity gets the darker timbre of a softer strike (the 2–4 kHz and 4–8 kHz colour of the reference piano, measured on every key and velocity), not only a lower level: pp under the softest layer and smooth boundaries. COLOR (−100 to +100 %) sets how much | On, 0 % |
 | **HARD TIMBRE** + COLOR | A note played above its layer's velocity gets brighter, like a harder strike on the reference piano (measured on every key, up to +18 dB): with few layers, the velocities in between sound like real strikes. For a top layer that is not really fff, or a set with few layers | Off, 0 % |
+| **MEDIUM TIMBRE** + COLOR (10.6.3) | The colour of the middle velocities (about v48–84, mp to mf), between SOFT and HARD, as the reference piano's voicing (measured). Higher = brighter, lower = darker; 0 % = as measured. The level does not change | On, 0 % |
+| **HAMMER** (10.6.3) | The hardness of the hammers, for the whole piano and every velocity, as the reference piano's hammer hardness (measured). Lower: a piano you find too bright becomes softer, as if a technician had voiced (needled) its hammers — around −20 % a more romantic character, warmer forte; towards −100 % a very felted sound, close to an una corda. Higher: harder hammers, the soft notes get brighter. Timbre only, the level does not change. Set by hand (AUTO COLOR leaves it alone) | 0 % |
+| **XCOLOR** (10.6.3) — Real layers transition enhancer | At each boundary between two layers, both play over this many velocities, the lower one fading out as the upper one fades in: you go from one real strike to the next gradually. Never more than two layers at once: the width is limited by the layers on each side, so a piano with many layers (50 or more) gets almost nothing of it, which is normal. Most useful up to about ten layers; it also softens a layer that sounds a little different from its neighbours (without replacing it). **16 is a good start**, then run **ALIGN ATTACKS**: with XCOLOR on it also puts each layer in phase with the one below, so they blend without a hollow, "comb" sound | Off |
 | **FADE IN** | Every sample starts with a 1 ms fade: a start cut inside the sound never clicks | Off |
 | **FLAC** | At the next SAVE SAMPLES, the samples are stored compressed without any loss (identical to the bit, often 3 to 6 times smaller). Off = WAV as they are | Off |
 
@@ -167,6 +170,13 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 
 So 0 % does not mean "off": it means "as measured on the reference piano". To switch an effect off, untick its box
 or set its COLOR to −100 %. With SOFT TIMBRE on, the steps between velocity layers can no longer be heard.
+**MEDIUM TIMBRE** (10.6.3) works the same way for the middle velocities (about v48–84). Since 10.6.3 SOFT, MEDIUM and
+HARD TIMBRE, HAMMER and XCOLOR have their own row in SAMPLER EDIT (the third one).
+
+**LISTEN** (10.6.3, right panel, left of UNDO): plays the key shown from velocity 1 to 127, one velocity out of 1, 2,
+4 or 8 (menu beside it), as you will hear it — its layers, their boundaries and the colours. Click again to stop.
+Nothing is measured or changed. The ideal way to hear the transitions between layers after AUTO DYN, AUTO COLOR or
+XCOLOR.
 
 ---
 
@@ -201,10 +211,12 @@ a selection before working on every key.
    (Dynamics is not changed; a very soft layer's noise comes up with its gain).
 4. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
    neighbouring keys. Run it **after** AUTO DYN1 / DYN2 (they place the boundaries by loudness again).
-5. **AUTO COLOR** (10.5.1) — sets SOFT COLOR and HARD COLOR so that the brightness of the layers follows the colour of
-   the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz, as on the
-   reference; only the shape counts, a piano may stay brighter or darker overall). SOFT / HARD TIMBRE on. Run it again
-   after AUTO DYN. UNDO puts the sliders back.
+5. **AUTO COLOR** (10.5.1) — sets SOFT, MEDIUM (10.6.3) and HARD COLOR so that the brightness of the layers follows
+   the colour of the reference piano from soft to loud (measured on A2, A3, A4, A5 at 13 velocities, 2–4 and 4–8 kHz,
+   as on the reference; only the shape counts, a piano may stay brighter or darker overall). Since 10.6.3 it first asks
+   which zones to set: **SOFT, MEDIUM and HARD, all ticked by default** (they work best together); untick a zone to
+   leave it as it is — it is then switched off, and its TIMBRE box in the row follows. HAMMER is never touched. Run it
+   again after AUTO DYN. UNDO puts the sliders back.
 6. **BALANCE** — evens out the volume from one key to the next, measured at velocity 127 (each key's layers follow).
    - **Smooth**: the set's own curve without the jumps (the register balance of the recording is kept).
    - **Grand D / Grand B / Upright**: the bass-to-treble balance of a reference piano, at your set's level.
@@ -346,6 +358,8 @@ that piano (it is then no longer asked about).
 | A sample is on the wrong key or octave | Check the orange zones in the side panel; put the note in the file name (`C4`, `060`); AUTO KEY on |
 | Two layers are in the wrong order | AUTO NAME with dynamics in the names; otherwise move them by hand |
 | Steps when playing crescendo (orange / red boundaries) | AUTO DYN, then FIX STEPS; SOFT TIMBRE on; HARD TIMBRE for a dark top layer |
+| Few layers: you still hear that it is another sample at a boundary | XCOLOR (16), then ALIGN ATTACKS; check with LISTEN (10.6.3) |
+| The piano is too bright for you | HAMMER a little below 0 (−20 % is a good start) |
 | Some keys louder than their neighbours | BALANCE ▸ Smooth (or a reference piano) |
 | A click at the start of some notes | ALIGN ATTACKS; FADE IN for starts cut inside the sound |
 | Notes sound late or flam between layers | ALIGN ATTACKS |

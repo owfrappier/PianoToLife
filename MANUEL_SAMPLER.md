@@ -161,6 +161,9 @@ des micros.
 | **AUTO NAME** | Les nuances, vélocités ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent) | Activé |
 | **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce (la couleur 2–4 kHz et 4–8 kHz du piano de référence, mesurée sur chaque touche et chaque vélocité), pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
 | **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, comme une frappe plus dure sur le piano de référence (mesuré sur chaque touche, jusqu'à +18 dB) : avec peu de couches, les vélocités intermédiaires sonnent comme de vraies frappes. Pour une couche du haut qui n'est pas vraiment fff, ou un set avec peu de couches | Désactivé, 0 % |
+| **MEDIUM TIMBRE** + COLOR (10.6.3) | La couleur des vélocités du milieu (environ v48–84, mp à mf), entre SOFT et HARD, comme le voicing du piano de référence (mesuré). Plus haut = plus brillant, plus bas = plus sombre ; 0 % = tel que mesuré. Le niveau ne change pas | Activé, 0 % |
+| **HAMMER** (10.6.3) | La dureté des marteaux, pour tout le piano et toutes les vélocités, comme la dureté des marteaux du piano de référence (mesurée). Plus bas : un piano que vous trouvez trop brillant devient plus doux, comme si un technicien avait piqué ses marteaux — autour de −20 %, un caractère plus romantique, des forte plus chauds ; vers −100 %, un son très feutré, proche d'une una corda. Plus haut : des marteaux durcis, les nuances douces deviennent plus brillantes. Le timbre seulement, le niveau ne change pas. Réglé à la main (AUTO COLOR n'y touche pas) | 0 % |
+| **XCOLOR** (10.6.3) — Real layers transition enhancer | À chaque frontière entre deux couches, les deux jouent sur ce nombre de vélocités, celle du dessous s'effaçant pendant que celle du dessus arrive : on passe d'une vraie frappe à l'autre progressivement. Jamais plus de deux couches à la fois : la largeur est limitée par les couches de part et d'autre, donc un piano à beaucoup de couches (50 ou plus) n'en reçoit presque rien, ce qui est normal. Surtout utile jusqu'à une dizaine de couches ; adoucit aussi une couche un peu différente de ses voisines (sans la remplacer). **16 est un bon point de départ**, puis lancez **ALIGN ATTACKS** : avec XCOLOR actif, il met aussi chaque couche en phase avec celle du dessous, pour qu'elles se mélangent sans son creux « en peigne » | Désactivé |
 | **FADE IN** | Chaque échantillon commence par un fondu de 1 ms : un début coupé dans le son ne claque jamais | Désactivé |
 | **FLAC** | Au prochain SAVE SAMPLES, les échantillons sont stockés compressés sans aucune perte (identiques au bit près, souvent 3 à 6 fois plus petits). Désactivé = WAV tels quels | Désactivé |
 
@@ -176,7 +179,13 @@ des micros.
 
 0 % ne veut donc pas dire « éteint » mais « tel que mesuré sur le piano de référence ». Pour couper un effet, décochez
 sa case ou mettez son COLOR à −100 %. Avec SOFT TIMBRE activé, on n'entend plus les sauts entre les couches de
-vélocité.
+vélocité. **MEDIUM TIMBRE** (10.6.3) fonctionne de la même façon pour les vélocités du milieu (environ v48–84). Depuis
+la 10.6.3, SOFT, MEDIUM et HARD TIMBRE, HAMMER et XCOLOR ont leur propre rangée dans SAMPLER EDIT (la troisième).
+
+**LISTEN** (10.6.3, panneau de droite, à gauche d'UNDO) : joue la touche affichée de la vélocité 1 à 127, une vélocité
+sur 1, 2, 4 ou 8 (menu à côté), telle que vous l'entendrez — ses couches, leurs frontières et les couleurs. Recliquez
+pour arrêter. Rien n'est mesuré ni modifié. Idéal pour écouter les passages entre couches après AUTO DYN, AUTO COLOR
+ou XCOLOR.
 
 ---
 
@@ -215,10 +224,12 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
 4. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
    lissée sur les touches voisines. À lancer **après** AUTO DYN1 / DYN2 (ils replacent les frontières selon
    l'intensité).
-5. **AUTO COLOR** (10.5.1) — règle SOFT COLOR et HARD COLOR pour que la brillance des couches suive la couleur du piano
-   de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme sur la référence ;
-   seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). SOFT / HARD TIMBRE activés.
-   À relancer après un AUTO DYN. UNDO remet les curseurs.
+5. **AUTO COLOR** (10.5.1) — règle SOFT, MEDIUM (10.6.3) et HARD COLOR pour que la brillance des couches suive la
+   couleur du piano de référence, du piano au forte (mesurée sur A2, A3, A4, A5 à 13 vélocités, 2–4 et 4–8 kHz, comme
+   sur la référence ; seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). Depuis la
+   10.6.3, il demande d'abord quelles zones régler : **SOFT, MEDIUM et HARD, toutes cochées par défaut** (elles
+   marchent mieux ensemble) ; décochez une zone pour la laisser telle quelle — elle est alors éteinte, et sa case TIMBRE
+   de la rangée suit. HAMMER n'est jamais touché. À relancer après un AUTO DYN. UNDO remet les curseurs.
 6. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
    suivent).
    - **Smooth** : la courbe propre du set, sans les sauts (l'équilibre grave-aigu de l'enregistrement est gardé).
@@ -365,6 +376,8 @@ emplacement) ou de **FORGET** ce piano (il n'est alors plus demandé).
 | Un échantillon est sur la mauvaise touche ou octave | Vérifiez les zones orange dans le panneau latéral ; mettez la note dans le nom de fichier (`C4`, `060`) ; AUTO KEY activé |
 | Deux couches sont dans le mauvais ordre | AUTO NAME avec les nuances dans les noms ; sinon déplacez-les à la main |
 | Des marches en jouant crescendo (frontières orange / rouges) | AUTO DYN, puis FIX STEPS ; SOFT TIMBRE activé ; HARD TIMBRE pour une couche du haut trop sombre |
+| Peu de couches : on entend encore le changement de sample à une frontière | XCOLOR (16), puis ALIGN ATTACKS ; vérifier avec LISTEN (10.6.3) |
+| Le piano est trop brillant pour vous | HAMMER un peu sous 0 (−20 % est un bon départ) |
 | Certaines touches plus fortes que leurs voisines | BALANCE ▸ Smooth (ou un piano de référence) |
 | Un clic au début de certaines notes | ALIGN ATTACKS ; FADE IN pour les débuts coupés dans le son |
 | Des notes en retard ou qui flottent entre les couches | ALIGN ATTACKS |
