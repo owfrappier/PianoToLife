@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.5.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.7.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -245,7 +245,9 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    réglage partout), puis AUTO RELEASE se lance.
 8. **LEVEL** et **AUTO** (à gauche des outils, près du curseur de niveau) — le niveau de tout le set ; AUTO fait
    culminer la note la plus forte à la vélocité 127 à −9 dBFS (de la marge pour les accords, la résonance et le
-   relâchement). De préférence à la fin.
+   relâchement). De préférence à la fin. C'est le vrai niveau de l'instrument : VOL (près du Ceiling) n'est qu'un
+   volume d'écoute et revient à 0 dB à chaque changement d'instrument ; réglez donc le niveau ici, et tous vos
+   instruments restent cohérents.
 
 ---
 

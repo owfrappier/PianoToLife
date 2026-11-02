@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.5.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.7.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -142,9 +142,11 @@ The resonance follows the exact partials of each string, from a **Piano Model** 
 **Capture a model for each piano you use**: with another piano's model, many strings no longer match.
 
 **Capture** plays the 88 notes pedal up, one by one, analyses their partials, tuning, inharmonicity and decay, and
-records short strikes at up to 8 velocities placed in the middle of the piano's real layers. On a hosted piano it
-plays in real time (about 35 minutes, done once). In SAMPLER mode it is **read directly from the samples**, offline,
-at the centres of the set's own layers: a few minutes.
+records short strikes at up to 8 velocities placed in the middle of the piano's real layers. It is done once. On a
+hosted piano, in the standalone (10.7.0), it is **rendered offline**, as fast as your computer can: the hosted piano
+is told it renders offline, as in a DAW's bounce, and if it cannot follow, the capture starts again in real time (in a
+DAW it plays in real time). In SAMPLER mode it is **read directly from the samples**, offline, at the centres of the
+set's own layers: a few minutes. The progress bar stays until the new model is loaded and AUTO CAL is offered.
 
 Before capturing:
 
@@ -256,7 +258,9 @@ only**: PianoToLife's engine (silent keys, N1X / P-525 release) and the MIDI rec
 The **VELOCITY** curve is a line of points you can drag (double-click to add or remove one). **CURVE** quickly
 writes a smooth curve; **COPY** / **PASTE** exchange it as text: `Velocity = [x0, x1, …; y0, y1, …]` (played →
 sent). **CAL** calibrates the dynamics of your piano on a concert grand, a grand or an upright, from the layer
-detector's result.
+detector's result. The strip on the left of the graph shows the piano's real layers (orange = never reached by this
+curve). Since 10.7.0 a layer found within the Silent Key velocities (never sent) is shown in **grey**, is not counted
+as "not reached", and CAL gives the keyboard to the real layers only.
 
 ### Real piano repetition (REP)
 
@@ -296,6 +300,8 @@ goes to the **Host**. Differences are highlighted;
 | **Piano Comp**, **Reverb** | Placed after the resonance, so the whole instrument goes through them |
 | **EQ1 / EQ2** (10.4.2) | Click **EQ** under REVERB: the EQs take the place of COMP / REVERB (the same button brings them back). **EQ1 BEFORE FX** works before COMP and REVERB, to shape the tone of the piano; **EQ2 AFTER FX** works at the very end, before the Ceiling, to correct headphones. Each: **draw it on the curve** (double-click = a new point, drag = frequency and gain, mouse wheel on a point = its width Q, right-click = remove), PREAMP, RESET = flat, or **LOAD** a preset — a `ParametricEQ.txt` from AutoEq (oratory1990 measurements, Harman target) or an Equalizer APO file; load headphone presets in EQ2 (switch it off for a bounce or on loudspeakers). Up to 20 points each. Kept in the preset and the session |
 | **Output Ceiling** | Transparent true-peak safety limiter, with TRUE PEAK MAX, LUFS and the limiter's meter (LIM) |
+| **VOL** (10.7.0) | Listening volume, −40 to +12 dB, just before the Ceiling (which still protects). Double-click = 0 dB. **It is never saved: it goes back to 0 dB at each preset or instrument change, at restart and with ALL DEFAULT.** This is on purpose: VOL is for the moment, not for the instrument. Set the real level of each instrument where it belongs — the microphones and LEVEL in SAMPLER mode, the hosted piano's own volume in HOST mode — so that all your instruments play at coherent levels and a forgotten VOL never misleads you |
+| **SWAP L-R** (10.7.0) | Swaps the left and right channels (the audience's side instead of the pianist's). Kept when you change preset or instrument and at restart; ALL DEFAULT turns it off |
 
 ---
 
@@ -304,7 +310,10 @@ goes to the **Host**. Differences are highlighted;
 - **Presets** keep every setting. In SAMPLER mode (10.6.0) the presets are the **instruments** (`.ptlset`, beside their
   samples `.wptl`, like Kontakt `.nki` / `.nkx`): see the Sampler Manual. Double-click a preset or an instrument
   (standalone) or drop it on the window.
-- **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (to WAV) — to compare settings
+  **Modified** (10.7.0): a **\*** after the preset's name when a setting differs from the preset loaded or saved.
+  Loading another preset, RELOAD, or switching HOST / SAMPLER then asks first: lose the changes, **Save first**, or
+  Cancel. Each mode comes back with its own last preset / instrument.
+- **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC or CAF) — to compare settings
   on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
   kept); click REC again and the save window opens; PLAY plays the take at once. LOAD MIDI and the save open the same
   folder. **ENGINE MIDI REC** (under Disable CC19, on by default): the take is written as the engine plays it — the
@@ -313,7 +322,13 @@ goes to the **Host**. Differences are highlighted;
   Release Velocity 1-127.
   **Playlists** (10.4.2): LOAD MIDI opens a menu — load several MIDI files at once, a folder, or an **.m3u** list;
   the pieces follow one another, **◀ / ▶** go to the previous / next one, and the menu can loop the playlist or save
-  it as an .m3u. A missing file is skipped. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
+  it as an .m3u. A missing file is skipped. Since 10.7.0 a click on the MIDI line (**2/5 ▾**) opens the list of the
+  pieces: choose one. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
+  **BOUNCE options** (10.7.0): after the file, a window sets the **Format** (WAV, AIFF, FLAC — lossless, about half
+  the size — or CAF), the **Resolution** (16 or 24 bits, 44.1 kHz) and the **Speed**: **Auto** renders offline, as
+  fast as your computer can (SAMPLER: it waits for the disk before each block, exact at any speed; HOST: the hosted
+  piano is told it renders offline — if it cannot follow, the bounce is redone in real time); **x4 / x2** hold that
+  speed; **x1** is real time. The MIDI line shows the speed, then how it went. The metronome is never in the file.
   You can also **drop MIDI files on the window** (10.6.2): one file, several (a playlist, in the order of their names)
   or an .m3u, as with LOAD MIDI. **II (PAUSE)** (10.6.2): the sound stops where it is and the place is kept; click
   again to go on from there (from a clean piano, with the pedals the file has at that point). PLAY starts from the
@@ -325,7 +340,8 @@ goes to the **Host**. Differences are highlighted;
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
-  100 %; the view size you choose (90 / 80 %) is for the full window.
+  100 %; the view size you choose (90 / 80 %) is for the full window. Since 10.7.0 it also has VOL and SWAP L-R (see
+  section 11).
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full

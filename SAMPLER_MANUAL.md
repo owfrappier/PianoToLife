@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.5.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.7.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -228,7 +228,9 @@ a selection before working on every key.
    last key with a damper and asks whether it really is your piano's last damped note; change it there if needed
    (the same setting everywhere), then AUTO RELEASE runs.
 8. **LEVEL** and **AUTO** (left of the tools, by the level slider) — the level of the whole set; AUTO makes the loudest
-   note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end.
+   note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end. This is the
+   instrument's real level: VOL (by the Ceiling) is only a listening volume and goes back to 0 dB at each instrument
+   change, so set the level here and all your instruments stay coherent.
 
 ---
 

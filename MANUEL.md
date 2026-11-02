@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.5.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.7.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -149,8 +149,11 @@ correspondent plus.
 
 **Capture** joue les 88 notes pédale levée, une par une, analyse leurs partiels, leur accord, leur inharmonicité et
 leur extinction, et enregistre de courtes frappes à jusqu'à 8 vélocités placées au milieu des vraies couches du piano.
-Sur un piano hébergé, elle joue en temps réel (environ 35 minutes, une seule fois). En mode SAMPLER, elle **lit
-directement les échantillons**, hors temps réel, aux centres des couches du set : quelques minutes.
+Elle se fait une seule fois. Sur un piano hébergé, dans l'application autonome (10.7.0), elle est **rendue hors temps
+réel**, aussi vite que l'ordinateur le peut : le piano hébergé est prévenu qu'il rend hors ligne, comme pendant le
+bounce d'un DAW, et s'il ne suit pas, la capture repart en temps réel (dans un DAW, elle joue en temps réel). En mode
+SAMPLER, elle **lit directement les échantillons**, hors temps réel, aux centres des couches du set : quelques minutes.
+La barre de progression reste jusqu'à ce que le nouveau modèle soit chargé et qu'AUTO CAL soit proposé.
 
 Avant la capture :
 
@@ -271,7 +274,9 @@ relâchement N1X / P-525) et l'enregistreur MIDI les voient toujours.
 La courbe **VELOCITY** est une ligne de points à glisser (double-clic pour en ajouter ou en retirer un). **CURVE**
 écrit rapidement une courbe douce ; **COPY** / **PASTE** l'échangent en texte : `Velocity = [x0, x1, …; y0, y1, …]`
 (jouée → envoyée). **CAL** calibre la dynamique de votre piano sur un piano de concert, un piano à queue ou un droit,
-d'après le résultat du détecteur de couches.
+d'après le résultat du détecteur de couches. La bande à gauche du graphique montre les vraies couches du piano (orange = jamais
+atteinte par cette courbe). Depuis la 10.7.0, une couche trouvée dans les vélocités Silent Key (jamais envoyées)
+apparaît en **gris**, n'est plus comptée « not reached », et CAL donne le clavier aux vraies couches seulement.
 
 ### Répétition de piano réel (REP)
 
@@ -312,6 +317,8 @@ signaler un clavier qui se comporte à sa façon.
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
 | **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
 | **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM) |
+| **VOL** (10.7.0) | Volume d'écoute, de −40 à +12 dB, juste avant le Ceiling (qui protège toujours). Double-clic = 0 dB. **Il n'est jamais sauvegardé : il revient à 0 dB à chaque changement de preset ou d'instrument, au redémarrage et avec ALL DEFAULT.** C'est voulu : VOL sert pour le moment, pas pour l'instrument. Réglez le vrai niveau de chaque instrument là où il se règle — les micros et LEVEL en mode SAMPLER, le volume du piano hébergé lui-même en mode HOST — pour que tous vos instruments jouent à des niveaux cohérents et qu'un VOL oublié ne vous trompe jamais |
+| **SWAP L-R** (10.7.0) | Inverse les canaux gauche et droit (le côté du public au lieu de celui du pianiste). Gardé quand vous changez de preset ou d'instrument et au redémarrage ; ALL DEFAULT le désactive |
 
 ---
 
@@ -320,7 +327,10 @@ signaler un clavier qui se comporte à sa façon.
 - Les **presets** gardent tous les réglages. En mode SAMPLER (10.6.0), les presets sont les **instruments** (`.ptlset`,
   à côté de leurs échantillons `.wptl`, comme les `.nki` / `.nkx` de Kontakt) : voir le Manuel du sampler.
   Double-cliquez sur un preset ou un instrument (application autonome) ou déposez-le sur la fenêtre.
-- **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (en WAV) —
+  **Modifié** (10.7.0) : un **\*** après le nom du preset quand un réglage diffère du preset chargé ou sauvé. Charger
+  un autre preset, RELOAD, ou passer de HOST à SAMPLER demande alors d'abord : perdre les changements, **Save first**
+  (sauver d'abord) ou Cancel. Chaque mode revient avec son propre dernier preset / instrument.
+- **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC ou CAF) —
   pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
   ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre ;
   PLAY joue la prise aussitôt. LOAD MIDI et l'enregistrement ouvrent le même dossier. **ENGINE MIDI REC** (sous
@@ -330,7 +340,14 @@ signaler un clavier qui se comporte à sa façon.
   N1X ou Release Velocity 1-127.
   **Listes de lecture** (10.4.2) : LOAD MIDI ouvre un menu — plusieurs fichiers MIDI d'un coup, un dossier, ou une
   liste **.m3u** ; les morceaux s'enchaînent, **◀ / ▶** passent au précédent / suivant, et le menu permet de lire la
-  liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
+  liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. Depuis la 10.7.0, un clic sur la ligne
+  MIDI (**2/5 ▾**) ouvre la liste des morceaux : choisissez-en un. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
+  **Options du BOUNCE** (10.7.0) : après le fichier, une fenêtre règle le **Format** (WAV, AIFF, FLAC — sans perte,
+  environ deux fois plus petit — ou CAF), la **Resolution** (16 ou 24 bits, 44,1 kHz) et la **Speed** : **Auto** rend
+  hors temps réel, aussi vite que l'ordinateur le peut (SAMPLER : il attend le disque avant chaque bloc, exact à toute
+  vitesse ; HOST : le piano hébergé est prévenu qu'il rend hors ligne — s'il ne suit pas, le bounce est refait en temps
+  réel) ; **x4 / x2** tiennent cette vitesse ; **x1** = temps réel. La ligne MIDI affiche la vitesse, puis le résultat.
+  Le métronome n'est jamais dans le fichier.
   Vous pouvez aussi **déposer des fichiers MIDI sur la fenêtre** (10.6.2) : un fichier, plusieurs (une liste de
   lecture, dans l'ordre de leurs noms) ou un .m3u, comme avec LOAD MIDI. **II (PAUSE)** (10.6.2) : le son s'arrête là
   où il est et la position est gardée ; recliquez pour reprendre de là (avec un piano propre et les pédales du fichier
@@ -342,7 +359,8 @@ signaler un clavier qui se comporte à sa façon.
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
-  barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète.
+  barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète. Depuis la
+  10.7.0, elle a aussi VOL et SWAP L-R (voir la section 11).
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
