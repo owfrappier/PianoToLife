@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1070" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1080" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,45 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.7.0
+## What's new in 10.8.0
+
+**AMBIENCE AUTO CAL: your piano's own room; una corda LEVEL / TONE; a large velocity curve with your keyboard's range.**
+
+- **AMBIENCE AUTO CAL** (next to Ambience, under the Resonance Level one): PianoToLife plays a few high notes held and
+  listens between their partials, where only the room rings. It finds how long your piano's room rings and how loud
+  it is, and sets the new Room **Auto** (its level shown, e.g. *Auto +3 dB*). Everything PianoToLife adds — the
+  sympathetic resonance, the release, the noises — then rings in the same room as your piano, at the same level; your
+  piano's own sound is never touched. A few seconds offline in the standalone, about 25 s in a DAW. Very dry
+  microphones: no room found, Small. After a Piano Model capture, AUTO CAL now offers the resonance level, then the
+  room. The button stays lit once the piano was analysed.
+- **Ambience slider: −6 / +6 dB** around Default (it was ±3 dB).
+- **Una corda LEVEL / TONE**: **click the SOFT pedal** in the damper mechanics view (it reads *settings*): how much the
+  soft pedal lowers (LEVEL) and darkens (TONE, SAMPLER) the notes, to your taste and your piano. 0 = as measured on a
+  concert grand; LEVEL also sets the ring of the unstruck string (SAMPLER and Simu).
+- **Large velocity curve**: the icon next to *sent* opens the velocity curve in a large, resizable window, for fine
+  adjustments.
+- **KEYBOARD range** (at the bottom of the large curve): type min / max, or **LEARN** your softest and loudest notes.
+  The velocities your keyboard really sends are stretched onto the whole curve, so a keyboard that never reaches 127
+  still plays every layer — the calibrated CAL curves included. Live playing only (not the MIDI files). **FULL**, the
+  velocity DEFAULT and ALL DEFAULT: back to 1–127. Kept for this computer, whatever the preset.
+
+Manuals updated for 10.8.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.7.1
+
+**SAVE, preset right-click, MIDI files that no longer touch your volume.** (10.7.1 was not released on its own.)
+
+- **SAVE** (between RELOAD and SAVE AS): saves over the preset (HOST) or the instrument (SAMPLER) shown, without a
+  window. "SAVE AS..." is now SAVE AS.
+- **Right-click on the PRESET box**: rename the preset / instrument shown, or move it to the Trash (with a
+  confirmation; an instrument's .wptl samples stay).
+- **FOLDER** in SAMPLER mode opens the current instrument's folder (it always opened the HOST presets folder).
+- **LOAD MIDI menu**: "Ignore volume, pan, expression, effects and bank changes in MIDI files" (on by default,
+  remembered): a MIDI file can no longer change your instrument's volume; the keyboard is never filtered.
+- Once a piano is loaded, Open / Close read **Show piano / Hide piano** (it stays loaded).
+
+### Also in 10.7.0
 
 **Offline BOUNCE and capture, VOL / SWAP L-R, the MIDI playlist and the modified preset.**
 
@@ -371,7 +409,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1070" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1080" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
@@ -826,10 +864,14 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Compact view.** Fold the interface into a small bar while you play.
 - **Una corda.** With **Una Corda: Simu**, the soft pedal works with any piano: a softer,
   rounder note adapted to each piano, and the unstruck string ringing in sympathy. With
-  **Una Corda: BP**, your piano's own una corda samples play as before.
+  **Una Corda: BP**, your piano's own una corda samples play as before. Click the SOFT pedal to set its
+  LEVEL and TONE to your taste (10.8.0).
+- **Ambience AUTO CAL.** Measures your piano's own room in its sound and puts everything PianoToLife adds in the
+  same room, at the same level (10.8.0).
 - **Layer detector and velocity calibration.** Find your piano's real velocity layers on A4
   in about 1 min 20 s, then calibrate its dynamics on a real concert grand, grand or upright;
-  export the result as text.
+  export the result as text. A large velocity curve, with your keyboard's real range (LEARN) stretched onto it
+  (10.8.0).
 - **Key and pedal noises.** A wooden key action (hammer back on its rest, key landing,
   repetition in the escapement), and a sustain pedal with its wooden thumps, the felts on the
   strings and the freed (mostly bass) strings ringing — following the pedal's travel and speed,
