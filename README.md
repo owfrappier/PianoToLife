@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1063" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1070" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,31 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.6.3
+## What's new in 10.7.0
+
+**Offline BOUNCE and capture, VOL / SWAP L-R, the MIDI playlist and the modified preset.**
+
+- **Offline BOUNCE** (standalone): BOUNCE now renders as fast as your computer can (**Auto**), or at x4 / x2 / x1
+  (real time). After choosing the file, a window sets the **format** (WAV, AIFF, FLAC or CAF), the **resolution**
+  (16 or 24 bits, 44.1 kHz) and the **speed**. In SAMPLER mode it waits for the disk before each block: exact at any
+  speed. In HOST mode the hosted piano is told it renders offline, as in a DAW; if it cannot follow, the bounce is
+  redone in real time.
+- **Offline Piano Model capture** (HOST, standalone): rendered the same way, much faster. The progress bar stays until
+  the new model is loaded and AUTO CAL is offered.
+- **VOL and SWAP L-R** (by the Ceiling, and in the compact view): a listening volume (-40 to +12 dB, before the
+  Ceiling) that is never saved - back to 0 dB at each preset or instrument, so the real level stays in the
+  instrument - and a left / right swap (the audience's side).
+- **MIDI playlist**: click on the MIDI line to choose a piece.
+- **Modified preset**: a * after the preset's name when a setting has changed. Loading another preset, RELOAD or
+  switching HOST / SAMPLER asks to save first, and each mode comes back with its own last preset.
+- **VELOCITY / CAL**: a layer found within the Silent Key velocities (never sent) is shown in grey, no longer counted
+  as "not reached", and CAL gives the keyboard to the real layers only.
+- Double-click on VOL / CEILING: back to 0 dB / -1 dBFS.
+
+Manuals updated for 10.7.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.6.3
 
 **SAMPLER: a real voicing (MEDIUM, HAMMER), XCOLOR for few-layer pianos, and LISTEN.**
 
@@ -347,7 +371,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1063" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1070" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
@@ -742,7 +766,7 @@ as the soundboard of a real piano carries the vibration of one string to the oth
 Each piano can be **calibrated precisely** with the built-in **automatic capture**.
 PianoToLife plays the **88 notes pedal up**, one by one, and analyses the real partials,
 their tuning, their inharmonicity and their decay times. It then builds a resonance model
-unique to that instrument (about 35 minutes, done once). Since 9.5.0 it also records
+unique to that instrument (done once; rendered offline in the standalone since 10.7.0). Since 9.5.0 it also records
 short strikes at up to 8 velocities (since 9.5.2 in the middle of the piano's real layers, found first on A4), which adapt the una corda to your piano, warns you if anything
 clipped and cleans the model automatically. A model of the VSL Synchron
 Steinway D-274 (V8) is included and ready to use.
@@ -815,8 +839,8 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
   its own volume and colour.
 - **Listen to each part.** Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience:
   hear any combination of parts, kept in the preset.
-- **MIDI player (standalone).** Load, play, record and save MIDI, and bounce to a 16-bit /
-  44.1 kHz WAV — to compare settings on exactly the same performance.
+- **MIDI player (standalone).** Load, play, record and save MIDI, and bounce — offline, as fast as your computer can —
+  to WAV, AIFF, FLAC or CAF, 16 or 24 bits / 44.1 kHz, to compare settings on exactly the same performance.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
   LUFS short-term / long-term.
 
