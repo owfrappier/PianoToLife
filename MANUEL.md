@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.7.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.8.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -100,7 +100,7 @@ dans les réglages audio.
 
 ## 4. Mode HOST : préparer votre piano
 
-1. Choisissez votre plug-in de piano dans la partie **HOST** (scan, liste, Add VST3) et ouvrez sa fenêtre.
+1. Choisissez votre plug-in de piano dans la partie **HOST** (scan, liste, Add VST3) et ouvrez sa fenêtre (**Show piano** / **Hide piano** une fois chargé, 10.7.1 : le piano reste chargé).
 2. **Dans le piano hébergé**, coupez :
    - toute option de résonance *sympathique*, *de cordes*, *de sustain* ou *de pédale* ;
    - toute **réverbération, effet et compression** (salles, ambiance, égaliseur, limiteur, élargisseur) :
@@ -229,6 +229,12 @@ change pas.
 - **Una corda** : **Simu** fait marcher la pédale douce avec n'importe quel piano (une note plus douce et plus ronde,
   adaptée à chaque piano, et le halo de la corde non frappée) ; **BP** envoie la pédale au piano pour ses propres
   échantillons d'una corda.
+- **Una corda LEVEL / TONE** (10.8.0) : **cliquez sur la pédale SOFT** dans la vue des étouffoirs (elle porte le mot
+  *settings*). **LEVEL** règle combien la pédale douce baisse le niveau des notes, **TONE** combien elle les assombrit
+  (SAMPLER seulement : en HOST, le son du piano hébergé ne peut pas être filtré note par note). 0 = tel que mesuré sur
+  un piano de concert, −100 % = aucun changement, +100 % = deux fois plus ; LEVEL règle aussi la corde non frappée.
+  *settings* s'écrit en gras quand l'un des deux n'est pas à 0, et en grisé avec **BP**. Gardé dans le preset ; le
+  **DEFAULT** de la pédale les remet à 0.
 
 ---
 
@@ -278,6 +284,20 @@ d'après le résultat du détecteur de couches. La bande à gauche du graphique 
 atteinte par cette courbe). Depuis la 10.7.0, une couche trouvée dans les vélocités Silent Key (jamais envoyées)
 apparaît en **gris**, n'est plus comptée « not reached », et CAL donne le clavier aux vraies couches seulement.
 
+**Grande courbe** (10.8.0) : la petite icône à côté de *sent* ouvre la même courbe dans une grande fenêtre
+redimensionnable — plus facile pour les réglages fins. Les deux restent synchronisées ; l'icône (ou la croix de la
+fenêtre) la referme.
+
+**Plage du clavier — KEYBOARD** (10.8.0), en bas de la grande courbe : beaucoup de claviers n'envoient jamais 127 (ou
+ne descendent jamais très bas) ; le haut d'une courbe — les couches les plus fortes d'une courbe CAL calibrée — est
+alors hors d'atteinte. Donnez à PianoToLife les vélocités que votre clavier envoie vraiment : tapez **min** / **max**,
+ou cliquez sur **LEARN**, jouez votre note la plus douce et votre plus forte, puis **DONE**. Elles sont étirées sur
+toute la courbe, avant CURVE et les points : toutes les couches sont de nouveau atteintes, et la courbe elle-même ne
+change pas. Jeu en direct seulement (fichiers MIDI, ANALYSE et AUTO CAL ne sont pas touchés) ; les vélocités Silent Key
+sont laissées telles quelles. **FULL** = retour à 1–127 (rien n'est changé), comme le **DEFAULT** de la vélocité et
+ALL DEFAULT. C'est un réglage de votre clavier, pas du piano : il est gardé pour cet ordinateur, quel que soit le
+preset. Quand la plage n'est pas pleine, la petite courbe affiche *keyboard min-max*.
+
 ### Répétition de piano réel (REP)
 
 Sur un vrai piano, deux frappes ne sonnent jamais tout à fait pareil, même à la même vélocité. Un piano échantillonné
@@ -313,12 +333,37 @@ signaler un clavier qui se comporte à sa façon.
 | **Key Noise** (GRAND / UPRIGHT) | La mécanique en bois des touches : marteau qui retombe, touche qui arrive en butée, répétition |
 | **Pedal Noise** | Chocs de bois, feutres sur les cordes et cordes graves libérées, selon la course et la vitesse de la pédale |
 | **BODY** | La taille perçue du piano (à gauche de SOFT) : la fondamentale de chaque note renforcée ou atténuée, en HOST et en SAMPLER |
-| **Ambience** | Une salle autour de la résonance et du relâchement, quand vous jouez avec les micros proches |
+| **Ambience** | Une salle autour de tout ce que PianoToLife ajoute (résonance, relâchement, bruits), jamais autour du son de votre piano. **Room** : Small, Medium, Default, Hall ou **Auto** (10.8.0, voir plus bas). Le curseur va de −6 à +6 dB autour de Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
 | **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
 | **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM) |
 | **VOL** (10.7.0) | Volume d'écoute, de −40 à +12 dB, juste avant le Ceiling (qui protège toujours). Double-clic = 0 dB. **Il n'est jamais sauvegardé : il revient à 0 dB à chaque changement de preset ou d'instrument, au redémarrage et avec ALL DEFAULT.** C'est voulu : VOL sert pour le moment, pas pour l'instrument. Réglez le vrai niveau de chaque instrument là où il se règle — les micros et LEVEL en mode SAMPLER, le volume du piano hébergé lui-même en mode HOST — pour que tous vos instruments jouent à des niveaux cohérents et qu'un VOL oublié ne vous trompe jamais |
 | **SWAP L-R** (10.7.0) | Inverse les canaux gauche et droit (le côté du public au lieu de celui du pianiste). Gardé quand vous changez de preset ou d'instrument et au redémarrage ; ALL DEFAULT le désactive |
+
+### AUTO CAL de l'Ambience : une seule salle pour tout le piano (10.8.0)
+
+Votre piano a été enregistré dans une salle, et cette salle fait partie de son timbre. PianoToLife ajoute des sons que
+l'enregistrement ne contient pas : la résonance sympathique, le relâchement, les bruits de touche et de pédale. S'ils
+restent secs — ou sonnent dans une autre salle que le piano — l'oreille entend deux espaces superposés : le son paraît
+moins naturel, et la salle du piano se brouille.
+
+**AUTO CAL** (à côté d'Ambience, sous celui de Resonance Level) écoute la salle de votre piano **dans son propre son** :
+PianoToLife joue quelques notes aiguës tenues et écoute *entre* leurs harmoniques, là où seule la salle sonne. Il en
+déduit la durée de la salle et son niveau, puis règle la **Room** sur **Auto**. Tout ce que PianoToLife ajoute sonne
+alors dans la même salle que votre piano, et au même niveau. Le son du piano lui-même n'est jamais modifié. Le résultat
+s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être masquée.
+
+- **Lancez-le une fois par piano** (et de nouveau après un changement de micros ou de réverbération dans
+  l'instrument). Quelques secondes hors ligne en standalone, environ 25 s dans un DAW ; ne jouez pas pendant la
+  mesure. Le bouton reste allumé une fois le piano analysé.
+- **Le niveau trouvé s'affiche dans la Room** (par exemple *Auto +3 dB*). Le curseur Ambience reste un réglage fin
+  autour : baissez-le de quelques points si vous trouvez la salle trop présente — souvent le cas avec des relâchements
+  très propres.
+- **Un piano très sec** (micros proches ou fermés) : aucune salle n'est trouvée, la Room passe sur **Small**.
+- ***The notes did not fully agree*** : les notes mesurées ne s'accordent pas toutes (vieil enregistrement, souffle...) :
+  le résultat reste utilisable, vérifiez-le à l'oreille.
+- **Après une capture du Piano Model**, PianoToLife propose d'enchaîner les deux AUTO CAL : le niveau de résonance,
+  puis la salle.
 
 ---
 
@@ -330,6 +375,11 @@ signaler un clavier qui se comporte à sa façon.
   **Modifié** (10.7.0) : un **\*** après le nom du preset quand un réglage diffère du preset chargé ou sauvé. Charger
   un autre preset, RELOAD, ou passer de HOST à SAMPLER demande alors d'abord : perdre les changements, **Save first**
   (sauver d'abord) ou Cancel. Chaque mode revient avec son propre dernier preset / instrument.
+  **SAVE** (10.7.1) enregistre les réglages actuels par-dessus le preset (l'instrument) affiché, sans fenêtre ;
+  **SAVE AS** enregistre sous un nouveau nom (SAVE l'ouvre quand il n'y a pas encore de fichier, par ex. Last Session).
+  **Clic droit sur la boîte PRESET** (10.7.1) : **renommer** le preset affiché, ou le **mettre à la Corbeille** (jamais
+  effacé définitivement ; pour un instrument, seulement le `.ptlset` - ses échantillons `.wptl` restent). **FOLDER**
+  ouvre le dossier Presets (HOST) ou le dossier de l'instrument en cours (SAMPLER).
 - **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC ou CAF) —
   pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
   ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre ;
@@ -341,7 +391,10 @@ signaler un clavier qui se comporte à sa façon.
   **Listes de lecture** (10.4.2) : LOAD MIDI ouvre un menu — plusieurs fichiers MIDI d'un coup, un dossier, ou une
   liste **.m3u** ; les morceaux s'enchaînent, **◀ / ▶** passent au précédent / suivant, et le menu permet de lire la
   liste en boucle ou de l'enregistrer en .m3u. Un fichier manquant est sauté. Depuis la 10.7.0, un clic sur la ligne
-  MIDI (**2/5 ▾**) ouvre la liste des morceaux : choisissez-en un. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
+  MIDI (**2/5 ▾**) ouvre la liste des morceaux : choisissez-en un. Dans le menu de LOAD MIDI, **Ignore volume, pan,
+  expression, effects and bank changes in MIDI files** (10.7.1, cochée par défaut) : le lecteur laisse de côté les CC7,
+  CC10, CC11, CC91, CC93 et changements de banque des fichiers, si bien qu'un fichier ne peut plus changer le volume de
+  votre piano hébergé (Kontakt…) ; ce que vous jouez au clavier n'est jamais filtré. BOUNCE enregistre le morceau chargé, jusqu'à ce que le son s'éteigne (10.5.4 : les notes encore tenues à la fin sonnent jusqu'au bout).
   **Options du BOUNCE** (10.7.0) : après le fichier, une fenêtre règle le **Format** (WAV, AIFF, FLAC — sans perte,
   environ deux fois plus petit — ou CAF), la **Resolution** (16 ou 24 bits, 44,1 kHz) et la **Speed** : **Auto** rend
   hors temps réel, aussi vite que l'ordinateur le peut (SAMPLER : il attend le disque avant chaque bloc, exact à toute

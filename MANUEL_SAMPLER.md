@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.7.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.8.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -330,7 +330,10 @@ En mode SAMPLER, les moteurs de PianoToLife jouent sur vos échantillons :
 - **Sustain** : toujours Host Sustain en SAMPLER, avec une **demi-pédale** native sur les voix elles-mêmes
   (Progressive, ou Switch pour les pédales tout-ou-rien). La pédale tonale fonctionne.
 - **Una corda** : simulée sur chaque voix (niveau et partiels d'une vraie una corda, plus le halo de la corde non
-  frappée).
+  frappée). Depuis la 10.8.0, **cliquez sur la pédale SOFT** (*settings*) pour régler son **LEVEL** (combien plus
+  doux) et son **TONE** (combien plus sombre) selon votre goût et votre piano — 0 = tel que mesuré.
+- **AUTO CAL de l'Ambience** (10.8.0) : mesure la salle de vos échantillons dans leur propre son et place tout ce que
+  PianoToLife ajoute dans la même salle (Room **Auto**) — voir le [Manuel d'utilisation](MANUEL.md).
 - **Relâchement** : les étouffoirs de PianoToLife ; avec un clavier qui envoie une vélocité de relâchement, un
   relâchement lent pose l'étouffoir plus tard (voir Keyboard Note-Off Floor et Curve dans la partie KEYBOARD).
 - **Notes répétées** : une nouvelle frappe ne coupe pas la précédente ; celle-ci continue un peu plus bas (Per key
@@ -357,8 +360,11 @@ pour vérifier un set. **LEVEL TEST** : joue A0, C2, C4, C6 et C8 à la vélocit
 
 Depuis la 10.6.0, un piano échantillonné, ce sont **deux fichiers : le `.ptlset` et le `.wptl`**, dans le même dossier
 de votre bibliothèque. En mode SAMPLER, **la liste PRESET affiche les instruments de votre bibliothèque** et le nom de
-l'instrument s'affiche en grand au-dessus ; **SAVE AS** enregistre l'instrument à côté de ses échantillons, et
-enregistrer par-dessus un instrument d'**autres échantillons** demande d'abord (nouveau nom / remplacer / annuler). Le
+l'instrument s'affiche en grand au-dessus ; **SAVE** (10.7.1) enregistre vos changements par-dessus l'instrument
+affiché, **SAVE AS** enregistre l'instrument à côté de ses échantillons sous un nouveau nom, et enregistrer par-dessus
+un instrument d'**autres échantillons** demande d'abord (nouveau nom / remplacer / annuler). Un **clic droit sur la
+boîte PRESET** renomme l'instrument ou le met à la Corbeille (seulement le `.ptlset` : ses échantillons restent) ;
+**FOLDER** ouvre le dossier de l'instrument. Le
 dossier de la bibliothèque est demandé la première fois que vous utilisez le SAMPLER (modifiable dans MIX > LIBRARY).
 Un instrument rangé ailleurs s'ouvre par un **double-clic** (application autonome) ou en le **déposant sur la
 fenêtre**. **PASSWORD...** (fenêtre principale) verrouille / déverrouille SAMPLER EDIT pour un set protégé. Les presets

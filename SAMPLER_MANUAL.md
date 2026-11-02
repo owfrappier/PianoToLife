@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.7.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.8.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -314,7 +314,10 @@ In SAMPLER mode, PianoToLife's engines play on your samples:
 - **Sustain**: always Host Sustain in SAMPLER, with a native **half pedal** on the voices themselves (Progressive,
   or Switch for on / off pedals). Sostenuto works.
 - **Una corda**: simulated on every voice (level and partials of a real una corda, plus the halo of the string not
-  struck).
+  struck). Since 10.8.0, **click the SOFT pedal** (*settings*) to set its **LEVEL** (how much quieter) and **TONE**
+  (how much darker) to your taste and your piano — 0 = as measured.
+- **Ambience AUTO CAL** (10.8.0): measures the room of your samples in their own sound and puts everything PianoToLife
+  adds in the same room (Room **Auto**) — see the [User Manual](USER_MANUAL.md).
 - **Release**: PianoToLife's dampers; with a keyboard that sends release velocity, a slow release lands the damper
   later (see Keyboard Note-Off Floor and Curve in the KEYBOARD section).
 - **Repeated notes**: a new strike does not cut the previous one; it goes on, a little lower (Per key in MIX).
@@ -340,8 +343,10 @@ check a set.  **LEVEL TEST**: plays A0, C2, C4, C6, C8 at velocity 127 and tells
 
 Since 10.6.0 a sampled piano is **two files: the `.ptlset` and the `.wptl`**, in the same folder of your library. In
 SAMPLER mode the **PRESET list shows the instruments of your library** and the instrument's name is shown large above it;
-**SAVE AS** saves the instrument beside its samples, and saving over an instrument of **other samples** asks first (new
-name / replace / cancel). The library folder is asked the first time you use the SAMPLER (change it in MIX > LIBRARY).
+**SAVE** (10.7.1) saves your changes over the instrument shown, **SAVE AS** saves the instrument beside its samples under
+a new name, and saving over an instrument of **other samples** asks first (new name / replace / cancel). A
+**right-click on the PRESET box** renames the instrument or moves it to the Trash (only the `.ptlset`: its samples
+stay); **FOLDER** opens the instrument's folder. The library folder is asked the first time you use the SAMPLER (change it in MIX > LIBRARY).
 An instrument elsewhere opens by **double-clicking it** (standalone) or **dropping it on the window**. **PASSWORD...**
 (main window) locks / unlocks SAMPLER EDIT for a protected set. The `[SAMP]` presets of earlier versions are converted
 into instruments the first time (the old files go to the Trash). Keep a piano's folder together: it can then be moved

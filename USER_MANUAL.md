@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.7.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.8.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -96,7 +96,7 @@ audio settings.
 
 ## 4. HOST mode: setting up your piano
 
-1. Choose your piano plug-in in the **HOST** section (scan, list, Add VST3) and open its window.
+1. Choose your piano plug-in in the **HOST** section (scan, list, Add VST3) and open its window (**Show piano** / **Hide piano** once it is loaded, 10.7.1: the piano stays loaded).
 2. **In the hosted piano**, turn off:
    - every *sympathetic*, *string*, *sustain* or *pedal resonance* option;
    - all **reverb, effects and compression** (rooms, ambience, EQ, limiters, wideners): PianoToLife listens to the
@@ -215,6 +215,11 @@ the pedals the DAW sends: the same passage always sounds the same, wherever you 
 - **Sostenuto** works in every mode.
 - **Una corda**: **Simu** makes the soft pedal work with any piano (a softer, rounder note adapted to each piano, and
   the halo of the unstruck string); **BP** sends the pedal to the piano for its own una corda samples.
+- **Una corda LEVEL / TONE** (10.8.0): **click the SOFT pedal** in the damper mechanics view (it reads *settings*).
+  **LEVEL** sets how much quieter the soft pedal makes the notes, **TONE** how much darker (SAMPLER only: in HOST the
+  hosted piano's sound cannot be filtered note by note). 0 = as measured on a concert grand, −100 % = no change,
+  +100 % = twice; LEVEL also sets the ring of the unstruck string. *settings* is written in bold when one of them is
+  not at 0, and greyed with **BP**. Kept in the preset; the pedal **DEFAULT** puts them back to 0.
 
 ---
 
@@ -262,6 +267,18 @@ detector's result. The strip on the left of the graph shows the piano's real lay
 curve). Since 10.7.0 a layer found within the Silent Key velocities (never sent) is shown in **grey**, is not counted
 as "not reached", and CAL gives the keyboard to the real layers only.
 
+**Large curve** (10.8.0): the small icon next to *sent* opens the same curve in a large, resizable window — easier for
+fine adjustments. Both stay in step; the icon (or the window's close button) closes it.
+
+**KEYBOARD range** (10.8.0), at the bottom of the large curve: many keyboards never send 127 (or never go very low), so
+the top of a curve — the loudest layers of a calibrated CAL curve — is out of reach. Give PianoToLife the velocities
+your keyboard really sends: type **min** / **max**, or click **LEARN**, play your softest and your loudest notes, then
+**DONE**. They are stretched onto the whole curve, before CURVE and the points: every layer is reached again, and the
+curve itself does not change. Live playing only (MIDI files, ANALYSE and AUTO CAL are not touched); the Silent Key
+velocities are left alone. **FULL** = back to 1–127 (nothing changed), as do the velocity **DEFAULT** and ALL DEFAULT.
+It belongs to your keyboard, not to the piano: it is kept for this computer, whatever the preset. When it is not
+full, the small curve shows *keyboard min-max*.
+
 ### Real piano repetition (REP)
 
 On a real piano, no two strikes sound exactly the same, even at the same velocity. A sampled piano replays the very
@@ -296,12 +313,34 @@ goes to the **Host**. Differences are highlighted;
 | **Key Noise** (GRAND / UPRIGHT) | The wooden key action: hammer back on its rest, key landing, repetition |
 | **Pedal Noise** | Wooden thumps, felts on the strings and freed bass strings, following the pedal's travel and speed |
 | **BODY** | The perceived size of the piano (left of SOFT): each note's fundamental raised or lowered, in HOST and SAMPLER |
-| **Ambience** | A hall around the resonance and release, when you play with close microphones |
+| **Ambience** | A room around everything PianoToLife adds (resonance, release, noises), never around your piano's own sound. **Room**: Small, Medium, Default, Hall or **Auto** (10.8.0, see below). The slider goes from −6 to +6 dB around Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placed after the resonance, so the whole instrument goes through them |
 | **EQ1 / EQ2** (10.4.2) | Click **EQ** under REVERB: the EQs take the place of COMP / REVERB (the same button brings them back). **EQ1 BEFORE FX** works before COMP and REVERB, to shape the tone of the piano; **EQ2 AFTER FX** works at the very end, before the Ceiling, to correct headphones. Each: **draw it on the curve** (double-click = a new point, drag = frequency and gain, mouse wheel on a point = its width Q, right-click = remove), PREAMP, RESET = flat, or **LOAD** a preset — a `ParametricEQ.txt` from AutoEq (oratory1990 measurements, Harman target) or an Equalizer APO file; load headphone presets in EQ2 (switch it off for a bounce or on loudspeakers). Up to 20 points each. Kept in the preset and the session |
 | **Output Ceiling** | Transparent true-peak safety limiter, with TRUE PEAK MAX, LUFS and the limiter's meter (LIM) |
 | **VOL** (10.7.0) | Listening volume, −40 to +12 dB, just before the Ceiling (which still protects). Double-click = 0 dB. **It is never saved: it goes back to 0 dB at each preset or instrument change, at restart and with ALL DEFAULT.** This is on purpose: VOL is for the moment, not for the instrument. Set the real level of each instrument where it belongs — the microphones and LEVEL in SAMPLER mode, the hosted piano's own volume in HOST mode — so that all your instruments play at coherent levels and a forgotten VOL never misleads you |
 | **SWAP L-R** (10.7.0) | Swaps the left and right channels (the audience's side instead of the pianist's). Kept when you change preset or instrument and at restart; ALL DEFAULT turns it off |
+
+### Ambience AUTO CAL: one room for the whole piano (10.8.0)
+
+Your piano was recorded in a room, and that room is part of its sound. PianoToLife adds sounds the recording does not
+contain: the sympathetic resonance, the release, the key and pedal noises. If they stay dry — or ring in another room
+than the piano — the ear hears two spaces laid on top of each other: the sound is less natural, and the piano's own
+room gets blurred.
+
+**AUTO CAL** (next to Ambience, under the Resonance Level one) listens to your piano's room **in its own sound**:
+PianoToLife plays a few high notes held and listens *between* their partials, where only the room rings. It finds how
+long the room rings and how loud it is, and sets the **Room** to **Auto**. Everything PianoToLife adds then rings in
+the same room as your piano, at the same level. Your piano's own sound is never touched. The result is often heard at
+once: the piano's room comes out, instead of being masked.
+
+- **Run it once per piano** (and again after changing its microphones or its own reverb). A few seconds offline in
+  the standalone, about 25 s in a DAW; don't play meanwhile. The button stays lit once the piano was analysed.
+- **The level found is shown in the Room** (e.g. *Auto +3 dB*). The Ambience slider still sets more or less around
+  it: lower it a little if you find the room too present — often the case with very clean releases.
+- **A very dry piano** (close or closed microphones): no room is found, the Room is set to **Small**.
+- ***The notes did not fully agree***: the measured notes differ (an old recording, tape hiss...): the result is
+  usable, check it by ear.
+- **After a Piano Model capture**, PianoToLife offers both AUTO CALs in a row: the resonance level, then the room.
 
 ---
 
@@ -313,6 +352,11 @@ goes to the **Host**. Differences are highlighted;
   **Modified** (10.7.0): a **\*** after the preset's name when a setting differs from the preset loaded or saved.
   Loading another preset, RELOAD, or switching HOST / SAMPLER then asks first: lose the changes, **Save first**, or
   Cancel. Each mode comes back with its own last preset / instrument.
+  **SAVE** (10.7.1) saves the current settings over the preset (instrument) shown, with no window; **SAVE AS** saves
+  under a new name (SAVE opens it when there is no file yet, e.g. Last Session). **Right-click on the PRESET box**
+  (10.7.1): **Rename** the preset shown, or **Move it to the Trash** (never deleted for good; for an instrument, only
+  the `.ptlset` - its samples `.wptl` stay). **FOLDER** opens the Presets folder (HOST) or the current instrument's
+  folder (SAMPLER).
 - **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC or CAF) — to compare settings
   on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
   kept); click REC again and the save window opens; PLAY plays the take at once. LOAD MIDI and the save open the same
@@ -323,7 +367,9 @@ goes to the **Host**. Differences are highlighted;
   **Playlists** (10.4.2): LOAD MIDI opens a menu — load several MIDI files at once, a folder, or an **.m3u** list;
   the pieces follow one another, **◀ / ▶** go to the previous / next one, and the menu can loop the playlist or save
   it as an .m3u. A missing file is skipped. Since 10.7.0 a click on the MIDI line (**2/5 ▾**) opens the list of the
-  pieces: choose one. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
+  pieces: choose one. In the LOAD MIDI menu, **Ignore volume, pan, expression, effects and bank changes in MIDI files**
+  (10.7.1, on by default): the player leaves out the files' CC7, CC10, CC11, CC91, CC93 and bank changes, so a file
+  can no longer change your hosted piano's volume (Kontakt...); what you play on the keyboard is never filtered. BOUNCE records the piece loaded, until its sound has died away (10.5.4: notes still held at the end ring out).
   **BOUNCE options** (10.7.0): after the file, a window sets the **Format** (WAV, AIFF, FLAC — lossless, about half
   the size — or CAF), the **Resolution** (16 or 24 bits, 44.1 kHz) and the **Speed**: **Auto** renders offline, as
   fast as your computer can (SAMPLER: it waits for the disk before each block, exact at any speed; HOST: the hosted
