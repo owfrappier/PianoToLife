@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1081" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1090" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,56 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.8.1
+## What's new in 10.9.0
+
+**Take the room out of your samples: SAMPLER DRY / DENOISE.**
+
+Born from our research on modelling recordings of real pianos, this is one of the most powerful functions of
+PianoToLife: a piano recorded in a room that rings too much, or that does not suit your music, can now be freed of it
+and placed in the room you choose.
+
+- **DRY** (SAMPLER > EDIT, button **DRY / DENOISE...**, for the microphone selected): PianoToLife finds the partials of
+  every note on the sample itself and keeps their real content — the beating of the unison strings included — and
+  takes out what lies between them: the room, the hiss, part of the body. **The strike stays the original**: DRY
+  waits until the knock, the case and the neighbouring strings have faded (80 to 600 ms, measured on each sample), then
+  comes in gradually, so **100 % is safe**. Then put a light Ambience back: one clean room for everything PianoToLife
+  plays and adds.
+- **DENOISE**: light and careful — the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time
+  so that it never warbles.
+- **Listen before you make it**: choose a key and a velocity — **A6** by default, the room is easiest to hear in the
+  treble; with SHOW BY MIDI, the key you play — and compare **ORIGINAL** and **PROCESSED**.
+- **MAKE "<name>-dry"**: the samples of the microphone, processed, go into a separate container beside the original one,
+  in **24-bit FLAC** (lossless: the cleaned tails go below the 16-bit floor). **The original samples are never
+  touched**; MAKE always starts again from them.
+- **MIC n plays: ORIGINAL / -DRY**, microphone by microphone, saved with the instrument and the preset. If the -dry file
+  is gone, or a sample is missing in it, the original is played — and the -dry comes back with the file. A -dry file
+  beside the original is found on its own.
+- **After switching to -DRY: make a new Piano Model capture (.srpiano), then run AUTO CAL of Resonance and of Ambience
+  again** — they were measured on the sound with its room. The Ambience AUTO CAL then finds no room (Room Small): choose
+  the room you want.
+
+**Also in 10.9.0**
+
+- **RANGE** (AUTO DYN window, once the analysis is done): the dynamic range of the whole keyboard, **−10 to +10 dB** —
+  as between a finely regulated piano and a less even one. v127 does not move, the layers played stay the same: only
+  the levels change, along the reference curve. A new AUTO DYN puts it back to 0: set RANGE after the analysis.
+- **AUTO COLOR follows RANGE**: a velocity made softer is aimed at a darker colour, a louder one at a brighter colour,
+  as on a real piano.
+- **AMBIENCE AUTO CAL** now recognises a piano made dry: no room found, Room Small.
+- **SFZ and Decent Sampler import**: much faster for instruments with many regions on the same files.
+- **Fix**: after several saves, MAKE or big pianos loaded in a row, the sound could stop until PianoToLife was reopened.
+- Instruments saved with 10.9.0 still open in older versions, with their original samples (without RANGE).
+
+<p align="center">
+  <img src="screenshot1b.png?v=1090" alt="SAMPLER EDIT: the DRY / DENOISE panel" width="900"><br>
+  <i>SAMPLER EDIT (10.9.0): the DRY / DENOISE panel on a 3-layer grand — listen on A6, MAKE the -dry samples, then
+  choose ORIGINAL or -DRY for each microphone.</i>
+</p>
+
+Manuals updated for 10.9.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.8.1
 
 **OUTPUT: stereo, swap or a real mono; an output level meter; a VSL-style stereo image for each microphone.**
 
@@ -68,9 +117,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   left and right channels should go, or drag between them to move the whole image — apart = as recorded, closer =
   narrower, crossed = mirrored, together = mono at that place. Constant power: the image moves without losing level.
   **WIDE** (100–200 %) widens beyond the recording. Older instruments are converted.
-
-Manuals updated for 10.8.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.8.0
 
@@ -424,12 +470,6 @@ it onto a smooth curve with the key's gain (at most 6 dB), all its layers follow
 recording's own balance from bass to treble and only removes the jumps; **Grand D**, **Grand B** and **Upright**
 follow the bass-to-treble balance of a reference piano. Velocity ranges, layer gains and dynamics are not touched;
 one UNDO.
-
-<p align="center">
-  <img src="screenshot1b.png?v=1081" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
-  <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
-  the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
-</p>
 
 **User manuals, in English and French.** A general manual (how the modelling works in HOST and SAMPLER, and why the
 sampler only needs pedal-up samples) and a sampler manual (from a folder of samples to a playable piano, every
@@ -900,6 +940,12 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
   hear any combination of parts, kept in the preset.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce — offline, as fast as your computer can —
   to WAV, AIFF, FLAC or CAF, 16 or 24 bits / 44.1 kHz, to compare settings on exactly the same performance.
+- **Take the room out of the samples (SAMPLER, 10.9.0).** DRY / DENOISE keeps the partials and their beats, protects
+  the strike and takes out the room and the hiss, into a separate 24-bit FLAC container; then choose the room with the
+  Ambience. The original samples are never touched.
+- **32-bit floating-point engine.** Everything — the hosted piano, the sampler, the resonance, the Ambience, the effects
+  and the Ceiling — is processed in 32-bit float, so even the softest notes keep their full quality. BOUNCE renders in
+  32-bit float, then writes 16 or 24 bits.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
   LUFS short-term / long-term, and an output level meter; OUTPUT stereo / swap / mono (10.8.1).
 
