@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.8.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.8.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -336,9 +336,10 @@ signaler un clavier qui se comporte à sa façon.
 | **Ambience** | Une salle autour de tout ce que PianoToLife ajoute (résonance, relâchement, bruits), jamais autour du son de votre piano. **Room** : Small, Medium, Default, Hall ou **Auto** (10.8.0, voir plus bas). Le curseur va de −6 à +6 dB autour de Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
 | **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
-| **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM) |
+| **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM). Depuis la 10.8.1, **CEILING, OUTPUT, VOL et le vumètre** sont réunis sur la ligne du titre DAMPER MECHANICS, dans l'ordre du son |
 | **VOL** (10.7.0) | Volume d'écoute, de −40 à +12 dB, juste avant le Ceiling (qui protège toujours). Double-clic = 0 dB. **Il n'est jamais sauvegardé : il revient à 0 dB à chaque changement de preset ou d'instrument, au redémarrage et avec ALL DEFAULT.** C'est voulu : VOL sert pour le moment, pas pour l'instrument. Réglez le vrai niveau de chaque instrument là où il se règle — les micros et LEVEL en mode SAMPLER, le volume du piano hébergé lui-même en mode HOST — pour que tous vos instruments jouent à des niveaux cohérents et qu'un VOL oublié ne vous trompe jamais |
-| **SWAP L-R** (10.7.0) | Inverse les canaux gauche et droit (le côté du public au lieu de celui du pianiste). Gardé quand vous changez de preset ou d'instrument et au redémarrage ; ALL DEFAULT le désactive |
+| **OUTPUT** (10.8.1 ; SWAP L-R depuis la 10.7.0) | **STEREO** tel quel ; **SWAP** gauche et droite inversés (le côté du public au lieu de celui du pianiste) ; **MONO** gauche et droite additionnés (pour les prises coïncidentes ou mono) ; **MONO L** / **MONO R** un seul côté, sur les deux sorties — avec des micros espacés la somme sonne creux (trous de phase), un seul côté non : essayez les deux, gardez le plus plein. Pour une seule enceinte, un retour de scène ou une sono mono. Cela dépend de votre casque / vos enceintes, pas du piano : **charger un preset ou un instrument ne le change jamais**, il revient au redémarrage et avec la session ; ALL DEFAULT le remet sur STEREO |
+| **Vumètre** (10.8.1) | Ce qui sort vraiment, après VOL, OUTPUT et le Ceiling : barres L et R, corps = RMS (ce qu'on entend), trait clair = crête, petit repère = la crête la plus haute (1,5 s), rouge au-dessus de −1 dBFS. Repères à −24, −12, −6 et 0 dBFS. Léger pour le CPU |
 
 ### AUTO CAL de l'Ambience : une seule salle pour tout le piano (10.8.0)
 
@@ -413,7 +414,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
   barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète. Depuis la
-  10.7.0, elle a aussi VOL et SWAP L-R (voir la section 11).
+  10.7.0, elle a aussi VOL, et depuis la 10.8.1 OUTPUT et le vumètre, dans sa colonne de droite (voir la section 11).
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,

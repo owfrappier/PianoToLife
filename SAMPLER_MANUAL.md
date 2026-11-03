@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.8.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.8.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -277,9 +277,17 @@ carries the mapping and the resonance model; only the samples (`.wptl`) stay apa
 
 Each of the 5 microphones has its strip: **name** (double-click to rename), **ON** (an off microphone is not
 loaded: no memory, no CPU), **solo**, **mute**, **L↔R** (mirrors the stereo image: the pianist's or the audience's view), **level**,
-**pan**, **width**, **delay** (to line a distant
+**Stereo** (10.8.1, see below), **WIDE**, **delay** (to line a distant
 microphone up with the close ones, or keep its natural room delay) and a **TRUE PEAK** meter (red = it clipped;
 click to reset). Ready-made mixes: **Close**, **Player**, **Hall** (moving a control makes it Custom).
+
+**Stereo** (10.8.1, in place of Pan and Width): two points, **L** and **R**, show where the left and the right channel
+of the microphone go. Drag a point; drag between them to move the whole image. Apart = as recorded; closer = a
+narrower image you can place anywhere; crossed = mirrored (blue, L↔R lit — L↔R crosses them); together = one point
+**M**, a mono microphone at that place (pull left or right to separate them). Double-click: as recorded. The text
+under it gives the centre and the width. The image moves at constant power, without losing level (the old Pan was a
+balance that lowered one side). **WIDE** (100–200 %) widens the image beyond the recording. Older instruments are
+converted (same place; a changed pan or width may sound slightly different).
 
 **ALL MICS TRUE PEAK** watches the 5 microphones together. **BODY** sets the perceived size of the piano (also on
 the main window).

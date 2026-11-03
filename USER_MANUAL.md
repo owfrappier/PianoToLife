@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.8.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.8.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -316,9 +316,10 @@ goes to the **Host**. Differences are highlighted;
 | **Ambience** | A room around everything PianoToLife adds (resonance, release, noises), never around your piano's own sound. **Room**: Small, Medium, Default, Hall or **Auto** (10.8.0, see below). The slider goes from −6 to +6 dB around Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placed after the resonance, so the whole instrument goes through them |
 | **EQ1 / EQ2** (10.4.2) | Click **EQ** under REVERB: the EQs take the place of COMP / REVERB (the same button brings them back). **EQ1 BEFORE FX** works before COMP and REVERB, to shape the tone of the piano; **EQ2 AFTER FX** works at the very end, before the Ceiling, to correct headphones. Each: **draw it on the curve** (double-click = a new point, drag = frequency and gain, mouse wheel on a point = its width Q, right-click = remove), PREAMP, RESET = flat, or **LOAD** a preset — a `ParametricEQ.txt` from AutoEq (oratory1990 measurements, Harman target) or an Equalizer APO file; load headphone presets in EQ2 (switch it off for a bounce or on loudspeakers). Up to 20 points each. Kept in the preset and the session |
-| **Output Ceiling** | Transparent true-peak safety limiter, with TRUE PEAK MAX, LUFS and the limiter's meter (LIM) |
+| **Output Ceiling** | Transparent true-peak safety limiter, with TRUE PEAK MAX, LUFS and the limiter's meter (LIM). Since 10.8.1 **CEILING, OUTPUT, VOL and the level meter** sit together on the DAMPER MECHANICS title line, in the order of the sound |
 | **VOL** (10.7.0) | Listening volume, −40 to +12 dB, just before the Ceiling (which still protects). Double-click = 0 dB. **It is never saved: it goes back to 0 dB at each preset or instrument change, at restart and with ALL DEFAULT.** This is on purpose: VOL is for the moment, not for the instrument. Set the real level of each instrument where it belongs — the microphones and LEVEL in SAMPLER mode, the hosted piano's own volume in HOST mode — so that all your instruments play at coherent levels and a forgotten VOL never misleads you |
-| **SWAP L-R** (10.7.0) | Swaps the left and right channels (the audience's side instead of the pianist's). Kept when you change preset or instrument and at restart; ALL DEFAULT turns it off |
+| **OUTPUT** (10.8.1; SWAP L-R since 10.7.0) | **STEREO** as it is; **SWAP** left and right swapped (the audience's side instead of the pianist's); **MONO** left and right summed (for coincident or mono recordings); **MONO L** / **MONO R** one side only, on both outputs — with spaced microphones the sum sounds hollow (phase holes), one side does not: try both, keep the fuller one. For a single speaker, a stage monitor or a mono PA. It depends on your headphones / speakers, not on the piano: **loading a preset or an instrument never changes it**, it comes back at restart and with the session; ALL DEFAULT puts it back to STEREO |
+| **Level meter** (10.8.1) | What really goes out, after VOL, OUTPUT and the Ceiling: L and R bars, body = RMS (what you hear), bright line = peak, small mark = the highest peak (1.5 s), red above −1 dBFS. Marks at −24, −12, −6 and 0 dBFS. Light on CPU |
 
 ### Ambience AUTO CAL: one room for the whole piano (10.8.0)
 
@@ -386,8 +387,8 @@ once: the piano's room comes out, instead of being masked.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
-  100 %; the view size you choose (90 / 80 %) is for the full window. Since 10.7.0 it also has VOL and SWAP L-R (see
-  section 11).
+  100 %; the view size you choose (90 / 80 %) is for the full window. Since 10.7.0 it also has VOL, since 10.8.1 OUTPUT
+  and the level meter, in its right column (see section 11).
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full

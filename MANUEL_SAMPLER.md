@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.8.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.8.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -294,10 +294,19 @@ Un set enregistré sur Mac s'ouvre sur Windows et inversement. Enregistrer un pr
 
 Chacun des 5 micros a sa tranche : **nom** (double-clic pour renommer), **ON** (un micro éteint n'est pas chargé :
 ni mémoire, ni CPU), **solo**, **mute**, **L↔R** (inverse l'image stéréo : vue du pianiste ou du
-public), **niveau**, **panoramique**, **largeur**, **délai** (pour aligner un micro
+public), **niveau**, **Stereo** (10.8.1, voir plus bas), **WIDE**, **délai** (pour aligner un micro
 lointain sur les micros proches, ou garder son retard naturel de salle) et un indicateur **TRUE PEAK** (rouge = il a
 saturé ; cliquez pour le remettre à zéro). Mixages tout prêts : **Close**, **Player**, **Hall** (toucher un réglage
 le fait passer en Custom).
+
+**Stereo** (10.8.1, à la place de Pan et Width) : deux points, **L** et **R**, montrent où vont le canal gauche et le
+canal droit du micro. Glissez un point ; glissez entre les deux pour déplacer toute l'image. Écartés = tel
+qu'enregistré ; rapprochés = une image plus étroite à placer où vous voulez ; croisés = inversée (bleu, L↔R allumé —
+L↔R les croise) ; superposés = un seul point **M**, un micro mono à cet endroit (tirez à gauche ou à droite pour les
+séparer). Double-clic : tel qu'enregistré. Le texte dessous donne le centre et la largeur. L'image se déplace à
+puissance constante, sans perte de niveau (l'ancien Pan était une balance qui baissait un côté). **WIDE** (100–200 %)
+élargit l'image au-delà de l'enregistrement. Les anciens instruments sont convertis (même place ; un pan ou une
+largeur modifiés peuvent sonner un peu différemment).
 
 **ALL MICS TRUE PEAK** surveille les 5 micros ensemble. **BODY** règle la taille perçue du piano (aussi sur la
 fenêtre principale).
