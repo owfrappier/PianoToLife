@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1080" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1081" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,27 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.8.0
+## What's new in 10.8.1
+
+**OUTPUT: stereo, swap or a real mono; an output level meter; a VSL-style stereo image for each microphone.**
+
+- **OUTPUT** (in place of the SWAP L-R box): **STEREO**, **SWAP** (the audience's side), **MONO** (left + right),
+  **MONO L** / **MONO R** (one side on both outputs: with spaced microphones the sum sounds hollow, one side does
+  not). For a single speaker, a stage monitor or a mono PA. HOST and SAMPLER, everything PianoToLife plays. Loading a
+  preset never changes it; ALL DEFAULT puts it back to STEREO.
+- **Level meter**: what really goes out, after VOL, OUTPUT and the Ceiling — L / R, RMS body, peak line, highest peak
+  held, red above −1 dBFS. Light on CPU.
+- **One output line**: CEILING, OUTPUT, VOL and the meter now sit together on the DAMPER MECHANICS title line, in the
+  order of the sound. In the compact view: VOL, OUTPUT and the meter in the right column.
+- **MIX (SAMPLER): Stereo for each microphone**, in place of Pan and Width: drag the **L** and **R** points where the
+  left and right channels should go, or drag between them to move the whole image — apart = as recorded, closer =
+  narrower, crossed = mirrored, together = mono at that place. Constant power: the image moves without losing level.
+  **WIDE** (100–200 %) widens beyond the recording. Older instruments are converted.
+
+Manuals updated for 10.8.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.8.0
 
 **AMBIENCE AUTO CAL: your piano's own room; una corda LEVEL / TONE; a large velocity curve with your keyboard's range.**
 
@@ -73,9 +93,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   The velocities your keyboard really sends are stretched onto the whole curve, so a keyboard that never reaches 127
   still plays every layer — the calibrated CAL curves included. Live playing only (not the MIDI files). **FULL**, the
   velocity DEFAULT and ALL DEFAULT: back to 1–127. Kept for this computer, whatever the preset.
-
-Manuals updated for 10.8.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.7.1
 
@@ -409,7 +426,7 @@ follow the bass-to-treble balance of a reference piano. Velocity ranges, layer g
 one UNDO.
 
 <p align="center">
-  <img src="screenshot1b.png?v=1080" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
+  <img src="screenshot1b.png?v=1081" alt="SAMPLER EDIT: a grand sampled with 16 velocity layers" width="900"><br>
   <i>SAMPLER EDIT (10.6.0): a grand with 16 velocity layers, placed key by key by AUTO DYN on the Grand B reference;
   the tools at the bottom in the order to use them, PICTURE and SAVE SAMPLES at the top.</i>
 </p>
@@ -884,7 +901,7 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce — offline, as fast as your computer can —
   to WAV, AIFF, FLAC or CAF, 16 or 24 bits / 44.1 kHz, to compare settings on exactly the same performance.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
-  LUFS short-term / long-term.
+  LUFS short-term / long-term, and an output level meter; OUTPUT stereo / swap / mono (10.8.1).
 
 ## Why sustain is not a separate effect
 
