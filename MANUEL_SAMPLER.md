@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.8.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -221,6 +221,13 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    plus seraient entassées sous v16 (un pp enregistré plus doux que ce que joue la référence), elles sont réparties
    régulièrement de v1 jusqu'à la première couche au-dessus, leurs gains calés sur la courbe de référence (Dynamics ne
    change pas ; le souffle d'une couche très douce monte avec son gain).
+   **RANGE** (10.9.0), dans la fenêtre AUTO DYN une fois l'analyse faite : la plage dynamique de tout le clavier,
+   **−10 à +10 dB** — comme entre un piano finement régulé et un piano moins égal (la régulation de la mécanique et
+   l'harmonisation des marteaux changent jusqu'où un piano joue doux et fort). **+** = plus large (v1 jusqu'à 10 dB plus
+   doux), **−** = plus serré (les notes douces plus fortes). v127 ne bouge pas et les couches jouées restent les mêmes :
+   seuls les niveaux changent, le long de la courbe de référence ; la courbe verte de la fenêtre suit. Rien n'est
+   réécouté ; un seul UNDO ; double-clic = 0. **Un nouvel AUTO DYN remet RANGE à 0** : réglez-le après l'analyse, puis
+   relancez AUTO COLOR.
 4. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
    lissée sur les touches voisines. À lancer **après** AUTO DYN1 / DYN2 (ils replacent les frontières selon
    l'intensité).
@@ -229,7 +236,8 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    sur la référence ; seule la forme compte, un piano peut rester plus clair ou plus sombre dans l'ensemble). Depuis la
    10.6.3, il demande d'abord quelles zones régler : **SOFT, MEDIUM et HARD, toutes cochées par défaut** (elles
    marchent mieux ensemble) ; décochez une zone pour la laisser telle quelle — elle est alors éteinte, et sa case TIMBRE
-   de la rangée suit. HAMMER n'est jamais touché. À relancer après un AUTO DYN. UNDO remet les curseurs.
+   de la rangée suit. HAMMER n'est jamais touché. À relancer après un AUTO DYN. UNDO remet les curseurs. Depuis la 10.9.0, il suit **RANGE** : une vélocité rendue
+   plus douce vise une couleur plus sombre, une plus forte une couleur plus claire, comme sur un vrai piano.
 6. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
    suivent).
    - **Smooth** : la courbe propre du set, sans les sauts (l'équilibre grave-aigu de l'enregistrement est gardé).
@@ -248,6 +256,51 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    relâchement). De préférence à la fin. C'est le vrai niveau de l'instrument : VOL (près du Ceiling) n'est qu'un
    volume d'écoute et revient à 0 dB à chaque changement d'instrument ; réglez donc le niveau ici, et tous vos
    instruments restent cohérents.
+
+### Retirer la salle des échantillons : DRY / DENOISE (10.9.0)
+
+Issu de nos recherches sur la modélisation d'enregistrements de vrais pianos. Un piano enregistré dans une salle qui
+sonne trop — ou qui ne convient pas à votre musique — garde cette salle dans chaque échantillon. **DRY** la retire,
+pour que vous placiez le piano dans la salle de votre choix avec l'**Ambience** : une seule salle propre pour tout ce
+que PianoToLife joue et ajoute.
+
+**Comment ça marche.** Pour chaque échantillon, PianoToLife trouve les harmoniques de la note sur l'échantillon
+lui-même (dans le grave à partir de l'écart des harmoniques fortes, la fondamentale des notes les plus graves étant très
+faible sur tous les pianos ; dans l'aigu avec une recherche élargie, l'accord étant étiré). Il garde le contenu réel de
+chaque harmonique — battements des cordes du chœur compris — et retire ce qu'il y a entre elles : la salle, le souffle,
+une partie du corps. **La frappe reste l'originale** : DRY attend que le choc, la caisse et les cordes voisines soient
+retombés juste au-dessus de la salle (80 à 600 ms, mesuré sur chaque échantillon), puis arrive progressivement.
+**100 % est sans risque**.
+
+**DENOISE** est léger et prudent : le souffle est mesuré sur chaque échantillon et baissé de 12 dB au plus, lissé dans
+le temps pour ne jamais « gazouiller ».
+
+**Le bouton DRY / DENOISE...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau du **micro sélectionné** en haut :
+
+1. **Écoutez d'abord.** Choisissez une **KEY** (touche) et une **VELOCITY**, puis comparez **> ORIGINAL** et
+   **> PROCESSED** (le même bouton une deuxième fois arrête). **A6** par défaut : **c'est dans l'aigu que la salle
+   s'entend le plus facilement**, là où les harmoniques sont rares et les notes courtes (sans échantillons de
+   relâchement, la fin d'une note aiguë, c'est surtout la salle). Avec **SHOW BY MIDI** coché, la touche que vous jouez
+   (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans l'Ambience.
+2. **MAKE "<nom>-dry"** traite tous les échantillons du micro dans un conteneur séparé, à côté de l'original,
+   `<nom>-dry.wptl` (même chiffrement, même mot de passe). En arrière-plan, avec la barre de progression et le STOP de
+   SAVE SAMPLES. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux (jamais de
+   « dry sur dry »). Les autres micros déjà traités y sont gardés.
+3. **MIC n plays: ORIGINAL / -DRY** — choisissez, micro par micro, quels échantillons sont joués. Gardé dans
+   l'instrument et le preset.
+4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et d'Ambience** :
+   ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de l'Ambience ne trouve alors plus de salle et règle la
+   Room sur **Small** : choisissez la salle voulue (une Ambience légère suffit souvent à un piano rendu sec).
+
+**Formats.** Les échantillons d'origine restent exactement tels qu'enregistrés. Les échantillons -dry sont toujours en
+**FLAC 24 bits** (sans perte), à la fréquence de l'original, même quand les originaux sont en 16 bits : une fois la
+salle et le souffle retirés, les fins de notes descendent sous le plancher du 16 bits (−96 dB), et seul le 24 bits les
+garde propres. Un -dry fait à partir d'échantillons 16 bits est donc plus gros que le conteneur d'origine (environ le
+double) ; le message de MAKE affiche les deux tailles.
+
+**Sécurité.** Si le fichier -dry est déplacé ou supprimé, ou qu'il lui manque un échantillon, l'original est joué (le
+panneau le dit) ; le choix -DRY reste et revient avec le fichier. Un `<nom>-dry.wptl` à côté du `.wptl` est retrouvé
+tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versions précédentes avec leurs échantillons d'origine.
 
 ---
 
@@ -366,6 +419,7 @@ pour vérifier un set. **LEVEL TEST** : joue A0, C2, C4, C6 et C8 à la vélocit
 |---|---|
 | `.ptlset` | **L'instrument** (comme un `.nki` Kontakt) : le mapping tel que vous l'entendez (vélocités, gains, réglages des touches, AUTO DYN, BALANCE...), le modèle de résonance et tous les réglages de PianoToLife. Toujours dans le dossier de son `.wptl`, qu'il désigne en relatif |
 | `.wptl` | **Les échantillons** (comme un `.nkx` Kontakt), dans un conteneur chiffré (mot de passe si défini), avec l'image de la banque |
+| `<nom>-dry.wptl` | **Les échantillons sans leur salle** (10.9.0, faits par DRY / DENOISE) : même chiffrement, FLAC 24 bits, à côté du `.wptl`. Facultatif : sans lui, les échantillons d'origine sont joués |
 
 Depuis la 10.6.0, un piano échantillonné, ce sont **deux fichiers : le `.ptlset` et le `.wptl`**, dans le même dossier
 de votre bibliothèque. En mode SAMPLER, **la liste PRESET affiche les instruments de votre bibliothèque** et le nom de

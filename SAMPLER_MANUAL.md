@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.8.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -209,6 +209,12 @@ a selection before working on every key.
    they are played, and when two or more soft layers would be piled under v16 (a pp recorded softer than the reference
    ever plays) they are spread evenly from v1 up to the first layer above, their gains set on the reference curve
    (Dynamics is not changed; a very soft layer's noise comes up with its gain).
+   **RANGE** (10.9.0), in the AUTO DYN window once the analysis is done: the dynamic range of the whole keyboard,
+   **−10 to +10 dB** — as between a finely regulated piano and a less even one (the regulation of the action and the
+   voicing of the hammers change how soft and how loud a piano can play). **+** = wider (v1 up to 10 dB softer),
+   **−** = narrower (the soft notes louder). v127 does not move and the layers played stay the same: only the levels
+   change, along the reference curve; the green curve of the window follows. Nothing is listened to again; one UNDO;
+   double-click = 0. **A new AUTO DYN puts RANGE back to 0**: set it after the analysis, then run AUTO COLOR again.
 4. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
    neighbouring keys. Run it **after** AUTO DYN1 / DYN2 (they place the boundaries by loudness again).
 5. **AUTO COLOR** (10.5.1) — sets SOFT, MEDIUM (10.6.3) and HARD COLOR so that the brightness of the layers follows
@@ -216,7 +222,8 @@ a selection before working on every key.
    as on the reference; only the shape counts, a piano may stay brighter or darker overall). Since 10.6.3 it first asks
    which zones to set: **SOFT, MEDIUM and HARD, all ticked by default** (they work best together); untick a zone to
    leave it as it is — it is then switched off, and its TIMBRE box in the row follows. HAMMER is never touched. Run it
-   again after AUTO DYN. UNDO puts the sliders back.
+   again after AUTO DYN. UNDO puts the sliders back. Since 10.9.0 it follows **RANGE**: a velocity made softer is aimed
+   at a darker colour, a louder one at a brighter colour, as on a real piano.
 6. **BALANCE** — evens out the volume from one key to the next, measured at velocity 127 (each key's layers follow).
    - **Smooth**: the set's own curve without the jumps (the register balance of the recording is kept).
    - **Grand D / Grand B / Upright**: the bass-to-treble balance of a reference piano, at your set's level.
@@ -231,6 +238,48 @@ a selection before working on every key.
    note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end. This is the
    instrument's real level: VOL (by the Ceiling) is only a listening volume and goes back to 0 dB at each instrument
    change, so set the level here and all your instruments stay coherent.
+
+### Taking the room out of the samples: DRY / DENOISE (10.9.0)
+
+Born from our research on modelling recordings of real pianos. A piano recorded in a room that rings too much — or that
+does not suit your music — keeps that room in every sample. **DRY** takes it out, so that you can put the piano in the
+room you choose with the **Ambience**: one clean room for everything PianoToLife plays and adds.
+
+**How it works.** For each sample, PianoToLife finds the partials of the note on the sample itself (in the bass from the
+spacing of the strong partials, the fundamental of the lowest notes being very weak on every piano; in the treble
+with a wider search, the tuning being stretched). It keeps the real content of each partial — the beating of the
+unison strings included — and takes out what lies between them: the room, the hiss, part of the body. **The strike
+stays the original**: DRY waits until the knock, the case and the neighbouring strings have faded to just above the
+room (80 to 600 ms, measured on each sample), then comes in gradually. **100 % is safe**.
+
+**DENOISE** is light and careful: the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time so
+that it never warbles.
+
+**The DRY / DENOISE... button** (second row of EDIT, after FLAC) opens the panel for the **microphone selected** at the
+top:
+
+1. **Listen first.** Choose a **KEY** and a **VELOCITY**, then compare **> ORIGINAL** and **> PROCESSED** (the same
+   button again stops). **A6** by default: **the room is easiest to hear in the treble**, where the partials are few
+   and the notes short (with no release samples, the end of a treble note is mostly the room). With **SHOW BY MIDI**
+   ticked, the key you play (and its velocity) is chosen. The sample is heard as it is, without the Ambience.
+2. **MAKE "<name>-dry"** processes every sample of the microphone into a separate container beside the original one,
+   `<name>-dry.wptl` (same encryption and password). In the background, with the progress bar and STOP of SAVE
+   SAMPLES. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
+   Other microphones already made there are kept.
+3. **MIC n plays: ORIGINAL / -DRY** — choose, microphone by microphone, which samples are played. Saved with the
+   instrument and the preset.
+4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Ambience again**: they were
+   measured on the sound with its room. The Ambience AUTO CAL then finds no room and sets Room **Small**: choose the
+   room you want (a light Ambience is often all a dry piano needs).
+
+**Formats.** The original samples stay exactly as recorded. The -dry samples are always **24-bit FLAC** (lossless), at
+the original's sample rate, even when the originals are 16-bit: once the room and the hiss are taken out, the tails of
+the notes go below the 16-bit floor (−96 dB), and only 24 bits keep them clean. A -dry made from 16-bit samples is
+therefore larger than the original container (about twice); MAKE's message shows both sizes.
+
+**Safety.** If the -dry file is moved or deleted, or a sample is missing in it, the original is played (the panel says
+so); the -DRY choice is kept and comes back with the file. A `<name>-dry.wptl` beside the `.wptl` is found on its own.
+Instruments saved with 10.9.0 open in older versions with their original samples.
 
 ---
 
@@ -348,6 +397,7 @@ check a set.  **LEVEL TEST**: plays A0, C2, C4, C6, C8 at velocity 127 and tells
 |---|---|
 | `.ptlset` | **The instrument** (like a Kontakt `.nki`): the mapping as you hear it (velocities, gains, key settings, AUTO DYN, BALANCE...), the resonance model and every PianoToLife setting. Always in the folder of its `.wptl`, which it names relatively |
 | `.wptl` | **The samples** (like a Kontakt `.nkx`), in an encrypted container (password if set), with the bank's picture |
+| `<name>-dry.wptl` | **The samples without their room** (10.9.0, made by DRY / DENOISE): same encryption, 24-bit FLAC, beside the `.wptl`. Optional: without it, the original samples play |
 
 Since 10.6.0 a sampled piano is **two files: the `.ptlset` and the `.wptl`**, in the same folder of your library. In
 SAMPLER mode the **PRESET list shows the instruments of your library** and the instrument's name is shown large above it;

@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.8.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -360,7 +360,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Le niveau trouvé s'affiche dans la Room** (par exemple *Auto +3 dB*). Le curseur Ambience reste un réglage fin
   autour : baissez-le de quelques points si vous trouvez la salle trop présente — souvent le cas avec des relâchements
   très propres.
-- **Un piano très sec** (micros proches ou fermés) : aucune salle n'est trouvée, la Room passe sur **Small**.
+- **Un piano très sec** (micros proches ou fermés) : aucune salle n'est trouvée, la Room passe sur **Small**. De même
+  pour un piano échantillonné dont la salle a été retirée avec **DRY / DENOISE** (SAMPLER, 10.9.0) : choisissez la salle
+  voulue — voir le [Manuel du sampler](MANUEL_SAMPLER.md).
 - ***The notes did not fully agree*** : les notes mesurées ne s'accordent pas toutes (vieil enregistrement, souffle...) :
   le résultat reste utilisable, vérifiez-le à l'oreille.
 - **Après une capture du Piano Model**, PianoToLife propose d'enchaîner les deux AUTO CAL : le niveau de résonance,

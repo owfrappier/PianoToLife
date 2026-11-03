@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.8.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.9.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -338,7 +338,9 @@ once: the piano's room comes out, instead of being masked.
   the standalone, about 25 s in a DAW; don't play meanwhile. The button stays lit once the piano was analysed.
 - **The level found is shown in the Room** (e.g. *Auto +3 dB*). The Ambience slider still sets more or less around
   it: lower it a little if you find the room too present — often the case with very clean releases.
-- **A very dry piano** (close or closed microphones): no room is found, the Room is set to **Small**.
+- **A very dry piano** (close or closed microphones): no room is found, the Room is set to **Small**. The same for a
+  sampled piano whose room was taken out with **DRY / DENOISE** (SAMPLER, 10.9.0): choose the room you want — see the
+  [Sampler Manual](SAMPLER_MANUAL.md).
 - ***The notes did not fully agree***: the measured notes differ (an old recording, tape hiss...): the result is
   usable, check it by ear.
 - **After a Piano Model capture**, PianoToLife offers both AUTO CALs in a row: the resonance level, then the room.
