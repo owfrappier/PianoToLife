@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1090" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1091" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,27 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.0
+## What's new in 10.9.1
+
+**AUTO DYN tells you which Samples setting suits your library; type a value in VOL, CEILING and WIDE; Multicore safer on Windows.**
+
+- **Which Samples setting suits your library** (SAMPLER > EDIT, AUTO DYN1 / AUTO DYN2): before the AUTO DYN window, a
+  message says what the **raw samples** show — whether the loudest layer peaks at the same level on nearly every key
+  (a normalised library: a real recording varies from key to key), how far apart A4's layers are compared with a real
+  piano for the same change of colour — and whether the **Samples** setting used (auto / Normalised / Not normalised)
+  suits it. If it does not, **one click sets the advised one and runs the same AUTO DYN again** (or keep the result).
+  Works whatever the number of layers.
+- **VOL, CEILING and WIDE**: **click once to type a value**, double-click for the default, drag as before (a
+  suggestion from pipat).
+- **Enable Multicore Processing**: safer with Cubase and Studio One on Windows (the cores PianoToLife uses now run at
+  the same audio priority as the DAW's, and PianoToLife never waits for a late one). It is now a setting of your
+  computer: **a preset never changes it**, and a new instance starts with your last choice (a DAW project keeps its
+  own). If your DAW ever freezes, untick it and please tell me your DAW, its version and your CPU.
+
+Manuals updated for 10.9.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.0
 
 **Take the room out of your samples: SAMPLER DRY / DENOISE.**
 
@@ -80,8 +100,6 @@ and placed in the room you choose.
   again** — they were measured on the sound with its room. The Ambience AUTO CAL then finds no room (Room Small): choose
   the room you want.
 
-**Also in 10.9.0**
-
 - **RANGE** (AUTO DYN window, once the analysis is done): the dynamic range of the whole keyboard, **−10 to +10 dB** —
   as between a finely regulated piano and a less even one. v127 does not move, the layers played stay the same: only
   the levels change, along the reference curve. A new AUTO DYN puts it back to 0: set RANGE after the analysis.
@@ -98,8 +116,6 @@ and placed in the room you choose.
   choose ORIGINAL or -DRY for each microphone.</i>
 </p>
 
-Manuals updated for 10.9.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.8.1
 
