@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -189,7 +189,7 @@ Les réglages principaux :
 | **Sustain Free From / To** | La plage de cordes libérées par la pédale |
 | **Inharmonicity** | L'étirement des partiels, tel que mesuré sur le piano |
 | **Max Free Strings (CPU)** | Combien de cordes peuvent résonner en même temps |
-| **Enable Multicore Processing** | Partage la résonance entre les cœurs du processeur (même son) |
+| **Enable Multicore Processing** | Partage la résonance entre les cœurs du processeur (même son). Depuis la 10.9.1, c'est un réglage de votre ordinateur : **un preset ne le change jamais**, et une nouvelle instance démarre avec votre dernier choix (un projet de DAW garde le sien) |
 
 Les réglages détaillés se replient dans un tiroir ; chacun affiche **Default** à sa valeur par défaut, et **DEFAULT**
 les remet tous. **Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience** (10.5.3 ; Half/rel/catch Pedal s'appelait Pedal FX avant la 10.5.6) : allumez une ou plusieurs parties
@@ -336,8 +336,8 @@ signaler un clavier qui se comporte à sa façon.
 | **Ambience** | Une salle autour de tout ce que PianoToLife ajoute (résonance, relâchement, bruits), jamais autour du son de votre piano. **Room** : Small, Medium, Default, Hall ou **Auto** (10.8.0, voir plus bas). Le curseur va de −6 à +6 dB autour de Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
 | **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
-| **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM). Depuis la 10.8.1, **CEILING, OUTPUT, VOL et le vumètre** sont réunis sur la ligne du titre DAMPER MECHANICS, dans l'ordre du son |
-| **VOL** (10.7.0) | Volume d'écoute, de −40 à +12 dB, juste avant le Ceiling (qui protège toujours). Double-clic = 0 dB. **Il n'est jamais sauvegardé : il revient à 0 dB à chaque changement de preset ou d'instrument, au redémarrage et avec ALL DEFAULT.** C'est voulu : VOL sert pour le moment, pas pour l'instrument. Réglez le vrai niveau de chaque instrument là où il se règle — les micros et LEVEL en mode SAMPLER, le volume du piano hébergé lui-même en mode HOST — pour que tous vos instruments jouent à des niveaux cohérents et qu'un VOL oublié ne vous trompe jamais |
+| **Output Ceiling** | Limiteur de sécurité true peak transparent, avec TRUE PEAK MAX, LUFS et l'indicateur du limiteur (LIM). Depuis la 10.8.1, **CEILING, OUTPUT, VOL et le vumètre** sont réunis sur la ligne du titre DAMPER MECHANICS, dans l'ordre du son. Depuis la 10.9.1 : **un clic sur CEILING pour taper une valeur**, double-clic = défaut |
+| **VOL** (10.7.0) | Volume d'écoute, de −40 à +12 dB, juste avant le Ceiling (qui protège toujours). **Un clic pour taper une valeur** (10.9.1), double-clic = 0 dB. **Il n'est jamais sauvegardé : il revient à 0 dB à chaque changement de preset ou d'instrument, au redémarrage et avec ALL DEFAULT.** C'est voulu : VOL sert pour le moment, pas pour l'instrument. Réglez le vrai niveau de chaque instrument là où il se règle — les micros et LEVEL en mode SAMPLER, le volume du piano hébergé lui-même en mode HOST — pour que tous vos instruments jouent à des niveaux cohérents et qu'un VOL oublié ne vous trompe jamais |
 | **OUTPUT** (10.8.1 ; SWAP L-R depuis la 10.7.0) | **STEREO** tel quel ; **SWAP** gauche et droite inversés (le côté du public au lieu de celui du pianiste) ; **MONO** gauche et droite additionnés (pour les prises coïncidentes ou mono) ; **MONO L** / **MONO R** un seul côté, sur les deux sorties — avec des micros espacés la somme sonne creux (trous de phase), un seul côté non : essayez les deux, gardez le plus plein. Pour une seule enceinte, un retour de scène ou une sono mono. Cela dépend de votre casque / vos enceintes, pas du piano : **charger un preset ou un instrument ne le change jamais**, il revient au redémarrage et avec la session ; ALL DEFAULT le remet sur STEREO |
 | **Vumètre** (10.8.1) | Ce qui sort vraiment, après VOL, OUTPUT et le Ceiling : barres L et R, corps = RMS (ce qu'on entend), trait clair = crête, petit repère = la crête la plus haute (1,5 s), rouge au-dessus de −1 dBFS. Repères à −24, −12, −6 et 0 dBFS. Léger pour le CPU |
 
@@ -435,7 +435,8 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 La charge CPU affichée par votre DAW **inclut le piano hébergé**. Le cas le plus lourd est un long glissando pédale
 enfoncée (des centaines de partiels qui sonnent). Ce qui compte, c'est **aucun craquement ni message de surcharge**.
 Si vous entendez des craquements : augmentez la taille du buffer, activez **Enable Multicore Processing**, puis baissez
-**Max Free Strings (CPU)**. En mode SAMPLER, voir aussi les réglages de streaming dans MIX
+**Max Free Strings (CPU)**. Si votre DAW se fige (Windows), décochez **Enable Multicore Processing** et indiquez-moi
+votre DAW, sa version et votre processeur. En mode SAMPLER, voir aussi les réglages de streaming dans MIX
 ([Manuel du sampler](MANUEL_SAMPLER.md#8-la-fenêtre-mix--micros-et-streaming)).
 REP et SOFT / HARD TIMBRE ajoutent quelques filtres par voix en mode SAMPLER : un petit coût (quelques %).
 

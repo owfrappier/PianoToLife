@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -148,7 +148,7 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 | **Reference** (Grand D / Grand B / Upright) | The piano whose loudness and brightness curves are used to place the layers and their gains | Grand B |
 | **AUTO KEY** | Each sample goes to the key of its sound (checked against its file name). Off: key from the file name, else where you drop it | On |
 | **AUTO LAYERS** | Velocity ranges and gains placed on the reference. Off: the layers of a key share the velocities equally (or take the ranges written in the names) | On |
-| **Samples** (auto / Normalised / Not normalised, 10.3.8; next to AUTO LAYERS since 10.4.6) | How AUTO LAYERS and AUTO DYN order and place the layers of a key. **Not normalised** (the library keeps its dynamics): by their levels, on the reference's loudness curve. **Normalised** (every layer raised to the same level): by their brightness. **Auto**: by the levels when the layers of the key are more than 12 dB apart. AUTO DYN in auto also treats A4 as normalised when its layers peak at the same level. A change places every key again (keys set by hand kept) | Auto |
+| **Samples** (auto / Normalised / Not normalised, 10.3.8; next to AUTO LAYERS since 10.4.6) | How AUTO LAYERS and AUTO DYN order and place the layers of a key. **Not normalised** (the library keeps its dynamics): by their levels, on the reference's loudness curve. **Normalised** (every layer raised to the same level): by their brightness. **Auto**: by the levels when the layers of the key are more than 12 dB apart. AUTO DYN in auto also treats A4 as normalised when its layers peak at the same level. A change places every key again (keys set by hand kept). **Since 10.9.1, AUTO DYN tells you which one suits** (see AUTO DYN1 / AUTO DYN2) | Auto |
 | **AUTO NAME** | The dynamics, velocities or layer numbers in the file names set the order of the layers (safer when two layers sound alike) | On |
 | **SOFT TIMBRE** + COLOR | A note played below its layer's own velocity gets the darker timbre of a softer strike (the 2–4 kHz and 4–8 kHz colour of the reference piano, measured on every key and velocity), not only a lower level: pp under the softest layer and smooth boundaries. COLOR (−100 to +100 %) sets how much | On, 0 % |
 | **HARD TIMBRE** + COLOR | A note played above its layer's velocity gets brighter, like a harder strike on the reference piano (measured on every key, up to +18 dB): with few layers, the velocities in between sound like real strikes. For a top layer that is not really fff, or a set with few layers | Off, 0 % |
@@ -215,6 +215,11 @@ a selection before working on every key.
    **−** = narrower (the soft notes louder). v127 does not move and the layers played stay the same: only the levels
    change, along the reference curve; the green curve of the window follows. Nothing is listened to again; one UNDO;
    double-click = 0. **A new AUTO DYN puts RANGE back to 0**: set it after the analysis, then run AUTO COLOR again.
+   **Which Samples setting suits your library** (10.9.1): before the AUTO DYN window, a message says what the raw
+   samples show — whether the loudest layer peaks at the same level on nearly every key (a library normalised: a real
+   recording varies from key to key), how far apart A4's layers are compared with a real piano — and whether the
+   Samples setting used suits it. If it does not, **one click sets the advised one and runs the same AUTO DYN again**
+   (or keep the result).
 4. **FIX STEPS** — moves the orange / red boundaries to the velocity where the two timbres meet, smoothed over the
    neighbouring keys. Run it **after** AUTO DYN1 / DYN2 (they place the boundaries by loudness again).
 5. **AUTO COLOR** (10.5.1) — sets SOFT, MEDIUM (10.6.3) and HARD COLOR so that the brightness of the layers follows
@@ -335,7 +340,8 @@ of the microphone go. Drag a point; drag between them to move the whole image. A
 narrower image you can place anywhere; crossed = mirrored (blue, L↔R lit — L↔R crosses them); together = one point
 **M**, a mono microphone at that place (pull left or right to separate them). Double-click: as recorded. The text
 under it gives the centre and the width. The image moves at constant power, without losing level (the old Pan was a
-balance that lowered one side). **WIDE** (100–200 %) widens the image beyond the recording. Older instruments are
+balance that lowered one side). **WIDE** (100–200 %) widens the image beyond the recording (click once to type a
+value, double-click = 100 %). Older instruments are
 converted (same place; a changed pan or width may sound slightly different).
 
 **ALL MICS TRUE PEAK** watches the 5 microphones together. **BODY** sets the perceived size of the piano (also on

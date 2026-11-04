@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -157,7 +157,7 @@ des micros.
 | **Référence** (Grand D / Grand B / Upright) | Le piano dont les courbes d'intensité et de brillance servent à placer les couches et leurs gains | Grand B |
 | **AUTO KEY** | Chaque échantillon va sur la touche de son son (vérifiée avec le nom de fichier). Désactivé : touche du nom de fichier, sinon là où on le dépose | Activé |
 | **AUTO LAYERS** | Plages de vélocité et gains placés sur la référence. Désactivé : les couches d'une touche se partagent les vélocités à parts égales (ou prennent les plages écrites dans les noms) | Activé |
-| **Samples** (auto / Normalised / Not normalised, 10.3.8 ; à côté d'AUTO LAYERS depuis la 10.4.6) | Comment AUTO LAYERS et AUTO DYN rangent et placent les couches d'une touche. **Not normalised** (la banque garde sa dynamique) : selon leurs niveaux, sur la courbe d'intensité de la référence. **Normalised** (chaque couche remontée au même niveau) : selon leur brillance. **Auto** : selon les niveaux quand les couches de la touche ont plus de 12 dB d'écart. En auto, AUTO DYN traite aussi le A4 comme normalisé quand ses couches culminent au même niveau. Un changement replace toutes les touches (les touches réglées à la main sont gardées) | Auto |
+| **Samples** (auto / Normalised / Not normalised, 10.3.8 ; à côté d'AUTO LAYERS depuis la 10.4.6) | Comment AUTO LAYERS et AUTO DYN rangent et placent les couches d'une touche. **Not normalised** (la banque garde sa dynamique) : selon leurs niveaux, sur la courbe d'intensité de la référence. **Normalised** (chaque couche remontée au même niveau) : selon leur brillance. **Auto** : selon les niveaux quand les couches de la touche ont plus de 12 dB d'écart. En auto, AUTO DYN traite aussi le A4 comme normalisé quand ses couches culminent au même niveau. Un changement replace toutes les touches (les touches réglées à la main sont gardées). **Depuis la 10.9.1, AUTO DYN vous dit lequel convient** (voir AUTO DYN1 / AUTO DYN2) | Auto |
 | **AUTO NAME** | Les nuances, vélocités ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent) | Activé |
 | **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce (la couleur 2–4 kHz et 4–8 kHz du piano de référence, mesurée sur chaque touche et chaque vélocité), pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
 | **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, comme une frappe plus dure sur le piano de référence (mesuré sur chaque touche, jusqu'à +18 dB) : avec peu de couches, les vélocités intermédiaires sonnent comme de vraies frappes. Pour une couche du haut qui n'est pas vraiment fff, ou un set avec peu de couches | Désactivé, 0 % |
@@ -228,6 +228,11 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    seuls les niveaux changent, le long de la courbe de référence ; la courbe verte de la fenêtre suit. Rien n'est
    réécouté ; un seul UNDO ; double-clic = 0. **Un nouvel AUTO DYN remet RANGE à 0** : réglez-le après l'analyse, puis
    relancez AUTO COLOR.
+   **Quel réglage Samples convient à votre banque** (10.9.1) : avant la fenêtre AUTO DYN, un message dit ce que montrent
+   les samples bruts — si la couche la plus forte culmine au même niveau sur presque toutes les touches (une banque
+   normalisée : un vrai enregistrement varie d'une touche à l'autre), l'écart entre les couches du A4 comparé à un vrai
+   piano — et si le réglage Samples utilisé lui convient. Sinon, **un clic règle celui qui est conseillé et relance le
+   même AUTO DYN** (ou gardez le résultat).
 4. **FIX STEPS** — déplace les frontières orange et rouges vers la vélocité où les deux timbres se rejoignent,
    lissée sur les touches voisines. À lancer **après** AUTO DYN1 / DYN2 (ils replacent les frontières selon
    l'intensité).
@@ -358,7 +363,7 @@ qu'enregistré ; rapprochés = une image plus étroite à placer où vous voulez
 L↔R les croise) ; superposés = un seul point **M**, un micro mono à cet endroit (tirez à gauche ou à droite pour les
 séparer). Double-clic : tel qu'enregistré. Le texte dessous donne le centre et la largeur. L'image se déplace à
 puissance constante, sans perte de niveau (l'ancien Pan était une balance qui baissait un côté). **WIDE** (100–200 %)
-élargit l'image au-delà de l'enregistrement. Les anciens instruments sont convertis (même place ; un pan ou une
+élargit l'image au-delà de l'enregistrement (un clic pour taper une valeur, double-clic = 100 %). Les anciens instruments sont convertis (même place ; un pan ou une
 largeur modifiés peuvent sonner un peu différemment).
 
 **ALL MICS TRUE PEAK** surveille les 5 micros ensemble. **BODY** règle la taille perçue du piano (aussi sur la
