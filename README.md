@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1091" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1092" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,34 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.1
+## What's new in 10.9.2
+
+**REVERB IR: put your piano in a real hall, with your own impulse responses; VOL saved with the preset.**
+
+- **Reverb ALGO | IR** (beside REVERB's DEFAULT): **ALGO** is PianoToLife's Piano Hall; **IR** is a convolution
+  reverb with an **impulse response** of your choice — a real concert hall, a church, a plate, a classic reverb unit.
+  With a piano made dry (SAMPLER DRY, 10.9.0), it gives your samples a real room.
+  - Click **IR**: choose an IR, **LOAD IR...** a WAV, AIFF or FLAC you downloaded (it is copied into the
+    `Impulse Responses` folder of your sample sets folder) or **Open IR folder** — folders inside it, up to three
+    levels, become sub-menus.
+  - **Mono, stereo and true stereo** (4 channels, or a pair of files "... L" / "... R": choose either, both are
+    taken), any sample rate, up to 10 s. B-format (ambisonic) files are not read.
+  - The level is matched to the Piano Hall: switching ALGO / IR keeps it. **DECAY** shortens the IR's tail, **DAMP**
+    makes its treble die sooner; MIX, PRE and LEVEL as usual. No latency.
+  - A preset keeps the IR's name only (each user uses their own files); if the file is missing, the Piano Hall plays
+    and the button reads **IR ?**.
+  - Free IRs: [Voxengo](https://www.voxengo.com/impulses), [OpenAIR](https://www.openair.hosted.york.ac.uk/?page_id=2)
+    (real halls, use the stereo files), [Airwindows](https://airwindows.com/airwindows-impulses); commercial libraries
+    delivered in WAV work too.
+- **VOL is saved** with the preset, the instrument and the session, as the Ceiling (presets saved before open at
+  0 dB). ALL DEFAULT puts it back to 0 dB.
+- **Encrypted Kontakt samples**: `.ncw` files of a protected library keep the extension but cannot be read; a popup
+  now says so when they are dropped, instead of nothing happening.
+
+Manuals updated for 10.9.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.1
 
 **AUTO DYN tells you which Samples setting suits your library; type a value in VOL, CEILING and WIDE; Multicore safer on Windows.**
 
@@ -69,8 +96,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   computer: **a preset never changes it**, and a new instance starts with your last choice (a DAW project keeps its
   own). If your DAW ever freezes, untick it and please tell me your DAW, its version and your CPU.
 
-Manuals updated for 10.9.1: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.9.0
 
@@ -959,6 +984,8 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Take the room out of the samples (SAMPLER, 10.9.0).** DRY / DENOISE keeps the partials and their beats, protects
   the strike and takes out the room and the hiss, into a separate 24-bit FLAC container; then choose the room with the
   Ambience. The original samples are never touched.
+- **Your own reverb (10.9.2).** Beside the Piano Hall, a zero-latency convolution reverb with the impulse responses
+  you choose (WAV / AIFF / FLAC, mono, stereo, true stereo), level matched, DECAY and DAMP still at hand.
 - **32-bit floating-point engine.** Everything — the hosted piano, the sampler, the resonance, the Ambience, the effects
   and the Ceiling — is processed in 32-bit float, so even the softest notes keep their full quality. BOUNCE renders in
   32-bit float, then writes 16 or 24 bits.
