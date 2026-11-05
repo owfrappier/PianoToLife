@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -78,7 +78,8 @@ buttons are in the right panel, just above the key's settings.
 
 **Formats**: WAV, AIFF, FLAC and Kontakt `.ncw` (10.3.5), mono or stereo, any bit depth. Samples above 48 kHz are
 converted to 44.1 / 48 kHz when the set is saved (a piano has nothing useful above 20 kHz); `.ncw` samples are always
-rewritten as WAV or FLAC in the set. Encrypted libraries are not read: use only libraries whose licence allows it.
+rewritten as WAV or FLAC in the set. Encrypted libraries are not read: use only libraries whose licence allows it
+(since 10.9.2 a popup says so when encrypted `.ncw` files are dropped: they keep the extension but are not NCW).
 Every analysis (key, level, brightness) is made **in stereo**, channel by channel: a key out of phase between two
 spaced microphones is measured as you hear it.
 
@@ -241,8 +242,8 @@ a selection before working on every key.
    (the same setting everywhere), then AUTO RELEASE runs.
 8. **LEVEL** and **AUTO** (left of the tools, by the level slider) — the level of the whole set; AUTO makes the loudest
    note at velocity 127 peak at −9 dBFS (room for chords, resonance and release). Best done at the end. This is the
-   instrument's real level: VOL (by the Ceiling) is only a listening volume and goes back to 0 dB at each instrument
-   change, so set the level here and all your instruments stay coherent.
+   instrument's real level: VOL (by the Ceiling) is a listening volume (saved with the preset since 10.9.2), so set the
+   level here and all your instruments stay coherent.
 
 ### Taking the room out of the samples: DRY / DENOISE (10.9.0)
 

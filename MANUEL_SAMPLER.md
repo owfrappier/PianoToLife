@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -84,7 +84,8 @@ UNDO et REDO sont dans le panneau de droite, juste au-dessus des réglages de la
 **Formats** : WAV, AIFF, FLAC et `.ncw` de Kontakt (10.3.5), mono ou stéréo, toute résolution. Les échantillons
 au-dessus de 48 kHz sont convertis en 44,1 / 48 kHz à l'enregistrement du set (un piano n'a rien d'utile au-dessus de
 20 kHz) ; les `.ncw` sont toujours réécrits en WAV ou FLAC dans le set. Les banques chiffrées ne sont pas lues :
-n'utilisez que des banques dont la licence le permet. Toutes les analyses (touche, niveau, brillance) se font **en
+n'utilisez que des banques dont la licence le permet (depuis la 10.9.2, un popup le dit quand des `.ncw` chiffrés sont
+déposés : ils gardent l'extension mais ne sont pas du NCW). Toutes les analyses (touche, niveau, brillance) se font **en
 stéréo**, canal par canal : une touche en opposition de phase entre deux micros espacés est mesurée comme on l'entend.
 
 **Nommer vos fichiers** (facultatif mais conseillé). PianoToLife trouve la touche d'après le son lui-même, mais un
@@ -258,9 +259,9 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    réglage partout), puis AUTO RELEASE se lance.
 8. **LEVEL** et **AUTO** (à gauche des outils, près du curseur de niveau) — le niveau de tout le set ; AUTO fait
    culminer la note la plus forte à la vélocité 127 à −9 dBFS (de la marge pour les accords, la résonance et le
-   relâchement). De préférence à la fin. C'est le vrai niveau de l'instrument : VOL (près du Ceiling) n'est qu'un
-   volume d'écoute et revient à 0 dB à chaque changement d'instrument ; réglez donc le niveau ici, et tous vos
-   instruments restent cohérents.
+   relâchement). De préférence à la fin. C'est le vrai niveau de l'instrument : VOL (près du Ceiling) est un
+   volume d'écoute (sauvegardé avec le preset depuis la 10.9.2) ; réglez donc le niveau ici, et tous vos instruments
+   restent cohérents.
 
 ### Retirer la salle des échantillons : DRY / DENOISE (10.9.0)
 
