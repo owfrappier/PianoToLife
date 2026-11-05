@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -43,7 +43,7 @@ Dans les deux modes, **les mêmes moteurs** agissent sur le son :
 - les **étouffoirs et le relâchement** : le feutre qui se pose sur une corde qui vibre encore, selon la vitesse de
   votre relâchement ;
 - l'**una corda** (pédale douce) ;
-- les **bruits de touche et de pédale**, le **Felt-Contact**, **BODY**, l'**Ambience**, le **Piano Comp**, la
+- les **bruits de touche et de pédale**, le **Felt-Contact**, **BODY**, la **Recorded Room**, le **Piano Comp**, la
   **Reverb** et l'**Output Ceiling**.
 
 Sur un vrai piano à queue, la résonance de sustain et la résonance sympathique sont **un seul et même phénomène** :
@@ -162,7 +162,7 @@ Avant la capture :
 - **aucune réverbération, compression ni effet**, rien d'autre que la note seule (échantillons de relâchement,
   résonance et bruits coupés) ;
 - la **courbe de vélocité** du piano **linéaire** ;
-- de préférence les **micros proches** (utilisez l'Ambience de PianoToLife pour la salle).
+- de préférence les **micros proches** (utilisez la REVERB de PianoToLife, ALGO ou IR, pour la salle).
 
 Chaque modèle est ramené au même niveau de résonance à son chargement ; chacun garde son caractère. Un modèle de piano
 de concert est fourni.
@@ -175,6 +175,14 @@ donc ANALYSE et EXPORT sont masqués.
 ---
 
 ## 7. Résonance sympathique
+
+**La gamme duplex et le corps sont déjà dans le son.** Les sections duplex (aliquotes) d'un piano à queue sonnent avec
+chaque note : elles font partie de la signature enregistrée de chaque piano, dans vos échantillons pédale levée
+(SAMPLER) ou dans votre piano hébergé (HOST). La résonance sympathique est construite à partir de ce même son — la
+capture du Piano Model le mesure — : elle porte donc la couleur duplex de votre propre piano, pas une couleur générique
+ajoutée par-dessus. Le relâchement la simule aussi : quand l'étouffoir retombe, une partie de l'énergie passe dans les
+cordes aiguës non étouffées et la gamme duplex, qui scintillent encore un instant. Le réglage **Ring** (section 9)
+fait ressortir plus ou moins ce scintillement duplex des touches non étouffées.
 
 Les réglages principaux :
 
@@ -192,7 +200,7 @@ Les réglages principaux :
 | **Enable Multicore Processing** | Partage la résonance entre les cœurs du processeur (même son). Depuis la 10.9.1, c'est un réglage de votre ordinateur : **un preset ne le change jamais**, et une nouvelle instance démarre avec votre dernier choix (un projet de DAW garde le sien) |
 
 Les réglages détaillés se replient dans un tiroir ; chacun affiche **Default** à sa valeur par défaut, et **DEFAULT**
-les remet tous. **Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience** (10.5.3 ; Half/rel/catch Pedal s'appelait Pedal FX avant la 10.5.6) : allumez une ou plusieurs parties
+les remet tous. **Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Room** (10.5.3 ; Room = la Recorded Room, appelée Ambience avant la 10.9.3 ; Half/rel/catch Pedal s'appelait Pedal FX avant la 10.5.6) : allumez une ou plusieurs parties
 pour n'entendre qu'elles - elles s'additionnent ; aucune allumée, ou un clic sur **Full Piano**, = tout. **Half/rel/catch Pedal** = les
 cordes que PianoToLife fait sonner pour la pédale (notes tenues par la mi-pédale, rattrapées tard, una corda) ; **Release**
 comprend le Felt-Contact ; **Noises** = Key et Pedal Noise. Le choix est gardé dans le preset et la session - par exemple
@@ -332,8 +340,8 @@ signaler un clavier qui se comporte à sa façon.
 |---|---|
 | **Key Noise** (GRAND / UPRIGHT) | La mécanique en bois des touches : marteau qui retombe, touche qui arrive en butée, répétition |
 | **Pedal Noise** | Chocs de bois, feutres sur les cordes et cordes graves libérées, selon la course et la vitesse de la pédale |
-| **BODY** | La taille perçue du piano (à gauche de SOFT) : la fondamentale de chaque note renforcée ou atténuée, en HOST et en SAMPLER |
-| **Ambience** | Une salle autour de tout ce que PianoToLife ajoute (résonance, relâchement, bruits), jamais autour du son de votre piano. **Room** : Small, Medium, Default, Hall ou **Auto** (10.8.0, voir plus bas). Le curseur va de −6 à +6 dB autour de Default (10.8.0) |
+| **BODY** | La taille perçue du piano (à gauche de SOFT) : la fondamentale de chaque note renforcée ou atténuée, en HOST et en SAMPLER. Ce n'est pas un égaliseur : une petite cloche suit **chaque note qui sonne**, sur sa propre fondamentale (touches et pédale suivies). Pourquoi ça aide : sur un vrai piano, la fondamentale est rayonnée par toute la table d'harmonie et se forme avec la distance ; des micros proches captent surtout les partiels aigus et le marteau, et un piano enregistré sonne souvent brillant mais un peu creux. BODY lui rend cette présence, note par note ; et dans un mix le piano se détache sans empâter le grave, puisque seules les notes jouées sont renforcées (un égaliseur remonterait toute la bande). En mode SAMPLER, **AUTO BODY** (10.9.3, EDIT > DRY / DENOISE / BODY) va plus loin : il rend cohérentes les fondamentales des échantillons, couche par couche et touche par touche, écrites dans le -dry ([Manuel du sampler](MANUEL_SAMPLER.md)) |
+| **Recorded Room** (appelée Ambience avant la 10.9.3) | Juste sous SYMPATHETIC RESONANCE. **La salle enregistrée dans vos échantillons**, détectée par AUTO CAL et simulée pour tout ce que PianoToLife ajoute (résonance, relâchement, bruits), pour qu'il se fonde dans le piano — jamais autour du son de votre piano, qui la contient déjà. **Ce n'est pas une reverb** : pour placer tout l'instrument dans une salle, utilisez la **REVERB** (ALGO ou IR) ; un piano rendu sec (DRY) n'a plus de salle enregistrée (Small). **Room** : Small, Medium, Default, Hall ou **Auto** (10.8.0, voir plus bas). Le curseur va de −6 à +6 dB autour de Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placés après la résonance : tout l'instrument passe dedans |
 | **Reverb ALGO \| IR** (10.9.2) | À côté du DEFAULT de REVERB. **ALGO** : le Piano Hall de PianoToLife. **IR** : une reverb à convolution avec une **réponse impulsionnelle** de votre choix (une vraie salle, une plaque, une reverb de légende...). Cliquez sur **IR** : choisissez une IR, **LOAD IR...** (un WAV, AIFF ou FLAC téléchargé : il est copié dans le dossier `Impulse Responses` de votre dossier de sets, et choisi) ou **Open IR folder** (les dossiers qu'il contient, jusqu'à trois niveaux, deviennent des sous-menus). Les IR mono, stéréo et **true stereo** (4 canaux, ou une paire de fichiers « ... L » / « ... R » : choisissez l'un ou l'autre, les deux sont pris) sont lues, à toute fréquence, jusqu'à 10 s ; les fichiers B-format (ambisoniques) ne le sont pas. Le niveau est calé sur le Piano Hall. Choisir une IR met DECAY à la longueur propre de l'IR et DAMP à 0 (l'IR telle qu'enregistrée) ; ensuite **DECAY** raccourcit sa queue et **DAMP** éteint plus vite ses aigus ; MIX, PRE et LEVEL comme d'habitude. Aucune latence. Un preset garde le nom de l'IR : si le fichier manque, le Piano Hall joue et le bouton affiche **IR ?**. DEFAULT = ALGO. IR gratuites : [Voxengo](https://www.voxengo.com/impulses), [OpenAIR](https://www.openair.hosted.york.ac.uk/?page_id=2) (de vraies salles, prenez les fichiers stéréo), [Airwindows](https://airwindows.com/airwindows-impulses) ; les bibliothèques commerciales livrées en WAV marchent aussi |
 | **EQ1 / EQ2** (10.4.2) | Cliquez sur **EQ** sous REVERB : les EQ prennent la place de COMP / REVERB (le même bouton les ramène). **EQ1 BEFORE FX** agit avant COMP et REVERB, pour façonner le timbre du piano ; **EQ2 AFTER FX** agit tout à la fin, avant le Ceiling, pour corriger un casque. Pour chacun : **dessinez sur la courbe** (double-clic = un nouveau point, glisser = fréquence et gain, molette sur un point = sa largeur Q, clic droit = le supprimer), PREAMP, RESET = à plat, ou **LOAD** un preset — un `ParametricEQ.txt` d'AutoEq (mesures d'oratory1990, cible Harman) ou un fichier Equalizer APO ; chargez les presets de casque dans EQ2 (désactivez-le pour un bounce ou sur enceintes). Jusqu'à 20 points chacun. Gardé dans le preset et la session |
@@ -342,14 +350,14 @@ signaler un clavier qui se comporte à sa façon.
 | **OUTPUT** (10.8.1 ; SWAP L-R depuis la 10.7.0) | **STEREO** tel quel ; **SWAP** gauche et droite inversés (le côté du public au lieu de celui du pianiste) ; **MONO** gauche et droite additionnés (pour les prises coïncidentes ou mono) ; **MONO L** / **MONO R** un seul côté, sur les deux sorties — avec des micros espacés la somme sonne creux (trous de phase), un seul côté non : essayez les deux, gardez le plus plein. Pour une seule enceinte, un retour de scène ou une sono mono. Cela dépend de votre casque / vos enceintes, pas du piano : **charger un preset ou un instrument ne le change jamais**, il revient au redémarrage et avec la session ; ALL DEFAULT le remet sur STEREO |
 | **Vumètre** (10.8.1) | Ce qui sort vraiment, après VOL, OUTPUT et le Ceiling : barres L et R, corps = RMS (ce qu'on entend), trait clair = crête, petit repère = la crête la plus haute (1,5 s), rouge au-dessus de −1 dBFS. Repères à −24, −12, −6 et 0 dBFS. Léger pour le CPU |
 
-### AUTO CAL de l'Ambience : une seule salle pour tout le piano (10.8.0)
+### AUTO CAL de la Recorded Room : une seule salle pour tout le piano (10.8.0)
 
 Votre piano a été enregistré dans une salle, et cette salle fait partie de son timbre. PianoToLife ajoute des sons que
 l'enregistrement ne contient pas : la résonance sympathique, le relâchement, les bruits de touche et de pédale. S'ils
 restent secs — ou sonnent dans une autre salle que le piano — l'oreille entend deux espaces superposés : le son paraît
 moins naturel, et la salle du piano se brouille.
 
-**AUTO CAL** (à côté d'Ambience, sous celui de Resonance Level) écoute la salle de votre piano **dans son propre son** :
+**AUTO CAL** (à côté de Recorded Room, juste sous SYMPATHETIC RESONANCE) écoute la salle de votre piano **dans son propre son** :
 PianoToLife joue quelques notes aiguës tenues et écoute *entre* leurs harmoniques, là où seule la salle sonne. Il en
 déduit la durée de la salle et son niveau, puis règle la **Room** sur **Auto**. Tout ce que PianoToLife ajoute sonne
 alors dans la même salle que votre piano, et au même niveau. Le son du piano lui-même n'est jamais modifié. Le résultat
@@ -358,7 +366,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Lancez-le une fois par piano** (et de nouveau après un changement de micros ou de réverbération dans
   l'instrument). Quelques secondes hors ligne en standalone, environ 25 s dans un DAW ; ne jouez pas pendant la
   mesure. Le bouton reste allumé une fois le piano analysé.
-- **Le niveau trouvé s'affiche dans la Room** (par exemple *Auto +3 dB*). Le curseur Ambience reste un réglage fin
+- **Le niveau trouvé s'affiche dans la Room** (par exemple *Auto +3 dB*). Le curseur Recorded Room reste un réglage fin
   autour : baissez-le de quelques points si vous trouvez la salle trop présente — souvent le cas avec des relâchements
   très propres.
 - **Un piano très sec** (micros proches ou fermés) : aucune salle n'est trouvée, la Room passe sur **Small**. De même

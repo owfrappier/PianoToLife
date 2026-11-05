@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -63,7 +63,9 @@ disk and play just as well.
     Kontakt `.nki` and its `.nkx` (10.6.0).
 
 Every tool has **UNDO** (Cmd / Ctrl + Z) and **REDO** (Shift + Cmd / Ctrl + Z); since 10.6.2 the UNDO and REDO
-buttons are in the right panel, just above the key's settings.
+buttons are in the right panel, just above the key's settings. Since 10.9.3 every step is named: the tooltip says what
+UNDO / REDO will do (e.g. *UNDO: AUTO DYN2*), the status line what was undone, and a **right-click** on UNDO or REDO lists
+the last steps (up to 30): choose one to go back to just before it, in one go.
 
 ---
 
@@ -249,7 +251,7 @@ a selection before working on every key.
 
 Born from our research on modelling recordings of real pianos. A piano recorded in a room that rings too much — or that
 does not suit your music — keeps that room in every sample. **DRY** takes it out, so that you can put the piano in the
-room you choose with the **Ambience**: one clean room for everything PianoToLife plays and adds.
+room you choose with the **REVERB** (ALGO or IR, 10.9.2): one clean room for everything PianoToLife plays and adds.
 
 **How it works.** For each sample, PianoToLife finds the partials of the note on the sample itself (in the bass from the
 spacing of the strong partials, the fundamental of the lowest notes being very weak on every piano; in the treble
@@ -261,22 +263,22 @@ room (80 to 600 ms, measured on each sample), then comes in gradually. **100 % i
 **DENOISE** is light and careful: the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time so
 that it never warbles.
 
-**The DRY / DENOISE... button** (second row of EDIT, after FLAC) opens the panel for the **microphone selected** at the
+**The DRY / DENOISE / BODY... button** (second row of EDIT, after FLAC) opens the panel for the **microphone selected** at the
 top:
 
 1. **Listen first.** Choose a **KEY** and a **VELOCITY**, then compare **> ORIGINAL** and **> PROCESSED** (the same
    button again stops). **A6** by default: **the room is easiest to hear in the treble**, where the partials are few
    and the notes short (with no release samples, the end of a treble note is mostly the room). With **SHOW BY MIDI**
-   ticked, the key you play (and its velocity) is chosen. The sample is heard as it is, without the Ambience.
+   ticked, the key you play (and its velocity) is chosen. The sample is heard as it is, without the Recorded Room.
 2. **MAKE "<name>-dry"** processes every sample of the microphone into a separate container beside the original one,
    `<name>-dry.wptl` (same encryption and password). In the background, with the progress bar and STOP of SAVE
    SAMPLES. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
    Other microphones already made there are kept.
 3. **MIC n plays: ORIGINAL / -DRY** — choose, microphone by microphone, which samples are played. Saved with the
    instrument and the preset.
-4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Ambience again**: they were
-   measured on the sound with its room. The Ambience AUTO CAL then finds no room and sets Room **Small**: choose the
-   room you want (a light Ambience is often all a dry piano needs).
+4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Recorded Room again**: they were
+   measured on the sound with its room. The Recorded Room AUTO CAL then finds no room and sets Room **Small**: put the
+   piano in the room you want with the REVERB (ALGO or IR).
 
 **Formats.** The original samples stay exactly as recorded. The -dry samples are always **24-bit FLAC** (lossless), at
 the original's sample rate, even when the originals are 16-bit: once the room and the hiss are taken out, the tails of
@@ -286,6 +288,47 @@ therefore larger than the original container (about twice); MAKE's message shows
 **Safety.** If the -dry file is moved or deleted, or a sample is missing in it, the original is played (the panel says
 so); the -DRY choice is kept and comes back with the file. A `<name>-dry.wptl` beside the `.wptl` is found on its own.
 Instruments saved with 10.9.0 open in older versions with their original samples.
+
+### Making the fundamentals coherent: AUTO BODY (10.9.3)
+
+A real piano has a logical proportion between the **fundamental** of each note and its upper partials: very low in the
+bass (on A0 the fundamental is 40 to 50 dB under the partials — normal on every piano), high in the treble, and falling
+a little from pp to ff (a harder strike brings the upper partials up). That proportion, key by key, is part of what
+makes one piano sound unlike another of the same model. Recordings break it: a layer recorded another day, close
+microphones, a room mode. **AUTO BODY** measures it on every sample (the fundamental against partials 2 to 8, 100 ms to
+0.6 s after the strike, 1.5 s in the bass) and moves each fundamental — its own band only — towards **the piano's own
+coherent proportion**. No other piano is used as a reference: the piano is corrected from itself.
+
+In the same panel (the button now reads **DRY / DENOISE / BODY...**):
+
+- **BODY: OFF | LAYERS | LAYERS + KEYS.** **LAYERS** makes the layers of each key coherent with each other (a common
+  progression from pp to ff, taken from the neighbouring keys); the level of each key — its character — is kept. It is
+  the safe choice. **LAYERS + KEYS** also brings each key towards its neighbours: the piano becomes more even (it also
+  corrects the microphones and the room), at the cost of some of its individual character — listen to the whole piano.
+  At most ±6 dB.
+- **AMOUNT** (0–100 %): how much of the measured correction is applied (a bracket links AMOUNT and GLOBAL to BODY).
+- **GLOBAL** (0 to +6 dB): added to every fundamental after AUTO BODY — the lack that close microphones share (the
+  fundamental is radiated by the whole soundboard and builds up at a distance). All of it up to C5, fading to nothing
+  at C7, as BODY on the main window. Works with BODY OFF too. A piano often needs less volume afterwards: part of the
+  loudness we hear is the fundamental.
+
+The line under the key shows the correction for the sample chosen (**BODY +2.8 dB** = its fundamental is raised,
+**−3 dB** = lowered; the measure takes a few seconds the first time), and **> PROCESSED** plays it. **MAKE** writes it
+into the -dry with DRY and DENOISE (or alone, with DRY and DENOISE at 0): nothing to compute when you play. The attack
+stays the original: the change is faded in from the strike over 30 ms. When a raised fundamental could take a strike
+above 0 dBFS, the whole -dry of the microphone is written lower by one value and given back when it is played: nothing
+clips, the balance stays. A -dry made with 10.9.2 or before has no BODY: MAKE it again. Then run AUTO COLOR and BALANCE
+again as usual.
+
+### From a raw library to a finished piano (10.9.3)
+
+Each step measures what the one before left, so the order matters:
+
+1. **DRY / DENOISE / BODY**, then **MAKE**, microphone by microphone; **MIC n plays: -DRY**.
+2. A new **Piano Model capture** (.srpiano).
+3. **AUTO DYN1** or **AUTO DYN2** (and the Samples setting it advises), **RANGE** if wanted, **FIX STEPS**.
+4. **AUTO COLOR**, **BALANCE**, **AUTO RELEASE**, **LEVEL / AUTO**.
+5. On the main window: **AUTO CAL** of Resonance and of Recorded Room, then the room — **ALGO** or an **IR** (REVERB).
 
 ---
 
@@ -374,13 +417,13 @@ In SAMPLER mode, PianoToLife's engines play on your samples:
   (Capture), so the resonance has the colour of your piano. In SAMPLER mode the capture reads the samples directly,
   offline, at the centres of your layers: a few minutes instead of a real-time recording. Tick the microphones of the
   model in the capture window (MIC 1 by default) and prefer the **close microphones**: room microphones put the hall's
-  reverberation into the decays of the strings (PianoToLife's Ambience gives the room back).
+  reverberation into the decays of the strings (PianoToLife's Recorded Room gives that room back to what it adds, the REVERB puts the whole piano in a hall).
 - **Sustain**: always Host Sustain in SAMPLER, with a native **half pedal** on the voices themselves (Progressive,
   or Switch for on / off pedals). Sostenuto works.
 - **Una corda**: simulated on every voice (level and partials of a real una corda, plus the halo of the string not
   struck). Since 10.8.0, **click the SOFT pedal** (*settings*) to set its **LEVEL** (how much quieter) and **TONE**
   (how much darker) to your taste and your piano — 0 = as measured.
-- **Ambience AUTO CAL** (10.8.0): measures the room of your samples in their own sound and puts everything PianoToLife
+- **Recorded Room AUTO CAL** (10.8.0, called Ambience before 10.9.3): measures the room of your samples in their own sound and puts everything PianoToLife
   adds in the same room (Room **Auto**) — see the [User Manual](USER_MANUAL.md).
 - **Release**: PianoToLife's dampers; with a keyboard that sends release velocity, a slow release lands the damper
   later (see Keyboard Note-Off Floor and Curve in the KEYBOARD section).

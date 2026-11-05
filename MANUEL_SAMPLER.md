@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -66,7 +66,10 @@ gigaoctets) sont lues depuis le disque en streaming et jouent tout aussi bien.
     tous les réglages. Votre piano est prêt - deux fichiers, comme un `.nki` Kontakt et son `.nkx` (10.6.0).
 
 Chaque outil a son **UNDO** (Cmd / Ctrl + Z) et son **REDO** (Maj + Cmd / Ctrl + Z) ; depuis la 10.6.2, les boutons
-UNDO et REDO sont dans le panneau de droite, juste au-dessus des réglages de la touche.
+UNDO et REDO sont dans le panneau de droite, juste au-dessus des réglages de la touche. Depuis la 10.9.3, chaque étape
+porte un nom : l'infobulle dit ce qu'UNDO / REDO va faire (par ex. *UNDO: AUTO DYN2*), la barre d'état ce qui a été
+annulé, et un **clic droit** sur UNDO ou REDO liste les dernières étapes (jusqu'à 30) : choisissez-en une pour revenir
+juste avant elle, d'un coup.
 
 ---
 
@@ -267,7 +270,7 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
 
 Issu de nos recherches sur la modélisation d'enregistrements de vrais pianos. Un piano enregistré dans une salle qui
 sonne trop — ou qui ne convient pas à votre musique — garde cette salle dans chaque échantillon. **DRY** la retire,
-pour que vous placiez le piano dans la salle de votre choix avec l'**Ambience** : une seule salle propre pour tout ce
+pour que vous placiez le piano dans la salle de votre choix avec la **REVERB** (ALGO ou IR, 10.9.2) : une seule salle propre pour tout ce
 que PianoToLife joue et ajoute.
 
 **Comment ça marche.** Pour chaque échantillon, PianoToLife trouve les harmoniques de la note sur l'échantillon
@@ -281,22 +284,22 @@ retombés juste au-dessus de la salle (80 à 600 ms, mesuré sur chaque échanti
 **DENOISE** est léger et prudent : le souffle est mesuré sur chaque échantillon et baissé de 12 dB au plus, lissé dans
 le temps pour ne jamais « gazouiller ».
 
-**Le bouton DRY / DENOISE...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau du **micro sélectionné** en haut :
+**Le bouton DRY / DENOISE / BODY...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau du **micro sélectionné** en haut :
 
 1. **Écoutez d'abord.** Choisissez une **KEY** (touche) et une **VELOCITY**, puis comparez **> ORIGINAL** et
    **> PROCESSED** (le même bouton une deuxième fois arrête). **A6** par défaut : **c'est dans l'aigu que la salle
    s'entend le plus facilement**, là où les harmoniques sont rares et les notes courtes (sans échantillons de
    relâchement, la fin d'une note aiguë, c'est surtout la salle). Avec **SHOW BY MIDI** coché, la touche que vous jouez
-   (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans l'Ambience.
+   (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans la Recorded Room.
 2. **MAKE "<nom>-dry"** traite tous les échantillons du micro dans un conteneur séparé, à côté de l'original,
    `<nom>-dry.wptl` (même chiffrement, même mot de passe). En arrière-plan, avec la barre de progression et le STOP de
    SAVE SAMPLES. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux (jamais de
    « dry sur dry »). Les autres micros déjà traités y sont gardés.
 3. **MIC n plays: ORIGINAL / -DRY** — choisissez, micro par micro, quels échantillons sont joués. Gardé dans
    l'instrument et le preset.
-4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et d'Ambience** :
-   ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de l'Ambience ne trouve alors plus de salle et règle la
-   Room sur **Small** : choisissez la salle voulue (une Ambience légère suffit souvent à un piano rendu sec).
+4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et de Recorded Room** :
+   ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de la Recorded Room ne trouve alors plus de salle et règle la
+   Room sur **Small** : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
 
 **Formats.** Les échantillons d'origine restent exactement tels qu'enregistrés. Les échantillons -dry sont toujours en
 **FLAC 24 bits** (sans perte), à la fréquence de l'original, même quand les originaux sont en 16 bits : une fois la
@@ -307,6 +310,48 @@ double) ; le message de MAKE affiche les deux tailles.
 **Sécurité.** Si le fichier -dry est déplacé ou supprimé, ou qu'il lui manque un échantillon, l'original est joué (le
 panneau le dit) ; le choix -DRY reste et revient avec le fichier. Un `<nom>-dry.wptl` à côté du `.wptl` est retrouvé
 tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versions précédentes avec leurs échantillons d'origine.
+
+### Rendre les fondamentales cohérentes : AUTO BODY (10.9.3)
+
+Un vrai piano a une proportion logique entre la **fondamentale** de chaque note et ses harmoniques supérieures : très
+basse dans le grave (sur A0, la fondamentale est 40 à 50 dB sous les harmoniques — normal sur tous les pianos), haute
+dans l'aigu, et qui baisse un peu du pp au ff (une frappe plus forte fait monter les harmoniques aiguës). Cette
+proportion, touche par touche, fait partie de ce qui distingue un piano d'un autre du même modèle. Les enregistrements
+la cassent : une couche enregistrée un autre jour, des micros proches, un mode de la salle. **AUTO BODY** la mesure sur
+chaque échantillon (la fondamentale contre les harmoniques 2 à 8, de 100 ms à 0,6 s après la frappe, 1,5 s dans le
+grave) et ramène chaque fondamentale — sa seule bande — vers **la proportion cohérente du piano lui-même**. Aucun autre
+piano ne sert de référence : le piano se corrige à partir de lui-même.
+
+Dans le même panneau (le bouton s'appelle maintenant **DRY / DENOISE / BODY...**) :
+
+- **BODY : OFF | LAYERS | LAYERS + KEYS.** **LAYERS** rend cohérentes entre elles les couches de chaque touche (une
+  progression commune du pp au ff, prise sur les touches voisines) ; le niveau de chaque touche — son caractère — est
+  gardé. C'est le choix sans risque. **LAYERS + KEYS** rapproche aussi chaque touche de ses voisines : le piano devient
+  plus égal (ça corrige aussi les micros et la salle), au prix d'une partie de son caractère — écoutez tout le piano.
+  Au plus ±6 dB.
+- **AMOUNT** (0–100 %) : la part de la correction mesurée qui est appliquée (une accolade relie AMOUNT et GLOBAL à BODY).
+- **GLOBAL** (0 à +6 dB) : ajouté à toutes les fondamentales après AUTO BODY — le manque que partagent les micros
+  proches (la fondamentale est rayonnée par toute la table d'harmonie et se forme à distance). En entier jusqu'à C5,
+  jusqu'à rien à C7, comme le BODY de la fenêtre principale. Marche aussi avec BODY sur OFF. Un piano demande souvent
+  moins de volume ensuite : une partie de ce qu'on perçoit comme le volume, c'est la fondamentale.
+
+La ligne sous la touche donne la correction de l'échantillon choisi (**BODY +2.8 dB** = sa fondamentale est remontée,
+**−3 dB** = baissée ; la mesure prend quelques secondes la première fois), et **> PROCESSED** la fait entendre.
+**MAKE** l'écrit dans le -dry avec DRY et DENOISE (ou seule, avec DRY et DENOISE à 0) : rien à calculer quand vous
+jouez. L'attaque reste l'originale : le changement s'ouvre en fondu depuis la frappe, sur 30 ms. Quand une fondamentale
+remontée pourrait faire passer une frappe au-dessus de 0 dBFS, tout le -dry du micro est écrit plus bas d'une seule
+valeur, rendue à la lecture : rien n'écrête, l'équilibre reste. Un -dry fait en 10.9.2 ou avant n'a pas de BODY :
+refaites MAKE. Relancez ensuite AUTO COLOR et BALANCE comme d'habitude.
+
+### De la banque brute au piano fini (10.9.3)
+
+Chaque étape mesure ce que la précédente a laissé : l'ordre compte.
+
+1. **DRY / DENOISE / BODY**, puis **MAKE**, micro par micro ; **MIC n plays : -DRY**.
+2. Une nouvelle **capture du Piano Model** (.srpiano).
+3. **AUTO DYN1** ou **AUTO DYN2** (et le réglage Samples qu'il conseille), **RANGE** si besoin, **FIX STEPS**.
+4. **AUTO COLOR**, **BALANCE**, **AUTO RELEASE**, **LEVEL / AUTO**.
+5. Dans la fenêtre principale : les **AUTO CAL** de Resonance et de Recorded Room, puis la salle — **ALGO** ou une **IR** (REVERB).
 
 ---
 
@@ -400,7 +445,7 @@ En mode SAMPLER, les moteurs de PianoToLife jouent sur vos échantillons :
 - **Una corda** : simulée sur chaque voix (niveau et partiels d'une vraie una corda, plus le halo de la corde non
   frappée). Depuis la 10.8.0, **cliquez sur la pédale SOFT** (*settings*) pour régler son **LEVEL** (combien plus
   doux) et son **TONE** (combien plus sombre) selon votre goût et votre piano — 0 = tel que mesuré.
-- **AUTO CAL de l'Ambience** (10.8.0) : mesure la salle de vos échantillons dans leur propre son et place tout ce que
+- **AUTO CAL de la Recorded Room** (10.8.0, appelée Ambience avant la 10.9.3) : mesure la salle de vos échantillons dans leur propre son et place tout ce que
   PianoToLife ajoute dans la même salle (Room **Auto**) — voir le [Manuel d'utilisation](MANUEL.md).
 - **Relâchement** : les étouffoirs de PianoToLife ; avec un clavier qui envoie une vélocité de relâchement, un
   relâchement lent pose l'étouffoir plus tard (voir Keyboard Note-Off Floor et Curve dans la partie KEYBOARD).
