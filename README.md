@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1092" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1093" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,41 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.2
+## What's new in 10.9.3
+
+**AUTO BODY: the fundamental of every sample made coherent — the piano's own voice, as the microphones lost it.**
+
+- **AUTO BODY** (SAMPLER > EDIT, button **DRY / DENOISE / BODY...**): a real piano has a logical proportion between
+  the fundamental of each note and its upper partials — very low in the bass, high in the treble, falling a little
+  from pp to ff. Recordings break it: a layer recorded another day, close microphones, a room mode. AUTO BODY measures
+  it on every sample and moves each fundamental (its own band only) towards **the piano's own coherent proportion** —
+  no other piano is used as a reference.
+  - **LAYERS**: the layers of each key made coherent; the character of every key kept. **LAYERS + KEYS**: each key
+    also brought towards its neighbours (more even, a little less individual). At most ±6 dB; **AMOUNT** 0–100 %.
+  - **GLOBAL** (0 to +6 dB): the fundamental that close microphones lose (it is radiated by the whole soundboard and
+    builds up at a distance), given back to every note up to C5, fading out at C7. Often a piano then needs less
+    volume: part of the loudness we hear is the fundamental.
+  - Listen first (**> PROCESSED**), then **MAKE**: it is written into the -dry with DRY and DENOISE, or alone. No CPU
+    when playing. The attack stays the original (the change fades in from the strike). Nothing clips: when needed, the
+    -dry is written lower by one value and given back when played. The original samples are never touched.
+- **Ambience is now Recorded Room**, right under SYMPATHETIC RESONANCE: the room recorded in your samples, detected
+  by AUTO CAL and given only to what PianoToLife adds (resonance, release, noises) so that it blends with the piano. It
+  is not a reverb: REVERB (ALGO or IR) puts the whole instrument in a hall. Presets and sessions open as before.
+- **UNDO / REDO say what they undo** (EDIT): every step is named (*UNDO: AUTO DYN2*), and a right-click lists the
+  last 30 steps to go back to just before the one you choose, in one go.
+- **From a raw library to a finished piano**: the Sampler Manual now gives the order of the tools — DRY / DENOISE /
+  BODY, a new Piano Model capture, AUTO DYN, AUTO COLOR, BALANCE, AUTO RELEASE, AUTO CAL, then the room (ALGO or IR).
+
+<p align="center">
+  <img src="screenshot1b.png?v=1093" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
+  <i>SAMPLER EDIT (10.9.3): the DRY / DENOISE / BODY panel on a 3-layer grand — DRY takes the room out, AUTO BODY makes
+  the fundamentals coherent (AMOUNT, GLOBAL), MAKE writes the -dry samples, then ORIGINAL or -DRY for each microphone.</i>
+</p>
+
+Manuals updated for 10.9.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.2
 
 **REVERB IR: put your piano in a real hall, with your own impulse responses; VOL saved with the preset.**
 
@@ -76,8 +110,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 - **Encrypted Kontakt samples**: `.ncw` files of a protected library keep the extension but cannot be read; a popup
   now says so when they are dropped, instead of nothing happening.
 
-Manuals updated for 10.9.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
-[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.9.1
 
@@ -135,11 +167,6 @@ and placed in the room you choose.
 - **Fix**: after several saves, MAKE or big pianos loaded in a row, the sound could stop until PianoToLife was reopened.
 - Instruments saved with 10.9.0 still open in older versions, with their original samples (without RANGE).
 
-<p align="center">
-  <img src="screenshot1b.png?v=1090" alt="SAMPLER EDIT: the DRY / DENOISE panel" width="900"><br>
-  <i>SAMPLER EDIT (10.9.0): the DRY / DENOISE panel on a 3-layer grand — listen on A6, MAKE the -dry samples, then
-  choose ORIGINAL or -DRY for each microphone.</i>
-</p>
 
 
 ### Also in 10.8.1
@@ -916,7 +943,7 @@ compression or other effect**, and with **everything switched off that is not th
 (release samples, sustain / pedal resonance, sympathetic resonance, key and pedal noises),
 and with the piano's own **velocity curve set to linear** (no smear or progressive velocity).
 Preferably the close microphones: room microphones put the hall into the model. If you play with hall microphones,
-use PianoToLife's Ambience (next to Resonance and Release) to put the hall back.
+use PianoToLife's REVERB (ALGO or IR) to put the hall back.
 
 **Models captured before 9.4.0:** they still work, but the capture is much richer since 9.4.0
 (up to 255 partials per note instead of 48, the high harmonics of the bass strings that make
@@ -964,8 +991,8 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
   rounder note adapted to each piano, and the unstruck string ringing in sympathy. With
   **Una Corda: BP**, your piano's own una corda samples play as before. Click the SOFT pedal to set its
   LEVEL and TONE to your taste (10.8.0).
-- **Ambience AUTO CAL.** Measures your piano's own room in its sound and puts everything PianoToLife adds in the
-  same room, at the same level (10.8.0).
+- **Recorded Room AUTO CAL.** Measures the room recorded in your samples and puts everything PianoToLife adds in the
+  same room, at the same level (10.8.0; called Ambience before 10.9.3). Not a reverb: REVERB (ALGO or IR) is the hall.
 - **Layer detector and velocity calibration.** Find your piano's real velocity layers on A4
   in about 1 min 20 s, then calibrate its dynamics on a real concert grand, grand or upright;
   export the result as text. A large velocity curve, with your keyboard's real range (LEARN) stretched onto it
@@ -977,16 +1004,18 @@ the "harp" of the sustain). Capture your piano again to get the new sound.
 - **Felt-Contact.** The felt touching a string that still vibrates when a key or the pedal lets
   the damper fall, made from each note's real partials and following your release speed, with
   its own volume and colour.
-- **Listen to each part.** Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience:
+- **Listen to each part.** Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Room:
   hear any combination of parts, kept in the preset.
 - **MIDI player (standalone).** Load, play, record and save MIDI, and bounce — offline, as fast as your computer can —
   to WAV, AIFF, FLAC or CAF, 16 or 24 bits / 44.1 kHz, to compare settings on exactly the same performance.
 - **Take the room out of the samples (SAMPLER, 10.9.0).** DRY / DENOISE keeps the partials and their beats, protects
   the strike and takes out the room and the hiss, into a separate 24-bit FLAC container; then choose the room with the
-  Ambience. The original samples are never touched.
+  REVERB. The original samples are never touched.
+- **Coherent fundamentals (10.9.3).** AUTO BODY measures the share of the fundamental of every sample and makes it
+  coherent, layer by layer and key by key, with the piano's own proportion; GLOBAL gives back what close microphones lose.
 - **Your own reverb (10.9.2).** Beside the Piano Hall, a zero-latency convolution reverb with the impulse responses
   you choose (WAV / AIFF / FLAC, mono, stereo, true stereo), level matched, DECAY and DAMP still at hand.
-- **32-bit floating-point engine.** Everything — the hosted piano, the sampler, the resonance, the Ambience, the effects
+- **32-bit floating-point engine.** Everything — the hosted piano, the sampler, the resonance, the Recorded Room, the effects
   and the Ceiling — is processed in 32-bit float, so even the softest notes keep their full quality. BOUNCE renders in
   32-bit float, then writes 16 or 24 bits.
 - **Output Ceiling and meters.** A transparent true-peak safety limiter, TRUE PEAK MAX and
@@ -1030,7 +1059,7 @@ under Resonance Level:
 
 - **PianoToLife's release (recommended)**: turn the release off in your piano (e.g. VSL:
   Release at −inf) and keep **Release Level** on. The release comes from the real partials of
-  each string and follows the resonance, the dampers and the **Ambience**.
+  each string and follows the resonance, the dampers and the **Recorded Room**.
 - **Your piano's own release**: untick **Release Level**, and keep the release of your piano.
 - **A blend of both**: keep your piano's release a little lower and adjust **Release Level**
   around **Default**: PianoToLife adds what the samples lack (brighter high harmonics, the
@@ -1042,6 +1071,11 @@ What the re-simulated release contains:
   and die away as the damper settles (**Fast** makes the damper contact more immediate).
 - **Ring**: part of the energy passes through the bridge into the **undamped treble
   strings** and the **duplex scale**, which keep shimmering briefly, as on a real grand.
+- **The duplex scale is already in your pedal-up samples**: the aliquot sections ring with
+  every note, so they are part of each piano's recorded signature. The sympathetic resonance
+  is built from those same samples (the Piano Model capture), so it carries your own piano's
+  duplex colour too, not a generic one added on top. The **Ring** setting brings the duplex
+  shimmer of the undamped keys out more or less.
 - **In the bass**, the release lasts longer and the strings of a unison **beat** slightly,
   because they are never damped at exactly the same instant.
 - **Release Weights** balances the colour of the release: 100 % keeps the partials as
