@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.9.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.9.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -96,7 +96,17 @@ audio settings.
 
 ## 4. HOST mode: setting up your piano
 
-1. Choose your piano plug-in in the **HOST** section (scan, list, Add VST3) and open its window (**Show piano** / **Hide piano** once it is loaded, 10.7.1: the piano stays loaded).
+1. Choose your piano plug-in in the **HOST** section (SCAN, the list, **Plug-ins...**) and open its window (**Show piano** / **Hide piano** once it is loaded, 10.7.1: the piano stays loaded).
+
+   **Plug-ins...** (10.9.6, called Add VST3 before) manages the list of instruments, as a setting of your computer (not of
+   a preset):
+   - the VST3 found in the standard folders: pick one to add it without a full SCAN;
+   - **Other location...**: a .vst3 or a whole folder anywhere — it is **remembered**, and SCAN looks there too;
+   - **Locations scanned**: untick **Standard VST3 folders** to scan only your own locations; click one of your
+     locations to forget it;
+   - **Remove from the list**: an instrument you do not want (it stays out of the next scans too);
+   - **FULL reset SCAN**: everything back to the start (standard folders, your locations forgotten, removed instruments
+     back), then SCAN.
 2. **In the hosted piano**, turn off:
    - every *sympathetic*, *string*, *sustain* or *pedal resonance* option;
    - all **reverb, effects and compression** (rooms, ambience, EQ, limiters, wideners): PianoToLife listens to the
@@ -424,7 +434,9 @@ once: the piano's room comes out, instead of being masked.
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
   100 %; the view size you choose (90 / 80 %) is for the full window. Since 10.7.0 it also has VOL, since 10.8.1 OUTPUT
-  and the level meter, in its right column (see section 11).
+  and the level meter, in its right column (see section 11). Since 10.9.6, **HOST | SAMPLER** sits where the pedal mode
+  was, so you can switch mode and choose your presets in either from the compact bar (the pedal mode stays in the full
+  window).
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full

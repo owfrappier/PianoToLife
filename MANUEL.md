@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -100,7 +100,17 @@ dans les réglages audio.
 
 ## 4. Mode HOST : préparer votre piano
 
-1. Choisissez votre plug-in de piano dans la partie **HOST** (scan, liste, Add VST3) et ouvrez sa fenêtre (**Show piano** / **Hide piano** une fois chargé, 10.7.1 : le piano reste chargé).
+1. Choisissez votre plug-in de piano dans la partie **HOST** (SCAN, la liste, **Plug-ins...**) et ouvrez sa fenêtre (**Show piano** / **Hide piano** une fois chargé, 10.7.1 : le piano reste chargé).
+
+   **Plug-ins...** (10.9.6, appelé Add VST3 avant) gère la liste des instruments, comme un réglage de votre ordinateur
+   (pas d'un preset) :
+   - les VST3 trouvés dans les dossiers standards : choisissez-en un pour l'ajouter sans SCAN complet ;
+   - **Other location...** : un .vst3 ou tout un dossier, n'importe où — il est **retenu**, et SCAN y cherche aussi ;
+   - **Locations scanned** : décochez **Standard VST3 folders** pour ne scanner que vos emplacements ; cliquez l'un de
+     vos emplacements pour l'oublier ;
+   - **Remove from the list** : un instrument dont vous ne voulez pas (il reste aussi hors des prochains scans) ;
+   - **FULL reset SCAN** : tout revient au départ (dossiers standards, vos emplacements oubliés, instruments retirés de
+     retour), puis SCAN.
 2. **Dans le piano hébergé**, coupez :
    - toute option de résonance *sympathique*, *de cordes*, *de sustain* ou *de pédale* ;
    - toute **réverbération, effet et compression** (salles, ambiance, égaliseur, limiteur, élargisseur) :
@@ -454,6 +464,8 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
   barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète. Depuis la
   10.7.0, elle a aussi VOL, et depuis la 10.8.1 OUTPUT et le vumètre, dans sa colonne de droite (voir la section 11).
+  Depuis la 10.9.6, **HOST | SAMPLER** remplace le mode de pédale : on change de mode et on choisit ses presets dans
+  l'un ou l'autre depuis la barre compacte (le mode de pédale reste dans la fenêtre complète).
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
