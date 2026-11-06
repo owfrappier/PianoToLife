@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1095" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1096" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,24 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.5
+## What's new in 10.9.6
+
+**Plug-ins...: your own VST3 folders, the standard ones left out if you want, a clean list — and HOST | SAMPLER in the
+compact bar.**
+
+- **Plug-ins...** (HOST, beside SCAN; called Add VST3 before) — a suggestion from Vlad:
+  - **Other location...**: a .vst3 or a whole folder anywhere is now **remembered**, and **SCAN looks there too**
+    (before, a full SCAN forgot it).
+  - **Locations scanned**: untick **Standard VST3 folders** to scan only your own locations; forget one with a click.
+  - **Remove from the list**: an instrument you do not want, kept out of the next scans too (VST3 and AU).
+  - **FULL reset SCAN**: everything back to the start, then SCAN.
+  - These are settings of your computer, not of a preset.
+- **Compact view: HOST | SAMPLER** where the pedal mode was: switch mode and choose your presets in either without
+  opening the full window (the pedal mode stays there).
+
+Manuals updated for 10.9.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md).
+
+### Also in 10.9.5
 
 **Up to three dry versions of a set to compare, clearer DRY, and two fixes reported by pipat.**
 
@@ -137,7 +154,7 @@ Manuals updated for 10.9.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisati
   BODY, a new Piano Model capture, AUTO DYN, AUTO COLOR, BALANCE, AUTO RELEASE, AUTO CAL, then the room (ALGO or IR).
 
 <p align="center">
-  <img src="screenshot1b.png?v=1095" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
+  <img src="screenshot1b.png?v=1096" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
   <i>SAMPLER EDIT (10.9.3): the DRY / DENOISE / BODY panel on a 3-layer grand — DRY takes the room out, AUTO BODY makes
   the fundamentals coherent (AMOUNT, GLOBAL), MAKE writes the -dry samples, then ORIGINAL or -DRY for each microphone.</i>
 </p>
