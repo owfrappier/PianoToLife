@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1093" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1094" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,41 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.3
+## What's new in 10.9.4
+
+**TEMPERAMENT: play your sampled piano in any temperament — measured on your samples, the resonance follows. The
+diapason of a hosted piano detected.**
+
+- **TEMPERAMENT** (SAMPLER, main window, on the SR A4 Tuning row): PianoToLife measures the temperament your samples
+  were recorded in, from the pitch of every key, and plays the piano in the one you choose — **Equal, Pythagorean,
+  Just intonation, Werckmeister III, Kirnberger III, Vallotti, Young, Meantone 1/4, 1/3, 1/5, 1/6, 2/7 comma**, any
+  **Scala file (.scl)**, or your own: **click a value of the Shift row and type it**. **Tonic**, **Stretch** (100 % =
+  the stretch the piano was tuned with, 0 % = none), **Diapason A4** with **RESET**, and **AS RECORDED** to go back.
+  **Export as a Scala file** saves the temperament played.
+  - **The samples are never changed**: each key gets an offset added to its Tune and keeps its own small differences.
+  - **The sympathetic resonance follows**: every free string is tuned like its key, and the strength with which a note
+    excites another string is computed on the strings as tuned — with a pure third, its strings ring more, as on a
+    real piano.
+  - Not in EDIT, so it works on a set protected by a password; saved in the set, presets and sessions. Pitch bends
+    and tuning messages of MIDI files are not used.
+- **HOST: the diapason of the hosted piano is detected.** The Piano Model capture measures the hosted piano's A4 and
+  shows it in **SR A4 Tuning** (a piano at 437 Hz reads 437.0 Hz). The model is stored at A4 = 440, so it stays right
+  when the diapason changes; with **ASSIGN to AU**, the hosted piano gives the value. In HOST, the **TEMPERAMENT**
+  button explains how the resonance follows the hosted piano's temperament: one Piano Model per temperament.
+- **The resonance is always tuned like the piano you hear**: in SAMPLER it now follows the Tune of each key, and the
+  capture always measures the samples as recorded. **Your Piano Models are still good** — only capture again one made
+  in SAMPLER with SR A4 Tuning, Transpose, Fine Pitch or the Tune of keys changed, or in HOST with SR A4 Tuning not at
+  440 Hz.
+- **EDIT: ALL 0** at the end of the Tune row puts every key's Tune back to 0 (one UNDO step).
+- **ALIGN ATTACKS** with many layers and XCOLOR: each key is centred on 3 ms again (the small phase shifts between
+  layers no longer add up, at most 1.5 ms off).
+- **Fixed**: at 80 % or 90 % zoom, the picture of a sample set could stay mixed with the previous one after changing
+  the preset (reported by pipat).
+
+Manuals updated for 10.9.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.3
 
 **AUTO BODY: the fundamental of every sample made coherent — the piano's own voice, as the microphones lost it.**
 
@@ -78,7 +112,7 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   BODY, a new Piano Model capture, AUTO DYN, AUTO COLOR, BALANCE, AUTO RELEASE, AUTO CAL, then the room (ALGO or IR).
 
 <p align="center">
-  <img src="screenshot1b.png?v=1093" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
+  <img src="screenshot1b.png?v=1094" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
   <i>SAMPLER EDIT (10.9.3): the DRY / DENOISE / BODY panel on a 3-layer grand — DRY takes the room out, AUTO BODY makes
   the fundamentals coherent (AMOUNT, GLOBAL), MAKE writes the -dry samples, then ORIGINAL or -DRY for each microphone.</i>
 </p>
