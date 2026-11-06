@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.4 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -208,7 +208,8 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    AUTO DYN, pour qu'il écoute des frappes bien alignées.
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2 ; un seul AUTO DYN avant, appelé RECAL A4 avant la 10.4.2) — tous deux écoutent
    le A4 aux 127 vélocités, placent ses couches là où leur intensité les met sur la courbe de référence et les mettent
-   à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : 440 Hz joue le set tel qu'il a été enregistré).
+   à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : cette valeur joue le set tel qu'il a été
+   enregistré ; RESET dans la fenêtre TEMPERAMENT y revient).
    Ensuite :
    - **AUTO DYN1** (global, comme avant la 10.5.6) : chaque touche qui a **autant de couches que le A4** reçoit les
      plages de vélocité du A4 et est mise à niveau ; les touches qui ont un autre nombre de couches restent telles
@@ -367,7 +368,7 @@ les couches des touches choisies.
 | **Attack** | Temps de montée, 0 = l'échantillon tel qu'enregistré |
 | **Decay** / **Sustain** | Temps pour atteindre le niveau Sustain ; 0 = l'extinction naturelle de l'échantillon |
 | **Release** | 0 = **Auto** (le modèle d'étouffoirs de PianoToLife ; sans étouffoir au-dessus de Undamped Keys Above) ; un temps en ms ; tout à droite = **Infinite** (sans étouffoir : touches aiguës non étouffées) |
-| **Tune** | Accord fin en cents |
+| **Tune** | Accord fin en cents. **ALL 0** (10.9.4, au bout de la ligne) : le Tune de toutes les touches revient à 0, la hauteur des samples tels qu'enregistrés (une étape UNDO) |
 | **LP** + fréquence + **LP Vel** | Passe-bas optionnel par voix ; LP Vel assombrit les notes douces (jusqu'à 3 octaves plus bas à 100 %) |
 | **Undamped** | Undamped Keys Above, pour tout le piano (le réglage de la fenêtre principale, synchronisé) : les touches au-dessus n'ont pas d'étouffoir |
 
@@ -456,11 +457,40 @@ En mode SAMPLER, les moteurs de PianoToLife jouent sur vos échantillons :
   vrai piano — niveau, brillance, extinction, attaque, un très léger désaccord dans le grave, et la montée d'une
   touche refrappée pendant qu'elle sonne — mesurées sur la référence choisie (Grand D / Grand B / Upright).
   Désactivé par défaut ; enregistré dans les presets ([Manuel d'utilisation](MANUEL.md#répétition-de-piano-réel-rep)).
-- **Accord** : SR Transpose, SR Fine Pitch et SR A4 Tuning agissent sur le sampler.
+- **Accord** : SR Transpose, SR Fine Pitch et SR A4 Tuning agissent sur le sampler ; le tempérament : **TEMPERAMENT**
+  (ci-dessous).
 - **BODY** : la taille perçue du piano.
 
 **Détecteur de couches** (à côté de Capture) : joue une note aux 127 vélocités et liste les vraies couches du piano,
 pour vérifier un set. **LEVEL TEST** : joue A0, C2, C4, C6 et C8 à la vélocité 127 et indique si le piano sature.
+
+### Tempérament et diapason (10.9.4)
+
+**TEMPERAMENT** (fenêtre principale, sur la ligne SR A4 Tuning — pas dans EDIT, donc utilisable sur un set protégé
+par mot de passe) mesure le tempérament dans lequel vos samples ont été enregistrés, à partir de la hauteur de chaque
+touche, et vous permet de jouer le piano dans un autre. **Les samples ne sont jamais modifiés** : chaque touche reçoit
+un décalage ajouté à son Tune, et la résonance sympathique suit (chaque corde libre, et la force avec laquelle elle
+répond).
+
+- **Temperament** : *Original (as recorded)*, Equal, Pythagorean, Just intonation, Werckmeister III, Kirnberger III,
+  Vallotti, Young, Meantone 1/4, 1/3, 1/5, 1/6 et 2/7 comma ; en bas de la liste, **Load a Scala file (.scl)...**
+  (12 notes par octave, qui se répètent à l'octave) et **Export as a Scala file (.scl)...** (le tempérament joué ; le
+  stretch et le A4 ne font pas partie d'un fichier Scala).
+- **Tonic** : la tonalité sur laquelle le tempérament est construit (ses accords les plus purs).
+- **Stretch** : 100 % = le stretch avec lequel ce piano a été accordé (mesuré), 0 % = aucun (chaque octave exacte),
+  jusqu'à 200 %.
+- **Diapason A4** : le même réglage que SR A4 Tuning ; **RESET** remet le A4 auquel le piano a été enregistré.
+- **AS RECORDED** : retour au tempérament, au stretch et au A4 de l'enregistrement.
+- **Le tableau** : pour chacune des 12 notes, en cents par rapport au tempérament égal (La = 0), **Recorded** (mesuré
+  sur les samples, de La 2 à Do 6), **Played** et **Shift**. **Cliquez une valeur de Shift pour taper la vôtre**
+  (−60 à +60) : le tempérament devient **Custom (edited)**, enregistré avec le set. En dessous : le stretch enregistré
+  (Do 2 à Do 7) et le tempérament le plus proche de l'enregistrement (par exemple *closest to Equal, 1.5 c rms*).
+
+Chaque touche garde ses petites différences (un accord réel n'est jamais parfait) ; seuls le tempérament et le
+stretch changent. Le tempérament est enregistré dans le set, les presets et les sessions ; chaque changement est une
+étape UNDO nommée dans EDIT. Les pitch bends et les messages d'accord des fichiers MIDI ne sont pas utilisés. La
+capture du Piano Model mesure toujours les samples tels qu'enregistrés : elle n'est jamais à refaire pour un
+tempérament.
 
 ---
 

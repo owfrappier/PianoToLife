@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -171,6 +171,34 @@ de concert est fourni.
 en texte).
 Mode HOST seulement (10.6.3) : en mode SAMPLER, les couches sont connues et déjà placées sur la référence par AUTO DYN,
 donc ANALYSE et EXPORT sont masqués.
+
+### Diapason et tempérament (10.9.4)
+
+**La résonance est toujours accordée comme le piano que vous entendez.** Chaque corde libre suit l'accord de sa
+touche, et la force avec laquelle une note excite une autre corde est calculée sur les cordes telles qu'elles sont
+accordées maintenant : avec un tempérament où une tierce est pure, ses cordes résonnent davantage, comme sur un vrai
+piano.
+
+**HOST : le diapason du piano hébergé est détecté.** La capture mesure le A4 du piano hébergé (sur son propre son, au
+0,1 Hz près) et l'affiche dans **SR A4 Tuning** : un piano accordé à 437 Hz indique 437,0 Hz après la capture. Un
+Piano Model est enregistré à A4 = 440 Hz, il reste donc juste quand le diapason change : changez SR A4 Tuning avec le
+diapason du piano hébergé (ou reliez-les avec **ASSIGN to AU** : c'est alors le piano hébergé qui donne la valeur et
+PianoToLife ne la change jamais). Au chargement d'un Piano Model, SR A4 Tuning revient au diapason de sa capture.
+
+**HOST : un Piano Model par tempérament.** PianoToLife ne change lui-même le tempérament qu'en mode SAMPLER. Si votre
+piano hébergé propose des tempéraments, choisissez-en un dans le piano, puis capturez un Piano Model avec ce
+tempérament : la résonance le suit alors exactement. Nommez chaque modèle d'après son tempérament (par exemple
+*Mon Piano – Werckmeister III.srpiano*). Le bouton **TEMPERAMENT** (sur la ligne SR A4 Tuning) l'explique en mode
+HOST, avec un bouton CAPTURE.
+
+**SAMPLER : TEMPERAMENT.** Le même bouton ouvre le tempérament de vos samples : mesuré, puis changé touche par touche
+sans toucher aux fichiers — voir le [Manuel du sampler](MANUEL_SAMPLER.md#tempérament-et-diapason-1094). Une capture
+en SAMPLER mesure toujours les samples tels qu'enregistrés, quels que soient le Tune, le tempérament ou le diapason.
+
+**Vos Piano Models restent bons.** Ceux capturés avec les réglages par défaut jouent exactement comme avant (un ancien
+modèle HOST est ramené à 440 en mémoire et SR A4 Tuning affiche son diapason ; le fichier n'est pas modifié). Ne
+refaites que les modèles capturés en SAMPLER avec SR A4 Tuning, Transpose, Fine Pitch ou le Tune des touches modifiés,
+ou en HOST avec SR A4 Tuning différent de 440 Hz.
 
 ---
 

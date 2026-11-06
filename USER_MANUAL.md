@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.9.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.9.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -162,6 +162,32 @@ concert grand is included.
 **Layer detector**: plays a note at the 127 velocities and lists the piano's real velocity layers (export as text).
 HOST mode only (10.6.3): in SAMPLER mode the layers are known and already placed on the reference by AUTO DYN, so
 ANALYSE and EXPORT are hidden.
+
+### Diapason and temperament (10.9.4)
+
+**The resonance is always tuned like the piano you hear.** Each free string follows the tuning of its key, and the
+strength with which a note excites another string is computed on the strings as they are tuned now: with a
+temperament where a third is pure, its strings ring more, as on a real piano.
+
+**HOST: the diapason of the hosted piano is detected.** The capture measures the A4 of the hosted piano (on its own
+sound, to 0.1 Hz) and shows it in **SR A4 Tuning**: a piano tuned at 437 Hz reads 437.0 Hz after the capture. A
+Piano Model is stored at A4 = 440 Hz, so it stays right when the diapason changes: change SR A4 Tuning with the
+hosted piano's diapason (or link them with **ASSIGN to AU**: then the hosted piano gives the value and PianoToLife
+never changes it). When a Piano Model is loaded, SR A4 Tuning goes back to the diapason it was captured at.
+
+**HOST: one Piano Model per temperament.** PianoToLife changes the temperament itself only in SAMPLER mode. If your
+hosted piano offers temperaments, choose one there, then capture a Piano Model with it — the resonance then follows
+that temperament exactly. Name each model after its temperament (e.g. *My Piano – Werckmeister III.srpiano*). The
+**TEMPERAMENT** button (on the SR A4 Tuning row) explains this in HOST mode, with a CAPTURE button.
+
+**SAMPLER: TEMPERAMENT.** The same button opens the temperament of your samples: measured, then changed key by key
+without touching the files — see the [Sampler Manual](SAMPLER_MANUAL.md#temperament-and-diapason-1094). A SAMPLER
+capture always measures the samples as recorded, whatever the Tune, temperament or diapason set.
+
+**Your Piano Models are still good.** Those captured with the default settings play exactly as before (an older HOST
+model is brought to 440 in memory and SR A4 Tuning shows its diapason; the file is not changed). Only capture again a
+model made in SAMPLER with SR A4 Tuning, Transpose, Fine Pitch or the Tune of keys changed, or in HOST with SR A4
+Tuning not at 440 Hz.
 
 ---
 

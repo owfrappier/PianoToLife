@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.4 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -198,7 +198,8 @@ a selection before working on every key.
    listens to well-aligned strikes.
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2; one AUTO DYN before, called RECAL A4 before 10.4.2) — both listen to A4 at all
    127 velocities, place its layers where their loudness belongs on the reference curve and level them. They also
-   measure A4's tuning (sent to SR A4 Tuning, so 440 Hz plays the set as recorded). Then:
+   measure A4's tuning (sent to SR A4 Tuning: that value plays the set as recorded; RESET in the TEMPERAMENT window
+   goes back to it). Then:
    - **AUTO DYN1** (global, as before 10.5.6): every key with **as many layers as A4** gets A4's velocity ranges and is
      levelled; keys with another number of layers are left as they are (AUTO DYN2 places them). For a library
      recorded evenly key to key.
@@ -344,7 +345,7 @@ keys.
 | **Attack** | Fade-in time, 0 = the sample as recorded |
 | **Decay** / **Sustain** | Time to reach the Sustain level; 0 = the natural decay of the sample |
 | **Release** | 0 = **Auto** (PianoToLife's damper model; no damper above Undamped Keys Above); a time in ms; all the way right = **Infinite** (no damper: undamped top keys) |
-| **Tune** | Fine tune in cents |
+| **Tune** | Fine tune in cents. **ALL 0** (10.9.4, at the end of the row): every key's Tune back to 0, the pitch of the samples as recorded (one UNDO step) |
 | **LP** + cutoff + **LP Vel** | Optional low-pass per voice; LP Vel makes soft notes darker (up to 3 octaves lower at 100 %) |
 | **Undamped** | Undamped Keys Above, for the whole piano (the main window's setting, in sync): the keys above it have no damper |
 
@@ -433,11 +434,38 @@ In SAMPLER mode, PianoToLife's engines play on your samples:
   brightness, decay, attack, a tiny detune in the bass, and the build-up of a key struck again while it sounds — as
   measured on the chosen reference (Grand D / Grand B / Upright). Off by default; saved in presets
   ([User Manual](USER_MANUAL.md#real-piano-repetition-rep)).
-- **Tuning**: SR Transpose, SR Fine Pitch and SR A4 Tuning play on the sampler.
+- **Tuning**: SR Transpose, SR Fine Pitch and SR A4 Tuning play on the sampler; the temperament: **TEMPERAMENT**
+  (below).
 - **BODY**: the perceived size of the piano.
 
 **Layer detector** (next to Capture): plays a note at the 127 velocities and lists the real layers of the piano, to
 check a set.  **LEVEL TEST**: plays A0, C2, C4, C6, C8 at velocity 127 and tells you whether the piano clips.
+
+### Temperament and diapason (10.9.4)
+
+**TEMPERAMENT** (main window, on the SR A4 Tuning row — not in EDIT, so it works on a set protected by a password)
+measures the temperament your samples were recorded in, from the pitch of every key, and lets you play the piano in
+another one. **The samples are never changed**: each key gets an offset added to its Tune, and the sympathetic
+resonance follows (each free string, and how strongly it answers).
+
+- **Temperament**: *Original (as recorded)*, Equal, Pythagorean, Just intonation, Werckmeister III, Kirnberger III,
+  Vallotti, Young, Meantone 1/4, 1/3, 1/5, 1/6 and 2/7 comma; at the bottom of the list, **Load a Scala file
+  (.scl)...** (12 notes per octave, repeating at the octave) and **Export as a Scala file (.scl)...** (the temperament
+  played; the stretch and the A4 are not in a Scala file).
+- **Tonic**: the key the temperament is built on (its purest chords).
+- **Stretch**: 100 % = the stretch this piano was tuned with (measured), 0 % = none (every octave exact), up to
+  200 %.
+- **Diapason A4**: the same setting as SR A4 Tuning; **RESET** puts back the A4 the piano was recorded at.
+- **AS RECORDED**: back to the temperament, the stretch and the A4 of the recording.
+- **The table**: for each of the 12 notes, in cents from equal temperament (A = 0), **Recorded** (measured on the
+  samples, A2 to C6), **Played** and **Shift**. **Click a Shift value to type your own** (−60 to +60): the
+  temperament becomes **Custom (edited)**, saved with the set. Under it: the stretch recorded (C2 to C7) and the
+  temperament closest to the recording (e.g. *closest to Equal, 1.5 c rms*).
+
+Each key keeps its own small differences (a real tuning is never perfect); only the temperament and the stretch
+change. The temperament is saved in the set, the presets and the sessions; every change is a named UNDO step in EDIT.
+Pitch bends and tuning messages of MIDI files are not used. The Piano Model capture always measures the samples as
+recorded, so it never needs to be done again for a temperament.
 
 ---
 
