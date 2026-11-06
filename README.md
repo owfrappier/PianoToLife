@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1094" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1095" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -52,7 +52,32 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.4
+## What's new in 10.9.5
+
+**Up to three dry versions of a set to compare, clearer DRY, and two fixes reported by pipat.**
+
+- **Dry versions** (SAMPLER > EDIT, DRY / DENOISE / BODY): MAKE now asks whether to **replace** the dry samples of a
+  microphone or make a **new version** beside them (`-dry2`, `-dry3`: three at most), to compare processings — e.g.
+  DRY 100 % against DRY 60 % with BODY. Beside **-DRY**, a list shows the versions on the disk with the settings each
+  was made with; choose the one played, or **delete** one. The original samples are never touched, and presets keep
+  ORIGINAL / -DRY and the version chosen.
+- **DRY / DENOISE / BODY is optional**: an extra processing of a set already saved. Clicking MAKE before **SAVE
+  SAMPLES** now explains it (before, the reason was hidden by "no -dry samples yet"). The Sampler Manual gives the order
+  from a raw library to a finished piano without it, and the dry version as an option.
+- **Switching ORIGINAL / -DRY no longer measures AUTO BODY again** (it measures the original samples, which do not
+  change): with thousands of samples this saves minutes.
+- **STOP** beside MAKE, while MAKE or the AUTO BODY measure runs: MAKE writes nothing (the originals are untouched),
+  the measure stops and BODY goes back to OFF.
+- **AUTO BODY: use LAYERS first** — it keeps the small differences between keys that make a real piano; LAYERS + KEYS
+  is for recordings uneven from key to key because of the recording itself (manual and tooltip).
+- **Fixed**: a new sample set saved under the name of an existing instrument inherited that instrument's settings
+  (its Piano Model of another piano, MIX, AUTO CAL…), so it sounded wrong. A set saved over its own instrument still
+  keeps its settings.
+
+Manuals updated for 10.9.5: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.4
 
 **TEMPERAMENT: play your sampled piano in any temperament — measured on your samples, the resonance follows. The
 diapason of a hosted piano detected.**
@@ -112,7 +137,7 @@ Manuals updated for 10.9.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisati
   BODY, a new Piano Model capture, AUTO DYN, AUTO COLOR, BALANCE, AUTO RELEASE, AUTO CAL, then the room (ALGO or IR).
 
 <p align="center">
-  <img src="screenshot1b.png?v=1094" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
+  <img src="screenshot1b.png?v=1095" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900"><br>
   <i>SAMPLER EDIT (10.9.3): the DRY / DENOISE / BODY panel on a 3-layer grand — DRY takes the room out, AUTO BODY makes
   the fundamentals coherent (AMOUNT, GLOBAL), MAKE writes the -dry samples, then ORIGINAL or -DRY for each microphone.</i>
 </p>
