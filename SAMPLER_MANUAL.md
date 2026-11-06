@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.4 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.5 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -264,6 +264,10 @@ room (80 to 600 ms, measured on each sample), then comes in gradually. **100 % i
 **DENOISE** is light and careful: the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time so
 that it never warbles.
 
+**DRY / DENOISE / BODY is optional** (10.9.5): an extra processing of a set **already saved**. Finish your mapping and
+**SAVE SAMPLES** first — MAKE works on the samples inside the set's .wptl (if they are not there yet, a message says so).
+You can switch between the original and the processed samples at any time, to keep presets of both.
+
 **The DRY / DENOISE / BODY... button** (second row of EDIT, after FLAC) opens the panel for the **microphone selected** at the
 top:
 
@@ -272,11 +276,15 @@ top:
    and the notes short (with no release samples, the end of a treble note is mostly the room). With **SHOW BY MIDI**
    ticked, the key you play (and its velocity) is chosen. The sample is heard as it is, without the Recorded Room.
 2. **MAKE "<name>-dry"** processes every sample of the microphone into a separate container beside the original one,
-   `<name>-dry.wptl` (same encryption and password). In the background, with the progress bar and STOP of SAVE
-   SAMPLES. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
+   `<name>-dry.wptl` (same encryption and password). In the background, with a progress bar, and **STOP**
+   beside MAKE (10.9.5) to cancel: nothing is written. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
    Other microphones already made there are kept.
-3. **MIC n plays: ORIGINAL / -DRY** — choose, microphone by microphone, which samples are played. Saved with the
-   instrument and the preset.
+   **Versions** (10.9.5): when the microphone is already in the version played, MAKE asks whether to **replace** it or
+   make a **new version** beside it — `<name>-dry2.wptl`, `<name>-dry3.wptl` (3 at most) — to compare processings.
+3. **MIC n plays: ORIGINAL / -DRY** — choose, microphone by microphone, which samples are played. Beside -DRY, the
+   **list of the versions** on the disk, each with the settings it was made with for this microphone: the one chosen is
+   played by the whole set; **Delete...** removes one (the originals and the other versions are untouched). Saved with
+   the instrument and the preset. Switching does not measure AUTO BODY again (10.9.5).
 4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Recorded Room again**: they were
    measured on the sound with its room. The Recorded Room AUTO CAL then finds no room and sets Room **Small**: put the
    piano in the room you want with the REVERB (ALGO or IR).
@@ -307,6 +315,10 @@ In the same panel (the button now reads **DRY / DENOISE / BODY...**):
   the safe choice. **LAYERS + KEYS** also brings each key towards its neighbours: the piano becomes more even (it also
   corrects the microphones and the room), at the cost of some of its individual character — listen to the whole piano.
   At most ±6 dB.
+  **Use LAYERS first** (10.9.5): a real piano is never even — some notes sing more, the registers and the change from
+  wound to plain strings differ — and those small differences are a large part of its realism; LAYERS keeps them.
+  Keep **LAYERS + KEYS** for a recording that is uneven from key to key because of the recording itself (a microphone
+  that hollows out a register, a room mode that swells a few notes, keys recorded another day).
 - **AMOUNT** (0–100 %): how much of the measured correction is applied (a bracket links AMOUNT and GLOBAL to BODY).
 - **GLOBAL** (0 to +6 dB): added to every fundamental after AUTO BODY — the lack that close microphones share (the
   fundamental is radiated by the whole soundboard and builds up at a distance). All of it up to C5, fading to nothing
@@ -323,13 +335,19 @@ again as usual.
 
 ### From a raw library to a finished piano (10.9.3)
 
-Each step measures what the one before left, so the order matters:
+Each step measures what the one before left, so the order matters (10.9.5: DRY is optional):
 
-1. **DRY / DENOISE / BODY**, then **MAKE**, microphone by microphone; **MIC n plays: -DRY**.
-2. A new **Piano Model capture** (.srpiano).
+1. **Import** the samples; **FILL GAPS** if some keys have none, then **ALIGN ATTACKS**.
+2. A **Piano Model capture** (.srpiano).
 3. **AUTO DYN1** or **AUTO DYN2** (and the Samples setting it advises), **RANGE** if wanted, **FIX STEPS**.
-4. **AUTO COLOR**, **BALANCE**, **AUTO RELEASE**, **LEVEL / AUTO**.
-5. On the main window: **AUTO CAL** of Resonance and of Recorded Room, then the room — **ALGO** or an **IR** (REVERB).
+4. **AUTO COLOR**, **BALANCE**, **AUTO RELEASE** (it asks for the last damped key), **LEVEL / AUTO**.
+5. **SAVE SAMPLES**, then save the preset.
+6. On the main window: **AUTO CAL** of Resonance and of Recorded Room, then the room — **ALGO** or an **IR** (REVERB);
+   **TEMPERAMENT** if wanted.
+
+**Optional, a dry version**: once the samples are saved, **DRY / DENOISE / BODY** (BODY: **LAYERS** first), **MAKE**
+microphone by microphone, **MIC n plays: -DRY**; then a new **Piano Model capture** and the **AUTO CAL** again (they were
+measured on the sound with its room).
 
 ---
 
