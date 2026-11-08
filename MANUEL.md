@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 10.9.8 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -422,13 +422,20 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - Les **presets** gardent tous les réglages. En mode SAMPLER (10.6.0), les presets sont les **instruments** (`.ptlset`,
   à côté de leurs échantillons `.wptl`, comme les `.nki` / `.nkx` de Kontakt) : voir le Manuel du sampler.
   Double-cliquez sur un preset ou un instrument (application autonome) ou déposez-le sur la fenêtre.
-  **Modifié** (10.7.0) : un **\*** après le nom du preset quand un réglage diffère du preset chargé ou sauvé. Charger
-  un autre preset, RELOAD, ou passer de HOST à SAMPLER demande alors d'abord : perdre les changements, **Save first**
-  (sauver d'abord) ou Cancel. Chaque mode revient avec son propre dernier preset / instrument.
+  **Modifié** (10.7.0) : un **\*** quand un réglage diffère du preset chargé ou sauvé — depuis la 10.9.7 **devant** le
+  nom, qui passe en *italique* (jamais coupé). Charger un autre preset, RELOAD, passer de HOST à SAMPLER, déposer un
+  preset ou un instrument sur la fenêtre, ou choisir une autre version du piano demande alors d'abord : perdre les
+  changements, **Save first** (sauvé sur place, puis on continue) ou Cancel. Chaque mode revient avec son propre
+  dernier preset / instrument.
+  **Ce qui a changé** (10.9.8) : survolez la boîte PRESET quand le **\*** est affiché : une infobulle liste les
+  **dernières modifications** (« Release Level: -2.0 dB → +1.5 dB »…, les 5 dernières, puis « + N other changes »).
+  **Clic droit sur la boîte PRESET** : **Undo all modifications** (RELOAD, tout annuler) ou **Undo** la dernière, nommée
+  dans le menu.
   **SAVE** (10.7.1) enregistre les réglages actuels par-dessus le preset (l'instrument) affiché, sans fenêtre ;
   **SAVE AS** enregistre sous un nouveau nom (SAVE l'ouvre quand il n'y a pas encore de fichier, par ex. Last Session).
   **Clic droit sur la boîte PRESET** (10.7.1) : **renommer** le preset affiché, ou le **mettre à la Corbeille** (jamais
-  effacé définitivement ; pour un instrument, seulement le `.ptlset` - ses échantillons `.wptl` restent). **FOLDER**
+  effacé définitivement ; pour un instrument, seulement le `.ptlset` et, depuis la 10.9.8, les réglages de ses versions
+  ORIG. / DRY n - ses échantillons `.wptl` restent ; la boîte affiche alors **Not saved** tant que le piano joue). **FOLDER**
   ouvre le dossier Presets (HOST) ou le dossier de l'instrument en cours (SAMPLER).
 - **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC ou CAF) —
   pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
@@ -462,7 +469,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
-  barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 %) vaut pour la fenêtre complète. Depuis la
+  barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 % ; depuis la 10.9.8 aussi 70 / 60 / 50 %) vaut pour la fenêtre complète. Depuis la
   10.7.0, elle a aussi VOL, et depuis la 10.8.1 OUTPUT et le vumètre, dans sa colonne de droite (voir la section 11).
   Depuis la 10.9.6, **HOST | SAMPLER** remplace le mode de pédale : on change de mode et on choisit ses presets dans
   l'un ou l'autre depuis la barre compacte (le mode de pédale reste dans la fenêtre complète).
@@ -473,8 +480,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     la touche = plus fort ; glissez sur les touches pour un glissando. Ces notes suivent le même chemin que votre
     clavier (HOST et SAMPLER, MIDI Monitor, ENGINE MIDI REC) ;
   - **l'accord joué**, en grand à gauche de BODY : les touches tenues et les notes que les pédales font sonner.
-    Seuls des noms d'accords s'affichent (C, Am7, Cmaj7/E…). Un accord tenu à la main gauche reste affiché pendant
+    Seuls des noms d'accords s'affichent (C, Am7, Cmaj7/E… ; depuis la 10.9.7 aussi les accords de 13e : Cmaj13, C13, Cm13). Un accord tenu à la main gauche reste affiché pendant
     une mélodie à la main droite, et se complète quand la mélodie l'enrichit.
+- **Taille d'affichage et petits écrans** (10.9.8) : le menu à gauche de la version propose **100 / 90 / 80 / 70 / 60 /
+  50 %**. Au démarrage, si la fenêtre ne tient pas dans l'écran, PianoToLife prend la plus grande taille qui tient (pas
+  mémorisée : sur un écran plus grand, votre taille revient) — par ex. un portable 1920 × 1080 avec la mise à l'échelle
+  Windows à 125 % (80 %) ou 175 % (50 %, à peu près la taille du 100 % sur un écran normal). La fenêtre de
+  l'application autonome garde toujours sa barre de titre dans l'écran, et après un changement de taille toute la
+  fenêtre revient dans l'écran.
 - **Accessibilité** : l'interface fonctionne avec les lecteurs d'écran (Narrator / NVDA, VoiceOver) et au clavier.
 
 ---
@@ -502,6 +515,7 @@ REP et SOFT / HARD TIMBRE ajoutent quelques filtres par voix en mode SAMPLER : u
 | Une touche silencieuse joue | Liste Silent Key ; vérifiez les vélocités dans le moniteur MIDI |
 | Saturation | LEVEL TEST ; Output Ceiling ; baissez le volume du piano |
 | Craquements | Voir CPU et performances |
+| La fenêtre dépasse de l'écran, barre de titre inaccessible (Windows) | Choisissez une taille plus petite (80 %, ou 50 % avec la mise à l'échelle à 175 %) ; la 10.9.8 le fait au démarrage et garde la barre de titre dans l'écran. Avant la 10.9.8 : Alt + Espace, Déplacer, flèches |
 
 Un clavier ou un piano qui se comporte à sa façon ? Contactez-moi à
 [olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) avec une explication (un export du moniteur MIDI est

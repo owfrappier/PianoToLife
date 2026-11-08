@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.6 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.8 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -288,25 +288,32 @@ le temps pour ne jamais « gazouiller ».
 **DRY / DENOISE / BODY est facultatif** (10.9.5) : un traitement complémentaire d'un set **déjà enregistré**. Terminez
 votre mapping et faites d'abord **SAVE SAMPLES** — MAKE travaille sur les échantillons qui sont dans le .wptl du set (s'ils
 n'y sont pas encore, un message le dit). Vous pouvez passer à tout moment des échantillons d'origine aux échantillons
-traités, pour garder des presets des deux.
+traités.
 
-**Le bouton DRY / DENOISE / BODY...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau du **micro sélectionné** en haut :
+**Les versions du piano** (10.9.8) : un piano a jusqu'à **quatre versions — ORIG., DRY 1, DRY 2, DRY 3**. Une version,
+c'est **tout le piano** (tous les micros), et **chaque version garde ses propres réglages** : mapping, options d'EDIT et
+tous les réglages de la fenêtre principale — réglez DRY 1 à l'oreille (AUTO COLOR, BALANCE...) sans toucher à ORIG.
+
+**Le bouton DRY / DENOISE / BODY...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau ; on écoute le **micro
+sélectionné** en haut, et MAKE traite tous les micros :
 
 1. **Écoutez d'abord.** Choisissez une **KEY** (touche) et une **VELOCITY**, puis comparez **> ORIGINAL** et
    **> PROCESSED** (le même bouton une deuxième fois arrête). **A6** par défaut : **c'est dans l'aigu que la salle
    s'entend le plus facilement**, là où les harmoniques sont rares et les notes courtes (sans échantillons de
    relâchement, la fin d'une note aiguë, c'est surtout la salle). Avec **SHOW BY MIDI** coché, la touche que vous jouez
    (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans la Recorded Room.
-2. **MAKE "<nom>-dry"** traite tous les échantillons du micro dans un conteneur séparé, à côté de l'original,
-   `<nom>-dry.wptl` (même chiffrement, même mot de passe). En arrière-plan, avec une barre de progression, et **STOP**
-   à côté de MAKE (10.9.5) pour annuler : rien n'est écrit. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux (jamais de
-   « dry sur dry »). Les autres micros déjà traités y sont gardés.
-   **Versions** (10.9.5) : quand le micro est déjà dans la version jouée, MAKE demande s'il faut la **remplacer** ou
-   faire une **nouvelle version** à côté — `<nom>-dry2.wptl`, `<nom>-dry3.wptl` (3 au plus) — pour comparer des traitements.
-3. **MIC n plays: ORIGINAL / -DRY** — choisissez, micro par micro, quels échantillons sont joués. À côté de -DRY, la
-   **liste des versions** présentes sur le disque, chacune avec les réglages avec lesquels elle a été faite pour ce
-   micro : celle choisie est jouée par tout le set ; **Delete...** en supprime une (les originaux et les autres
-   versions ne sont pas touchés). Gardé dans l'instrument et le preset. Changer ne remesure pas AUTO BODY (10.9.5).
+2. **MAKE** (10.9.8 : **tous les micros**, l'un après l'autre, chacun avec sa propre mesure AUTO BODY) traite tous les
+   échantillons dans un conteneur séparé, à côté de l'original — `<nom>-dry.wptl` pour DRY 1, `-dry2`, `-dry3` (même
+   chiffrement, même mot de passe). En arrière-plan, avec une barre de progression, et **STOP** à côté de MAKE pour
+   annuler : rien n'est écrit. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux
+   (jamais de « dry sur dry »). Le piano joue ORIG. : MAKE fait la première version libre. Le piano joue DRY n : MAKE
+   demande s'il faut **remplacer** DRY n (ses réglages restent) ou faire une **nouvelle version** à côté, pour comparer
+   des traitements. À la fin, le piano joue la version faite : réglez-la à l'oreille et faites **SAVE**.
+3. **PIANO PLAYS : ORIG. | DRY 1 | DRY 2 | DRY 3** — la version que joue tout le piano (aussi après le nom de
+   l'instrument, dans le titre de la fenêtre principale : cliquez dessus). Chacune avec ses propres réglages : une
+   version jamais enregistrée part de ceux d'ORIG. Changer de version propose d'abord d'enregistrer les modifications.
+   **Delete...** supprime une version qui ne joue pas (ses échantillons et ses réglages ; les originaux et les autres
+   versions ne sont pas touchés). Changer ne remesure pas AUTO BODY.
 4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et de Recorded Room** :
    ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de la Recorded Room ne trouve alors plus de salle et règle la
    Room sur **Small** : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
@@ -318,8 +325,18 @@ garde propres. Un -dry fait à partir d'échantillons 16 bits est donc plus gros
 double) ; le message de MAKE affiche les deux tailles.
 
 **Sécurité.** Si le fichier -dry est déplacé ou supprimé, ou qu'il lui manque un échantillon, l'original est joué (le
-panneau le dit) ; le choix -DRY reste et revient avec le fichier. Un `<nom>-dry.wptl` à côté du `.wptl` est retrouvé
-tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versions précédentes avec leurs échantillons d'origine.
+panneau le dit) ; la version choisie reste et revient avec le fichier. Un `<nom>-dry.wptl` à côté du `.wptl` est
+retrouvé tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versions précédentes avec leurs échantillons
+d'origine.
+
+**Les fichiers des versions** (10.9.8). SAVE écrit la version jouée dans son propre fichier — `Nom.ptlset` pour ORIG.,
+`Nom.dry.ptlset`, `Nom.dry2.ptlset`, `Nom.dry3.ptlset` pour DRY 1 à 3 — à côté des échantillons. Vous n'avez jamais à
+vous en occuper : la liste affiche **Nom** une seule fois, et **Rename**, **Move to the Trash** et **SAVE AS** sous un
+nouveau nom emmènent les versions. Rename garde le nom des échantillons (`.wptl`, `-dry.wptl`), que toutes les
+versions utilisent. Un instrument enregistré avant la 10.9.8 avec des micros en -DRY s'ouvre comme il a été
+enregistré ; choisissez ORIG. pour les remettre sur les originaux.
+**Une librairie protégée** : ses instruments et leurs versions ne sont jamais écrasés — SAVE AS sous votre propre nom
+(les versions suivent).
 
 ### Rendre les fondamentales cohérentes : AUTO BODY (10.9.3)
 
@@ -370,9 +387,10 @@ Chaque étape mesure ce que la précédente a laissé : l'ordre compte (10.9.5 :
 6. Dans la fenêtre principale : les **AUTO CAL** de Resonance et de Recorded Room, puis la salle — **ALGO** ou une
    **IR** (REVERB) ; **TEMPERAMENT** si besoin.
 
-**En option, une version dry** : une fois les échantillons enregistrés, **DRY / DENOISE / BODY** (BODY : **LAYERS**
-d'abord), **MAKE** micro par micro, **MIC n plays : -DRY** ; puis une nouvelle **capture du Piano Model** et de nouveau
-les **AUTO CAL** (ils avaient été mesurés sur le son avec sa salle).
+**En option, une version dry** : une fois les échantillons et l'instrument enregistrés, **DRY / DENOISE / BODY**
+(BODY : **LAYERS** d'abord), **MAKE** (tous les micros : le piano joue alors DRY 1) ; puis une nouvelle **capture du
+Piano Model** et de nouveau les **AUTO CAL** (ils avaient été mesurés sur le son avec sa salle), et **SAVE** : DRY 1
+les garde, ORIG. garde les siens.
 
 ---
 
@@ -399,7 +417,7 @@ les couches des touches choisies.
 | Bouton | Ce qu'il fait |
 |---|---|
 | **NEW** | Un set vide (le set ouvert n'est pas modifié sur le disque) |
-| **Nom** (sous le titre) | Cliquez pour **RENOMMER** le set et son fichier d'échantillons |
+| **Nom** (sous le titre) | Cliquez pour **RENOMMER** le set et son fichier d'échantillons (10.9.8 : un instrument qui a des versions DRY est renommé avec ses versions, et ses échantillons gardent leur nom) |
 | **SAVE SAMPLES...** (10.6.0, anciennement SAVE SET) | Fabrique l'instrument : les échantillons vont dans un conteneur chiffré (`.wptl`) de votre bibliothèque, réécrit seulement quand les échantillons changent. **Le mapping et tous les réglages sont enregistrés dans l'instrument** (`.ptlset`, **SAVE AS** dans la fenêtre principale) et dans la session, tels que vous les entendez |
 | Variantes | Une version brillante et une version sombre des mêmes échantillons sont simplement **deux instruments** (`.ptlset`) sur le même `.wptl` - SAVE AS sous un autre nom (SAVE AS VARIANT est retiré ; les anciennes variantes s'ouvrent toujours) |
 | **PICTURE...** (10.6.0) | L'image de la banque d'échantillons (PNG / JPEG, comme le fond d'écran d'un instrument Kontakt), gardée chiffrée dans son `.wptl` et affichée dans la fenêtre principale à la place de la photo des cordes, pour tous les instruments de ces échantillons. Elle se retire depuis le même menu |

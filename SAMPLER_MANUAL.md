@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.6 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.8 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -266,25 +266,31 @@ that it never warbles.
 
 **DRY / DENOISE / BODY is optional** (10.9.5): an extra processing of a set **already saved**. Finish your mapping and
 **SAVE SAMPLES** first — MAKE works on the samples inside the set's .wptl (if they are not there yet, a message says so).
-You can switch between the original and the processed samples at any time, to keep presets of both.
+You can switch between the original and the processed samples at any time.
 
-**The DRY / DENOISE / BODY... button** (second row of EDIT, after FLAC) opens the panel for the **microphone selected** at the
-top:
+**Versions of the piano** (10.9.8): a piano has up to **four versions — ORIG., DRY 1, DRY 2, DRY 3**. A version is the
+**whole piano** (every microphone), and **each version keeps its own settings**: mapping, EDIT options and every
+setting of the main window — tune DRY 1 by ear (AUTO COLOR, BALANCE...) without touching ORIG.
+
+**The DRY / DENOISE / BODY... button** (second row of EDIT, after FLAC) opens the panel; you listen to the **microphone
+selected** at the top, and MAKE processes every microphone:
 
 1. **Listen first.** Choose a **KEY** and a **VELOCITY**, then compare **> ORIGINAL** and **> PROCESSED** (the same
    button again stops). **A6** by default: **the room is easiest to hear in the treble**, where the partials are few
    and the notes short (with no release samples, the end of a treble note is mostly the room). With **SHOW BY MIDI**
    ticked, the key you play (and its velocity) is chosen. The sample is heard as it is, without the Recorded Room.
-2. **MAKE "<name>-dry"** processes every sample of the microphone into a separate container beside the original one,
-   `<name>-dry.wptl` (same encryption and password). In the background, with a progress bar, and **STOP**
-   beside MAKE (10.9.5) to cancel: nothing is written. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
-   Other microphones already made there are kept.
-   **Versions** (10.9.5): when the microphone is already in the version played, MAKE asks whether to **replace** it or
-   make a **new version** beside it — `<name>-dry2.wptl`, `<name>-dry3.wptl` (3 at most) — to compare processings.
-3. **MIC n plays: ORIGINAL / -DRY** — choose, microphone by microphone, which samples are played. Beside -DRY, the
-   **list of the versions** on the disk, each with the settings it was made with for this microphone: the one chosen is
-   played by the whole set; **Delete...** removes one (the originals and the other versions are untouched). Saved with
-   the instrument and the preset. Switching does not measure AUTO BODY again (10.9.5).
+2. **MAKE** (10.9.8: **every microphone**, one after the other, each with its own AUTO BODY measure) processes every
+   sample into a separate container beside the original one — `<name>-dry.wptl` for DRY 1, `-dry2`, `-dry3` (same
+   encryption and password). In the background, with a progress bar, and **STOP** beside MAKE to cancel: nothing is
+   written. **The original samples are never touched**, and MAKE always starts again from them (never dry on dry).
+   The piano plays ORIG.: MAKE makes the first free version. The piano plays DRY n: MAKE asks whether to **replace**
+   DRY n (its settings stay) or make a **new version** beside it, to compare processings. When it is done, the piano
+   plays the version made: tune it by ear and **SAVE**.
+3. **PIANO PLAYS: ORIG. | DRY 1 | DRY 2 | DRY 3** — the version the whole piano plays (also after the instrument's
+   name, in the title of the main window: click it). Each one with its own settings: a version never saved starts
+   from ORIG.'s. Changing version first offers to save the changes not saved. **Delete...** removes a version that is
+   not playing (its samples and its settings; the originals and the other versions are untouched). Switching does
+   not measure AUTO BODY again.
 4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Recorded Room again**: they were
    measured on the sound with its room. The Recorded Room AUTO CAL then finds no room and sets Room **Small**: put the
    piano in the room you want with the REVERB (ALGO or IR).
@@ -295,8 +301,16 @@ the notes go below the 16-bit floor (−96 dB), and only 24 bits keep them clean
 therefore larger than the original container (about twice); MAKE's message shows both sizes.
 
 **Safety.** If the -dry file is moved or deleted, or a sample is missing in it, the original is played (the panel says
-so); the -DRY choice is kept and comes back with the file. A `<name>-dry.wptl` beside the `.wptl` is found on its own.
-Instruments saved with 10.9.0 open in older versions with their original samples.
+so); the version chosen is kept and comes back with the file. A `<name>-dry.wptl` beside the `.wptl` is found on its
+own. Instruments saved with 10.9.0 open in older versions with their original samples.
+
+**Files of the versions** (10.9.8). SAVE writes the version playing in its own file — `Name.ptlset` for ORIG.,
+`Name.dry.ptlset`, `Name.dry2.ptlset`, `Name.dry3.ptlset` for DRY 1–3 — beside the samples. You never deal with them:
+the list shows **Name** once, and **Rename**, **Move to the Trash** and **SAVE AS** under a new name take the versions
+along. Rename keeps the names of the samples (`.wptl`, `-dry.wptl`), which every version uses. An instrument saved
+before 10.9.8 with some microphones on -DRY opens as it was saved; choose ORIG. to put them back on the originals.
+**A protected library**: its instruments and their versions are never overwritten — SAVE AS under your own name
+(the versions come along).
 
 ### Making the fundamentals coherent: AUTO BODY (10.9.3)
 
@@ -345,9 +359,9 @@ Each step measures what the one before left, so the order matters (10.9.5: DRY i
 6. On the main window: **AUTO CAL** of Resonance and of Recorded Room, then the room — **ALGO** or an **IR** (REVERB);
    **TEMPERAMENT** if wanted.
 
-**Optional, a dry version**: once the samples are saved, **DRY / DENOISE / BODY** (BODY: **LAYERS** first), **MAKE**
-microphone by microphone, **MIC n plays: -DRY**; then a new **Piano Model capture** and the **AUTO CAL** again (they were
-measured on the sound with its room).
+**Optional, a dry version**: once the samples and the instrument are saved, **DRY / DENOISE / BODY** (BODY: **LAYERS**
+first), **MAKE** (every microphone: the piano then plays DRY 1); then a new **Piano Model capture** and the **AUTO CAL**
+again (they were measured on the sound with its room), and **SAVE**: DRY 1 keeps them, ORIG. keeps its own.
 
 ---
 
@@ -374,7 +388,7 @@ keys.
 | Button | What it does |
 |---|---|
 | **NEW** | An empty set (the set open now is not changed on disk) |
-| **Name** (under the title) | Click to **RENAME** the set and its sample file |
+| **Name** (under the title) | Click to **RENAME** the set and its sample file (10.9.8: an instrument with DRY versions is renamed with its versions, and its samples keep their names) |
 | **SAVE SAMPLES...** (10.6.0, was SAVE SET) | Makes the instrument: the samples go into an encrypted container (`.wptl`) in your library, rewritten only when samples change. The **mapping and all the settings are saved in the instrument** (`.ptlset`, **SAVE AS** in the main window) and in the session, as you hear them |
 | Variants | A bright and a dark version of the same samples are simply **two instruments** (`.ptlset`) on the same `.wptl` - SAVE AS under another name (SAVE AS VARIANT is retired; old variants still open) |
 | **PICTURE...** (10.6.0) | The picture of the sample bank (PNG / JPEG, like a Kontakt wallpaper), kept encrypted in its `.wptl` and shown in the main window in place of the strings photo, for every instrument of these samples. Remove it from the same menu |

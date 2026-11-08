@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.9.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.9.8 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -396,13 +396,19 @@ once: the piano's room comes out, instead of being masked.
 - **Presets** keep every setting. In SAMPLER mode (10.6.0) the presets are the **instruments** (`.ptlset`, beside their
   samples `.wptl`, like Kontakt `.nki` / `.nkx`): see the Sampler Manual. Double-click a preset or an instrument
   (standalone) or drop it on the window.
-  **Modified** (10.7.0): a **\*** after the preset's name when a setting differs from the preset loaded or saved.
-  Loading another preset, RELOAD, or switching HOST / SAMPLER then asks first: lose the changes, **Save first**, or
-  Cancel. Each mode comes back with its own last preset / instrument.
+  **Modified** (10.7.0): a **\*** when a setting differs from the preset loaded or saved — since 10.9.7 **before** the
+  name, which turns to *italics* (never cut). Loading another preset, RELOAD, switching HOST / SAMPLER, dropping a
+  preset or an instrument on the window, or choosing another version of the piano then asks first: lose the changes,
+  **Save first** (saved in place, then it goes on), or Cancel. Each mode comes back with its own last preset /
+  instrument.
+  **What changed** (10.9.8): hover over the PRESET box while the **\*** is shown: a tooltip lists the **last
+  modifications** ("Release Level: -2.0 dB → +1.5 dB"…, the 5 latest, then "+ N other changes"). **Right-click on the
+  PRESET box**: **Undo all modifications** (RELOAD) or **Undo** the last one, named in the menu.
   **SAVE** (10.7.1) saves the current settings over the preset (instrument) shown, with no window; **SAVE AS** saves
   under a new name (SAVE opens it when there is no file yet, e.g. Last Session). **Right-click on the PRESET box**
   (10.7.1): **Rename** the preset shown, or **Move it to the Trash** (never deleted for good; for an instrument, only
-  the `.ptlset` - its samples `.wptl` stay). **FOLDER** opens the Presets folder (HOST) or the current instrument's
+  the `.ptlset` and, since 10.9.8, the settings of its versions ORIG. / DRY n - its samples `.wptl` stay; the box then
+  shows **Not saved** while the piano still plays). **FOLDER** opens the Presets folder (HOST) or the current instrument's
   folder (SAMPLER).
 - **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC or CAF) — to compare settings
   on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
@@ -433,7 +439,7 @@ once: the piano's room comes out, instead of being masked.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
-  100 %; the view size you choose (90 / 80 %) is for the full window. Since 10.7.0 it also has VOL, since 10.8.1 OUTPUT
+  100 %; the view size you choose (90 / 80 %; since 10.9.8 also 70 / 60 / 50 %) is for the full window. Since 10.7.0 it also has VOL, since 10.8.1 OUTPUT
   and the level meter, in its right column (see section 11). Since 10.9.6, **HOST | SAMPLER** sits where the pedal mode
   was, so you can switch mode and choose your presets in either from the compact bar (the pedal mode stays in the full
   window).
@@ -444,8 +450,13 @@ once: the piano's room comes out, instead of being masked.
     the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
     ENGINE MIDI REC);
   - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
-    Only chord names are shown (C, Am7, Cmaj7/E…). A chord held in the left hand stays shown while the right hand
+    Only chord names are shown (C, Am7, Cmaj7/E…; since 10.9.7 the 13th chords too: Cmaj13, C13, Cm13). A chord held in the left hand stays shown while the right hand
     plays a melody over it, and is completed when the melody adds to it.
+- **View size and small screens** (10.9.8): the menu left of the version offers **100 / 90 / 80 / 70 / 60 / 50 %**. At
+  the start, if the window does not fit the screen, PianoToLife takes the largest size that fits (not remembered: on a
+  bigger screen your size comes back) — e.g. a 1920 × 1080 laptop with Windows display scaling at 125 % (80 %) or
+  175 % (50 %, about the size of 100 % on a normal screen). The standalone window always keeps its title bar on the
+  screen, and after a change of size the whole window comes back into view.
 - **Accessibility**: the interface works with screen readers (Narrator / NVDA, VoiceOver) and from the keyboard.
 
 ---
@@ -472,6 +483,7 @@ REP and SOFT / HARD TIMBRE add a few filters per voice in SAMPLER mode: a small 
 | A silent key plays | Silent Key list; check the velocities in the MIDI Monitor |
 | Clipping | LEVEL TEST; Output Ceiling; lower the piano's volume |
 | Crackles | See CPU and performance |
+| The window is larger than the screen, its title bar out of reach (Windows) | Choose a smaller view size (80 %, or 50 % with display scaling at 175 %); 10.9.8 does it at the start and keeps the title bar on the screen. Before 10.9.8: Alt + Space, Move, arrow keys |
 
 A keyboard or a piano that behaves in its own way? Please contact me at
 [olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) with an explanation (a MIDI Monitor export is perfect).
