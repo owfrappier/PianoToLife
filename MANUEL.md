@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 10.9.9 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.0.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -468,6 +468,37 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
   dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte
   si coché) et le tempo et la mesure sont écrits dans le fichier MIDI : la prise tombe sur la grille d'un DAW.
+- **Lecteur MEDIA** (11.0.0, standalone) : le bouton **MEDIA**, à gauche de LOAD MIDI (aussi dans la barre compacte),
+  ouvre un lecteur dans sa propre fenêtre, déplaçable (MEDIA la referme ; la musique continue). Il joue un
+  enregistrement ou une vidéo **avec vous** : il est seulement entendu et ne passe jamais dans le traitement du piano.
+  - **LOAD...** : un ou plusieurs fichiers, un dossier ou une playlist **.m3u** (et enregistrer la playlist). WAV,
+    AIFF, FLAC, Ogg, MP3, M4A et **vidéos MP4, M4V, MOV** (aussi WMV et AVI sous Windows ; le son d'une vidéo est lu une
+    fois, puis gardé). Un clic sur le nom liste les morceaux ; **◀ PLAY STOP ▶ LOOP**, la position et VOL. La dernière
+    playlist et le dernier morceau reviennent au démarrage suivant (sans jouer).
+  - **LEVEL** : chaque fichier au même niveau sonore — **-14 / -16 LUFS** (streaming), **-23 LUFS** (radio-télé) ou Off
+    (tel qu'enregistré) — avec un seul gain qui ne le fait jamais dépasser -1 dBTP. **CEIL.** (-1 / -2 / -3 dB) : le
+    limiteur true peak propre au média, comme le Ceiling du piano. Pendant la lecture, piano et média ensemble restent
+    sous -0,3 dBFS.
+  - **Play at A4 =** (432–448 Hz) : le La de chaque fichier est mesuré (« Recorded at A4 = 438.6 Hz ») et le fichier
+    est joué au La choisi, juste avec votre piano. Le tempo bouge d'autant (20 cents = 1,2 %).
+  - **REC and PLAY with the MIDI (and BOUNCE)** (♫ sur la ligne MIDI) : REC fait un décompte (chiffres orange, sur une
+    mesure avec METRO), puis la prise MIDI et l'enregistrement démarrent ensemble ; le nom, la position et le diapason
+    de l'enregistrement sont écrits dans le fichier MIDI. PLAY rejoue les deux synchronisés — PAUSE et STOP aussi, LOOP
+    répète les deux. **BOUNCE** peut mettre l'enregistrement dans le fichier audio avec votre piano (option « Audio
+    file: in the bounce »).
+  - **SCREEN** : une fenêtre pour un deuxième écran, redimensionnable, plein écran par double-clic (sa place et sa
+    taille sont retenues). Elle montre la **vidéo** en synchro avec le lecteur et les **paroles** d'un fichier **.lrc**
+    du même nom à côté du fichier audio ou vidéo (ligne en cours en gras, les suivantes dessous). Bougez la souris : une
+    barre pour la **couleur** des paroles, l'opacité du **texte**, un **bandeau** transparent derrière elles (sur une
+    vidéo), la **taille** et le plein écran.
+  - **CHORDS** : les accords du morceau joué, trouvés par analyse (quelques secondes, une fois par fichier) : l'accord
+    en cours en grand, la **tonalité** et le **diapason** de l'enregistrement, et les accords qui **défilent** sur les
+    temps du morceau (mesures marquées), la tête de lecture en blanc. **colour** et **zoom − / +** ; la fenêtre est
+    redimensionnable.
+  - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
+    PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
+    est retenu sur cet ordinateur.
+  - **Boucle MIDI** (11.0.0) : LOOP dans le menu LOAD MIDI répète maintenant aussi un seul fichier MIDI.
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la

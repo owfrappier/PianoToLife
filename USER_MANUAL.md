@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.9.9 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.0.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -437,6 +437,33 @@ once: the piano's room comes out, instead of being masked.
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
   bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
   the tempo and time signature are written in the saved MIDI file, so the take sits on the grid of a DAW.
+- **MEDIA player** (11.0.0, standalone): the **MEDIA** button, left of LOAD MIDI (also in the compact bar), opens a
+  player in its own window, moved anywhere (MEDIA again closes it; the music goes on). It plays a recording or a video
+  **along with you**: it is heard only and never goes through the piano's sound processing.
+  - **LOAD...**: one or several files, a folder, or an **.m3u** playlist (and save the playlist). WAV, AIFF, FLAC, Ogg,
+    MP3, M4A and **videos MP4, M4V, MOV** (also WMV and AVI on Windows; a video's sound is read once, then kept). A
+    click on the name lists the pieces; **◀ PLAY STOP ▶ LOOP**, the position and VOL. The last playlist and piece come
+    back at the next start (not playing).
+  - **LEVEL**: every file played at the same loudness — **-14 / -16 LUFS** (streaming), **-23 LUFS** (broadcast) or Off
+    (as recorded) — with one gain that never takes it over -1 dBTP. **CEIL.** (-1 / -2 / -3 dB): the media's own
+    true-peak limiter, as the piano's Ceiling. While the media plays, piano and media together are kept under -0.3 dBFS.
+  - **Play at A4 =** (432–448 Hz): the A4 of each file is measured (e.g. "Recorded at A4 = 438.6 Hz") and the file is
+    played at the A4 you choose, so it is in tune with your piano. The tempo moves with it (20 cents = 1.2 %).
+  - **REC and PLAY with the MIDI (and BOUNCE)** (♫ on the MIDI line): REC counts in (orange numbers, on a bar with
+    METRO), then the MIDI take and the recording start together; the recording's name, place and tuning are written in
+    the MIDI file. PLAY replays both in sync — PAUSE and STOP too, LOOP repeats both. **BOUNCE** can put the recording
+    in the audio file with your piano (option "Audio file: in the bounce").
+  - **SCREEN**: a window for a second screen, resizable, full screen with a double-click (its place and size are
+    remembered). It shows the **video** in time with the player and the **lyrics** of a **.lrc** file of the same name
+    beside the audio or video file (current line in bold, the next ones under it). Move the mouse: a bar for the
+    lyrics' **colour**, **text** opacity, a see-through **band** behind them (over a video), **size** and full screen.
+  - **CHORDS**: the chords of the piece playing, found by analysis (a few seconds, once per file): the chord playing in
+    large letters, the **key** and the **tuning** of the recording, and the chords **scrolling** on the beats of the
+    piece (bars marked), the playhead in white. **colour** and **zoom − / +**; the window is resizable.
+  - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
+    link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
+    this computer.
+  - **MIDI loop** (11.0.0): LOOP in the LOAD MIDI menu now also repeats a single MIDI file.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
