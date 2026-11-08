@@ -52,12 +52,38 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.6
+## What's new in 10.9.8
+
+**Versions of the piano: ORIG., DRY 1, DRY 2, DRY 3, each with its own settings — see what you changed and undo it,
+and a window that fits small screens.**
+
+- **Versions of the piano** (SAMPLER): a piano now has up to four versions — **ORIG.** and **DRY 1 / 2 / 3** made with
+  DRY / DENOISE / BODY. A version is the **whole piano**:
+  - **MAKE** processes **every microphone** at once (before: microphone by microphone). It replaces the version
+    playing, or makes a new one beside it to compare.
+  - Choose the version **after the instrument's name in the title** (ORIG. / DRY n), or with **PIANO PLAYS** in the
+    DRY panel.
+  - **Each version keeps its own settings** — mapping, EDIT options, every setting — so DRY 1 can be tuned by ear
+    without touching ORIG. Just SAVE: the list still shows the instrument once.
+  - Rename, Move to the Trash and SAVE AS take the versions along. A protected library's instruments are never
+    overwritten: SAVE AS under your own name.
+- **What did I change?** Hover over the PRESET box while its **\*** is shown: the **last modifications** are listed
+  ("Release Level: -2.0 dB → +1.5 dB"…). **Right-click** the box: **Undo** the last one, or **Undo all** (RELOAD).
+- **Modified**: the **\*** now stands **before** the name, which turns to *italics* (never cut). Dropping a preset or
+  an instrument on the window, or changing version, now asks first too: lose the changes, **Save first**, or Cancel.
+- **Small screens**: new view sizes **70 / 60 / 50 %**. At the start, if the window does not fit
+  the screen (e.g. a 1080p laptop with Windows display scaling at 125 % or 175 %), PianoToLife takes the largest size
+  that fits. The standalone window keeps its title bar on the screen. The lists stay readable at every size.
+- **13th chords** in the chord display: Cmaj13, C13, Cm13.
+
+Manuals updated for 10.9.8: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) · [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.6
 
 **Plug-ins...: your own VST3 folders, the standard ones left out if you want, a clean list — and HOST | SAMPLER in the
 compact bar.**
 
-- **Plug-ins...** (HOST, beside SCAN; called Add VST3 before) — a suggestion from Vlad:
+- **Plug-ins...** (HOST, beside SCAN; called Add VST3 before):
   - **Other location...**: a .vst3 or a whole folder anywhere is now **remembered**, and **SCAN looks there too**
     (before, a full SCAN forgot it).
   - **Locations scanned**: untick **Standard VST3 folders** to scan only your own locations; forget one with a click.
@@ -67,11 +93,10 @@ compact bar.**
 - **Compact view: HOST | SAMPLER** where the pedal mode was: switch mode and choose your presets in either without
   opening the full window (the pedal mode stays there).
 
-Manuals updated for 10.9.6: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md).
 
 ### Also in 10.9.5
 
-**Up to three dry versions of a set to compare, clearer DRY, and two fixes reported by pipat.**
+**Up to three dry versions of a set to compare, clearer DRY, and two fixes.**
 
 - **Dry versions** (SAMPLER > EDIT, DRY / DENOISE / BODY): MAKE now asks whether to **replace** the dry samples of a
   microphone or make a **new version** beside them (`-dry2`, `-dry3`: three at most), to compare processings — e.g.
@@ -123,7 +148,7 @@ diapason of a hosted piano detected.**
 - **ALIGN ATTACKS** with many layers and XCOLOR: each key is centred on 3 ms again (the small phase shifts between
   layers no longer add up, at most 1.5 ms off).
 - **Fixed**: at 80 % or 90 % zoom, the picture of a sample set could stay mixed with the previous one after changing
-  the preset (reported by pipat).
+  the preset.
 
 Manuals updated for 10.9.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
 [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
@@ -197,8 +222,7 @@ Manuals updated for 10.9.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisati
   piano for the same change of colour — and whether the **Samples** setting used (auto / Normalised / Not normalised)
   suits it. If it does not, **one click sets the advised one and runs the same AUTO DYN again** (or keep the result).
   Works whatever the number of layers.
-- **VOL, CEILING and WIDE**: **click once to type a value**, double-click for the default, drag as before (a
-  suggestion from pipat).
+- **VOL, CEILING and WIDE**: **click once to type a value**, double-click for the default, drag as before.
 - **Enable Multicore Processing**: safer with Cubase and Studio One on Windows (the cores PianoToLife uses now run at
   the same audio priority as the DAW's, and PianoToLife never waits for a late one). It is now a setting of your
   computer: **a preset never changes it**, and a new instance starts with your last choice (a DAW project keeps its
@@ -912,7 +936,7 @@ of both.
 <table>
 <tr><td>🎹 <b>Every damped string, up to your piano's last damper</b></td><td>Sustain Free To and Max Free Strings now follow <b>Undamped Keys Above</b>: at their maximum they read <b>All</b> and free every damped string, up to the last damper of your piano (Steinway D: G6, Shigeru Kawai: A#6...). Moving Undamped Keys Above sets them to All; you can still lower them.</td></tr>
 <tr><td>🎼 <b>Bösendorfer Imperial</b></td><td>Sustain Free To now has two handles. Drag the left one below A0, down to C0, and the pedal also frees the 9 extra bass strings of an Imperial (C0 to G#0), made from the A0 of the resonance model. A subtle, richer bass halo.</td></tr>
-<tr><td>🔍 <b>MIDI Monitor, side by side</b></td><td>What PianoToLife receives and what it sends to your piano are on the same line, with one scroll bar. Every difference is in amber: a changed value, a message sent later (with the reason), one added or not sent. The export uses the same two columns. Thanks to Elvis for the idea.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor, side by side</b></td><td>What PianoToLife receives and what it sends to your piano are on the same line, with one scroll bar. Every difference is in amber: a changed value, a message sent later (with the reason), one added or not sent. The export uses the same two columns.</td></tr>
 <tr><td>🎵 <b>Crisper staccato in Host Sustain</b></td><td>The short pedal-catch window (about 40 ms) is now only used during a pedal change, where a catch is likely. The rest of the time the Note Off reaches the piano at once, so a staccato played without the pedal is not lengthened.</td></tr>
 <tr><td>🎁 <b>Example presets for VSL D-274</b></td><td><code>PianoToLife-Example-Presets-VSL-D274.zip</code> in the release: two Synchron Pianos player presets (STANDARD and FULL) set up to be played through PianoToLife, with a screenshot of the matching PianoToLife settings.</td></tr>
 </table>
