@@ -7,7 +7,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
-> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.
+> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.w
 > Purely modelled pianos already compute their own resonance and pedal behaviour, so PianoToLife
 > has little to add to them: it is not intended for hosting them.
 
@@ -52,7 +52,30 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.8
+## What's new in 10.9.9
+
+**Pan per key with AUTO, a Recorded Room that switches itself off on a dry piano, and EXIT of EDIT.**
+
+- **Pan per key** (SAMPLER > EDIT, key panel, under Tune): move a key left or right — **L 100 %** to **R 100 %**. One
+  side is lowered and nothing is mixed, so the stereo image of the note is kept. **ALL C** puts every key back to the
+  centre. It is saved with the instrument, each version of the piano its own.
+- **Pan AUTO** (optional, not for every recording): for pianos whose neighbouring keys do not sit at the same place
+  (spaced microphones, few partials in the treble).
+  - It measures the left / right of every key and finds the piano's own line from the bass to the treble. Its slope
+    and its ends are kept, and no position of the microphones is guessed.
+  - Only the keys clearly off that line are brought back onto it; the others go to the centre.
+  - The result window has an **AMOUNT** (70 % by default), heard at once while you play.
+  - Cmd/Ctrl+Z if the recording sounded more natural.
+- **Recorded Room AUTO CAL**: when it finds no room in the sound (close microphones, a DRY version), it now **switches
+  Recorded Room off** — there is nothing to match. Put the whole piano in a room with the REVERB. When a room is
+  found, Recorded Room is ticked again.
+- **EDIT: EXIT** (was BACK). With changes not saved it asks first: Save and exit, Exit without saving (nothing is
+  lost), or Cancel.
+- **Chord display**: Cmaj11 and Cm(maj11) (before, C E G B D F showed Cmaj9).
+
+Manuals updated for 10.9.9: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) · [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+### Also in 10.9.8
 
 **Versions of the piano: ORIG., DRY 1, DRY 2, DRY 3, each with its own settings — see what you changed and undo it,
 and a window that fits small screens.**
@@ -76,7 +99,6 @@ and a window that fits small screens.**
   that fits. The standalone window keeps its title bar on the screen. The lists stay readable at every size.
 - **13th chords** in the chord display: Cmaj13, C13, Cm13.
 
-Manuals updated for 10.9.8: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) · [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
 
 ### Also in 10.9.6
 
