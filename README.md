@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1096" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1100" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -40,7 +40,8 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   <a href="SAMPLER_MANUAL.md"><b>Sampler Manual</b></a> · <a href="MANUEL_SAMPLER.md">Manuel du sampler (FR)</a>
 </p>
 <p align="center">
-  PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.
+  PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.<br>
+  New in 11: the <b>MEDIA</b> player (recordings and videos, lyrics, chords) is an option — 29 EUR or 29 USD minimum, one payment, no subscription.
 </p>
 
 <p align="center">
@@ -52,7 +53,36 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 10.9.9
+## What's new in 11.0.0
+
+**MEDIA: play your recordings and videos along with your piano — in tune, at the same loudness, recorded and bounced
+in sync with your MIDI take, with the lyrics and the chords on screen.**
+
+- **MEDIA** (standalone, left of LOAD MIDI): a media player in its own window, moved anywhere.
+  - Audio and video files: WAV, AIFF, FLAC, Ogg, MP3, M4A, **MP4, MOV** (also WMV and AVI on Windows). One file,
+    several, a folder or an .m3u playlist; previous / next, loop. The last playlist and piece come back at the next
+    start.
+  - **LEVEL**: every file played at the same loudness (**-14, -16 or -23 LUFS**), with one gain that never takes it
+    over -1 dBTP. **CEIL.**: the media's own limiter (-1 to -3 dB). Piano and media together never go over -0.3 dBFS.
+  - **TUNING**: the A4 of the recording is found (e.g. 438.6 Hz) and the file is played at the A4 you choose, from
+    **432 to 448 Hz**: play along in tune with any record.
+  - The media is heard only: it never goes through the piano's sound processing.
+- **REC and PLAY with the MIDI (and BOUNCE)**: a visual count-in, then your MIDI take and the recording start
+  together. PLAY replays both in sync (PAUSE and STOP too), and **BOUNCE can put the recording in the audio file**
+  with your piano. The recording's name, place and tuning are kept in the MIDI file.
+- **SCREEN**: a window for a second screen, resizable, full screen with a double-click:
+  - the **video**, in time with the player;
+  - the **lyrics** of the song from a **.lrc** file of the same name beside it, over the picture — colour, text
+    opacity, a see-through band, size.
+- **CHORDS**: the chords of the piece, found by analysis, **scrolling in time with it** on its beats, with its key
+  and its tuning; colour and zoom.
+- **MIDI loop of one piece**: LOOP now also repeats a single MIDI file.
+
+MEDIA is an **option: 29 EUR or 29 USD minimum — one payment, no subscription**. At the first click on MEDIA a window shows what it does and the PayPal
+link; write "Media" in the PayPal message and you will receive the password by e-mail. Everything else in PianoToLife
+stays free.
+
+### Also in 10.9.9
 
 **Pan per key with AUTO, a Recorded Room that switches itself off on a dry piano, and EXIT of EDIT.**
 
