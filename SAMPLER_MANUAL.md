@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 10.9.8 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 10.9.9 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -292,8 +292,8 @@ selected** at the top, and MAKE processes every microphone:
    not playing (its samples and its settings; the originals and the other versions are untouched). Switching does
    not measure AUTO BODY again.
 4. **Then make a new Piano Model capture (.srpiano), and run AUTO CAL of Resonance and of Recorded Room again**: they were
-   measured on the sound with its room. The Recorded Room AUTO CAL then finds no room and sets Room **Small**: put the
-   piano in the room you want with the REVERB (ALGO or IR).
+   measured on the sound with its room. The Recorded Room AUTO CAL then finds no room and switches **Recorded Room off**
+   (10.9.9): put the piano in the room you want with the REVERB (ALGO or IR).
 
 **Formats.** The original samples stay exactly as recorded. The -dry samples are always **24-bit FLAC** (lossless), at
 the original's sample rate, even when the originals are 16-bit: once the room and the hiss are taken out, the tails of
@@ -378,6 +378,8 @@ keys.
 | **Decay** / **Sustain** | Time to reach the Sustain level; 0 = the natural decay of the sample |
 | **Release** | 0 = **Auto** (PianoToLife's damper model; no damper above Undamped Keys Above); a time in ms; all the way right = **Infinite** (no damper: undamped top keys) |
 | **Tune** | Fine tune in cents. **ALL 0** (10.9.4, at the end of the row): every key's Tune back to 0, the pitch of the samples as recorded (one UNDO step) |
+| **Pan** (10.9.9) | The key's place left / right, **L 100 %** to **R 100 %**: one side is lowered, nothing is mixed, so the stereo image of the note is kept. Click the value to type it ("L 12", "R 8", "C"). **ALL C**: every key back to the centre (one UNDO step). Saved with the instrument, each version its own. Not to be confused with **BALANCE** (the volume between the keys) |
+| **Pan AUTO** (10.9.9, optional) | For recordings whose neighbouring keys do not sit at the same place (spaced microphones, few partials in the treble). It measures the left / right of every key and finds the piano's own line from the bass to the treble — **its slope and its ends are kept, no position of the microphones is guessed**. Only the keys clearly off that line get a Pan that brings them back onto it (at most 6 dB); the others go to the centre. The result window gives the line found and has an **AMOUNT** (70 % by default, heard at once while you play). **Not for every recording**: listen before and after, Cmd/Ctrl+Z if the places sounded more natural as recorded. Nothing changes when the piano shows no clear line |
 | **LP** + cutoff + **LP Vel** | Optional low-pass per voice; LP Vel makes soft notes darker (up to 3 octaves lower at 100 %) |
 | **Undamped** | Undamped Keys Above, for the whole piano (the main window's setting, in sync): the keys above it have no damper |
 
@@ -395,7 +397,7 @@ keys.
 | **PASSWORD...** | Protects EDIT with a password (playing the set never asks for it). Empty = no password |
 | **CLEAR ALL** (10.4.3) | Empties the whole set (every key, every microphone), after a warning that gives the number of samples. UNDO brings it back; the files are not touched |
 | **DELETE** | Removes the selected zones (see the table above) |
-| **BACK** | Returns to the main window |
+| **EXIT** (10.9.9, was BACK) | Returns to the main window. With changes not saved (**\*** in the preset box) it asks first: **Save and exit**, **Exit without saving** (nothing is lost: the settings stay until you load something else) or Cancel |
 
 A set saved on Mac opens on Windows and back. Saving a preset in SAMPLER mode creates a **`[SAMP]` preset** that
 carries the mapping and the resonance model; only the samples (`.wptl`) stay apart.

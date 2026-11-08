@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 10.9.8 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 10.9.9 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -356,7 +356,7 @@ goes to the **Host**. Differences are highlighted;
 | **Key Noise** (GRAND / UPRIGHT) | The wooden key action: hammer back on its rest, key landing, repetition |
 | **Pedal Noise** | Wooden thumps, felts on the strings and freed bass strings, following the pedal's travel and speed |
 | **BODY** | The perceived size of the piano (left of SOFT): each note's fundamental raised or lowered, in HOST and SAMPLER. Not an EQ: a small bell follows **each note that sounds**, on its own fundamental (keys and pedal followed). Why it helps: on a real piano the fundamental is radiated by the whole soundboard and builds up with distance; close microphones catch mostly the upper partials and the hammer, so a recorded piano often sounds bright but a little hollow. BODY gives back that presence, note by note; and in a mix the piano stands out without muddying the low end, since only the notes being played are raised (an EQ would raise everything in that band). In SAMPLER mode, **AUTO BODY** (10.9.3, EDIT > DRY / DENOISE / BODY) goes further: it makes the fundamentals of the samples coherent, layer by layer and key by key, written into the -dry ([Sampler Manual](SAMPLER_MANUAL.md)) |
-| **Recorded Room** (called Ambience before 10.9.3) | Right under SYMPATHETIC RESONANCE. **The room recorded in your samples**, detected by AUTO CAL and simulated for everything PianoToLife adds (resonance, release, noises), so that it blends with the piano — never around your piano's own sound, which already carries it. **It is not a reverb**: to put the whole instrument in a hall, use **REVERB** (ALGO or IR); a piano made dry (DRY) has no recorded room left (Small). **Room**: Small, Medium, Default, Hall or **Auto** (10.8.0, see below). The slider goes from −6 to +6 dB around Default (10.8.0) |
+| **Recorded Room** (called Ambience before 10.9.3) | Right under SYMPATHETIC RESONANCE. **The room recorded in your samples**, detected by AUTO CAL and simulated for everything PianoToLife adds (resonance, release, noises), so that it blends with the piano — never around your piano's own sound, which already carries it. **It is not a reverb**: to put the whole instrument in a hall, use **REVERB** (ALGO or IR); a piano made dry (DRY) has no recorded room left (AUTO CAL switches Recorded Room off, 10.9.9). **Room**: Small, Medium, Default, Hall or **Auto** (10.8.0, see below). The slider goes from −6 to +6 dB around Default (10.8.0) |
 | **Piano Comp**, **Reverb** | Placed after the resonance, so the whole instrument goes through them |
 | **Reverb ALGO \| IR** (10.9.2) | Beside REVERB's DEFAULT. **ALGO**: PianoToLife's Piano Hall. **IR**: a convolution reverb with an **impulse response** of your choice (a real hall, a plate, a vintage reverb unit...). Click **IR**: choose an IR, **LOAD IR...** (a WAV, AIFF or FLAC you downloaded: it is copied into the `Impulse Responses` folder of your sample sets folder, and chosen), or **Open IR folder** (folders inside it, up to three levels, become sub-menus). Mono, stereo and **true stereo** IRs (4 channels, or a pair of files "... L" / "... R": choose either, both are taken) are read, at any sample rate, up to 10 s; B-format (ambisonic) files are not. The level is matched to the Piano Hall. Choosing an IR sets DECAY to the IR's own length and DAMP to 0 (the IR as recorded); then **DECAY** shortens its tail and **DAMP** makes its treble die sooner; MIX, PRE and LEVEL work as usual. No latency. A preset keeps the IR's name: if the file is missing, the Piano Hall plays and the button reads **IR ?**. DEFAULT = ALGO. Free IRs: [Voxengo](https://www.voxengo.com/impulses), [OpenAIR](https://www.openair.hosted.york.ac.uk/?page_id=2) (real halls, use the stereo files), [Airwindows](https://airwindows.com/airwindows-impulses); commercial libraries delivered in WAV work too |
 | **EQ1 / EQ2** (10.4.2) | Click **EQ** under REVERB: the EQs take the place of COMP / REVERB (the same button brings them back). **EQ1 BEFORE FX** works before COMP and REVERB, to shape the tone of the piano; **EQ2 AFTER FX** works at the very end, before the Ceiling, to correct headphones. Each: **draw it on the curve** (double-click = a new point, drag = frequency and gain, mouse wheel on a point = its width Q, right-click = remove), PREAMP, RESET = flat, or **LOAD** a preset — a `ParametricEQ.txt` from AutoEq (oratory1990 measurements, Harman target) or an Equalizer APO file; load headphone presets in EQ2 (switch it off for a bounce or on loudspeakers). Up to 20 points each. Kept in the preset and the session |
@@ -382,9 +382,10 @@ once: the piano's room comes out, instead of being masked.
   the standalone, about 25 s in a DAW; don't play meanwhile. The button stays lit once the piano was analysed.
 - **The level found is shown in the Room** (e.g. *Auto +3 dB*). The Recorded Room slider still sets more or less around
   it: lower it a little if you find the room too present — often the case with very clean releases.
-- **A very dry piano** (close or closed microphones): no room is found, the Room is set to **Small**. The same for a
-  sampled piano whose room was taken out with **DRY / DENOISE** (SAMPLER, 10.9.0): choose the room you want — see the
-  [Sampler Manual](SAMPLER_MANUAL.md).
+- **A very dry piano** (close or closed microphones): no room is found, and since 10.9.9 **Recorded Room is switched
+  off** — there is no room to match (tick it again for a small room, Small, anyway). The same for a sampled piano whose
+  room was taken out with **DRY / DENOISE** (SAMPLER): put the whole piano in a room with the **REVERB** (ALGO or IR) —
+  see the [Sampler Manual](SAMPLER_MANUAL.md). When a room is found, Recorded Room is ticked again.
 - ***The notes did not fully agree***: the measured notes differ (an old recording, tape hiss...): the result is
   usable, check it by ear.
 - **After a Piano Model capture**, PianoToLife offers both AUTO CALs in a row: the resonance level, then the room.
@@ -450,7 +451,7 @@ once: the piano's room comes out, instead of being masked.
     the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
     ENGINE MIDI REC);
   - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
-    Only chord names are shown (C, Am7, Cmaj7/E…; since 10.9.7 the 13th chords too: Cmaj13, C13, Cm13). A chord held in the left hand stays shown while the right hand
+    Only chord names are shown (C, Am7, Cmaj7/E…; since 10.9.7 the 13th chords too: Cmaj13, C13, Cm13; since 10.9.9 Cmaj11 and Cm(maj11)). A chord held in the left hand stays shown while the right hand
     plays a melody over it, and is completed when the melody adds to it.
 - **View size and small screens** (10.9.8): the menu left of the version offers **100 / 90 / 80 / 70 / 60 / 50 %**. At
   the start, if the window does not fit the screen, PianoToLife takes the largest size that fits (not remembered: on a

@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 10.9.8 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 10.9.9 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -315,8 +315,8 @@ sélectionné** en haut, et MAKE traite tous les micros :
    **Delete...** supprime une version qui ne joue pas (ses échantillons et ses réglages ; les originaux et les autres
    versions ne sont pas touchés). Changer ne remesure pas AUTO BODY.
 4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et de Recorded Room** :
-   ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de la Recorded Room ne trouve alors plus de salle et règle la
-   Room sur **Small** : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
+   ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de la Recorded Room ne trouve alors plus de salle et **décoche
+   Recorded Room** (10.9.9) : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
 
 **Formats.** Les échantillons d'origine restent exactement tels qu'enregistrés. Les échantillons -dry sont toujours en
 **FLAC 24 bits** (sans perte), à la fréquence de l'original, même quand les originaux sont en 16 bits : une fois la
@@ -407,6 +407,8 @@ les couches des touches choisies.
 | **Decay** / **Sustain** | Temps pour atteindre le niveau Sustain ; 0 = l'extinction naturelle de l'échantillon |
 | **Release** | 0 = **Auto** (le modèle d'étouffoirs de PianoToLife ; sans étouffoir au-dessus de Undamped Keys Above) ; un temps en ms ; tout à droite = **Infinite** (sans étouffoir : touches aiguës non étouffées) |
 | **Tune** | Accord fin en cents. **ALL 0** (10.9.4, au bout de la ligne) : le Tune de toutes les touches revient à 0, la hauteur des samples tels qu'enregistrés (une étape UNDO) |
+| **Pan** (10.9.9) | La place de la touche à gauche / à droite, de **L 100 %** à **R 100 %** : un côté est baissé, rien n'est mélangé, l'image stéréo de la note est donc gardée. Cliquez sur la valeur pour la taper (« L 12 », « R 8 », « C »). **ALL C** : toutes les touches au centre (une étape UNDO). Enregistré dans l'instrument, chaque version a le sien. À ne pas confondre avec **BALANCE** (le volume entre les touches) |
+| **Pan AUTO** (10.9.9, facultatif) | Pour les prises dont les touches voisines ne sont pas à la même place (micros espacés, peu d'harmoniques dans l'aigu). Il mesure la gauche / droite de chaque touche et trouve la ligne propre du piano du grave à l'aigu — **sa pente et ses extrémités sont gardées, aucune position de micros n'est devinée**. Seules les touches nettement hors de cette ligne reçoivent un Pan qui les y ramène (6 dB au plus) ; les autres reviennent au centre. La fenêtre de résultat donne la ligne trouvée et a un **AMOUNT** (70 % par défaut, entendu aussitôt en jouant). **Ne convient pas à toutes les prises** : écoutez avant et après, Cmd/Ctrl+Z si les places sonnaient plus naturelles telles qu'enregistrées. Rien ne change quand le piano ne montre pas de ligne nette |
 | **LP** + fréquence + **LP Vel** | Passe-bas optionnel par voix ; LP Vel assombrit les notes douces (jusqu'à 3 octaves plus bas à 100 %) |
 | **Undamped** | Undamped Keys Above, pour tout le piano (le réglage de la fenêtre principale, synchronisé) : les touches au-dessus n'ont pas d'étouffoir |
 
@@ -424,7 +426,7 @@ les couches des touches choisies.
 | **PASSWORD...** | Protège EDIT par un mot de passe (jouer le set ne le demande jamais). Vide = pas de mot de passe |
 | **CLEAR ALL** (10.4.3) | Vide tout le set (toutes les touches, tous les micros), après un avertissement qui donne le nombre d'échantillons. UNDO le remet ; les fichiers ne sont pas touchés |
 | **DELETE** | Supprime les zones sélectionnées (voir le tableau plus haut) |
-| **BACK** | Revient à la fenêtre principale |
+| **EXIT** (10.9.9, anciennement BACK) | Revient à la fenêtre principale. Avec des modifications non enregistrées (**\*** dans la boîte PRESET), il demande d'abord : **Save and exit** (enregistrer et sortir), **Exit without saving** (rien n'est perdu : les réglages restent jusqu'à ce que vous chargiez autre chose) ou Cancel |
 
 Un set enregistré sur Mac s'ouvre sur Windows et inversement. Enregistrer un preset en mode SAMPLER crée un **preset
 `[SAMP]`** qui contient le mapping et le modèle de résonance ; seuls les échantillons (`.wptl`) restent à part.
