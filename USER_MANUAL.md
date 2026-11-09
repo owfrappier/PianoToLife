@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.0.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.0.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -460,9 +460,13 @@ once: the piano's room comes out, instead of being masked.
   - **CHORDS**: the chords of the piece playing, found by analysis (a few seconds, once per file): the chord playing in
     large letters, the **key** and the **tuning** of the recording, and the chords **scrolling** on the beats of the
     piece (bars marked), the playhead in white. **colour** and **zoom − / +**; the window is resizable.
+    **AUTO | BEATS | FREE** (11.0.1): **BEATS** places the chords on the beats found from the attacks (stable);
+    **FREE** follows the harmony alone, with no grid (free piano, rubato); **AUTO** (default) keeps BEATS and adds the
+    passing chords FREE hears between the beats. Each mode is analysed once, then you switch at once.
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
     link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
-    this computer.
+    this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
+    left shows in the player's title); a BOUNCE with the media needs the password.
   - **MIDI loop** (11.0.0): LOOP in the LOAD MIDI menu now also repeats a single MIDI file.
 - **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,

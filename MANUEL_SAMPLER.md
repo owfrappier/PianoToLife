@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.0.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.0.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque

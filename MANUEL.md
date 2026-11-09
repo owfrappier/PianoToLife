@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.0.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.0.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -494,10 +494,15 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **CHORDS** : les accords du morceau joué, trouvés par analyse (quelques secondes, une fois par fichier) : l'accord
     en cours en grand, la **tonalité** et le **diapason** de l'enregistrement, et les accords qui **défilent** sur les
     temps du morceau (mesures marquées), la tête de lecture en blanc. **colour** et **zoom − / +** ; la fenêtre est
-    redimensionnable.
+    redimensionnable. **AUTO | BEATS | FREE** (11.0.1) : **BEATS** place les accords sur les temps trouvés d'après les
+    attaques (stable) ; **FREE** suit l'harmonie seule, sans grille (piano libre, rubato) ; **AUTO** (par défaut) garde
+    BEATS et ajoute les accords de passage que FREE entend entre les temps. Chaque mode est analysé une fois, puis on
+    bascule instantanément.
   - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
     PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
-    est retenu sur cet ordinateur.
+    est retenu sur cet ordinateur. **TRY** (11.0.1) : tout essayer pendant **3 minutes de lecture** à chaque lancement
+    de PianoToLife (le temps restant s'affiche dans le titre du lecteur) ; un BOUNCE avec le média demande le mot de
+    passe.
   - **Boucle MIDI** (11.0.0) : LOOP dans le menu LOAD MIDI répète maintenant aussi un seul fichier MIDI.
 - **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
