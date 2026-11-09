@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.0.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -199,7 +199,8 @@ Piano Model est enregistré à A4 = 440 Hz, il reste donc juste quand le diapaso
 diapason du piano hébergé (ou reliez-les avec **ASSIGN to AU** : c'est alors le piano hébergé qui donne la valeur et
 PianoToLife ne la change jamais). Au chargement d'un Piano Model, SR A4 Tuning revient au diapason de sa capture. **Un preset ou une session
 l'emporte** (11.0.2) : son SR A4 Tuning (par ex. 432 Hz) est gardé ; le diapason du modèle ne s'applique que s'il
-laisse 440 Hz.
+laisse 440 Hz. Depuis la 11.1.0, un preset ou une session sauvé avec la 11.1.0 ou après garde son SR A4 Tuning quel qu'il
+soit, 440 Hz compris (sans ASSIGN to AU).
 
 **HOST : TEMPERAMENT** (11.0.2). Le bouton **TEMPERAMENT** (sur la ligne SR A4 Tuning) indique à PianoToLife le
 tempérament réglé dans votre piano hébergé : les cordes de la résonance le suivent **sans nouvelle capture** (le piano
@@ -513,9 +514,21 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     en cours en grand, la **tonalité** et le **diapason** de l'enregistrement, et les accords qui **défilent** sur les
     temps du morceau (mesures marquées), la tête de lecture en blanc. **colour** et **zoom − / +** ; la fenêtre est
     redimensionnable. **AUTO | BEATS | FREE** (11.0.1) : **BEATS** place les accords sur les temps trouvés d'après les
-    attaques (stable) ; **FREE** suit l'harmonie seule, sans grille (piano libre, rubato) ; **AUTO** (par défaut) garde
+    attaques (stable) ; **FREE** suit l'harmonie seule, sans grille (piano libre, rubato) ; **AUTO** garde
     BEATS et ajoute les accords de passage que FREE entend entre les temps. Chaque mode est analysé une fois, puis on
-    bascule instantanément.
+    bascule instantanément. **BEATS** est le mode par défaut depuis la 11.1.0 (le plus stable) ; votre choix est retenu.
+  - **NO VOICE / NO PIANO / CLEAN** (11.1.0, dans la fenêtre CHORDS) : la **voix** et / ou les **pianos** (acoustique
+    et numérique) retirés du morceau joué, pour jouer ou chanter à leur place ; tout le reste est l'enregistrement
+    lui-même. Le morceau est **séparé une seule fois**, en arrière-plan, avant de jouer (une barre de progression,
+    **CANCEL** ; environ la moitié de la durée du morceau sur un Mac Apple Silicon), et gardé dans le dossier **Stems** de
+    votre dossier de samples : la fois suivante, c'est instantané. Les boutons basculent ensuite aussitôt, pendant la
+    lecture ; le TUNING s'y applique, et un BOUNCE avec le média reprend ce que vous entendez. **CLEAN** (avec NO PIANO) :
+    là où le piano joue presque seul (une intro), ses derniers restes sont retirés aussi. Rien n'est exporté. Un nouveau
+    morceau chargé avec NO VOICE ou NO PIANO allumé est séparé tout seul. Si une séparation échoue, ce qu'a dit le moteur
+    est dans **Stems/last-separation-error.txt**. Fonctionne au mieux sur un Mac Apple Silicon ou un PC avec une carte
+    NVIDIA RTX (Windows : la carte graphique via Vulkan, sinon le processeur, bien plus lent) ; sur des ordinateurs plus
+    anciens, cela peut être très lent et n'est pas garanti. **CREDITS** : le modèle « MVSep Mega 53 Stems » de ZFTurbo et
+    le moteur BSRoformer.cpp (tous deux sous licence MIT) ; les textes des licences sont installés avec PianoToLife.
   - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
     PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
     est retenu sur cet ordinateur. **TRY** (11.0.1) : tout essayer pendant **3 minutes de lecture** à chaque lancement

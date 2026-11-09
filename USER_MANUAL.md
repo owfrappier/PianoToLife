@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.0.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -187,6 +187,8 @@ Piano Model is stored at A4 = 440 Hz, so it stays right when the diapason change
 hosted piano's diapason (or link them with **ASSIGN to AU**: then the hosted piano gives the value and PianoToLife
 never changes it). When a Piano Model is loaded, SR A4 Tuning goes back to the diapason it was captured at. **A preset or a session
 wins** (11.0.2): its SR A4 Tuning (e.g. 432 Hz) is kept; the model's diapason is used only when it leaves 440 Hz.
+Since 11.1.0 a preset or session saved with 11.1.0 or later keeps its SR A4 Tuning whatever it is, 440 Hz included
+(without ASSIGN to AU).
 
 **HOST: TEMPERAMENT** (11.0.2). The **TEMPERAMENT** button (on the SR A4 Tuning row) tells PianoToLife the
 temperament set in your hosted piano, so the strings of the resonance follow it **without a new capture** (the hosted
@@ -476,8 +478,21 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     large letters, the **key** and the **tuning** of the recording, and the chords **scrolling** on the beats of the
     piece (bars marked), the playhead in white. **colour** and **zoom − / +**; the window is resizable.
     **AUTO | BEATS | FREE** (11.0.1): **BEATS** places the chords on the beats found from the attacks (stable);
-    **FREE** follows the harmony alone, with no grid (free piano, rubato); **AUTO** (default) keeps BEATS and adds the
-    passing chords FREE hears between the beats. Each mode is analysed once, then you switch at once.
+    **FREE** follows the harmony alone, with no grid (free piano, rubato); **AUTO** keeps BEATS and adds the
+    passing chords FREE hears between the beats. Each mode is analysed once, then you switch at once. **BEATS** is the
+    default since 11.1.0 (the most stable); your choice is remembered.
+  - **NO VOICE / NO PIANO / CLEAN** (11.1.0, in the CHORDS window): the **voice** and / or the **pianos** (acoustic
+    and digital) taken out of the piece playing, to play or sing in their place; everything else stays the recording
+    itself. The piece is **separated once**, in the background, before you play (a progress bar, **CANCEL**; about half
+    the piece's length on a Mac with Apple Silicon), and kept in the **Stems** folder of your samples folder: the next
+    time is instant. The buttons then switch at once while playing; the TUNING applies to them, and a BOUNCE with the
+    media plays what you hear. **CLEAN** (with NO PIANO): where the piano plays almost alone (an intro), its last
+    remains are taken out too. Nothing is exported. A new piece loaded with NO VOICE or NO PIANO on is separated by
+    itself. If a separation fails, what the engine said is in **Stems/last-separation-error.txt**. Works best on a Mac
+    with Apple Silicon or a PC with an NVIDIA RTX card (Windows: the graphics card through Vulkan, otherwise the
+    processor, much slower); on older computers it may be very slow and cannot be guaranteed. **CREDITS**: the model
+    "MVSep Mega 53 Stems" by ZFTurbo and the engine BSRoformer.cpp (both MIT License); the licence texts are installed
+    with PianoToLife.
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
     link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
