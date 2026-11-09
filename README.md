@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1102" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1110" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,33 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.0.2
+## What's new in 11.1.0
+
+**NO VOICE / NO PIANO: take the singer or the pianist out of a recording and play in their place — separated on
+your computer, once, and kept for the next time.**
+
+- **NO VOICE / NO PIANO** (MEDIA, in the CHORDS window): the **voice** and / or the **pianos** (acoustic and digital)
+  taken out of the piece playing, to play or sing in their place before a concert. Everything else stays the
+  recording itself.
+  - The piece is **separated once**, in the background, before you play — a progress bar and **CANCEL**; about **half
+    the piece's length** on a recent Mac (Apple Silicon). It is kept in the **Stems** folder of your samples folder, so
+    the next time is instant.
+  - Then the two buttons switch **at once**, while playing; the **TUNING** applies to them too, and a BOUNCE with the
+    media plays what you hear.
+  - **CLEAN** (with NO PIANO): where the piano plays almost alone (an intro), its last remains are taken out too.
+  - Nothing is exported: the separation is only for your own practice.
+  - Works best on a **Mac with Apple Silicon** or a **PC with an NVIDIA RTX card** (Windows: the graphics card through
+    Vulkan, otherwise the processor — much slower). On older computers it may be very slow and cannot be guaranteed.
+  - **CREDITS** (in the CHORDS window): the separation model "MVSep Mega 53 Stems" by ZFTurbo and the engine
+    BSRoformer.cpp, both under the MIT License.
+- **CHORDS: BEATS by default** (the chords on the beats: the most stable). AUTO and FREE are still one click away; your
+  choice is remembered.
+- **The samples / stems folder** is asked once — the first time SAMPLER is used, or before the first separation.
+- **HOST: a preset or session keeps its SR A4 Tuning, 440 Hz included** (saved with 11.1.0 or later, without ASSIGN to
+  AU).
+- **Fix**: the media player did not remember the last piece when one file had replaced another.
+
+### Also in 11.0.2
 
 **HOST TEMPERAMENT without a new capture, BOUNCE ALL of a playlist, REC straight to audio, a slower capture for
 slower computers, and the preset's A4 kept.**
