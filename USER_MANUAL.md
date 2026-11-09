@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.0.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.0.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -155,7 +155,9 @@ The resonance follows the exact partials of each string, from a **Piano Model** 
 records short strikes at up to 8 velocities placed in the middle of the piano's real layers. It is done once. On a
 hosted piano, in the standalone (10.7.0), it is **rendered offline**, as fast as your computer can: the hosted piano
 is told it renders offline, as in a DAW's bounce, and if it cannot follow, the capture starts again in real time (in a
-DAW it plays in real time). In SAMPLER mode it is **read directly from the samples**, offline, at the centres of the
+DAW it plays in real time). **Speed** (11.0.2, in the capture window): **Auto** (as fast as possible), **x4**,
+**x2** (offline, slower) or **x1** (real time, safest). If a capture has to be redone or freezes with your hosted
+piano, choose a slower speed: the piano has more time to read its samples from the disk. The choice is kept. In SAMPLER mode it is **read directly from the samples**, offline, at the centres of the
 set's own layers: a few minutes. The progress bar stays until the new model is loaded and AUTO CAL is offered.
 
 Before capturing:
@@ -183,12 +185,21 @@ temperament where a third is pure, its strings ring more, as on a real piano.
 sound, to 0.1 Hz) and shows it in **SR A4 Tuning**: a piano tuned at 437 Hz reads 437.0 Hz after the capture. A
 Piano Model is stored at A4 = 440 Hz, so it stays right when the diapason changes: change SR A4 Tuning with the
 hosted piano's diapason (or link them with **ASSIGN to AU**: then the hosted piano gives the value and PianoToLife
-never changes it). When a Piano Model is loaded, SR A4 Tuning goes back to the diapason it was captured at.
+never changes it). When a Piano Model is loaded, SR A4 Tuning goes back to the diapason it was captured at. **A preset or a session
+wins** (11.0.2): its SR A4 Tuning (e.g. 432 Hz) is kept; the model's diapason is used only when it leaves 440 Hz.
 
-**HOST: one Piano Model per temperament.** PianoToLife changes the temperament itself only in SAMPLER mode. If your
-hosted piano offers temperaments, choose one there, then capture a Piano Model with it — the resonance then follows
-that temperament exactly. Name each model after its temperament (e.g. *My Piano – Werckmeister III.srpiano*). The
-**TEMPERAMENT** button (on the SR A4 Tuning row) explains this in HOST mode, with a CAPTURE button.
+**HOST: TEMPERAMENT** (11.0.2). The **TEMPERAMENT** button (on the SR A4 Tuning row) tells PianoToLife the
+temperament set in your hosted piano, so the strings of the resonance follow it **without a new capture** (the hosted
+piano itself is not changed):
+- **Played in**: the temperament set in the hosted piano — **Original (as captured)** by default (no change: your
+  piano and its Piano Model, as before), Equal, historical temperaments, or a **Scala file (.scl)** of 12 notes
+  (**LOAD .scl...**), with its **tonic** (the key it is built on);
+- **Model captured in**: the temperament the Piano Model was captured in (Equal for most pianos), with its tonic;
+- a line shows the 12 offsets in cents applied to the strings. Kept in the preset and the session.
+
+Pure intervals make the resonance stronger, as on a real piano: lower Resonance Level if needed. Most exact of all:
+a Piano Model captured in the temperament played (**CAPTURE...**), then Played = Original. Name each model after its
+temperament (e.g. *My Piano – Werckmeister III.srpiano*).
 
 **SAMPLER: TEMPERAMENT.** The same button opens the temperament of your samples: measured, then changed key by key
 without touching the files — see the [Sampler Manual](SAMPLER_MANUAL.md#temperament-and-diapason-1094). A SAMPLER
@@ -413,7 +424,8 @@ once: the piano's room comes out, instead of being masked.
   folder (SAMPLER).
 - **MIDI player / recorder** (standalone): **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC or CAF) — to compare settings
   on exactly the same performance. After REC the take starts on your first note or pedal (pedals already down are
-  kept); click REC again and the save window opens; PLAY plays the take at once. LOAD MIDI and the save open the same
+  kept); click REC again and the save window opens — save a **.mid**, or (11.0.2) a **.wav / .aiff / .flac** (the .mid is
+saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOAD MIDI and the save open the same
   folder. **ENGINE MIDI REC** (under Disable CC19, on by default): the take is written as the engine plays it — the
   converted release in every Note Off (64 = normal, lower = slower), the velocity curve applied, all the aftertouch
   kept (Disklavier / N1 compatible). Off: the raw keyboard input. In PianoToLife it replays in the N1X mode or in
@@ -429,6 +441,9 @@ once: the piano's room comes out, instead of being masked.
   fast as your computer can (SAMPLER: it waits for the disk before each block, exact at any speed; HOST: the hosted
   piano is told it renders offline — if it cannot follow, the bounce is redone in real time); **x4 / x2** hold that
   speed; **x1** is real time. The MIDI line shows the speed, then how it went. The metronome is never in the file.
+  **BOUNCE ALL** (11.0.2): with a playlist, **Pieces: All N pieces of the playlist** bounces every piece, one file each,
+  in the folder chosen, named after the piece (never written over: *name (2).wav*). The MIDI line shows *Bounce all:
+  i/N*; STOP stops the series. The media player's recording is never in a BOUNCE ALL.
   You can also **drop MIDI files on the window** (10.6.2): one file, several (a playlist, in the order of their names)
   or an .m3u, as with LOAD MIDI. **II (PAUSE)** (10.6.2): the sound stops where it is and the place is kept; click
   again to go on from there (from a clean piano, with the pedals the file has at that point). PLAY starts from the

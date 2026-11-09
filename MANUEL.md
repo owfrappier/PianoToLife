@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.0.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.0.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -161,7 +161,11 @@ correspondent plus.
 leur extinction, et enregistre de courtes frappes à jusqu'à 8 vélocités placées au milieu des vraies couches du piano.
 Elle se fait une seule fois. Sur un piano hébergé, dans l'application autonome (10.7.0), elle est **rendue hors temps
 réel**, aussi vite que l'ordinateur le peut : le piano hébergé est prévenu qu'il rend hors ligne, comme pendant le
-bounce d'un DAW, et s'il ne suit pas, la capture repart en temps réel (dans un DAW, elle joue en temps réel). En mode
+bounce d'un DAW, et s'il ne suit pas, la capture repart en temps réel (dans un DAW, elle joue en temps réel).
+**Speed** (11.0.2, dans la fenêtre de capture) : **Auto** (le plus vite possible), **x4**, **x2** (hors ligne, plus
+lent) ou **x1** (temps réel, le plus sûr). Si une capture doit être refaite ou se fige avec votre piano hébergé,
+choisissez une vitesse plus lente : le piano a plus de temps pour lire ses samples sur le disque. Le choix est retenu.
+En mode
 SAMPLER, elle **lit directement les échantillons**, hors temps réel, aux centres des couches du set : quelques minutes.
 La barre de progression reste jusqu'à ce que le nouveau modèle soit chargé et qu'AUTO CAL soit proposé.
 
@@ -193,13 +197,23 @@ piano.
 0,1 Hz près) et l'affiche dans **SR A4 Tuning** : un piano accordé à 437 Hz indique 437,0 Hz après la capture. Un
 Piano Model est enregistré à A4 = 440 Hz, il reste donc juste quand le diapason change : changez SR A4 Tuning avec le
 diapason du piano hébergé (ou reliez-les avec **ASSIGN to AU** : c'est alors le piano hébergé qui donne la valeur et
-PianoToLife ne la change jamais). Au chargement d'un Piano Model, SR A4 Tuning revient au diapason de sa capture.
+PianoToLife ne la change jamais). Au chargement d'un Piano Model, SR A4 Tuning revient au diapason de sa capture. **Un preset ou une session
+l'emporte** (11.0.2) : son SR A4 Tuning (par ex. 432 Hz) est gardé ; le diapason du modèle ne s'applique que s'il
+laisse 440 Hz.
 
-**HOST : un Piano Model par tempérament.** PianoToLife ne change lui-même le tempérament qu'en mode SAMPLER. Si votre
-piano hébergé propose des tempéraments, choisissez-en un dans le piano, puis capturez un Piano Model avec ce
-tempérament : la résonance le suit alors exactement. Nommez chaque modèle d'après son tempérament (par exemple
-*Mon Piano – Werckmeister III.srpiano*). Le bouton **TEMPERAMENT** (sur la ligne SR A4 Tuning) l'explique en mode
-HOST, avec un bouton CAPTURE.
+**HOST : TEMPERAMENT** (11.0.2). Le bouton **TEMPERAMENT** (sur la ligne SR A4 Tuning) indique à PianoToLife le
+tempérament réglé dans votre piano hébergé : les cordes de la résonance le suivent **sans nouvelle capture** (le piano
+hébergé lui-même n'est pas modifié) :
+- **Played in** : le tempérament réglé dans le piano hébergé — **Original (as captured)** par défaut (aucun
+  changement : votre piano et son Piano Model, comme avant), Equal, tempéraments historiques, ou un **fichier Scala
+  (.scl)** de 12 notes (**LOAD .scl...**), avec sa **tonique** (la tonalité sur laquelle il est construit) ;
+- **Model captured in** : le tempérament dans lequel le Piano Model a été capturé (Equal pour la plupart des pianos),
+  avec sa tonique ;
+- une ligne affiche les 12 décalages en cents appliqués aux cordes. Gardé dans le preset et la session.
+
+Les intervalles purs renforcent la résonance, comme sur un vrai piano : baissez Resonance Level si besoin. Le plus
+exact : un Piano Model capturé dans le tempérament joué (**CAPTURE...**), puis Played = Original. Nommez chaque modèle
+d'après son tempérament (par exemple *Mon Piano – Werckmeister III.srpiano*).
 
 **SAMPLER : TEMPERAMENT.** Le même bouton ouvre le tempérament de vos samples : mesuré, puis changé touche par touche
 sans toucher aux fichiers — voir le [Manuel du sampler](MANUEL_SAMPLER.md#tempérament-et-diapason-1094). Une capture
@@ -441,8 +455,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   ouvre le dossier Presets (HOST) ou le dossier de l'instrument en cours (SAMPLER).
 - **Lecteur / enregistreur MIDI** (application autonome) : **LOAD MIDI**, **PLAY**, **REC**, **BOUNCE** (WAV, AIFF, FLAC ou CAF) —
   pour comparer des réglages sur exactement la même interprétation. Après REC, la prise commence à votre première note
-  ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre ;
-  PLAY joue la prise aussitôt. LOAD MIDI et l'enregistrement ouvrent le même dossier. **ENGINE MIDI REC** (sous
+  ou pédale (les pédales déjà enfoncées sont gardées) ; recliquez sur REC et la fenêtre d'enregistrement s'ouvre —
+  enregistrez un **.mid**, ou (11.0.2) un **.wav / .aiff / .flac** (le .mid est enregistré à côté, puis les options du
+  BOUNCE s'ouvrent) ; PLAY joue la prise aussitôt. LOAD MIDI et l'enregistrement ouvrent le même dossier. **ENGINE MIDI REC** (sous
   Disable CC19, activé par défaut) : la prise est écrite telle que le moteur la joue — le relâchement converti dans
   chaque Note Off (64 = normal, en dessous = plus lent), la courbe de vélocité appliquée, tout l'aftertouch gardé
   (compatible Disklavier / N1). Désactivé : l'entrée brute du clavier. Dans PianoToLife, la prise se rejoue en mode
@@ -460,6 +475,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   vitesse ; HOST : le piano hébergé est prévenu qu'il rend hors ligne — s'il ne suit pas, le bounce est refait en temps
   réel) ; **x4 / x2** tiennent cette vitesse ; **x1** = temps réel. La ligne MIDI affiche la vitesse, puis le résultat.
   Le métronome n'est jamais dans le fichier.
+  **BOUNCE ALL** (11.0.2) : avec une playlist, **Pieces : All N pieces of the playlist** bounce tous les morceaux, un
+  fichier chacun, dans le dossier choisi, au nom du morceau (jamais écrasé : *nom (2).wav*). La ligne MIDI affiche
+  *Bounce all: i/N* ; STOP arrête la série. L'enregistrement du lecteur média n'est jamais dans un BOUNCE ALL.
   Vous pouvez aussi **déposer des fichiers MIDI sur la fenêtre** (10.6.2) : un fichier, plusieurs (une liste de
   lecture, dans l'ordre de leurs noms) ou un .m3u, comme avec LOAD MIDI. **II (PAUSE)** (10.6.2) : le son s'arrête là
   où il est et la position est gardée ; recliquez pour reprendre de là (avec un piano propre et les pédales du fichier
