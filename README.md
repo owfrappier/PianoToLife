@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
-> which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
+> which you can sample with up to 5 microphones. Its auto-mapping places thÆe velocities, the attacks, the tonal colours
 > and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.w
 > Purely modelled pianos already compute their own resonance and pedal behaviour, so PianoToLife
 > has little to add to them: it is not intended for hosting them.
@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1100" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1101" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,24 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.0.0
+## What's new in 11.0.1
+
+**MEDIA demo — try it for 3 minutes each time you start PianoToLife — CHORDS AUTO with the passing chords, and a fix.**
+
+- **MEDIA demo**: click MEDIA, then **TRY**. Everything works for **3 minutes of playing** each time you start PianoToLife:
+  audio and video, SCREEN with the lyrics, TUNING, LEVEL, REC and PLAY with the MIDI, and **CHORDS**. Discover chord
+  detection made for piano: almost instant, on your audio and video accompaniments. (A BOUNCE with the media needs the
+  password.)
+- **CHORDS: AUTO | BEATS | FREE**.
+  - **BEATS**: the chords on the beats found from the attacks — stable.
+  - **FREE**: no grid, the chords follow the harmony alone — for free piano and rubato.
+  - **AUTO** (default): the chords on the beats, **plus the passing chords between them** — the stability of the beats
+    and the detail of free analysis.
+  - The chord engine is updated: applause, empty bass, hollow chords, moving bass, hum, struck bass… are read better.
+- **Fix**: PianoToLife could freeze when a piece was loaded again in the media player (at start, or coming back to a
+  piece of the playlist). Update from 11.0.0 recommended.
+
+### Also in 11.0.0
 
 **MEDIA: play your recordings and videos along with your piano — in tune, at the same loudness, recorded and bounced
 in sync with your MIDI take, with the lyrics and the chords on screen.**
