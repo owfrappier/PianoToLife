@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1110" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1111" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -41,7 +41,8 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 </p>
 <p align="center">
   PianoToLife is free. <a href="https://www.paypal.com/paypalme/owfrappier"><b>♥ Donate with PayPal</b></a> to support its development.<br>
-  New in 11: the <b>MEDIA</b> player (recordings and videos, lyrics, chords) is an option — 29 EUR or 29 USD minimum, one payment, no subscription.
+  New in 11: the <b>MEDIA</b> player (recordings and videos, lyrics, chords, NO VOICE / NO PIANO) is an option — 29 EUR or 29 USD minimum, one payment, no subscription.<br>
+  ✉️ Password after your donation, no PayPal in your country, any question: <a href="mailto:pianotolife@outlook.com"><b>pianotolife@outlook.com</b></a>
 </p>
 
 <p align="center">
@@ -53,7 +54,43 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.0
+## What's new in 11.1.1
+
+**MAGIC VIEW: the notes falling onto a keyboard — of a MIDI file, or of the piano, the voice or the other
+instruments of a recording — and NEED NEW SR?: PianoToLife tells you when the Piano Model needs a new capture.**
+
+- **MAGIC VIEW (MIDI)** — the **VIEW** button, right of LOAD MIDI (also in the compact bar), free: the notes of the MIDI
+  file playing, or of the take you just recorded, fall onto a keyboard and light its keys when they sound.
+  - **HANDS**: the left hand orange, the right hand blue (from the file's two tracks when it has them, otherwise
+    guessed) — or **VELOCITY**: the notes coloured by their velocity (green, yellow, orange, red).
+  - The **three pedals** move under the keyboard (half pedal included), and the keys you play light up.
+  - **ahead**: how many seconds of notes you see coming.
+- **MAGIC VIEW (Media)** — in the MEDIA player, once a piece is separated: the notes of its **PIANO**, its **VOICE** or
+  its **OTHER** instruments (the bass in orange), read on the separated tracks and falling in time with the music
+  (pauses, jumps, TUNING). It is a reading of the sound, not a transcription: **sens.** shows more or fewer notes. Its
+  own window: both views can be open side by side.
+- **NO VOICE / NO PIANO / CLEAN in the MEDIA player** too, under REC and PLAY, with the progress and CANCEL — the same
+  switches as in CHORDS.
+- **NEED NEW SR?** — a light at the end of the Piano Model line: **green** = up to date, **orange** = small changes,
+  **red** = capture again recommended, **grey** = no record to compare with. Click it for what changed.
+  - SAMPLER: the capture remembers the set, the microphones' MIX, COLOR and each key's level and balance, and compares
+    them with your settings. Key tune, A4 and temperament need no new capture: the resonance follows them.
+  - HOST: the hosted piano and its preset (and its parameters, for models captured with 11.1.1). Many pianos do not
+    report their preset: use Check by ear.
+  - **Check by ear**: 9 keys played silently in a few seconds and compared with the Piano Model (timbre, level, left /
+    right balance). SAMPLER: anywhere; HOST: in the standalone.
+- **Key colours** (right-click on the keyboard): orange, **velocity colours** (green, yellow, orange, red) or orange to
+  red. Thanks for the suggestion on GitHub.
+- **The MIDI player remembers** its file or playlist and the piece it was at, for the next start (ready, not playing).
+- **PLAY and the media player**: a MIDI file never starts the media player any more, except a take recorded with it —
+  then PLAY asks **With the audio** or **MIDI only**. REC still starts the audio with your take.
+- **Contact**: pianotolife@outlook.com, at the bottom of the window and in the MEDIA window.
+
+<p align="center">
+  <img src="screenshot2b.png?v=1111" alt="MAGIC VIEW: the notes of the piano part falling onto a keyboard, the two hands in two colours" width="900">
+</p>
+
+### Also in 11.1.0
 
 **NO VOICE / NO PIANO: take the singer or the pianist out of a recording and play in their place — separated on
 your computer, once, and kept for the next time.**
@@ -140,7 +177,8 @@ in sync with your MIDI take, with the lyrics and the chords on screen.**
 - **MIDI loop of one piece**: LOOP now also repeats a single MIDI file.
 
 MEDIA is an **option: 29 EUR or 29 USD minimum — one payment, no subscription**. At the first click on MEDIA a window shows what it does and the PayPal
-link; write "Media" in the PayPal message and you will receive the password by e-mail. Everything else in PianoToLife
+link; write "Media" in the PayPal message and you will receive the password by e-mail (no password after 24 hours, or
+no PayPal in your country: write to **pianotolife@outlook.com**, we will find another way). Everything else in PianoToLife
 stays free.
 
 ### Also in 10.9.9
@@ -1566,7 +1604,7 @@ library; a note, a microphone (`mic2`) or a round robin (`rr2`) is never read as
 Making sample sets with PianoToLife and playing them for your own use is free.
 **Any public distribution of a sampled piano made for PianoToLife's sampler** (sample sets,
 `.ptlset` / `.wptl` files, `[SAMP]` presets), **free or paid, requires my prior authorization.**
-Please contact me at [olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) before publishing anything: together we will set up its
+Please contact me at [pianotolife@outlook.com](mailto:pianotolife@outlook.com) before publishing anything: together we will set up its
 protection (encrypted container, password) and the way it is distributed.
 
 ## Feedback
