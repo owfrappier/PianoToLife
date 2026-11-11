@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -174,6 +174,25 @@ concert grand is included.
 **Layer detector**: plays a note at the 127 velocities and lists the piano's real velocity layers (export as text).
 HOST mode only (10.6.3): in SAMPLER mode the layers are known and already placed on the reference by AUTO DYN, so
 ANALYSE and EXPORT are hidden.
+
+### NEED NEW SR? and Check by ear (11.1.1)
+
+A small light at the end of the **Piano Model** line tells you whether the model still matches what you play:
+**green** = up to date, **orange** = small changes (a new capture is optional), **red !** = capture again recommended,
+**grey ?** = the model has no record to compare with (captured before 11.1.1). Hover over it for the details; click it
+for the details and **Check by ear**. It costs no CPU (compared once a second, never in the audio).
+
+- **SAMPLER**: the capture now remembers the settings it was rendered with — the set, the microphones' MIX (level, pan,
+  width, delay), COLOR and, key by key, the level (BALANCE included) and the left / right balance — and compares them
+  with yours. Red: another set, the MIX of a captured microphone or a COLOR changed, or many keys changed (more than 10,
+  or one by more than 6 dB). The key tune, the A4 and the temperament are not judged: the resonance follows them.
+- **HOST**: the hosted piano and its preset, as at the capture (older models too); for models captured with 11.1.1,
+  also the piano's parameters (orange when they changed). Many pianos do not report their preset to the host: after
+  changing it, use Check by ear.
+- **Check by ear**: 9 keys (E1 to A6) are played silently, in a few seconds, exactly as the capture plays them, and
+  compared with the Piano Model: the timbre of each key, the level between the keys and the left / right balance. The
+  light then takes the result's colour, and a table of the differences is shown. SAMPLER: anywhere, also in a DAW;
+  HOST: in the standalone (the hosted piano rendered offline, as for the capture). A capture cannot start meanwhile.
 
 ### Diapason and temperament (10.9.4)
 
@@ -450,6 +469,14 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   or an .m3u, as with LOAD MIDI. **II (PAUSE)** (10.6.2): the sound stops where it is and the place is kept; click
   again to go on from there (from a clean piano, with the pedals the file has at that point). PLAY starts from the
   beginning.
+  **The MIDI player remembers** (11.1.1) its file or playlist and the piece it was at: they come back at the next start
+  (ready, not playing; a take never saved is not kept).
+  **VIEW** (11.1.1, right of LOAD MIDI, also in the compact bar): **MAGIC VIEW (MIDI)** — the notes of the MIDI file
+  playing, or of the take just recorded, falling onto a keyboard and lighting its keys when they sound, in their own
+  window (resizable, its place remembered). **HANDS**: the left hand orange, the right hand blue (from the file's two
+  main tracks or channels when it has them, otherwise guessed); or **VELOCITY**: the notes coloured by their velocity
+  (green, yellow, orange, red). **ahead − / +**: how many seconds of notes you see coming. Under the keyboard the
+  **three pedals** move with their depth (half pedal included); the keys you play light up in green.
   **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
   bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
@@ -468,7 +495,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     played at the A4 you choose, so it is in tune with your piano. The tempo moves with it (20 cents = 1.2 %).
   - **REC and PLAY with the MIDI (and BOUNCE)** (♫ on the MIDI line): REC counts in (orange numbers, on a bar with
     METRO), then the MIDI take and the recording start together; the recording's name, place and tuning are written in
-    the MIDI file. PLAY replays both in sync — PAUSE and STOP too, LOOP repeats both. **BOUNCE** can put the recording
+    the MIDI file. PLAY of such a take asks (11.1.1) **With the audio** (both in sync — PAUSE and STOP too, LOOP repeats both) or **MIDI only**; a MIDI file recorded without the audio never starts the media player. **BOUNCE** can put the recording
     in the audio file with your piano (option "Audio file: in the bounce").
   - **SCREEN**: a window for a second screen, resizable, full screen with a double-click (its place and size are
     remembered). It shows the **video** in time with the player and the **lyrics** of a **.lrc** file of the same name
@@ -493,6 +520,14 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     processor, much slower); on older computers it may be very slow and cannot be guaranteed. **CREDITS**: the model
     "MVSep Mega 53 Stems" by ZFTurbo and the engine BSRoformer.cpp (both MIT License); the licence texts are installed
     with PianoToLife.
+  - **In the player too** (11.1.1): **NO VOICE / NO PIANO / CLEAN** under REC and PLAY, with the progress and
+    **CANCEL** — the same switches as in CHORDS.
+  - **MAGIC VIEW** (11.1.1, in the player, once the piece is separated): the notes of its **PIANO**, its **VOICE** (one
+    note at a time) or its **OTHER** instruments (the bass in orange), read on the separated tracks and falling onto a
+    keyboard in time with the music (pauses, jumps, TUNING). It is a reading of the sound, not a transcription:
+    **sens. − / +** shows more or fewer notes. **HANDS** (PIANO): the two hands guessed, left orange, right blue. The
+    tuning of the recording is the one CHORDS measured (otherwise it is measured on the track). Its own window, which
+    can be open beside MAGIC VIEW (MIDI).
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
     link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
@@ -508,7 +543,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
-    orange = loud), paler for notes kept by the pedal. **Click it to play**: lower on the key = louder; drag across
+    orange = loud), paler for notes kept by the pedal; **right-click** (11.1.1): orange, **velocity colours** (green, yellow, orange, red) or orange to red — the compact keyboard too. **Click it to play**: lower on the key = louder; drag across
     the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
     ENGINE MIDI REC);
   - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
@@ -548,4 +583,4 @@ REP and SOFT / HARD TIMBRE add a few filters per voice in SAMPLER mode: a small 
 | The window is larger than the screen, its title bar out of reach (Windows) | Choose a smaller view size (80 %, or 50 % with display scaling at 175 %); 10.9.8 does it at the start and keeps the title bar on the screen. Before 10.9.8: Alt + Space, Move, arrow keys |
 
 A keyboard or a piano that behaves in its own way? Please contact me at
-[olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) with an explanation (a MIDI Monitor export is perfect).
+[pianotolife@outlook.com](mailto:pianotolife@outlook.com) with an explanation (a MIDI Monitor export is perfect).

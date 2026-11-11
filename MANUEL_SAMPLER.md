@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.1.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.1.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -480,7 +480,7 @@ En mode SAMPLER, les moteurs de PianoToLife jouent sur vos échantillons :
 
 - **Résonance sympathique**, avec le Piano Model (`.srpiano`) du piano : capturez-en un depuis votre set (Capture),
   pour que la résonance ait la couleur de votre piano. En mode SAMPLER, la capture lit directement les échantillons,
-  hors temps réel, aux centres de vos couches : quelques minutes au lieu d'un enregistrement en temps réel.
+  hors temps réel, aux centres de vos couches : quelques minutes au lieu d'un enregistrement en temps réel. **NEED NEW SR?** (11.1.1) : le voyant au bout de la ligne Piano Model passe à l'orange ou au rouge quand le mapping a changé depuis la capture (niveaux, balance, COLOR, MIX des micros) ; cliquez dessus pour le détail et **Check by ear** (Manuel d'utilisation, section 6).
 - **Sustain** : toujours Host Sustain en SAMPLER, avec une **demi-pédale** native sur les voix elles-mêmes
   (Progressive, ou Switch pour les pédales tout-ou-rien). La pédale tonale fonctionne.
 - **Una corda** : simulée sur chaque voix (niveau et partiels d'une vraie una corda, plus le halo de la corde non
@@ -587,5 +587,5 @@ est idéal).
 Créer des sets avec PianoToLife et les jouer pour votre propre usage est gratuit. **Toute diffusion publique d'un
 piano échantillonné fait pour le sampler de PianoToLife** (sets, fichiers `.ptlset` / `.wptl`, presets `[SAMP]`),
 **gratuite ou payante, demande mon autorisation préalable.** Contactez-moi à
-[olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) avant de publier quoi que ce soit : nous mettrons en
+[pianotolife@outlook.com](mailto:pianotolife@outlook.com) avant de publier quoi que ce soit : nous mettrons en
 place ensemble sa protection (conteneur chiffré, mot de passe, licence au nom de l'acheteur) et sa diffusion.

@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.1.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.1.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -452,7 +452,7 @@ In SAMPLER mode, PianoToLife's engines play on your samples:
   (Capture), so the resonance has the colour of your piano. In SAMPLER mode the capture reads the samples directly,
   offline, at the centres of your layers: a few minutes instead of a real-time recording. Tick the microphones of the
   model in the capture window (MIC 1 by default) and prefer the **close microphones**: room microphones put the hall's
-  reverberation into the decays of the strings (PianoToLife's Recorded Room gives that room back to what it adds, the REVERB puts the whole piano in a hall).
+  reverberation into the decays of the strings (PianoToLife's Recorded Room gives that room back to what it adds, the REVERB puts the whole piano in a hall). **NEED NEW SR?** (11.1.1): the light at the end of the Piano Model line turns orange or red when the mapping changed since the capture (levels, balance, COLOR, the microphones' MIX); click it for the details and **Check by ear** (User Manual, section 6).
 - **Sustain**: always Host Sustain in SAMPLER, with a native **half pedal** on the voices themselves (Progressive,
   or Switch for on / off pedals). Sostenuto works.
 - **Una corda**: simulated on every voice (level and partials of a real una corda, plus the halo of the string not
@@ -554,5 +554,5 @@ is perfect).
 Making sample sets with PianoToLife and playing them for your own use is free. **Any public distribution of a
 sampled piano made for PianoToLife's sampler** (sample sets, `.ptlset` / `.wptl` files, `[SAMP]` presets), **free or
 paid, requires my prior authorization.** Please contact me at
-[olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) before publishing anything: together we will set up its
+[pianotolife@outlook.com](mailto:pianotolife@outlook.com) before publishing anything: together we will set up its
 protection (encrypted container, password, licence in the buyer's name) and the way it is distributed.

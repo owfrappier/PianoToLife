@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.1.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -185,6 +185,28 @@ de concert est fourni.
 en texte).
 Mode HOST seulement (10.6.3) : en mode SAMPLER, les couches sont connues et déjà placées sur la référence par AUTO DYN,
 donc ANALYSE et EXPORT sont masqués.
+
+### NEED NEW SR? et Check by ear (11.1.1)
+
+Un petit voyant au bout de la ligne **Piano Model** indique si le modèle correspond toujours à ce que vous jouez :
+**vert** = à jour, **orange** = petits changements (une nouvelle capture est facultative), **rouge !** = nouvelle
+capture conseillée, **gris ?** = le modèle n'a rien pour comparer (capturé avant la 11.1.1). Survolez-le pour le
+détail ; cliquez dessus pour le détail et **Check by ear**. Il ne coûte rien en CPU (comparé une fois par seconde,
+jamais dans l'audio).
+
+- **SAMPLER** : la capture retient maintenant les réglages avec lesquels elle a été rendue — le set, le MIX des micros
+  (niveau, pan, largeur, délai), COLOR et, touche par touche, le niveau (BALANCE comprise) et la balance gauche / droite
+  — et les compare aux vôtres. Rouge : un autre set, le MIX d'un micro capturé ou une COLOR changés, ou beaucoup de
+  touches modifiées (plus de 10, ou une seule de plus de 6 dB). L'accord des touches, le La et le tempérament ne sont
+  pas jugés : la résonance les suit.
+- **HOST** : le piano hébergé et son preset, comme à la capture (aussi pour les anciens modèles) ; pour les modèles
+  capturés en 11.1.1, aussi les paramètres du piano (orange s'ils ont changé). Beaucoup de pianos ne déclarent pas leur
+  preset à l'hôte : après en avoir changé, utilisez Check by ear.
+- **Check by ear** : 9 touches (de E1 à A6) sont jouées en silence, en quelques secondes, exactement comme la capture
+  les joue, et comparées au Piano Model : le timbre de chaque touche, le niveau entre les touches et la balance gauche /
+  droite. Le voyant prend ensuite la couleur du résultat, et un tableau des écarts s'affiche. SAMPLER : partout, aussi
+  dans un DAW ; HOST : dans l'application autonome (le piano hébergé rendu hors ligne, comme pour la capture). Une
+  capture ne peut pas démarrer pendant ce temps.
 
 ### Diapason et tempérament (10.9.4)
 
@@ -483,6 +505,15 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   lecture, dans l'ordre de leurs noms) ou un .m3u, comme avec LOAD MIDI. **II (PAUSE)** (10.6.2) : le son s'arrête là
   où il est et la position est gardée ; recliquez pour reprendre de là (avec un piano propre et les pédales du fichier
   à cet endroit). PLAY repart du début.
+  **Le lecteur MIDI se souvient** (11.1.1) de son fichier ou de sa playlist et du morceau en cours : ils reviennent au
+  démarrage suivant (prêts, sans jouer ; une prise jamais enregistrée n'est pas gardée).
+  **VIEW** (11.1.1, à droite de LOAD MIDI, aussi dans la barre compacte) : **MAGIC VIEW (MIDI)** — les notes du fichier
+  MIDI joué, ou de la prise qu'on vient d'enregistrer, qui tombent sur un clavier et allument ses touches quand elles
+  sonnent, dans leur propre fenêtre (redimensionnable, sa place retenue). **HANDS** : la main gauche en orange, la droite
+  en bleu (d'après les deux pistes ou canaux principaux du fichier quand il en a, sinon estimées) ; ou **VELOCITY** :
+  les notes colorées selon leur vélocité (vert, jaune, orange, rouge). **ahead − / +** : combien de secondes de notes on
+  voit venir. Sous le clavier, les **trois pédales** bougent selon leur enfoncement (demi-pédale comprise) ; les
+  touches que vous jouez s'allument en vert.
   **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
   dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte
@@ -502,8 +533,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     est joué au La choisi, juste avec votre piano. Le tempo bouge d'autant (20 cents = 1,2 %).
   - **REC and PLAY with the MIDI (and BOUNCE)** (♫ sur la ligne MIDI) : REC fait un décompte (chiffres orange, sur une
     mesure avec METRO), puis la prise MIDI et l'enregistrement démarrent ensemble ; le nom, la position et le diapason
-    de l'enregistrement sont écrits dans le fichier MIDI. PLAY rejoue les deux synchronisés — PAUSE et STOP aussi, LOOP
-    répète les deux. **BOUNCE** peut mettre l'enregistrement dans le fichier audio avec votre piano (option « Audio
+    de l'enregistrement sont écrits dans le fichier MIDI. PLAY d'une telle prise demande (11.1.1) **With the audio** (les deux synchronisés — PAUSE et STOP aussi, LOOP répète les deux) ou **MIDI only** ; un fichier MIDI enregistré sans l'audio ne lance jamais le lecteur média. **BOUNCE** peut mettre l'enregistrement dans le fichier audio avec votre piano (option « Audio
     file: in the bounce »).
   - **SCREEN** : une fenêtre pour un deuxième écran, redimensionnable, plein écran par double-clic (sa place et sa
     taille sont retenues). Elle montre la **vidéo** en synchro avec le lecteur et les **paroles** d'un fichier **.lrc**
@@ -529,6 +559,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     NVIDIA RTX (Windows : la carte graphique via Vulkan, sinon le processeur, bien plus lent) ; sur des ordinateurs plus
     anciens, cela peut être très lent et n'est pas garanti. **CREDITS** : le modèle « MVSep Mega 53 Stems » de ZFTurbo et
     le moteur BSRoformer.cpp (tous deux sous licence MIT) ; les textes des licences sont installés avec PianoToLife.
+  - **Aussi dans le lecteur** (11.1.1) : **NO VOICE / NO PIANO / CLEAN** sous REC and PLAY, avec la progression et
+    **CANCEL** — les mêmes interrupteurs que dans CHORDS.
+  - **MAGIC VIEW** (11.1.1, dans le lecteur, une fois le morceau séparé) : les notes de son **PIANO**, de sa **VOIX**
+    (une note à la fois) ou de ses **autres** instruments (**OTHER**, la basse en orange), lues sur les pistes séparées
+    et qui tombent sur un clavier en rythme avec la musique (pauses, sauts, TUNING). C'est une lecture du son, pas une
+    transcription : **sens. − / +** montre plus ou moins de notes. **HANDS** (PIANO) : les deux mains estimées, gauche en
+    orange, droite en bleu. Le diapason de l'enregistrement est celui mesuré par CHORDS (sinon il est mesuré sur la
+    piste). Sa propre fenêtre, qui peut être ouverte à côté de MAGIC VIEW (MIDI).
   - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
     PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
     est retenu sur cet ordinateur. **TRY** (11.0.1) : tout essayer pendant **3 minutes de lecture** à chaque lancement
@@ -545,7 +583,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
-    orange plein = fort), plus pâle pour les notes gardées par la pédale. **Cliquez dessus pour jouer** : plus bas sur
+    orange plein = fort), plus pâle pour les notes gardées par la pédale ; **clic droit** (11.1.1) : orange, **couleurs de vélocité** (vert, jaune, orange, rouge) ou orange vers rouge — aussi pour le clavier compact. **Cliquez dessus pour jouer** : plus bas sur
     la touche = plus fort ; glissez sur les touches pour un glissando. Ces notes suivent le même chemin que votre
     clavier (HOST et SAMPLER, MIDI Monitor, ENGINE MIDI REC) ;
   - **l'accord joué**, en grand à gauche de BODY : les touches tenues et les notes que les pédales font sonner.
@@ -587,5 +625,5 @@ REP et SOFT / HARD TIMBRE ajoutent quelques filtres par voix en mode SAMPLER : u
 | La fenêtre dépasse de l'écran, barre de titre inaccessible (Windows) | Choisissez une taille plus petite (80 %, ou 50 % avec la mise à l'échelle à 175 %) ; la 10.9.8 le fait au démarrage et garde la barre de titre dans l'écran. Avant la 10.9.8 : Alt + Espace, Déplacer, flèches |
 
 Un clavier ou un piano qui se comporte à sa façon ? Contactez-moi à
-[olivier.frappier@live.fr](mailto:olivier.frappier@live.fr) avec une explication (un export du moniteur MIDI est
+[pianotolife@outlook.com](mailto:pianotolife@outlook.com) avec une explication (un export du moniteur MIDI est
 idéal).
