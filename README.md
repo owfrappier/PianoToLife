@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1111" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1112" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -54,7 +54,33 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.1
+## What's new in 11.1.2
+
+**MAGIC VIEW grows up: a real keyboard and a STAFF that reads the notes on a grand staff — and PLAY / REC from your
+MIDI controller.**
+
+- **MAGIC VIEW: a real keyboard** — the proportions of a real keyboard (black keys at their real places in the groups
+  of 2 and 3), kept when you stretch the window, with relief; notes as wide as a black key, quieter colours and a
+  strike line. The main window's keyboards are drawn the same way.
+- **STAFF** (MAGIC VIEW): a grand staff above the falling notes — each note at its pitch on the treble or bass staff,
+  its time across (a long note is a long line), scrolling past a red playhead, with the **key signature** found by
+  CHORDS and the **accidentals**. No rhythm is guessed, so it reads a free take or a separated track as well as a MIDI
+  file.
+- **MAGIC VIEW (Media) before the separation**: OTHER reads the whole recording at once; PIANO and VOICE once the piece
+  is separated. **sens.** is now a slider (fewer high harmonics read as notes). No pedals in this view.
+- **MIDI controller for PLAY, REC, II, ◀ and ▶** (a GitHub suggestion): right-click on the button → **LEARN**, move a
+  button, knob or pedal of your controller. Its CC is taken away from what you play (the pedals' CC never are). REC
+  stopped from the controller saves the take at once (*P2L-date-time.mid*), no window.
+- **Recent**: LOAD MIDI and the media player's LOAD... list the 5 pieces played last.
+- **Velocity COPY** copies the curve as it plays, **CURVE included** — ready to reuse elsewhere.
+- **TEMPERAMENT**: the status line says how far the treble and the bass move, each with its direction (a GitHub
+  remark).
+
+<p align="center">
+  <img src="screenshot3b.png?v=1112" alt="MAGIC VIEW with STAFF: the notes of the piano part on a grand staff, above the falling notes and a real keyboard" width="900">
+</p>
+
+### Also in 11.1.1
 
 **MAGIC VIEW: the notes falling onto a keyboard — of a MIDI file, or of the piano, the voice or the other
 instruments of a recording — and NEED NEW SR?: PianoToLife tells you when the Piano Model needs a new capture.**
