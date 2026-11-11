@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.1.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -362,7 +362,7 @@ relâchement N1X / P-525) et l'enregistreur MIDI les voient toujours.
 
 La courbe **VELOCITY** est une ligne de points à glisser (double-clic pour en ajouter ou en retirer un). **CURVE**
 écrit rapidement une courbe douce ; **COPY** / **PASTE** l'échangent en texte : `Velocity = [x0, x1, …; y0, y1, …]`
-(jouée → envoyée). **CAL** calibre la dynamique de votre piano sur un piano de concert, un piano à queue ou un droit,
+(jouée → envoyée). Depuis la 11.1.2, COPY copie la courbe telle qu'elle joue, **CURVE comprise** (remettez CURVE à 0 après avoir recollé une telle courbe). **CAL** calibre la dynamique de votre piano sur un piano de concert, un piano à queue ou un droit,
 d'après le résultat du détecteur de couches. La bande à gauche du graphique montre les vraies couches du piano (orange = jamais
 atteinte par cette courbe). Depuis la 10.7.0, une couche trouvée dans les vélocités Silent Key (jamais envoyées)
 apparaît en **gris**, n'est plus comptée « not reached », et CAL donne le clavier aux vraies couches seulement.
@@ -514,6 +514,17 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   les notes colorées selon leur vélocité (vert, jaune, orange, rouge). **ahead − / +** : combien de secondes de notes on
   voit venir. Sous le clavier, les **trois pédales** bougent selon leur enfoncement (demi-pédale comprise) ; les
   touches que vous jouez s'allument en vert.
+  **MAGIC VIEW en 11.1.2** : un clavier aux proportions d'un vrai (gardées quand on étire la fenêtre), des notes de la
+  largeur d'une touche noire, et **STAFF** : une grande portée au-dessus des notes qui tombent — chaque note à sa hauteur
+  en clé de sol ou de fa (selon la main), son temps en largeur (une note longue = un long trait), qui défile vers une
+  ligne de lecture rouge, avec l'armure (la tonalité de CHORDS ; pour un fichier MIDI seul, trouvée d'après ses notes)
+  et les altérations ; barres de mesure de CHORDS dans la vue Media. Ce n'est pas une partition rythmique : aucune
+  valeur de note n'est devinée, elle lit donc aussi une prise libre.
+  **Contrôleur MIDI** (11.1.2) : clic droit sur **PLAY, REC, II, ◀ ou ▶** → **LEARN**, puis bougez un bouton, un
+  potentiomètre ou une pédale de votre contrôleur : ce CC appuie sur le bouton (valeur de 64 ou plus) et est retiré de
+  ce qui est joué. Les pédales (CC 64 / 66 / 67) ne peuvent pas servir. REC arrêté depuis le contrôleur enregistre la
+  prise aussitôt sous *P2L-date-heure.mid* dans le dossier de LOAD MIDI, sans fenêtre.
+  **Recent** (11.1.2) : LOAD MIDI et le LOAD... du lecteur média listent les 5 derniers morceaux joués.
   **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
   dans un bounce ni dans la prise MIDI. Métronome en marche, REC démarre sur une mesure (après une mesure de décompte
@@ -566,7 +577,8 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     et qui tombent sur un clavier en rythme avec la musique (pauses, sauts, TUNING). C'est une lecture du son, pas une
     transcription : **sens. − / +** montre plus ou moins de notes. **HANDS** (PIANO) : les deux mains estimées, gauche en
     orange, droite en bleu. Le diapason de l'enregistrement est celui mesuré par CHORDS (sinon il est mesuré sur la
-    piste). Sa propre fenêtre, qui peut être ouverte à côté de MAGIC VIEW (MIDI).
+    piste). Sa propre fenêtre, qui peut être ouverte à côté de MAGIC VIEW (MIDI). Depuis la 11.1.2, elle marche aussi avant la séparation : **OTHER** lit alors
+    tout l'enregistrement (PIANO et VOICE demandent la séparation) ; **sens.** est un curseur ; pas de pédales dans cette vue.
   - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
     PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
     est retenu sur cet ordinateur. **TRY** (11.0.1) : tout essayer pendant **3 minutes de lecture** à chaque lancement
@@ -583,7 +595,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
-    orange plein = fort), plus pâle pour les notes gardées par la pédale ; **clic droit** (11.1.1) : orange, **couleurs de vélocité** (vert, jaune, orange, rouge) ou orange vers rouge — aussi pour le clavier compact. **Cliquez dessus pour jouer** : plus bas sur
+    orange plein = fort), plus pâle pour les notes gardées par la pédale ; **clic droit** (11.1.1) : orange, **couleurs de vélocité** (vert, jaune, orange, rouge) ou orange vers rouge — aussi pour le clavier compact ; depuis la 11.1.2, les deux sont dessinés en relief, comme dans MAGIC VIEW. **Cliquez dessus pour jouer** : plus bas sur
     la touche = plus fort ; glissez sur les touches pour un glissando. Ces notes suivent le même chemin que votre
     clavier (HOST et SAMPLER, MIDI Monitor, ENGINE MIDI REC) ;
   - **l'accord joué**, en grand à gauche de BODY : les touches tenues et les notes que les pédales font sonner.

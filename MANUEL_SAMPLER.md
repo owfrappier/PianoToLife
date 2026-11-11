@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.1.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.1.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -519,6 +519,8 @@ répond).
 - **Tonic** : la tonalité sur laquelle le tempérament est construit (ses accords les plus purs).
 - **Stretch** : 100 % = le stretch avec lequel ce piano a été accordé (mesuré), 0 % = aucun (chaque octave exacte),
   jusqu'à 200 %.
+- La ligne d'état (11.1.2) dit de combien bougent les **aigus** et les **graves**, chacun dans son sens : un
+  stretch monte toujours un côté et descend l'autre.
 - **Diapason A4** : le même réglage que SR A4 Tuning ; **RESET** remet le A4 auquel le piano a été enregistré.
 - **AS RECORDED** : retour au tempérament, au stretch et au A4 de l'enregistrement.
 - **Le tableau** : pour chacune des 12 notes, en cents par rapport au tempérament égal (La = 0), **Recorded** (mesuré

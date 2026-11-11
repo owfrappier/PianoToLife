@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -336,8 +336,7 @@ only**: PianoToLife's engine (silent keys, N1X / P-525 release) and the MIDI rec
 ### Velocity
 
 The **VELOCITY** curve is a line of points you can drag (double-click to add or remove one). **CURVE** quickly
-writes a smooth curve; **COPY** / **PASTE** exchange it as text: `Velocity = [x0, x1, …; y0, y1, …]` (played →
-sent). **CAL** calibrates the dynamics of your piano on a concert grand, a grand or an upright, from the layer
+writes a smooth curve; **COPY** / **PASTE** exchange it as text: `Velocity = [x0, x1, …; y0, y1, …]` (played → sent). Since 11.1.2 COPY copies the curve as it plays, **CURVE included** (set CURVE to 0 after pasting such a curve back). **CAL** calibrates the dynamics of your piano on a concert grand, a grand or an upright, from the layer
 detector's result. The strip on the left of the graph shows the piano's real layers (orange = never reached by this
 curve). Since 10.7.0 a layer found within the Silent Key velocities (never sent) is shown in **grey**, is not counted
 as "not reached", and CAL gives the keyboard to the real layers only.
@@ -477,6 +476,16 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   main tracks or channels when it has them, otherwise guessed); or **VELOCITY**: the notes coloured by their velocity
   (green, yellow, orange, red). **ahead − / +**: how many seconds of notes you see coming. Under the keyboard the
   **three pedals** move with their depth (half pedal included); the keys you play light up in green.
+  **MAGIC VIEW in 11.1.2**: a keyboard in a real keyboard's proportions (kept when the window is stretched), notes as
+  wide as a black key, and **STAFF**: a grand staff above the falling notes — each note at its pitch on the treble or
+  bass staff (by hand), its time across (a long note = a long line), scrolling past a red playhead, with the key
+  signature (CHORDS' key; for a MIDI file alone, found from its notes) and the accidentals; bar lines from CHORDS in the
+  Media view. It is not a rhythmic score: no note values are guessed, so it reads a free take as well.
+  **MIDI controller** (11.1.2): right-click on **PLAY, REC, II, ◀ or ▶** → **LEARN**, then move a button, knob or pedal
+  of your controller: that CC presses the button (a value of 64 or more) and is taken away from what is played. The
+  pedals (CC 64 / 66 / 67) cannot be used. REC stopped from the controller saves the take at once as
+  *P2L-date-time.mid* in the LOAD MIDI folder, with no window.
+  **Recent** (11.1.2): LOAD MIDI and the media player's LOAD... list the 5 pieces played last.
   **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
   bounce nor in the MIDI take. With the metronome on, REC starts on a bar (after one bar of count-in when ticked) and
@@ -527,7 +536,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     keyboard in time with the music (pauses, jumps, TUNING). It is a reading of the sound, not a transcription:
     **sens. − / +** shows more or fewer notes. **HANDS** (PIANO): the two hands guessed, left orange, right blue. The
     tuning of the recording is the one CHORDS measured (otherwise it is measured on the track). Its own window, which
-    can be open beside MAGIC VIEW (MIDI).
+    can be open beside MAGIC VIEW (MIDI). Since 11.1.2 it also works before the separation: **OTHER** then reads the
+    whole recording (PIANO and VOICE need the separation); **sens.** is a slider; no pedals in this view.
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
     link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
@@ -543,7 +553,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
-    orange = loud), paler for notes kept by the pedal; **right-click** (11.1.1): orange, **velocity colours** (green, yellow, orange, red) or orange to red — the compact keyboard too. **Click it to play**: lower on the key = louder; drag across
+    orange = loud), paler for notes kept by the pedal; **right-click** (11.1.1): orange, **velocity colours** (green, yellow, orange, red) or orange to red — the compact keyboard too; since 11.1.2 both are drawn with relief, as in MAGIC VIEW. **Click it to play**: lower on the key = louder; drag across
     the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
     ENGINE MIDI REC);
   - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
