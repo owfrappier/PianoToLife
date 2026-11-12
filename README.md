@@ -4,14 +4,6 @@
 <p align="center">Replace your piano's static sympathetic resonance samples and canned pedal behaviour<br>
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=PwUajB3f9ZY">
-    <img src="https://img.youtube.com/vi/PwUajB3f9ZY/maxresdefault.jpg" alt="Video: Chopin Nocturne Op. 48 No. 1 through PianoToLife" width="640">
-  </a><br>
-  <b>▶ Video: Chopin, Nocturne Op. 48 No. 1, played through PianoToLife</b> — with MAGIC VIEW and its staff
-</p>
-
-
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
@@ -36,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1112" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1114" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -54,6 +46,13 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 </p>
 
 <p align="center">
+  <a href="https://www.youtube.com/watch?v=PwUajB3f9ZY">
+    <img src="https://img.youtube.com/vi/PwUajB3f9ZY/maxresdefault.jpg" alt="Video: Chopin Nocturne Op. 48 No. 1 through PianoToLife" width="640">
+  </a><br>
+  <b>▶ Video: Chopin, Nocturne Op. 48 No. 1, played through PianoToLife</b> — with MAGIC VIEW and its staff
+</p>
+
+<p align="center">
   <a href="https://www.youtube.com/watch?v=aNzbEqNP4QE">
     <img src="https://img.youtube.com/vi/aNzbEqNP4QE/maxresdefault.jpg" alt="Video: 4 sampled pianos through PianoToLife" width="640">
   </a><br>
@@ -62,7 +61,25 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.2
+## What's new in 11.1.4
+
+**Separation twice as fast with FAST, a CLEAN PIANO you can set — and a fix for hosted pianos on Windows.**
+
+- **STEMS FAST / QUALITY** (MEDIA: in the player and in CHORDS): **FAST** separates a piece about **twice as fast**
+  (about a sixth of its length on a recent Mac, instead of a third), a little less clean; **QUALITY** is the best
+  separation. Each is kept, and the better one already separated is played: switch to QUALITY and FAST plays on while
+  QUALITY is separated. Your choice is remembered.
+- **CLEAN PIANO** (formerly CLEAN) **with a strength slider, 0 to 200 %**: 100 % = as before; more takes the piano's
+  remains out also where it dominates less (it may thin out instruments playing the same notes). A new strength is
+  computed once from the separated tracks, in a few seconds. Works very well together with FAST.
+- **Windows, HOST: Capture and Check by ear could freeze the window** with some hosted pianos (a GitHub report): the
+  hosted piano is now switched to offline rendering the way VST3 plugins expect.
+- **MAGIC VIEW**: the black keys' lanes are now darker than the white keys' (a forum remark).
+- **PANIC in the compact bar** (a forum remark).
+
+*(11.1.3 was not published: everything is in 11.1.4.)*
+
+### Also in 11.1.2
 
 **MAGIC VIEW grows up: a real keyboard and a STAFF that reads the notes on a grand staff — and PLAY / REC from your
 MIDI controller.**
