@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.1.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -286,7 +286,7 @@ Comp, Reverb, EQ et Ceiling restent actifs.
 est alors libre de résonner. **≤ 1** (par défaut), **≤ 2**, **≤ 3** = les notes à cette vélocité ou moins ;
 **Disklavier / N1** = aftertouch polyphonique 127 / 0 ; **Off** = aucun.
 
-**PANIC** (10.4.2, entre Silent Key et DEFAULT) : arrête d'un coup tout ce qui sonne — notes bloquées, résonance, voix
+**PANIC** (10.4.2, entre Silent Key et DEFAULT ; depuis la 11.1.4, aussi dans la barre compacte) : arrête d'un coup tout ce qui sonne — notes bloquées, résonance, voix
 du sampler, salle, cordes rattrapées (10.6.2) et lecteur MIDI — et envoie au piano hébergé All Notes Off, All Sound
 Off et les pédales relevées.
 
@@ -572,6 +572,15 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     le moteur BSRoformer.cpp (tous deux sous licence MIT) ; les textes des licences sont installés avec PianoToLife.
   - **Aussi dans le lecteur** (11.1.1) : **NO VOICE / NO PIANO / CLEAN** sous REC and PLAY, avec la progression et
     **CANCEL** — les mêmes interrupteurs que dans CHORDS.
+  - **FAST / QUALITY** (11.1.4, dans le lecteur et dans CHORDS) : **QUALITY** = la meilleure séparation (environ un tiers
+    de la durée du morceau sur un Mac récent), **FAST** = environ deux fois plus rapide, un peu moins propre. Chacune est
+    gardée à part dans le dossier Stems ; la meilleure déjà séparée est jouée (FAST choisi et QUALITY présente : QUALITY
+    joue, rien n'est séparé à nouveau). QUALITY choisie avec seulement FAST présente : FAST joue pendant que QUALITY se
+    sépare. Le choix est retenu.
+  - **CLEAN PIANO** (11.1.4, anciennement CLEAN) avec son **curseur de force** à côté : 0 % = pas de nettoyage, 100 % =
+    comme séparé, jusqu'à 200 % = plus profond (les restes du piano retirés aussi là où il domine moins ; peut amincir
+    les instruments qui jouent les mêmes notes). Une nouvelle force est calculée une fois à partir des pistes séparées
+    (quelques secondes ; la ligne d'état l'indique). Double-clic : 100 %.
   - **MAGIC VIEW** (11.1.1, dans le lecteur, une fois le morceau séparé) : les notes de son **PIANO**, de sa **VOIX**
     (une note à la fois) ou de ses **autres** instruments (**OTHER**, la basse en orange), lues sur les pistes séparées
     et qui tombent sur un clavier en rythme avec la musique (pauses, sauts, TUNING). C'est une lecture du son, pas une

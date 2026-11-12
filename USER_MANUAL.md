@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -268,7 +268,7 @@ favourite microphones), a second one with the rest (from closer microphones). Co
 string is free to resonate. **≤ 1** (default), **≤ 2**, **≤ 3** = notes at that velocity or lower; **Disklavier /
 N1** = polyphonic aftertouch 127 / 0; **Off** = none.
 
-**PANIC** (10.4.2, between Silent Key and DEFAULT): stops everything that sounds at once — stuck notes, the resonance,
+**PANIC** (10.4.2, between Silent Key and DEFAULT; since 11.1.4 also in the compact bar): stops everything that sounds at once — stuck notes, the resonance,
 the sampler's voices, the room, the caught strings (10.6.2) and the MIDI player — and sends All Notes Off, All Sound
 Off and the pedals up to the hosted piano.
 
@@ -531,6 +531,14 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     with PianoToLife.
   - **In the player too** (11.1.1): **NO VOICE / NO PIANO / CLEAN** under REC and PLAY, with the progress and
     **CANCEL** — the same switches as in CHORDS.
+  - **FAST / QUALITY** (11.1.4, in the player and in CHORDS): **QUALITY** = the best separation (about a third of the
+    piece's length on a recent Mac), **FAST** = about twice as fast, a little less clean. Each is kept apart in the
+    Stems folder; the better one already separated is played (FAST chosen and QUALITY there: QUALITY plays, nothing is
+    separated again). QUALITY chosen with only FAST there: FAST plays while QUALITY is separated. Remembered.
+  - **CLEAN PIANO** (11.1.4, formerly CLEAN) with its **strength slider** beside it: 0 % = no cleaning, 100 % = as
+    separated, up to 200 % = deeper (the piano's remains taken out also where it dominates less; may thin out
+    instruments playing the same notes). A new strength is computed once from the separated tracks (a few seconds;
+    the state line says so). Double-click: 100 %.
   - **MAGIC VIEW** (11.1.1, in the player, once the piece is separated): the notes of its **PIANO**, its **VOICE** (one
     note at a time) or its **OTHER** instruments (the bass in orange), read on the separated tracks and falling onto a
     keyboard in time with the music (pauses, jumps, TUNING). It is a reading of the sound, not a transcription:
