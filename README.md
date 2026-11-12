@@ -4,13 +4,14 @@
 <p align="center">Replace your piano's static sympathetic resonance samples and canned pedal behaviour<br>
 with one live, physically modelled string engine — from a single held key to every damper lifted.</p>
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
-
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=VIDEO_ID">
-    <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="Video: Chopin Nocturne Op. 48 No. 1 through PianoToLife" width="640">
+  <a href="https://www.youtube.com/watch?v=PwUajB3f9ZY">
+    <img src="https://img.youtube.com/vi/PwUajB3f9ZY/maxresdefault.jpg" alt="Video: Chopin Nocturne Op. 48 No. 1 through PianoToLife" width="640">
   </a><br>
   <b>▶ Video: Chopin, Nocturne Op. 48 No. 1, played through PianoToLife</b> — with MAGIC VIEW and its staff
 </p>
+
+
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
