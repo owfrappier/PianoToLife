@@ -52,12 +52,7 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   <b>▶ Video: Chopin, Nocturne Op. 48 No. 1, played through PianoToLife</b> — with MAGIC VIEW and its staff
 </p>
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=aNzbEqNP4QE">
-    <img src="https://img.youtube.com/vi/aNzbEqNP4QE/maxresdefault.jpg" alt="Video: 4 sampled pianos through PianoToLife" width="640">
-  </a><br>
-  <b>▶ Video: 4 sampled pianos through PianoToLife</b> (four sampled grands, one of them with only 3 layers) — which one do you prefer?
-</p>
+
 
 ---
 
