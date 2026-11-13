@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.1.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -225,7 +225,9 @@ diapason du piano hébergé (ou reliez-les avec **ASSIGN to AU** : c'est alors l
 PianoToLife ne la change jamais). Au chargement d'un Piano Model, SR A4 Tuning revient au diapason de sa capture. **Un preset ou une session
 l'emporte** (11.0.2) : son SR A4 Tuning (par ex. 432 Hz) est gardé ; le diapason du modèle ne s'applique que s'il
 laisse 440 Hz. Depuis la 11.1.0, un preset ou une session sauvé avec la 11.1.0 ou après garde son SR A4 Tuning quel qu'il
-soit, 440 Hz compris (sans ASSIGN to AU).
+soit, 440 Hz compris (sans ASSIGN to AU). Depuis la 11.1.6, la fin d'une capture indique le A4 détecté quand il n'est
+pas à 440 Hz, et le fichier .srpiano explique sa référence dans une ligne « tuningNote » (une capture SAMPLER garde
+l'accord propre des samples et l'écrit dans « referenceA4Hz »).
 
 **HOST : TEMPERAMENT** (11.0.2). Le bouton **TEMPERAMENT** (sur la ligne SR A4 Tuning) indique à PianoToLife le
 tempérament réglé dans votre piano hébergé : les cordes de la résonance le suivent **sans nouvelle capture** (le piano
@@ -529,7 +531,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   **Contrôleur MIDI** (11.1.2) : clic droit sur **PLAY, REC, II, ◀ ou ▶** → **LEARN**, puis bougez un bouton, un
   potentiomètre ou une pédale de votre contrôleur : ce CC appuie sur le bouton (valeur de 64 ou plus) et est retiré de
   ce qui est joué. Les pédales (CC 64 / 66 / 67) ne peuvent pas servir. REC arrêté depuis le contrôleur enregistre la
-  prise aussitôt sous *P2L-date-heure.mid* dans le dossier de LOAD MIDI, sans fenêtre.
+  prise aussitôt sous *P2L-date-heure.mid* dans le dossier de LOAD MIDI, sans fenêtre ; depuis la 11.1.6, la fenêtre
+  d'enregistrement d'une prise propose le même nom. Le clic droit sur REC (11.1.6) active aussi **REC and PLAY with the
+  audio of the MEDIA player (SYNC)**, le même réglage que dans la fenêtre MEDIA.
   **Recent** (11.1.2) : LOAD MIDI et le LOAD... du lecteur média listent les 5 derniers morceaux joués.
   **METRO** (10.4.2) : clic = métronome marche / arrêt (le bouton affiche le tempo) ; clic droit = tempo (30–360 BPM,
   TAP), mesure (aucune, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — premier temps accentué, les groupes plus légèrement), son (bois ou bip), volume et **décompte**. On l'entend seulement — jamais
@@ -610,7 +614,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Vue de la mécanique des étouffoirs** : les étouffoirs et les cordes en direct (touches tenues en orange), sans
   coût CPU. Depuis la 10.4.0 :
   - **un clavier de 88 touches** sous les cordes s'allume avec elles ; sa couleur suit la vélocité (pâle = doux,
-    orange plein = fort), plus pâle pour les notes gardées par la pédale ; **clic droit** (11.1.1) : orange, **couleurs de vélocité** (vert, jaune, orange, rouge) ou orange vers rouge — aussi pour le clavier compact ; depuis la 11.1.2, les deux sont dessinés en relief, comme dans MAGIC VIEW. **Cliquez dessus pour jouer** : plus bas sur
+    orange plein = fort), plus pâle pour les notes gardées par la pédale (bien plus pâle depuis la 11.1.6 avec les couleurs de vélocité) ; **clic droit** (11.1.1) : orange, **couleurs de vélocité** (vert, jaune, orange, rouge) ou orange vers rouge — aussi pour le clavier compact ; depuis la 11.1.2, les deux sont dessinés en relief, comme dans MAGIC VIEW. **Cliquez dessus pour jouer** : plus bas sur
     la touche = plus fort ; glissez sur les touches pour un glissando. Ces notes suivent le même chemin que votre
     clavier (HOST et SAMPLER, MIDI Monitor, ENGINE MIDI REC) ;
   - **l'accord joué**, en grand à gauche de BODY : les touches tenues et les notes que les pédales font sonner.

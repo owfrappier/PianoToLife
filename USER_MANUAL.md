@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -209,7 +209,9 @@ hosted piano's diapason (or link them with **ASSIGN to AU**: then the hosted pia
 never changes it). When a Piano Model is loaded, SR A4 Tuning goes back to the diapason it was captured at. **A preset or a session
 wins** (11.0.2): its SR A4 Tuning (e.g. 432 Hz) is kept; the model's diapason is used only when it leaves 440 Hz.
 Since 11.1.0 a preset or session saved with 11.1.0 or later keeps its SR A4 Tuning whatever it is, 440 Hz included
-(without ASSIGN to AU).
+(without ASSIGN to AU). Since 11.1.6 the end of a capture says the A4 detected when it is not 440 Hz, and the
+.srpiano file explains its reference in a "tuningNote" line (a SAMPLER capture keeps the samples' own tuning and
+writes it as "referenceA4Hz").
 
 **HOST: TEMPERAMENT** (11.0.2). The **TEMPERAMENT** button (on the SR A4 Tuning row) tells PianoToLife the
 temperament set in your hosted piano, so the strings of the resonance follow it **without a new capture** (the hosted
@@ -489,7 +491,9 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   **MIDI controller** (11.1.2): right-click on **PLAY, REC, II, ◀ or ▶** → **LEARN**, then move a button, knob or pedal
   of your controller: that CC presses the button (a value of 64 or more) and is taken away from what is played. The
   pedals (CC 64 / 66 / 67) cannot be used. REC stopped from the controller saves the take at once as
-  *P2L-date-time.mid* in the LOAD MIDI folder, with no window.
+  *P2L-date-time.mid* in the LOAD MIDI folder, with no window; since 11.1.6 the save window of a take proposes the same
+  name. Right-click on REC (11.1.6) also switches **REC and PLAY with the audio of the MEDIA player (SYNC)**, the same
+  setting as in the MEDIA window.
   **Recent** (11.1.2): LOAD MIDI and the media player's LOAD... list the 5 pieces played last.
   **METRO** (10.4.2): click = metronome on / off (the button shows the tempo); right-click = tempo (30–360 BPM, TAP),
   bar (none, 1/1, 2/2, 2/4, 3/4, 4/4, 5/4, 8/4, 3/8, 6/8, 7/8, 8/8, 9/8, 12/8 — first beat accented, the groups lighter), sound (wood or beep), volume and **count-in**. It is heard only — never in a
@@ -566,7 +570,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
 - **Damper mechanics view**: a live view of the dampers and strings (held keys in orange), at no CPU cost. Since
   10.4.0:
   - **an 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
-    orange = loud), paler for notes kept by the pedal; **right-click** (11.1.1): orange, **velocity colours** (green, yellow, orange, red) or orange to red — the compact keyboard too; since 11.1.2 both are drawn with relief, as in MAGIC VIEW. **Click it to play**: lower on the key = louder; drag across
+    orange = loud), paler for notes kept by the pedal (much paler since 11.1.6 with the velocity colours); **right-click** (11.1.1): orange, **velocity colours** (green, yellow, orange, red) or orange to red — the compact keyboard too; since 11.1.2 both are drawn with relief, as in MAGIC VIEW. **Click it to play**: lower on the key = louder; drag across
     the keys for a glissando. These notes go through the same path as your keyboard (HOST and SAMPLER, MIDI Monitor,
     ENGINE MIDI REC);
   - **the chord you play**, in large letters left of BODY: the keys held and the notes the pedals keep ringing.
