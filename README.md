@@ -7,7 +7,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
-> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.æ
+> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.
 > Purely modelled pianos already compute their own resonance and pedal behaviour, so PianoToLife
 > has little to add to them: it is not intended for hosting them.
 
@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1115" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1116" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -56,7 +56,27 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.5
+## What's new in 11.1.6
+
+**The diapason explained, takes named by their date, SYNC from REC — and lighter keys under the pedal.**
+
+- **The diapason, said clearly**: at the end of a capture, when the piano is not at 440 Hz, PianoToLife says the A4 it
+  detected and how the Piano Model plays it (HOST: stored at the absolute reference A4 = 440 Hz and retuned in real time
+  to SR A4 Tuning; SAMPLER: the samples' own tuning). The .srpiano file explains it too (a new "tuningNote" line), and a
+  SAMPLER capture writes its real "referenceA4Hz". Nothing changes in the sound.
+- **Takes named by their date**: the save window of a take now proposes *P2L-date-time.mid*, as REC stopped from the MIDI
+  controller does.
+- **SYNC from REC**: right-click on REC → "REC and PLAY with the audio of the MEDIA player (SYNC)", the same setting as
+  in the MEDIA window.
+- **Keys kept by the pedal lighter** (a GitHub suggestion): with the velocity colours, the keys that only ring under the
+  pedal are much paler, so the keys you play stand out.
+- **Fix**: with the EQ panel open, REVERB's ALGO | IR buttons no longer cover the EQ curve.
+
+<p align="center">
+  <img src="screenshot2b.png?v=1116" alt="The MEDIA player with CLEAN PIANO and QUALITY, MAGIC VIEW with equal lanes, and CHORDS" width="900">
+</p>
+
+### Also in 11.1.5
 
 **EQ1 shows the notes you play and balances your piano in one click (AUTO), MAGIC VIEW gets equal lanes, and a
 capture is now right at any A4.**
@@ -74,8 +94,6 @@ capture is now right at any A4.**
 - **MAGIC VIEW: equal lanes** (a forum proposal): each octave cut into 12 lanes of the same width, one per semitone —
   every falling note has the same width and each black key is exactly its lane (the fronts of C, D, E are about 5 %
   narrower, as on some controllers).
-
-*(11.1.3 and 11.1.4 were not published on their own: their changes are below, in "Also in 11.1.4".)*
 
 ### Also in 11.1.4
 
@@ -150,10 +168,6 @@ instruments of a recording — and NEED NEW SR?: PianoToLife tells you when the 
 - **PLAY and the media player**: a MIDI file never starts the media player any more, except a take recorded with it —
   then PLAY asks **With the audio** or **MIDI only**. REC still starts the audio with your take.
 - **Contact**: pianotolife@outlook.com, at the bottom of the window and in the MEDIA window.
-
-<p align="center">
-  <img src="screenshot2b.png?v=1111" alt="MAGIC VIEW: the notes of the piano part falling onto a keyboard, the two hands in two colours" width="900">
-</p>
 
 ### Also in 11.1.0
 
