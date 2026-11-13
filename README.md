@@ -7,7 +7,7 @@ with one live, physically modelled string engine — from a single held key to e
 
 > **Who is PianoToLife for?** It is made for **sampled pianos** — the libraries you already own, or your own piano,
 > which you can sample with up to 5 microphones. Its auto-mapping places the velocities, the attacks, the tonal colours
-> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.
+> and the dynamics as on a real piano: a fast and powerful sample editor, built on a sampling / modelling approach.æ
 > Purely modelled pianos already compute their own resonance and pedal behaviour, so PianoToLife
 > has little to add to them: it is not intended for hosting them.
 
@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1114" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1115" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -56,7 +56,28 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.4
+## What's new in 11.1.5
+
+**EQ1 shows the notes you play and balances your piano in one click (AUTO), MAGIC VIEW gets equal lanes, and a
+capture is now right at any A4.**
+
+- **EQ1 SHOW**: each key you play (or the MIDI player plays) appears as a line at its frequency on the EQ1 curve, with
+  its 2nd and 3rd harmonics paler, its name and its Hz — at the A4 and in the temperament played. Play the note that
+  bothers you, and you see where to place the EQ.
+- **EQ1 AUTO**: the Piano Model loaded is compared with the default one (Steinway D274, well balanced), over the whole
+  keyboard, and EQ1 gets the few points that bring it to the same balance — for example the bass boom of close
+  microphones. Ordinary points: move them, change them or RESET.
+- **Capture at any A4** (a GitHub report): with a hosted piano tuned far from 440 Hz (432, 409...), some fundamentals
+  were lost and A4 could be measured wrong. The partials are now looked for around the tuning set before the capture,
+  refined on the piano itself; a piano tuned to 409 Hz on purpose stays at 409 Hz. **Capture again** a Piano Model made
+  from a piano tuned away from 440 Hz.
+- **MAGIC VIEW: equal lanes** (a forum proposal): each octave cut into 12 lanes of the same width, one per semitone —
+  every falling note has the same width and each black key is exactly its lane (the fronts of C, D, E are about 5 %
+  narrower, as on some controllers).
+
+*(11.1.3 and 11.1.4 were not published on their own: their changes are below, in "Also in 11.1.4".)*
+
+### Also in 11.1.4
 
 **Separation twice as fast with FAST, a CLEAN PIANO you can set — and a fix for hosted pianos on Windows.**
 
@@ -71,8 +92,6 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
   hosted piano is now switched to offline rendering the way VST3 plugins expect.
 - **MAGIC VIEW**: the black keys' lanes are now darker than the white keys' (a forum remark).
 - **PANIC in the compact bar** (a forum remark).
-
-*(11.1.3 was not published: everything is in 11.1.4.)*
 
 ### Also in 11.1.2
 
