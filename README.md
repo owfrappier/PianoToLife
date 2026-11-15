@@ -52,6 +52,10 @@ and its tone, and a live, physical behaviour for everything that happens around 
 release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoToLife smooths the steps between layers
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
+<p align="center">
+  <img src="Screenshot-E.png?v=1120" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+</p>
+
 
 ## The MEDIA player: play along with any recording
 
