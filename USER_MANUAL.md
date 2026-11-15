@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -594,6 +594,12 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     languages): the track is asked once, then a **right-click on the name** (or LOAD > Audio track) changes it, at the
     same place; each track has its own stems, lyrics (*name.t2.lrc*), chords and levels. The picture of an MKV / WebM is
     not shown yet.
+  - **Video pictures** (11.2.2): when the system cannot decode a video's pictures (AV1 on a Mac M1 / M2, MKV, WebM,
+    AVI...), SCREEN shows them through FFmpeg, decoded as it plays, nothing written on the disk; without FFmpeg it says
+    so. **FULL SCREEN** (SCREEN, CHORDS, MAGIC VIEW) covers exactly the screen the window is on; the other screens stay
+    as they are. Double-click the picture, or in SCREEN use the **FULL SCREEN** button (top right, in the bar shown when
+    the mouse moves): on a Mac, the green button of the title bar is the macOS full screen, which can turn the other
+    screens black.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

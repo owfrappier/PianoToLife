@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1121" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1122" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1121" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1122" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1121" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1122" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
@@ -74,7 +74,8 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **REC and PLAY with the MIDI**: your take and the recording start together; BOUNCE can put the recording in the file.
 - **FOLDERS** and **SEARCH**: your folders of pieces as playlists, and a search that ignores case, accents and punctuation.
 - **Any format, any audio track** (optional): with FFmpeg installed on your computer, PianoToLife also reads MKV, WebM,
-  Opus, APE, WavPack, DSD… and lets you choose the audio track of a film in several languages.
+  Opus, APE, WavPack, DSD… shows the picture of any video (AV1, MKV, WebM...) and lets you choose the audio track of a
+  film in several languages.
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
 > FFmpeg (MKV, WebM, Opus...) or another audio track of a film — is decoded **once and kept** in a cache on your
@@ -86,7 +87,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1121" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1122" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -97,7 +98,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1121" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1122" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -109,7 +110,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.1
+## What's new in 11.2.2
 
 **The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**
 
@@ -135,12 +136,18 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 and when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length of the piece are sent). Nothing
 else, and nothing about you.
 
-**Fixed in 11.2.1**
+**Also in 11.2.2**
 
-- **No more lags with very large folders**: the media player's playlist was kept inside the settings file (with a folder
-  of 10 000 pieces, about 750 KB read and written again at each piece). It now has its own file, written only when the
-  list changes, and a folder is remembered as itself. The settings file is cleaned at the first start.
-- **No tooltips in the compact view**: the compact bar is made for playing (in the bar, the tips flashed under the mouse).
+- **Every video shows its picture**: when macOS or Windows cannot decode a video's pictures (AV1 on a Mac M1 / M2 — many
+  recent YouTube videos —, MKV, WebM, AVI...), PianoToLife decodes them with the FFmpeg installed on your computer, as it
+  plays, with nothing written on the disk. Without FFmpeg, SCREEN says so instead of staying black.
+- **Full screen on one screen only**: FULL SCREEN (SCREEN, CHORDS, MAGIC VIEW) now covers exactly the screen the window is
+  on; the other screens stay as they are (the macOS full screen could turn them black).
+- **Lyrics of videos found more often**: titles like "Song (Live at ... 1998) Alternate Version-(1080p60)" are cleaned
+  before asking LRCLIB.
+- **No more lags with very large folders**: the media player's playlist has its own file (it was inside the settings,
+  read and written again at each piece). The settings file is cleaned at the first start.
+- **No tooltips in the compact view**, made for playing.
 
 ### Also in 11.1.7
 

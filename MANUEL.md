@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -641,6 +641,12 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     pistes audio** (un film en plusieurs langues) : la piste est demandée une fois, puis un **clic droit sur le nom** (ou
     LOAD > Audio track) la change, au même endroit ; chaque piste a ses propres stems, paroles (*nom.t2.lrc*), accords
     et niveaux. L'image d'un MKV / WebM n'est pas encore montrée.
+  - **Image des vidéos** (11.2.2) : quand le système ne sait pas décoder l'image d'une vidéo (AV1 sur un Mac M1 / M2,
+    MKV, WebM, AVI...), SCREEN l'affiche par FFmpeg, décodée pendant la lecture, sans rien écrire sur le disque ; sans
+    FFmpeg, il le dit. **FULL SCREEN** (SCREEN, CHORDS, MAGIC VIEW) couvre exactement l'écran de la fenêtre ; les autres
+    écrans restent tels quels. Double-cliquez sur l'image, ou dans SCREEN utilisez le bouton **FULL SCREEN** (en haut à
+    droite, dans la barre qui apparaît quand la souris bouge) : sur Mac, le bouton vert de la barre de titre est le plein
+    écran de macOS, qui peut rendre les autres écrans noirs.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

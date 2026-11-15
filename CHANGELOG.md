@@ -2,14 +2,7 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
-## 11.2.1
-
-- **No more lags with very large folders**: the media player's playlist was kept inside the settings file (with a folder
-  of 10 000 pieces, about 750 KB read and written again at each piece). It now has its own file, written only when the
-  list changes, and a folder is remembered as itself. The settings file is cleaned at the first start.
-- **No tooltips in the compact view**: the compact bar is made for playing (in the bar, the tips flashed under the mouse).
-
-## 11.2.0
+## 11.2.2
 
 **The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**
 
@@ -34,6 +27,19 @@ Every version, the newest first. The [README](README.md) shows what PianoToLife 
 **Internet:** PianoToLife uses the Internet only when you ask: to download the Whisper model once (from Hugging Face),
 and when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length of the piece are sent). Nothing
 else, and nothing about you.
+
+**Also in 11.2.2**
+
+- **Every video shows its picture**: when macOS or Windows cannot decode a video's pictures (AV1 on a Mac M1 / M2 — many
+  recent YouTube videos —, MKV, WebM, AVI...), PianoToLife decodes them with the FFmpeg installed on your computer, as it
+  plays, with nothing written on the disk. Without FFmpeg, SCREEN says so instead of staying black.
+- **Full screen on one screen only**: FULL SCREEN (SCREEN, CHORDS, MAGIC VIEW) now covers exactly the screen the window is
+  on; the other screens stay as they are (the macOS full screen could turn them black).
+- **Lyrics of videos found more often**: titles like "Song (Live at ... 1998) Alternate Version-(1080p60)" are cleaned
+  before asking LRCLIB.
+- **No more lags with very large folders**: the media player's playlist has its own file (it was inside the settings,
+  read and written again at each piece). The settings file is cleaned at the first start.
+- **No tooltips in the compact view**, made for playing.
 
 ## 11.1.7
 
