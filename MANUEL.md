@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -641,6 +641,12 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     pistes audio** (un film en plusieurs langues) : la piste est demandée une fois, puis un **clic droit sur le nom** (ou
     LOAD > Audio track) la change, au même endroit ; chaque piste a ses propres stems, paroles (*nom.t2.lrc*), accords
     et niveaux. L'image d'un MKV / WebM n'est pas encore montrée.
+  - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
+    décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
+    Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
+    un long film peut dépasser 1 Go. Vous pouvez effacer ce dossier quand vous voulez : il est refait au besoin. Les
+    fichiers ordinaires (MP3, FLAC, WAV, AIFF, M4A...) sont lus directement, jamais copiés. Les stems (150 à 200 Mo par
+    morceau) et le modèle Whisper (488 Mo) vont dans votre dossier de samples.
   - **Internet** (11.2.0) : PianoToLife ne va sur Internet que si vous le demandez — pour télécharger une fois le modèle
     Whisper, et quand EDIT cherche des paroles sur LRCLIB (seuls l'artiste, le titre et la durée sont envoyés). Rien
     d'autre, rien sur vous.
@@ -650,7 +656,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     de PianoToLife (le temps restant s'affiche dans le titre du lecteur) ; un BOUNCE avec le média demande le mot de
     passe.
   - **Boucle MIDI** (11.0.0) : LOOP dans le menu LOAD MIDI répète maintenant aussi un seul fichier MIDI.
-- **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez. Depuis la 10.4.2, elle garde aussi ce
+- **Vue compacte** : réduit l'interface à une petite barre pendant que vous jouez (11.2.1 : sans infobulles). Depuis la 10.4.2, elle garde aussi ce
   qui sert en jouant : le lecteur MIDI et METRO (application autonome), l'accord joué, un clavier éclairé et cliquable,
   TRUE PEAK et LUFS, et depuis la 10.6.2 la liste des presets (les instruments en mode SAMPLER). Depuis la 10.6.3, la
   barre compacte s'affiche toujours à 100 % ; la taille choisie (90 / 80 % ; depuis la 10.9.8 aussi 70 / 60 / 50 %) vaut pour la fenêtre complète. Depuis la

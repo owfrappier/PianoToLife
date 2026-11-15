@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -594,6 +594,11 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     languages): the track is asked once, then a **right-click on the name** (or LOAD > Audio track) changes it, at the
     same place; each track has its own stems, lyrics (*name.t2.lrc*), chords and levels. The picture of an MKV / WebM is
     not shown yet.
+  - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
+    another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
+    sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete
+    that folder whenever you like: it is made again when needed. Ordinary files (MP3, FLAC, WAV, AIFF, M4A...) are read
+    directly, never copied. The stems (150–200 MB per piece) and the Whisper model (488 MB) go to your samples folder.
   - **Internet** (11.2.0): PianoToLife goes on the Internet only when you ask — to download the Whisper model once, and
     when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length are sent). Nothing else, nothing
     about you.
@@ -602,7 +607,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
     left shows in the player's title); a BOUNCE with the media needs the password.
   - **MIDI loop** (11.0.0): LOOP in the LOAD MIDI menu now also repeats a single MIDI file.
-- **Compact view**: fold the interface into a small bar while you play. Since 10.4.2 it also has what serves while
+- **Compact view**: fold the interface into a small bar while you play (11.2.1: without tooltips). Since 10.4.2 it also has what serves while
   playing: the MIDI player and METRO (standalone), the chord you play, a lit and clickable keyboard, TRUE PEAK and LUFS,
   and since 10.6.2 the preset list (the instruments in SAMPLER mode). Since 10.6.3 the compact bar is always shown at
   100 %; the view size you choose (90 / 80 %; since 10.9.8 also 70 / 60 / 50 %) is for the full window. Since 10.7.0 it also has VOL, since 10.8.1 OUTPUT

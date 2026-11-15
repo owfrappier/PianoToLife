@@ -2,6 +2,13 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.2.1
+
+- **No more lags with very large folders**: the media player's playlist was kept inside the settings file (with a folder
+  of 10 000 pieces, about 750 KB read and written again at each piece). It now has its own file, written only when the
+  list changes, and a folder is remembered as itself. The settings file is cleaned at the first start.
+- **No tooltips in the compact view**: the compact bar is made for playing (in the bar, the tips flashed under the mouse).
+
 ## 11.2.0
 
 **The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**
