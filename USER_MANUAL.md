@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.7 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -561,6 +561,42 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     tuning of the recording is the one CHORDS measured (otherwise it is measured on the track). Its own window, which
     can be open beside MAGIC VIEW (MIDI). Since 11.1.2 it also works before the separation: **OTHER** then reads the
     whole recording (PIANO and VOICE need the separation); **sens.** is a slider; no pedals in this view.
+  - **FOLDERS** (11.2.0, left of CHORDS): your folders of pieces as **playlists**, one click to switch (the one playing is
+    ticked). A folder loaded with LOAD > folder is added by itself; **Add a folder...**, **Add this piece's folder**,
+    **Remove**. **SEARCH** (11.2.0): a click on the piece's name opens the playlist with a search box — as you type,
+    without case, accents or punctuation, every word in any order; Enter or a click plays it, up / down move.
+  - **TRANSP.** (11.2.0, beside Play at A4): the piece played up to **6 semitones higher (+) or lower (−)**, its tempo kept
+    (Signalsmith Stretch, MIT), live, after the A4 above. A MIDI take stays in time (its ~0.1 s of processing is made up);
+    the stems, a BOUNCE with the media, CHORDS (the chords renamed as heard) and MAGIC VIEW follow. Remembered for each
+    piece. Double-click: 0.
+  - **LEVEL** also at **-20 / -21 / -22 LUFS** and **CEIL.** down to **-7 dB** (11.2.0); LEVEL's gain then stays under
+    the CEIL. chosen. BOUNCE's **Normalise** has the same three levels, and its true-peak ceiling goes down to -7 dBTP.
+  - **LYRICS** (11.2.0): PianoToLife listens to the **separated voice** of the piece (separated first if needed) and
+    writes its lyrics in time — whisper.cpp with the Whisper *small* model (MIT), on your computer. The model (488 MB) is
+    downloaded once, the first time (a progress bar, CANCEL). **LANG**: AUTO or the language sung (helps short or
+    unclear voices). The result is a standard **.lrc** file **beside the audio file**, same name (other programs read it
+    too; asked before replacing one), also kept in the Stems folder. The **LYRICS** button lights up when the piece has
+    its lyrics; a click then asks **FIND AGAIN / EDIT / CANCEL**. A .lrc of your own beside the audio always comes first.
+  - **EDIT** (11.2.0): the corrector. **LRCLIB** (lrclib.net, a free lyrics database) is asked at once with the artist
+    and the title (taken from "Artist - Title" in the file's name; change them and SEARCH) and the length: the best
+    lyrics are proposed on the left, others in the menu (**SYNC**: with their own times). On the right, the same lyrics
+    **aligned on the voice heard**, again at each change: green = the word was found in the voice, yellow / orange =
+    placed between them, blue = LRCLIB's time only. **LRC SYNC** uses LRCLIB's times checked on the voice; **SMART**
+    aligns a plain text (pasted or typed). Click a line on the right: play from it; **TAP** (key T): the selected line
+    starts now; **OFFSET**: all the lines earlier / later; **SAVE**: the .lrc beside the audio, shown in SCREEN at once.
+    The alignment engine is the one of the author's AI-LYRICS-FIX FOR VIRTUAL DJ. The lyrics are for your personal use
+    only: PianoToLife never distributes lyrics.
+  - **SCREEN: LYRICS ON / OFF** (11.2.0) in its bar: the picture alone (a video that shows its own words).
+  - **FFmpeg** (11.2.0, optional): when macOS or Windows cannot read a file (MKV, WebM, Opus, APE, WavPack, DSD, AC3,
+    DTS, TS, VOB...), PianoToLife uses **the FFmpeg installed on your computer** (not given with PianoToLife: on a Mac
+    "brew install ffmpeg", on Windows "winget install ffmpeg", or ffmpeg.org). It is found by itself, or chosen in
+    **LOAD > FFmpeg...**. Its sound is read once into the cache. A file with **several audio tracks** (a film in several
+    languages): the track is asked once, then a **right-click on the name** (or LOAD > Audio track) changes it, at the
+    same place; each track has its own stems, lyrics (*name.t2.lrc*), chords and levels. The picture of an MKV / WebM is
+    not shown yet.
+  - **Internet** (11.2.0): PianoToLife goes on the Internet only when you ask — to download the Whisper model once, and
+    when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length are sent). Nothing else, nothing
+    about you.
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
     link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time

@@ -1,0 +1,1181 @@
+# PianoToLife — version history
+
+The newest version is described in the [README](README.md).
+
+## 11.1.7
+
+**The standalone now watches the sample rate: another program can no longer put PianoToLife out of tune without you
+knowing.**
+
+- **Your preferred sample rate**: the standalone remembers the sample rate you choose in Options > Audio/MIDI Settings
+  (never one imposed by another program). At start-up, if the sound card opens at another rate, PianoToLife sets it back
+  and tells you, or tells you why it couldn't (another program holding the card).
+- **Sample rate changed while playing**: when another program (a DAW opening a project at 48 kHz...) or the sound card
+  itself changes the rate, PianoToLife follows and says so once.
+- **And when nobody tells it**: some systems and drivers change the rate without telling the applications (more often on
+  Windows). Everything then sounds out of tune. PianoToLife now measures the sound card's real rate itself and, if it no
+  longer matches, offers **RESTART AUDIO**. It costs nothing in CPU.
+- **BOUNCE: silence before the music** (right-click on BOUNCE): none, 0.5 s or 1 s, for a piece that starts on its very
+  first note (some players cut the first milliseconds).
+
+The VST3 and AU were already safe: the DAW sets the sample rate and tells the plugin, and PianoToLife recomputes
+everything at the new rate.
+
+## 11.1.6
+
+**The diapason explained, takes named by their date, SYNC from REC — and lighter keys under the pedal.**
+
+- **The diapason, said clearly**: at the end of a capture, when the piano is not at 440 Hz, PianoToLife says the A4 it
+  detected and how the Piano Model plays it (HOST: stored at the absolute reference A4 = 440 Hz and retuned in real time
+  to SR A4 Tuning; SAMPLER: the samples' own tuning). The .srpiano file explains it too (a new "tuningNote" line), and a
+  SAMPLER capture writes its real "referenceA4Hz". Nothing changes in the sound.
+- **Takes named by their date**: the save window of a take now proposes *P2L-date-time.mid*, as REC stopped from the MIDI
+  controller does.
+- **SYNC from REC**: right-click on REC → "REC and PLAY with the audio of the MEDIA player (SYNC)", the same setting as
+  in the MEDIA window.
+- **Keys kept by the pedal lighter** (a GitHub suggestion): with the velocity colours, the keys that only ring under the
+  pedal are much paler, so the keys you play stand out.
+- **Fix**: with the EQ panel open, REVERB's ALGO | IR buttons no longer cover the EQ curve.
+
+## 11.1.5
+
+**EQ1 shows the notes you play and balances your piano in one click (AUTO), MAGIC VIEW gets equal lanes, and a
+capture is now right at any A4.**
+
+- **EQ1 SHOW**: each key you play (or the MIDI player plays) appears as a line at its frequency on the EQ1 curve, with
+  its 2nd and 3rd harmonics paler, its name and its Hz — at the A4 and in the temperament played. Play the note that
+  bothers you, and you see where to place the EQ.
+- **EQ1 AUTO**: the Piano Model loaded is compared with the default one (Steinway D274, well balanced), over the whole
+  keyboard, and EQ1 gets the few points that bring it to the same balance — for example the bass boom of close
+  microphones. Ordinary points: move them, change them or RESET.
+- **Capture at any A4** (a GitHub report): with a hosted piano tuned far from 440 Hz (432, 409...), some fundamentals
+  were lost and A4 could be measured wrong. The partials are now looked for around the tuning set before the capture,
+  refined on the piano itself; a piano tuned to 409 Hz on purpose stays at 409 Hz. **Capture again** a Piano Model made
+  from a piano tuned away from 440 Hz.
+- **MAGIC VIEW: equal lanes** (a forum proposal): each octave cut into 12 lanes of the same width, one per semitone —
+  every falling note has the same width and each black key is exactly its lane (the fronts of C, D, E are about 5 %
+  narrower, as on some controllers).
+
+## 11.1.4
+
+**Separation twice as fast with FAST, a CLEAN PIANO you can set — and a fix for hosted pianos on Windows.**
+
+- **STEMS FAST / QUALITY** (MEDIA: in the player and in CHORDS): **FAST** separates a piece about **twice as fast**
+  (about a sixth of its length on a recent Mac, instead of a third), a little less clean; **QUALITY** is the best
+  separation. Each is kept, and the better one already separated is played: switch to QUALITY and FAST plays on while
+  QUALITY is separated. Your choice is remembered.
+- **CLEAN PIANO** (formerly CLEAN) **with a strength slider, 0 to 200 %**: 100 % = as before; more takes the piano's
+  remains out also where it dominates less (it may thin out instruments playing the same notes). A new strength is
+  computed once from the separated tracks, in a few seconds. Works very well together with FAST.
+- **Windows, HOST: Capture and Check by ear could freeze the window** with some hosted pianos (a GitHub report): the
+  hosted piano is now switched to offline rendering the way VST3 plugins expect.
+- **MAGIC VIEW**: the black keys' lanes are now darker than the white keys' (a forum remark).
+- **PANIC in the compact bar** (a forum remark).
+
+## 11.1.2
+
+**MAGIC VIEW grows up: a real keyboard and a STAFF that reads the notes on a grand staff — and PLAY / REC from your
+MIDI controller.**
+
+- **MAGIC VIEW: a real keyboard** — the proportions of a real keyboard (black keys at their real places in the groups
+  of 2 and 3), kept when you stretch the window, with relief; notes as wide as a black key, quieter colours and a
+  strike line. The main window's keyboards are drawn the same way.
+- **STAFF** (MAGIC VIEW): a grand staff above the falling notes — each note at its pitch on the treble or bass staff,
+  its time across (a long note is a long line), scrolling past a red playhead, with the **key signature** found by
+  CHORDS and the **accidentals**. No rhythm is guessed, so it reads a free take or a separated track as well as a MIDI
+  file.
+- **MAGIC VIEW (Media) before the separation**: OTHER reads the whole recording at once; PIANO and VOICE once the piece
+  is separated. **sens.** is now a slider (fewer high harmonics read as notes). No pedals in this view.
+- **MIDI controller for PLAY, REC, II, ◀ and ▶** (a GitHub suggestion): right-click on the button → **LEARN**, move a
+  button, knob or pedal of your controller. Its CC is taken away from what you play (the pedals' CC never are). REC
+  stopped from the controller saves the take at once (*P2L-date-time.mid*), no window.
+- **Recent**: LOAD MIDI and the media player's LOAD... list the 5 pieces played last.
+- **Velocity COPY** copies the curve as it plays, **CURVE included** — ready to reuse elsewhere.
+- **TEMPERAMENT**: the status line says how far the treble and the bass move, each with its direction (a GitHub
+  remark).
+
+## 11.1.1
+
+**MAGIC VIEW: the notes falling onto a keyboard — of a MIDI file, or of the piano, the voice or the other
+instruments of a recording — and NEED NEW SR?: PianoToLife tells you when the Piano Model needs a new capture.**
+
+- **MAGIC VIEW (MIDI)** — the **VIEW** button, right of LOAD MIDI (also in the compact bar), free: the notes of the MIDI
+  file playing, or of the take you just recorded, fall onto a keyboard and light its keys when they sound.
+  - **HANDS**: the left hand orange, the right hand blue (from the file's two tracks when it has them, otherwise
+    guessed) — or **VELOCITY**: the notes coloured by their velocity (green, yellow, orange, red).
+  - The **three pedals** move under the keyboard (half pedal included), and the keys you play light up.
+  - **ahead**: how many seconds of notes you see coming.
+- **MAGIC VIEW (Media)** — in the MEDIA player, once a piece is separated: the notes of its **PIANO**, its **VOICE** or
+  its **OTHER** instruments (the bass in orange), read on the separated tracks and falling in time with the music
+  (pauses, jumps, TUNING). It is a reading of the sound, not a transcription: **sens.** shows more or fewer notes. Its
+  own window: both views can be open side by side.
+- **NO VOICE / NO PIANO / CLEAN in the MEDIA player** too, under REC and PLAY, with the progress and CANCEL — the same
+  switches as in CHORDS.
+- **NEED NEW SR?** — a light at the end of the Piano Model line: **green** = up to date, **orange** = small changes,
+  **red** = capture again recommended, **grey** = no record to compare with. Click it for what changed.
+  - SAMPLER: the capture remembers the set, the microphones' MIX, COLOR and each key's level and balance, and compares
+    them with your settings. Key tune, A4 and temperament need no new capture: the resonance follows them.
+  - HOST: the hosted piano and its preset (and its parameters, for models captured with 11.1.1). Many pianos do not
+    report their preset: use Check by ear.
+  - **Check by ear**: 9 keys played silently in a few seconds and compared with the Piano Model (timbre, level, left /
+    right balance). SAMPLER: anywhere; HOST: in the standalone.
+- **Key colours** (right-click on the keyboard): orange, **velocity colours** (green, yellow, orange, red) or orange to
+  red. Thanks for the suggestion on GitHub.
+- **The MIDI player remembers** its file or playlist and the piece it was at, for the next start (ready, not playing).
+- **PLAY and the media player**: a MIDI file never starts the media player any more, except a take recorded with it —
+  then PLAY asks **With the audio** or **MIDI only**. REC still starts the audio with your take.
+- **Contact**: pianotolife@outlook.com, at the bottom of the window and in the MEDIA window.
+
+## 11.1.0
+
+**NO VOICE / NO PIANO: take the singer or the pianist out of a recording and play in their place — separated on
+your computer, once, and kept for the next time.**
+
+- **NO VOICE / NO PIANO** (MEDIA, in the CHORDS window): the **voice** and / or the **pianos** (acoustic and digital)
+  taken out of the piece playing, to play or sing in their place before a concert. Everything else stays the
+  recording itself.
+  - The piece is **separated once**, in the background, before you play — a progress bar and **CANCEL**; about **half
+    the piece's length** on a recent Mac (Apple Silicon). It is kept in the **Stems** folder of your samples folder, so
+    the next time is instant.
+  - Then the two buttons switch **at once**, while playing; the **TUNING** applies to them too, and a BOUNCE with the
+    media plays what you hear.
+  - **CLEAN** (with NO PIANO): where the piano plays almost alone (an intro), its last remains are taken out too.
+  - Nothing is exported: the separation is only for your own practice.
+  - Works best on a **Mac with Apple Silicon** or a **PC with an NVIDIA RTX card** (Windows: the graphics card through
+    Vulkan, otherwise the processor — much slower). On older computers it may be very slow and cannot be guaranteed.
+  - **CREDITS** (in the CHORDS window): the separation model "MVSep Mega 53 Stems" by ZFTurbo and the engine
+    BSRoformer.cpp, both under the MIT License.
+- **CHORDS: BEATS by default** (the chords on the beats: the most stable). AUTO and FREE are still one click away; your
+  choice is remembered.
+- **The samples / stems folder** is asked once — the first time SAMPLER is used, or before the first separation.
+- **HOST: a preset or session keeps its SR A4 Tuning, 440 Hz included** (saved with 11.1.0 or later, without ASSIGN to
+  AU).
+- **Fix**: the media player did not remember the last piece when one file had replaced another.
+
+## 11.0.2
+
+**HOST TEMPERAMENT without a new capture, BOUNCE ALL of a playlist, REC straight to audio, a slower capture for
+slower computers, and the preset's A4 kept.**
+
+- **HOST: TEMPERAMENT** (button on the SR A4 Tuning row): tell PianoToLife the temperament set in your hosted piano
+  — Equal, historical temperaments or a **Scala .scl** file, with its tonic — and the temperament the Piano Model was
+  captured in. The strings of the resonance follow it **without a new capture**. By default, **Original (as captured)**:
+  nothing changes. The 12 offsets in cents are shown; kept in the preset and the session.
+- **HOST: the preset's A4 wins**: a preset or session at 432 Hz stays at 432 Hz. The Piano Model's diapason is used
+  only when the preset leaves 440 Hz.
+- **BOUNCE ALL**: with a MIDI playlist, the BOUNCE options offer **All N pieces of the playlist** — one file each, in
+  the folder chosen, never written over. STOP stops the series. The media player's recording is never in it.
+- **REC straight to audio**: at the end of a take, save a **.mid** or a **.wav / .aiff / .flac** (the .mid is saved
+  beside it, then the BOUNCE options open).
+- **Capture Speed** (HOST): **Auto**, **x4**, **x2** or **x1 real time**. If a capture has to be redone or freezes
+  with your hosted piano, choose a slower speed: the piano has more time to read its samples from the disk.
+
+## 11.0.1
+
+**MEDIA demo — try it for 3 minutes each time you start PianoToLife — CHORDS AUTO with the passing chords, and a fix.**
+
+- **MEDIA demo**: click MEDIA, then **TRY**. Everything works for **3 minutes of playing** each time you start PianoToLife:
+  audio and video, SCREEN with the lyrics, TUNING, LEVEL, REC and PLAY with the MIDI, and **CHORDS**. Discover chord
+  detection made for piano: almost instant, on your audio and video accompaniments. (A BOUNCE with the media needs the
+  password.)
+- **CHORDS: AUTO | BEATS | FREE**.
+  - **BEATS**: the chords on the beats found from the attacks — stable.
+  - **FREE**: no grid, the chords follow the harmony alone — for free piano and rubato.
+  - **AUTO** (default): the chords on the beats, **plus the passing chords between them** — the stability of the beats
+    and the detail of free analysis.
+  - The chord engine is updated: applause, empty bass, hollow chords, moving bass, hum, struck bass… are read better.
+- **Fix**: PianoToLife could freeze when a piece was loaded again in the media player (at start, or coming back to a
+  piece of the playlist). Update from 11.0.0 recommended.
+
+## 11.0.0
+
+**MEDIA: play your recordings and videos along with your piano — in tune, at the same loudness, recorded and bounced
+in sync with your MIDI take, with the lyrics and the chords on screen.**
+
+- **MEDIA** (standalone, left of LOAD MIDI): a media player in its own window, moved anywhere.
+  - Audio and video files: WAV, AIFF, FLAC, Ogg, MP3, M4A, **MP4, MOV** (also WMV and AVI on Windows). One file,
+    several, a folder or an .m3u playlist; previous / next, loop. The last playlist and piece come back at the next
+    start.
+  - **LEVEL**: every file played at the same loudness (**-14, -16 or -23 LUFS**), with one gain that never takes it
+    over -1 dBTP. **CEIL.**: the media's own limiter (-1 to -3 dB). Piano and media together never go over -0.3 dBFS.
+  - **TUNING**: the A4 of the recording is found (e.g. 438.6 Hz) and the file is played at the A4 you choose, from
+    **432 to 448 Hz**: play along in tune with any record.
+  - The media is heard only: it never goes through the piano's sound processing.
+- **REC and PLAY with the MIDI (and BOUNCE)**: a visual count-in, then your MIDI take and the recording start
+  together. PLAY replays both in sync (PAUSE and STOP too), and **BOUNCE can put the recording in the audio file**
+  with your piano. The recording's name, place and tuning are kept in the MIDI file.
+- **SCREEN**: a window for a second screen, resizable, full screen with a double-click:
+  - the **video**, in time with the player;
+  - the **lyrics** of the song from a **.lrc** file of the same name beside it, over the picture — colour, text
+    opacity, a see-through band, size.
+- **CHORDS**: the chords of the piece, found by analysis, **scrolling in time with it** on its beats, with its key
+  and its tuning; colour and zoom.
+- **MIDI loop of one piece**: LOOP now also repeats a single MIDI file.
+
+MEDIA is an **option: 29 EUR or 29 USD minimum — one payment, no subscription**. At the first click on MEDIA a window shows what it does and the PayPal
+link; write "Media" in the PayPal message and you will receive the password by e-mail (no password after 24 hours, or
+no PayPal in your country: write to **pianotolife@outlook.com**, we will find another way). Everything else in PianoToLife
+stays free.
+
+## 10.9.9
+
+**Pan per key with AUTO, a Recorded Room that switches itself off on a dry piano, and EXIT of EDIT.**
+
+- **Pan per key** (SAMPLER > EDIT, key panel, under Tune): move a key left or right — **L 100 %** to **R 100 %**. One
+  side is lowered and nothing is mixed, so the stereo image of the note is kept. **ALL C** puts every key back to the
+  centre. It is saved with the instrument, each version of the piano its own.
+- **Pan AUTO** (optional, not for every recording): for pianos whose neighbouring keys do not sit at the same place
+  (spaced microphones, few partials in the treble).
+  - It measures the left / right of every key and finds the piano's own line from the bass to the treble. Its slope
+    and its ends are kept, and no position of the microphones is guessed.
+  - Only the keys clearly off that line are brought back onto it; the others go to the centre.
+  - The result window has an **AMOUNT** (70 % by default), heard at once while you play.
+  - Cmd/Ctrl+Z if the recording sounded more natural.
+- **Recorded Room AUTO CAL**: when it finds no room in the sound (close microphones, a DRY version), it now **switches
+  Recorded Room off** — there is nothing to match. Put the whole piano in a room with the REVERB. When a room is
+  found, Recorded Room is ticked again.
+- **EDIT: EXIT** (was BACK). With changes not saved it asks first: Save and exit, Exit without saving (nothing is
+  lost), or Cancel.
+- **Chord display**: Cmaj11 and Cm(maj11) (before, C E G B D F showed Cmaj9).
+
+Manuals updated for 10.9.9: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) · [Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.9.8
+
+**Versions of the piano: ORIG., DRY 1, DRY 2, DRY 3, each with its own settings — see what you changed and undo it,
+and a window that fits small screens.**
+
+- **Versions of the piano** (SAMPLER): a piano now has up to four versions — **ORIG.** and **DRY 1 / 2 / 3** made with
+  DRY / DENOISE / BODY. A version is the **whole piano**:
+  - **MAKE** processes **every microphone** at once (before: microphone by microphone). It replaces the version
+    playing, or makes a new one beside it to compare.
+  - Choose the version **after the instrument's name in the title** (ORIG. / DRY n), or with **PIANO PLAYS** in the
+    DRY panel.
+  - **Each version keeps its own settings** — mapping, EDIT options, every setting — so DRY 1 can be tuned by ear
+    without touching ORIG. Just SAVE: the list still shows the instrument once.
+  - Rename, Move to the Trash and SAVE AS take the versions along. A protected library's instruments are never
+    overwritten: SAVE AS under your own name.
+- **What did I change?** Hover over the PRESET box while its **\*** is shown: the **last modifications** are listed
+  ("Release Level: -2.0 dB → +1.5 dB"…). **Right-click** the box: **Undo** the last one, or **Undo all** (RELOAD).
+- **Modified**: the **\*** now stands **before** the name, which turns to *italics* (never cut). Dropping a preset or
+  an instrument on the window, or changing version, now asks first too: lose the changes, **Save first**, or Cancel.
+- **Small screens**: new view sizes **70 / 60 / 50 %**. At the start, if the window does not fit
+  the screen (e.g. a 1080p laptop with Windows display scaling at 125 % or 175 %), PianoToLife takes the largest size
+  that fits. The standalone window keeps its title bar on the screen. The lists stay readable at every size.
+- **13th chords** in the chord display: Cmaj13, C13, Cm13.
+
+## 10.9.6
+
+**Plug-ins...: your own VST3 folders, the standard ones left out if you want, a clean list — and HOST | SAMPLER in the
+compact bar.**
+
+- **Plug-ins...** (HOST, beside SCAN; called Add VST3 before):
+  - **Other location...**: a .vst3 or a whole folder anywhere is now **remembered**, and **SCAN looks there too**
+    (before, a full SCAN forgot it).
+  - **Locations scanned**: untick **Standard VST3 folders** to scan only your own locations; forget one with a click.
+  - **Remove from the list**: an instrument you do not want, kept out of the next scans too (VST3 and AU).
+  - **FULL reset SCAN**: everything back to the start, then SCAN.
+  - These are settings of your computer, not of a preset.
+- **Compact view: HOST | SAMPLER** where the pedal mode was: switch mode and choose your presets in either without
+  opening the full window (the pedal mode stays there).
+
+## 10.9.5
+
+**Up to three dry versions of a set to compare, clearer DRY, and two fixes.**
+
+- **Dry versions** (SAMPLER > EDIT, DRY / DENOISE / BODY): MAKE now asks whether to **replace** the dry samples of a
+  microphone or make a **new version** beside them (`-dry2`, `-dry3`: three at most), to compare processings — e.g.
+  DRY 100 % against DRY 60 % with BODY. Beside **-DRY**, a list shows the versions on the disk with the settings each
+  was made with; choose the one played, or **delete** one. The original samples are never touched, and presets keep
+  ORIGINAL / -DRY and the version chosen.
+- **DRY / DENOISE / BODY is optional**: an extra processing of a set already saved. Clicking MAKE before **SAVE
+  SAMPLES** now explains it (before, the reason was hidden by "no -dry samples yet"). The Sampler Manual gives the order
+  from a raw library to a finished piano without it, and the dry version as an option.
+- **Switching ORIGINAL / -DRY no longer measures AUTO BODY again** (it measures the original samples, which do not
+  change): with thousands of samples this saves minutes.
+- **STOP** beside MAKE, while MAKE or the AUTO BODY measure runs: MAKE writes nothing (the originals are untouched),
+  the measure stops and BODY goes back to OFF.
+- **AUTO BODY: use LAYERS first** — it keeps the small differences between keys that make a real piano; LAYERS + KEYS
+  is for recordings uneven from key to key because of the recording itself (manual and tooltip).
+- **Fixed**: a new sample set saved under the name of an existing instrument inherited that instrument's settings
+  (its Piano Model of another piano, MIX, AUTO CAL…), so it sounded wrong. A set saved over its own instrument still
+  keeps its settings.
+
+Manuals updated for 10.9.5: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.9.4
+
+**TEMPERAMENT: play your sampled piano in any temperament — measured on your samples, the resonance follows. The
+diapason of a hosted piano detected.**
+
+- **TEMPERAMENT** (SAMPLER, main window, on the SR A4 Tuning row): PianoToLife measures the temperament your samples
+  were recorded in, from the pitch of every key, and plays the piano in the one you choose — **Equal, Pythagorean,
+  Just intonation, Werckmeister III, Kirnberger III, Vallotti, Young, Meantone 1/4, 1/3, 1/5, 1/6, 2/7 comma**, any
+  **Scala file (.scl)**, or your own: **click a value of the Shift row and type it**. **Tonic**, **Stretch** (100 % =
+  the stretch the piano was tuned with, 0 % = none), **Diapason A4** with **RESET**, and **AS RECORDED** to go back.
+  **Export as a Scala file** saves the temperament played.
+  - **The samples are never changed**: each key gets an offset added to its Tune and keeps its own small differences.
+  - **The sympathetic resonance follows**: every free string is tuned like its key, and the strength with which a note
+    excites another string is computed on the strings as tuned — with a pure third, its strings ring more, as on a
+    real piano.
+  - Not in EDIT, so it works on a set protected by a password; saved in the set, presets and sessions. Pitch bends
+    and tuning messages of MIDI files are not used.
+- **HOST: the diapason of the hosted piano is detected.** The Piano Model capture measures the hosted piano's A4 and
+  shows it in **SR A4 Tuning** (a piano at 437 Hz reads 437.0 Hz). The model is stored at A4 = 440, so it stays right
+  when the diapason changes; with **ASSIGN to AU**, the hosted piano gives the value. In HOST, the **TEMPERAMENT**
+  button explains how the resonance follows the hosted piano's temperament: one Piano Model per temperament.
+- **The resonance is always tuned like the piano you hear**: in SAMPLER it now follows the Tune of each key, and the
+  capture always measures the samples as recorded. **Your Piano Models are still good** — only capture again one made
+  in SAMPLER with SR A4 Tuning, Transpose, Fine Pitch or the Tune of keys changed, or in HOST with SR A4 Tuning not at
+  440 Hz.
+- **EDIT: ALL 0** at the end of the Tune row puts every key's Tune back to 0 (one UNDO step).
+- **ALIGN ATTACKS** with many layers and XCOLOR: each key is centred on 3 ms again (the small phase shifts between
+  layers no longer add up, at most 1.5 ms off).
+- **Fixed**: at 80 % or 90 % zoom, the picture of a sample set could stay mixed with the previous one after changing
+  the preset.
+
+Manuals updated for 10.9.4: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.9.3
+
+**AUTO BODY: the fundamental of every sample made coherent — the piano's own voice, as the microphones lost it.**
+
+- **AUTO BODY** (SAMPLER > EDIT, button **DRY / DENOISE / BODY...**): a real piano has a logical proportion between
+  the fundamental of each note and its upper partials — very low in the bass, high in the treble, falling a little
+  from pp to ff. Recordings break it: a layer recorded another day, close microphones, a room mode. AUTO BODY measures
+  it on every sample and moves each fundamental (its own band only) towards **the piano's own coherent proportion** —
+  no other piano is used as a reference.
+  - **LAYERS**: the layers of each key made coherent; the character of every key kept. **LAYERS + KEYS**: each key
+    also brought towards its neighbours (more even, a little less individual). At most ±6 dB; **AMOUNT** 0–100 %.
+  - **GLOBAL** (0 to +6 dB): the fundamental that close microphones lose (it is radiated by the whole soundboard and
+    builds up at a distance), given back to every note up to C5, fading out at C7. Often a piano then needs less
+    volume: part of the loudness we hear is the fundamental.
+  - Listen first (**> PROCESSED**), then **MAKE**: it is written into the -dry with DRY and DENOISE, or alone. No CPU
+    when playing. The attack stays the original (the change fades in from the strike). Nothing clips: when needed, the
+    -dry is written lower by one value and given back when played. The original samples are never touched.
+- **Ambience is now Recorded Room**, right under SYMPATHETIC RESONANCE: the room recorded in your samples, detected
+  by AUTO CAL and given only to what PianoToLife adds (resonance, release, noises) so that it blends with the piano. It
+  is not a reverb: REVERB (ALGO or IR) puts the whole instrument in a hall. Presets and sessions open as before.
+- **UNDO / REDO say what they undo** (EDIT): every step is named (*UNDO: AUTO DYN2*), and a right-click lists the
+  last 30 steps to go back to just before the one you choose, in one go.
+- **From a raw library to a finished piano**: the Sampler Manual now gives the order of the tools — DRY / DENOISE /
+  BODY, a new Piano Model capture, AUTO DYN, AUTO COLOR, BALANCE, AUTO RELEASE, AUTO CAL, then the room (ALGO or IR).
+
+<i>SAMPLER EDIT (10.9.3): the DRY / DENOISE / BODY panel on a 3-layer grand — DRY takes the room out, AUTO BODY makes
+  the fundamentals coherent (AMOUNT, GLOBAL), MAKE writes the -dry samples, then ORIGINAL or -DRY for each microphone.</i>
+</p>
+
+Manuals updated for 10.9.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.9.2
+
+**REVERB IR: put your piano in a real hall, with your own impulse responses; VOL saved with the preset.**
+
+- **Reverb ALGO | IR** (beside REVERB's DEFAULT): **ALGO** is PianoToLife's Piano Hall; **IR** is a convolution
+  reverb with an **impulse response** of your choice — a real concert hall, a church, a plate, a classic reverb unit.
+  With a piano made dry (SAMPLER DRY, 10.9.0), it gives your samples a real room.
+  - Click **IR**: choose an IR, **LOAD IR...** a WAV, AIFF or FLAC you downloaded (it is copied into the
+    `Impulse Responses` folder of your sample sets folder) or **Open IR folder** — folders inside it, up to three
+    levels, become sub-menus.
+  - **Mono, stereo and true stereo** (4 channels, or a pair of files "... L" / "... R": choose either, both are
+    taken), any sample rate, up to 10 s. B-format (ambisonic) files are not read.
+  - The level is matched to the Piano Hall: switching ALGO / IR keeps it. **DECAY** shortens the IR's tail, **DAMP**
+    makes its treble die sooner; MIX, PRE and LEVEL as usual. No latency.
+  - A preset keeps the IR's name only (each user uses their own files); if the file is missing, the Piano Hall plays
+    and the button reads **IR ?**.
+  - Free IRs: [Voxengo](https://www.voxengo.com/impulses), [OpenAIR](https://www.openair.hosted.york.ac.uk/?page_id=2)
+    (real halls, use the stereo files), [Airwindows](https://airwindows.com/airwindows-impulses); commercial libraries
+    delivered in WAV work too.
+- **VOL is saved** with the preset, the instrument and the session, as the Ceiling (presets saved before open at
+  0 dB). ALL DEFAULT puts it back to 0 dB.
+- **Encrypted Kontakt samples**: `.ncw` files of a protected library keep the extension but cannot be read; a popup
+  now says so when they are dropped, instead of nothing happening.
+
+## 10.9.1
+
+**AUTO DYN tells you which Samples setting suits your library; type a value in VOL, CEILING and WIDE; Multicore safer on Windows.**
+
+- **Which Samples setting suits your library** (SAMPLER > EDIT, AUTO DYN1 / AUTO DYN2): before the AUTO DYN window, a
+  message says what the **raw samples** show — whether the loudest layer peaks at the same level on nearly every key
+  (a normalised library: a real recording varies from key to key), how far apart A4's layers are compared with a real
+  piano for the same change of colour — and whether the **Samples** setting used (auto / Normalised / Not normalised)
+  suits it. If it does not, **one click sets the advised one and runs the same AUTO DYN again** (or keep the result).
+  Works whatever the number of layers.
+- **VOL, CEILING and WIDE**: **click once to type a value**, double-click for the default, drag as before.
+- **Enable Multicore Processing**: safer with Cubase and Studio One on Windows (the cores PianoToLife uses now run at
+  the same audio priority as the DAW's, and PianoToLife never waits for a late one). It is now a setting of your
+  computer: **a preset never changes it**, and a new instance starts with your last choice (a DAW project keeps its
+  own). If your DAW ever freezes, untick it and please tell me your DAW, its version and your CPU.
+
+## 10.9.0
+
+**Take the room out of your samples: SAMPLER DRY / DENOISE.**
+
+Born from our research on modelling recordings of real pianos, this is one of the most powerful functions of
+PianoToLife: a piano recorded in a room that rings too much, or that does not suit your music, can now be freed of it
+and placed in the room you choose.
+
+- **DRY** (SAMPLER > EDIT, button **DRY / DENOISE...**, for the microphone selected): PianoToLife finds the partials of
+  every note on the sample itself and keeps their real content — the beating of the unison strings included — and
+  takes out what lies between them: the room, the hiss, part of the body. **The strike stays the original**: DRY
+  waits until the knock, the case and the neighbouring strings have faded (80 to 600 ms, measured on each sample), then
+  comes in gradually, so **100 % is safe**. Then put a light Ambience back: one clean room for everything PianoToLife
+  plays and adds.
+- **DENOISE**: light and careful — the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time
+  so that it never warbles.
+- **Listen before you make it**: choose a key and a velocity — **A6** by default, the room is easiest to hear in the
+  treble; with SHOW BY MIDI, the key you play — and compare **ORIGINAL** and **PROCESSED**.
+- **MAKE "<name>-dry"**: the samples of the microphone, processed, go into a separate container beside the original one,
+  in **24-bit FLAC** (lossless: the cleaned tails go below the 16-bit floor). **The original samples are never
+  touched**; MAKE always starts again from them.
+- **MIC n plays: ORIGINAL / -DRY**, microphone by microphone, saved with the instrument and the preset. If the -dry file
+  is gone, or a sample is missing in it, the original is played — and the -dry comes back with the file. A -dry file
+  beside the original is found on its own.
+- **After switching to -DRY: make a new Piano Model capture (.srpiano), then run AUTO CAL of Resonance and of Ambience
+  again** — they were measured on the sound with its room. The Ambience AUTO CAL then finds no room (Room Small): choose
+  the room you want.
+
+- **RANGE** (AUTO DYN window, once the analysis is done): the dynamic range of the whole keyboard, **−10 to +10 dB** —
+  as between a finely regulated piano and a less even one. v127 does not move, the layers played stay the same: only
+  the levels change, along the reference curve. A new AUTO DYN puts it back to 0: set RANGE after the analysis.
+- **AUTO COLOR follows RANGE**: a velocity made softer is aimed at a darker colour, a louder one at a brighter colour,
+  as on a real piano.
+- **AMBIENCE AUTO CAL** now recognises a piano made dry: no room found, Room Small.
+- **SFZ and Decent Sampler import**: much faster for instruments with many regions on the same files.
+- **Fix**: after several saves, MAKE or big pianos loaded in a row, the sound could stop until PianoToLife was reopened.
+- Instruments saved with 10.9.0 still open in older versions, with their original samples (without RANGE).
+
+## 10.8.1
+
+**OUTPUT: stereo, swap or a real mono; an output level meter; a stereo width for each microphone.**
+
+- **OUTPUT** (in place of the SWAP L-R box): **STEREO**, **SWAP** (the audience's side), **MONO** (left + right),
+  **MONO L** / **MONO R** (one side on both outputs: with spaced microphones the sum sounds hollow, one side does
+  not). For a single speaker, a stage monitor or a mono PA. HOST and SAMPLER, everything PianoToLife plays. Loading a
+  preset never changes it; ALL DEFAULT puts it back to STEREO.
+- **Level meter**: what really goes out, after VOL, OUTPUT and the Ceiling — L / R, RMS body, peak line, highest peak
+  held, red above −1 dBFS. Light on CPU.
+- **One output line**: CEILING, OUTPUT, VOL and the meter now sit together on the DAMPER MECHANICS title line, in the
+  order of the sound. In the compact view: VOL, OUTPUT and the meter in the right column.
+- **MIX (SAMPLER): Stereo for each microphone**, in place of Pan and Width: drag the **L** and **R** points where the
+  left and right channels should go, or drag between them to move the whole image — apart = as recorded, closer =
+  narrower, crossed = mirrored, together = mono at that place. Constant power: the image moves without losing level.
+  **WIDE** (100–200 %) widens beyond the recording. Older instruments are converted.
+
+## 10.8.0
+
+**AMBIENCE AUTO CAL: your piano's own room; una corda LEVEL / TONE; a large velocity curve with your keyboard's range.**
+
+- **AMBIENCE AUTO CAL** (next to Ambience, under the Resonance Level one): PianoToLife plays a few high notes held and
+  listens between their partials, where only the room rings. It finds how long your piano's room rings and how loud
+  it is, and sets the new Room **Auto** (its level shown, e.g. *Auto +3 dB*). Everything PianoToLife adds — the
+  sympathetic resonance, the release, the noises — then rings in the same room as your piano, at the same level; your
+  piano's own sound is never touched. A few seconds offline in the standalone, about 25 s in a DAW. Very dry
+  microphones: no room found, Small. After a Piano Model capture, AUTO CAL now offers the resonance level, then the
+  room. The button stays lit once the piano was analysed.
+- **Ambience slider: −6 / +6 dB** around Default (it was ±3 dB).
+- **Una corda LEVEL / TONE**: **click the SOFT pedal** in the damper mechanics view (it reads *settings*): how much the
+  soft pedal lowers (LEVEL) and darkens (TONE, SAMPLER) the notes, to your taste and your piano. 0 = as measured on a
+  concert grand; LEVEL also sets the ring of the unstruck string (SAMPLER and Simu).
+- **Large velocity curve**: the icon next to *sent* opens the velocity curve in a large, resizable window, for fine
+  adjustments.
+- **KEYBOARD range** (at the bottom of the large curve): type min / max, or **LEARN** your softest and loudest notes.
+  The velocities your keyboard really sends are stretched onto the whole curve, so a keyboard that never reaches 127
+  still plays every layer — the calibrated CAL curves included. Live playing only (not the MIDI files). **FULL**, the
+  velocity DEFAULT and ALL DEFAULT: back to 1–127. Kept for this computer, whatever the preset.
+
+## 10.7.1
+
+**SAVE, preset right-click, MIDI files that no longer touch your volume.** (10.7.1 was not released on its own.)
+
+- **SAVE** (between RELOAD and SAVE AS): saves over the preset (HOST) or the instrument (SAMPLER) shown, without a
+  window. "SAVE AS..." is now SAVE AS.
+- **Right-click on the PRESET box**: rename the preset / instrument shown, or move it to the Trash (with a
+  confirmation; an instrument's .wptl samples stay).
+- **FOLDER** in SAMPLER mode opens the current instrument's folder (it always opened the HOST presets folder).
+- **LOAD MIDI menu**: "Ignore volume, pan, expression, effects and bank changes in MIDI files" (on by default,
+  remembered): a MIDI file can no longer change your instrument's volume; the keyboard is never filtered.
+- Once a piano is loaded, Open / Close read **Show piano / Hide piano** (it stays loaded).
+
+## 10.7.0
+
+**Offline BOUNCE and capture, VOL / SWAP L-R, the MIDI playlist and the modified preset.**
+
+- **Offline BOUNCE** (standalone): BOUNCE now renders as fast as your computer can (**Auto**), or at x4 / x2 / x1
+  (real time). After choosing the file, a window sets the **format** (WAV, AIFF, FLAC or CAF), the **resolution**
+  (16 or 24 bits, 44.1 kHz) and the **speed**. In SAMPLER mode it waits for the disk before each block: exact at any
+  speed. In HOST mode the hosted piano is told it renders offline, as in a DAW; if it cannot follow, the bounce is
+  redone in real time.
+- **Offline Piano Model capture** (HOST, standalone): rendered the same way, much faster. The progress bar stays until
+  the new model is loaded and AUTO CAL is offered.
+- **VOL and SWAP L-R** (by the Ceiling, and in the compact view): a listening volume (-40 to +12 dB, before the
+  Ceiling) that is never saved - back to 0 dB at each preset or instrument, so the real level stays in the
+  instrument - and a left / right swap (the audience's side).
+- **MIDI playlist**: click on the MIDI line to choose a piece.
+- **Modified preset**: a * after the preset's name when a setting has changed. Loading another preset, RELOAD or
+  switching HOST / SAMPLER asks to save first, and each mode comes back with its own last preset.
+- **VELOCITY / CAL**: a layer found within the Silent Key velocities (never sent) is shown in grey, no longer counted
+  as "not reached", and CAL gives the keyboard to the real layers only.
+- Double-click on VOL / CEILING: back to 0 dB / -1 dBFS.
+
+Manuals updated for 10.7.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.6.3
+
+**SAMPLER: a real voicing (MEDIUM, HAMMER), XCOLOR for few-layer pianos, and LISTEN.**
+
+- **Voicing**, on its own row in SAMPLER EDIT: **MEDIUM TIMBRE** for the middle velocities (mp to mf) joins SOFT and
+  HARD, and **HAMMER** sets the hardness of the hammers for the whole piano - lower, a piano you find too bright becomes
+  softer, as if a technician had voiced its hammers. Measured on the reference piano's voicing; timbre only, the level
+  does not change.
+- **AUTO COLOR** now sets SOFT, MEDIUM and HARD together, and first asks which zones to set (all three by default).
+- **XCOLOR - Real layers transition enhancer**: at each boundary two layers blend over a few velocities, so a piano
+  with only a few layers goes from one real strike to the next smoothly. Never more than two layers at once. Then run
+  ALIGN ATTACKS: it also puts the layers in phase. Off by default; 16 is a good start.
+- **LISTEN**: plays the key shown from velocity 1 to 127, to hear its transitions as you will play them.
+- In SAMPLER mode the layer detector (ANALYSE / EXPORT) is hidden: the layers are already known.
+- Compact view: the listening parts show their "=" / "+" again, and the bar is always shown at 100 %.
+
+Manuals updated for 10.6.3: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.6.2
+
+**Playback from a clean piano, PAUSE for the MIDI player, and AUTO DYN in two.**
+
+- **A playback starts from a clean piano**: when your DAW starts or jumps to another place, and at the standalone's
+  PLAY / BOUNCE, the same passage now always sounds the same, wherever you start it. Live playing is unchanged.
+  PANIC also clears the caught strings.
+- **MIDI player**: a **PAUSE** button (II) - click again to go on from there - and MIDI files can be **dropped on the
+  window** (one, several = a playlist, or an .m3u).
+- **SAMPLER EDIT**: **AUTO DYN1** (global, as before 10.5.6, for libraries recorded evenly) and **AUTO DYN2** (key by
+  key, for uneven ones). **UNDO / REDO** are now just above the key's settings. **AUTO RELEASE** first asks whether
+  Undamped Keys Above is really your piano's last damped note, and lets you change it.
+- **SAMPLER**: an instrument is always named by its file (one saved under a new name could come back with its old
+  name), and the instrument list no longer shows "Last Session".
+- **Compact view**: the preset / instrument list.
+
+Manuals updated for 10.6.2: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.6.1
+
+**Pedal: a quick re-pedal now catches the note again, and the caught strings fade like the real note.**
+
+- **Re-pedal catch fixed**: a key released with the pedal up, then caught by the pedal a few milliseconds later, was
+  not caught again at the next pedal dip - the note died. It is now caught again at each dip, like on a real piano.
+- **Caught strings fade like the real note**: they used to decay far too slowly early in the note. They now follow the
+  decay of the note itself, measured while it plays (HOST and SAMPLER). In SAMPLER mode a quick pedal dip now matches
+  the reference piano closely.
+- **Less memory in HOST mode**: the SAMPLER instrument's samples are no longer loaded while you are in HOST mode. They
+  load when you switch to SAMPLER and leave the memory when you go back to HOST.
+
+## 10.6.0
+
+**SAMPLER instruments like Kontakt: a `.ptlset` and its `.wptl`, with the bank's picture.**
+
+- **Two files per sampled piano**, like a Kontakt `.nki` and its `.nkx`: the **`.ptlset` is the instrument** (the
+  mapping as you hear it and every PianoToLife setting), always beside its **`.wptl`** (the encrypted samples). In
+  SAMPLER mode the **PRESET list shows the instruments** of your library and **SAVE AS** saves the instrument beside its
+  samples; several instruments on the same `.wptl` are your variants. The instrument's name is shown large.
+- Your **`[SAMP]` presets are converted** into instruments the first time (the old files go to the Trash).
+- **SAVE SAMPLES** (SAMPLER EDIT, was SAVE SET) makes the `.wptl`. Saving over an instrument of other samples asks
+  first. The set list, Load set and SAVE AS VARIANT are gone; PASSWORD stays.
+- A `.ptlset` opens by **double-click** (standalone) or **drag and drop**. The library folder is asked the first time
+  you use the SAMPLER.
+- **PICTURE...** (SAMPLER EDIT): the picture of the sample bank, kept encrypted in its `.wptl`, shown in the main window
+  in place of the strings photo.
+- In SAMPLER mode the status line no longer names the hosted piano.
+
+Manuals updated for 10.6.0: [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.5.6
+
+**AUTO DYN places every key, and the SAMPLER EDIT tools in the order to use them.**
+
+- **AUTO DYN listens to every key** and places its layers on the reference curve (Grand D / Grand B / Upright),
+  whatever its number of layers, then smooths the boundaries with the neighbouring keys and levels them. Libraries
+  with uneven velocities from key to key, manually sampled pianos, or a layer missing in a register now play evenly
+  along the keyboard. A4 stays the anchor; key gains (BALANCE) are kept. The AUTO DYN curve is now shown relative
+  (0 dB = A4 at v127).
+- **SAMPLER EDIT**: the tools are in the order to use them, with > between them: FILL GAPS > ALIGN ATTACKS >
+  AUTO DYN > FIX STEPS > AUTO COLOR > BALANCE > AUTO RELEASE.
+- The listening part **Pedal FX** is now called **Half/rel/catch Pedal**.
+- **Pedal catch**: with the pedal fully up for more than 220 ms (was 300 ms), the caught strings are now really
+  damped - closer to the reference piano. Quick pedal changes are unchanged.
+
+## 10.5.4
+
+**Fix: unorthodox MIDI file endings (BOUNCE / PLAY / REC).** A file ending with notes still held now rings out to
+the end instead of being cut.
+
+## 10.5.3
+
+**The HOST pedal without Release, and a listening selector you can combine.**
+
+- **HOST mode: half pedal and late pedal catch now work even with Release Level off.** The pedal keeps its own
+  strings: no release sound, but notes held by a half-lifted pedal and notes caught late by the pedal still ring as
+  they should, for about the same CPU. With Ambience on, these strings also feed the room.
+- **Listening selector**: *Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience*. Light one or
+  several parts to hear only them - they add up; with none lit you hear the full piano. The selection is kept in the
+  preset / session. (Release includes Felt-Contact; Noises = Key Noise and Pedal Noise.) The old right-click menu is
+  gone.
+- Release Level tooltip: in HOST mode the pedal keeps its strings even when Release is off.
+
+## 10.5.2
+
+**Three automatic tools - the right resonance level, the right colour, the softest velocities put to use - and a truer half pedal in HOST mode.**
+
+- **AUTO CAL** (next to Resonance Level): PianoToLife holds A3 silently, plays A4 once and measures how loud the
+  resonance is compared with the piano's own sound. Resonance Level 0 dB is then calibrated on the piano and the
+  resonance model you use: the same balance as the reference, whatever the piano, its volume, the sample set level or
+  the model. **If your recaptured .srpiano or your sample sets sounded too weak in resonance, run AUTO CAL once.**
+  - Takes about 3 s; don't play meanwhile. Resonance Level still turns it up or down around it.
+  - HOST and SAMPLER each keep their own calibration, saved in the preset / session; DEFAULT puts them back to 0.
+  - The button is lit while a calibration is in use; its value is shown on the Piano Model line.
+  - After a capture, PianoToLife offers to run it on the new model. Pedal Noise keeps its own level.
+- **AUTO COLOR** (SAMPLER EDIT): sets SOFT COLOR and HARD COLOR so that your layers open up from soft to loud like the
+  reference piano (brightness measured on A2, A3, A4, A5 at 13 velocities). Only the shape counts: a piano keeps its
+  own character, brighter or darker. Run it last: AUTO DYN, FIX STEPS, AUTO COLOR. UNDO puts the sliders back.
+- **AUTO DYN uses the softest velocities**: pp layers recorded softer than the reference ever plays are no longer piled
+  at v1-v8 - they are spread from v1 up to the first layer above v16, their levels set on the reference curve.
+  Libraries with very soft layers (and even the most detailed ones) gain real, playable pianissimos.
+- AUTO DYN now listens to the layers with SOFT / HARD COLOR, as they are played.
+- **Half pedal in HOST mode**: a note held by a half-lifted pedal now dies away like the real note in its first
+  seconds (it rang on far too long at mid pedal). HOST and SAMPLER now behave alike from CC 61 to 75.
+- The built-in resonance model is labelled **default V9** (its data have been V9 since 10.3.6; only the label still
+  said V8).
+
+## 10.4.6
+
+**AUTO DYN for libraries normalised by loudness, the Samples menu back, the velocity in SHOW BY MIDI.**
+
+- **AUTO DYN follows the Samples setting** (next to AUTO LAYERS): Normalised = the layers placed by their timbre,
+  Not normalised = by their levels. On **auto** it now also recognises a library normalised by loudness (layers of A4
+  less than 12 dB apart), whose layers were all piled at the top; libraries with few layers are often placed more
+  precisely too.
+- SAMPLER EDIT: the **Samples** menu (auto / Normalised / Not normalised) is back, next to AUTO LAYERS; the reference
+  menu shows "Grand B" in full again.
+- SAMPLER EDIT: with **SHOW BY MIDI**, the velocity you play is shown next to the number of layers.
+
+## 10.4.4
+
+**AUTO DYN: smooth and light on large libraries.**
+
+- **AUTO DYN reads only the beginning of each sample** — what it listens to — instead of the whole file. On a library
+  with many velocity layers it no longer goes through gigabytes of memory: the progress bar moves smoothly, and the
+  piano plays cleanly afterwards without restarting PianoToLife.
+- **SAMPLER EDIT is faster on large sets**: the timbre of the layers (SOFT / HARD TIMBRE, the coloured layer
+  boundaries) is computed much faster when the set changes.
+
+## 10.4.3
+
+**AUTO DYN fixed on Windows, CLEAR ALL, SHOW BY MIDI.**
+
+- **AUTO DYN no longer crashes on Windows** (standalone and VST3): it now works on large libraries too.
+- SAMPLER EDIT: **CLEAR ALL** (left of DELETE) empties the whole set — every key, every microphone — after a warning
+  that gives the number of samples. UNDO brings it back; your files are not touched.
+- SAMPLER EDIT: **SELECT BY MIDI is now SHOW BY MIDI**. The key you play is shown in the side panel, with a red line
+  in the zone that sounded, but **the selection no longer changes**. ALIGN ATTACKS, BALANCE, FIX STEPS and AUTO
+  RELEASE work on the zones you selected, or on every key when nothing is selected (click an empty part of the grid
+  to clear a selection). AUTO DYN always works on every key.
+
+## 10.4.2
+
+**Two EQs, a metronome, MIDI playlists, PANIC and a richer Compact view.**
+
+- **EQ1 / EQ2** — click **EQ** under REVERB: **EQ1** works before COMP and REVERB (the tone of the piano), **EQ2** after
+  them, before the Ceiling (to hear your **headphones flat**). Draw on the curve (double-click = a point, drag =
+  frequency / gain, mouse wheel = Q, right-click = remove), PREAMP, RESET — or **LOAD** a headphone preset: a
+  `ParametricEQ.txt` from AutoEq (oratory1990 measurements) or an Equalizer APO file. Kept in the preset and the session.
+- **METRO** (standalone): 30–360 BPM with TAP, every usual bar (1/1 … 12/8) with accents, wood or beep, volume and a
+  count-in. Heard only — never in a bounce. With the metronome on, REC starts on a bar and the MIDI file carries the
+  tempo and time signature, so the take sits on the grid of a DAW.
+- **MIDI playlists**: LOAD MIDI takes several files, a folder or an **.m3u** list; previous / next, the pieces follow
+  one another, loop, save the list.
+- **PANIC** (next to Silent Key): stops everything that sounds — stuck notes, resonance, sampler, room, player,
+  metronome — and sends All Notes Off / All Sound Off to the hosted piano.
+- **Compact view**: now with the MIDI player and METRO, the chord, a lit and clickable keyboard, TRUE PEAK and LUFS.
+- The keyboard of DAMPER MECHANICS is taller, with the proportions of a real keyboard.
+- SAMPLER EDIT: the number of layers of the key is shown; **RECAL A4 is now called AUTO DYN**.
+
+## 10.4.0
+
+**See what you play: the chord name and a lit keyboard.**
+
+- **The chord you play**, in large letters left of BODY (DAMPER MECHANICS): the keys held and the notes the pedals
+  keep ringing. Only chord names (C, Am7, Cmaj7/E, G13…), never a list of notes. A chord held in the left hand stays
+  shown under a right-hand melody, and is completed when the melody adds to it. Read from MIDI: no CPU cost.
+- **An 88-key keyboard** under the strings lights up with them; its colour follows the velocity (pale = soft, full
+  orange = loud), paler for the notes kept by the pedal. **Click it to play** — lower on the key = louder, drag for a
+  glissando — in HOST and SAMPLER, through the same path as your keyboard (MIDI Monitor, ENGINE MIDI REC).
+- The dampers sit a little higher to make room.
+- **EDIT at 90 % / 80 %**: the window is now scaled as a whole; no more cut buttons.
+
+## 10.3.8
+
+**SAMPLER EDIT: more libraries mapped right, a handier sample list.**
+
+- **The sample list** (side panel): click a sample to select it (highlighted); leave the mouse on it to see its
+  information (file, audio format, key, velocities, gain, level, brightness, tuning, strike); **right-click to hear it
+  alone** (right-click again = stop; it works in the grid too). A long list scrolls (mouse wheel, ▲ / ▼) and follows
+  the selection.
+- **In EDIT you hear the microphone you are editing**, alone and neutral (0 dB, centred, full width, no delay, no L↔R,
+  BODY at 0), whatever the MIX. Back to the main window, the MIX drives the microphones again.
+- **AUTO LAYERS: Samples auto / Normalised / Not normalised.** A library that keeps its dynamics is now ordered and
+  placed by the **levels** of its layers: its brightness can mislead (the softest layers carry more hammer and
+  mechanical noise and measure "brighter" than a mezzo forte). Normalised libraries are still placed by brightness.
+  Auto decides key by key (layers more than 12 dB apart = not normalised).
+- **AUTO NAME reads more file names:** a velocity right after the note (`Piano-A2-40`, `NP60-103`); a MIDI key glued
+  after letters (`NP60`); a number that follows the loudness of the layers in either direction (a take or hammer-time
+  number); names one or two octaves off for the whole library (A0 named `A-2`) are corrected on import. With AUTO LAYERS
+  off, velocities ending at 127 are read as the top of each layer.
+- **AUTO KEY:** very soft treble notes (C8, B7…) no longer land in the bass — up there the hammer noise outlasts the
+  string; PianoToLife now also listens to their first 150 ms above 1.5 kHz.
+- **Undamped Keys Above** is also in the EDIT key panel (the same setting as the main window). In SAMPLER, keys on
+  release Auto above it have no damper, as on a real piano; moved by hand, the keys that cross it get AUTO RELEASE.
+  Sets on release Auto: the keys above G6 (default) now ring without damper.
+
+## 10.3.7
+
+**MIDI monitoring and the MIDI player / recorder, redesigned: more consistent, simpler.**
+
+- **The recorder writes what PianoToLife plays** (ENGINE MIDI REC, under Disable CC19, on by default): every Note Off
+  carries the release as our engine reads it — the slow releases of an N1X, P-525 or VPC1 included (64 = a normal
+  release, lower = slower) — with the velocity curve applied. All the aftertouch is kept (the N1 / N1X release and
+  silent keys), so the files stay Disklavier / N1 compatible and replay the same in any DAW or piano. Off = the raw
+  keyboard input, as before.
+- **One rule:** Disable Aftertouch and Disable CC19 only keep these messages away from the hosted piano; PianoToLife's
+  engine and the recorder always see them.
+- **MIDI Monitor:** the Engine column also shows the aftertouch and CC19 the engine reads.
+- **Simpler recording:** after REC, the take starts on your first note or pedal (no silence at the start; pedals
+  already down are kept). Click REC again and the save window opens — no more SAVE MIDI button. PLAY plays the take
+  at once, without LOAD MIDI. LOAD MIDI and the save open the same folder.
+
+## 10.3.6
+
+**Important fix — stereo phase.** BALANCE (the key gains of the sample mapping) and the brightness used by SOFT /
+HARD TIMBRE, FIX STEPS and AUTO KEY were measured on L + R. With two spaced microphones a key can be out of phase
+between the channels: it lost several dB and some partials in that sum, so BALANCE boosted it too much (one key: +6 dB, too loud
+by ear). **Every analysis is now made in stereo**, channel by channel. Sets made before are
+measured again in the background when they are opened (SAVE SET keeps it, then it is never done again).
+
+**Piano Model capture in stereo, new default model.** The capture of a Piano Model (.srpiano), in HOST and SAMPLER,
+now looks for the partials of every note in both channels: the partials out of phase between the microphones are no
+longer lost. Capture again the pianos recorded with spaced microphones. The built-in model (concert grand) was
+captured again this way (70 more partials, mostly in the bass), at the same resonance level as before.
+
+**Kontakt .ncw samples** (SAMPLER, EDIT): drop the `.ncw` files of a Kontakt library (not encrypted) like WAV files;
+they are rewritten as WAV or FLAC when the set is saved. Use only libraries whose licence allows it; encrypted
+libraries are not read.
+
+**Drop a whole folder** in EDIT: its samples and those of its sub-folders are imported, without the files whose name
+says they are not a pedal-up note (releases, noises, pedal down, una corda) — PianoToLife models those itself.
+**Round robins** in the names (`rr2`, `seq2`, or `..._Dyn1_..._21_02`) are left out after the first: REP gives every
+strike its own variation. A key written `109` is read as C8.
+
+**L↔R** in MIX: mirrors the stereo image of a microphone (the pianist's or the audience's view).
+
+Also: no more spinning wheel when switching from HOST to SAMPLER with a set made before 10.3.5.
+
+## 10.3.4
+
+**Colour between velocities, much improved** (SAMPLER). SOFT TIMBRE and HARD TIMBRE now follow the colour of the
+reference piano (Grand D, Grand B or Upright), measured on every key at every velocity: from the velocity a sample was
+recorded at to the velocity you play, the strike gets darker or brighter as the reference does — about twice as much
+in the 4–8 kHz range as in 2–4 kHz, up to +18 dB. Even a set with only 3 velocity layers now sounds like a real strike
+at every velocity in between, and the layer boundaries disappear.
+
+**REP — Real piano repetition** (below CAL: Off / Grand D / Grand B / Upright). On a real piano no two strikes sound
+exactly alike; a sampled piano replays the same recording every time — the "machine-gun" effect of repeated notes.
+The old cure of sample libraries is **round robin**: several recordings of every note at every velocity, played in
+turn — heavy, and rarely complete. REP simulates the repetition of a real piano instead, with the strike-to-strike
+differences measured on the reference. In SAMPLER, each strike gets its own small differences of level, brightness,
+decay and attack, a tiny detune in the bass, and a key struck again while it still sounds builds up naturally:
+**large round-robin sample sets are no longer needed**. In HOST, only the velocity varies slightly (never out of its
+velocity layer). Off by default; saved in presets and sessions (older ones open with REP Off).
+
+**Piano Model capture in minutes in SAMPLER.** Capture now reads your samples directly, offline, at the centres of
+your layers: a few minutes instead of a real-time recording. A window lets you tick the microphones of the model
+(MIC 1 by default; close microphones are recommended — the room microphones put the hall into the string decays).
+
+## 10.3.2
+
+**BALANCE: an even volume from one key to the next** (SAMPLER, EDIT). A piano sampled by hand is never struck with
+exactly the same force on every key, so some notes stick out. BALANCE measures every key at velocity 127 and brings
+it onto a smooth curve with the key's gain (at most 6 dB), all its layers following: **Smooth** keeps your
+recording's own balance from bass to treble and only removes the jumps; **Grand D**, **Grand B** and **Upright**
+follow the bass-to-treble balance of a reference piano. Velocity ranges, layer gains and dynamics are not touched;
+one UNDO.
+
+**User manuals, in English and French.** A general manual (how the modelling works in HOST and SAMPLER, and why the
+sampler only needs pedal-up samples) and a sampler manual (from a folder of samples to a playable piano, every
+button explained): [User Manual](USER_MANUAL.md) · [Manuel d'utilisation](MANUEL.md) ·
+[Sampler Manual](SAMPLER_MANUAL.md) · [Manuel du sampler](MANUEL_SAMPLER.md).
+
+## 10.3.1
+
+**Clearer release (Note Off) handling, one chain for every keyboard.** How fast you let a key come up now goes
+through a single, visible path. Two settings shape it for all keyboards that send a release: **Keyboard Note-Off
+Floor** (1 to 16, the value of your slowest release, so a very slow release can never ring on endlessly) and the
+**Keyboard Note-Off Curve**. The old Note-Off Velocity Curve is gone: no more two curves stacked on each other. PianoToLife's engine works internally on a 0 to 64 scale (64 = a normal release), whatever your keyboard sends
+(0 to 127): following the MIDI rule, 64 and above is a normal release, lower values are slower releases.
+
+**Choose what the hosted piano receives.** The new **Note-Off to Host** menu separates the release velocity used by
+PianoToLife's own engine from the one sent to your piano: **Var** (the same value for both), **64** (always a normal
+release: PianoToLife alone handles slow releases, no double treatment), **127**, or **Raw** (exactly what your keyboard
+sent). PianoToLife's engine always uses the shaped value.
+
+**Yamaha N1X, P-525 and other release-sensitive keyboards.** Keyboards that measure the release through aftertouch
+(N1X and similar Yamaha hybrids) or through their own timing (P-525), as well as keyboards that send a real Note-Off
+velocity (Release Velocity 1-127, Kawai VPC1), all go through the same Floor and Curve.
+
+**MIDI Monitor in three columns.** On the same line: what your **Keyboard** sends, the release velocity PianoToLife's
+**Engine** reads (with the measured release time on an N1X or P-525), and what goes to the **Host**. Any difference
+is highlighted, and the export uses the three columns too.
+
+Your keyboard has its own way of sending releases? Please contact me with an explanation of the MIDI it sends (a MIDI
+Monitor export is perfect), and I will look at supporting it.
+
+## 10.3.0
+
+**A much stronger streaming engine for large pianos.** The sampler now reads its samples from the disk with several
+threads, and every voice reads its own file in order (no more jumping back and forth when several notes play the same
+FLAC sample). On the same heavy test (sustain pedal down, notes everywhere), the busiest disk thread went from 90 % to
+20 % of its time: far more headroom for deep libraries, slower disks and dense playing.
+
+**Fast loading, even for huge sets.** The beginnings of the samples are read by several cores at once, and a hidden
+slowdown that grew very fast with the number of samples is gone: a 5,192-sample piano (87 GB of WAV, 7 GB once in
+FLAC) that froze the window for minutes now loads quickly, with a progress bar.
+
+**Cleaner voice management.** When the polyphony is reached, the quietest voice no longer cuts off with a click: it
+fades out in 8 ms while the new note takes a spare voice.
+
+**Missing samples handled.** When a session or the last state points to a piano whose samples were deleted, moved,
+or are on a disk that is not connected, a clear window asks to LOCATE them or to FORGET that piano (it is then no
+longer asked about).
+
+**Progress bars everywhere.** Importing, SAVE SET (encoding, then writing), loading a set or a session, ALIGN ATTACKS,
+RECAL A4 and a new Preload in MIX all show a clear progress bar, in EDIT and on the main window.
+
+## 10.2.0
+
+**Import your .sfz and Decent Sampler (.dspreset) pianos.** Drop the file in EDIT: its mapping is taken as written
+(keys, key ranges, velocity layers, level, tuning, start) on the displayed microphone. What PianoToLife models itself
+is left out: release samples, pedal-down samples, pedal noises and round robins. A Decent Sampler piano with several
+microphone groups goes to MIC 1, MIC 2... in order. WAV, AIFF and FLAC samples can still be dropped as before.
+
+**It repairs what the library got wrong.** Many free libraries are badly programmed. PianoToLife now detects a mapping
+written one octave off from the sound of the samples and moves it back, plays strikes that come up to 1.5 s late on time
+after ALIGN ATTACKS, and switches FADE IN on for samples whose start was cut inside the sound.
+
+**FLAC in your sample files** (FLAC switch in EDIT): the samples of a set are stored without any loss, identical to the
+bit, and piano samples shrink a lot (one 11 GB set became 1 GB). Less to read from the disk, no added latency. Samples
+above 48 kHz are converted to 44.1 / 48 kHz (a piano has nothing useful above 20 kHz).
+
+Also: a progress bar while importing (click the status line to stop; nothing changes before the end), large libraries
+no longer fill the memory while they are analysed, and RECAL A4 works when A4 has no sample of its own.
+
+## 10.1.9
+
+**Interface fixes, mainly for second screens.** The hosted piano's window, MIX, the MIDI monitor and every dialog now
+stay on PianoToLife's screen. They could end up on another screen (a virtual or switched-off display) and seem lost,
+and a hidden dialog could block the whole interface. They now come back on their own when a screen is added or removed.
+
+**MIX window (SAMPLER):** the microphone names, ON / OFF and the streaming and voice settings are always shown, presets
+from earlier versions included; an off microphone reads OFF. New defaults: SSD, Preload Auto, cache 128 MB, 256 voices.
+
+## 10.1.8
+
+**Piano Models at the same resonance level.** A captured Piano Model (.srpiano) was levelled on the piano's loudest
+strike, so a piano with sharp attacks got a weaker resonance and had to be compensated by hand. Now every model is
+matched to the same resonance level when it is loaded, your existing captures included (the gain is shown after the
+model's name). Each piano keeps its own character: its balance between bass and middle and its decay times.
+
+**LEVEL TEST** (next to Capture): plays A0, C2, C4, C6 and C8 at velocity 127 and tells you the loudest strike and
+whether the piano clips, before a capture or a concert. The capture's saturation warning now reports real clipping only.
+
+**BODY on the main window, for HOST too** (left of the SOFT pedal): the perceived size of the piano, now also on a
+hosted piano, with no latency.
+
+Also: stereo meters per microphone in MIX, the limiter's meter (LIM) under CEILING, **FADE IN** option in EDIT (a 1 ms
+fade at the start of every sample), with AUTO LAYERS off the velocity ranges written in the file names (`033-064`)
+are applied exactly, and on Windows a preset double-clicked while PianoToLife is open goes to the open window.
+
+## 10.1.6
+
+**A piano is now two files: its preset and its samples.** A `[SAMP]` preset carries its mapping and its resonance
+model; only the samples (`.wptl`) stay apart. Double-click a preset (standalone) or drop it on the PianoToLife window
+(plug-in too): it loads at once and joins your preset list. Its `.wptl` is found beside it, in your library or where it
+was; if not, PianoToLife asks where it is (as Kontakt does) and remembers it. Presets are also saved beside their
+`.wptl`, so a piano's folder is complete to move or to send.
+
+**AUTO KEY:** the extreme treble of far microphones is now placed right (soft F#7..C8 used to land octaves low), and
+note names in small letters are read (`pp_f#7`, `c8`). Tip: put the note in the file name as a separate word (`C4`,
+`F#7`, `Bb3`, `f#7` or `060`) and every sample lands on its key, with or without AUTO KEY.
+
+Also: **Delete password** in EDIT > PASSWORD, and **pianos for sale**: a sample set can be protected and opened only
+with a licence in the buyer's name (contact me if you publish sampled pianos).
+
+## 10.1.5
+
+**ALIGN ATTACKS now aligns every microphone.** Each sample of each microphone starts 3 ms before its own strike.
+Badly cut libraries (strikes up to 15 ms late, microphones cut separately) now play tight and in phase: no more clicks
+on the distant microphones, steady timing across the velocity layers. Run ALIGN ATTACKS again on your sets to get it.
+
+Also: RENAME and SAVE use the name of the set's file (no more "My piano").
+
+## 10.1.4
+
+**Important fix — repeated notes in SAMPLER mode**, keys up and under the sustain pedal: a new strike no longer cuts
+the previous one; it goes on, a little lower, as on a real piano (up to 4 voices per key, "Per key" in MIX).
+
+Also: **AUTO NAME** reads more naming styles (see *Naming your samples*), **RENAME** of a set in EDIT, and a red
+**velocity line** with SELECT BY MIDI.
+
+## 10.1.2
+
+**This update is mainly for the SAMPLER.** Its automatic functions were made much stronger, above all for **misleading, normalised sample libraries** — where every layer was raised to the same peak, so that an ff can measure quieter than a pp. PianoToLife no longer trusts the levels of such samples: it **looks at each strike's attack and brightness** (its timbre) to know how hard it was played, then rebuilds the real dynamics. HOST mode is unchanged.
+
+- **AUTO KEY** is now right in the extreme treble too (a soft, strongly stretched C8 / A#7 used to land two octaves low).
+- **RECAL A4 understands normalised samples**: it reads the attack and brightness of each layer instead of its level, places the layers by their timbre and rebuilds the real levels (see below).
+- **AUTO NAME** (on by default): when the file names carry the dynamics (pp, p, mp, mf, f, ff...), they set the order of the layers — no more inverted layers when two dynamics sound alike (an f as bright as its ff). Switching it on puts every key back in order at once.
+- **COLOR of SOFT / HARD TIMBRE** now acts on every note: up to a strike 24 velocities softer (more felted) or brighter, even at a layer's own velocity.
+- **NEW**: start an empty set in one click (no sample, no password).
+- **SAVE AS VARIANT**: several sets (.ptlset) on the same protected samples (.wptl), without copying them.
+- **STRETCH**: a sample can also play the keys around it (transposed) — **FILL GAPS** completes a library sampled every 2 or 3 notes in one click; by hand, Cmd / Ctrl + drag.
+
+### Auto-mapping that copes with real-world libraries
+Mapping a sampled piano by hand takes days. PianoToLife does it in minutes, by **listening** to your samples rather than trusting their names or levels:
+- **AUTO KEY** finds each sample's key from its sound — down to the stretched, fast-decaying top octave (a soft C8 tuned +70 cents is still a C8), whatever the file names say.
+- **AUTO LAYERS** and **RECAL A4** place the velocity layers on the dynamics of a real grand: RECAL listens to A4, puts every layer where its loudness belongs, levels it, then sets every key the same way.
+- **Normalised libraries are handled**: when every layer was normalised to the same peak (the real loudness is gone — an ff can even measure quieter than a pp), PianoToLife notices it and stops trusting the levels: it reads the **attack and the brightness** of each strike, places the layers by that timbre and rebuilds their real levels from the reference curve.
+- **SOFT TIMBRE / HARD TIMBRE** and **FIX STEPS** then join the layers so smoothly that the boundary map turns green: a 3- to 6-layer library plays like a deeply sampled piano.
+
+## 10.1.0 — the built-in sampler
+
+PianoToLife can now **play your own piano samples**, without a hosted piano. Switch **HOST / SAMPLER** at the top of the window: in SAMPLER, the hosted piano is set aside and PianoToLife's own sampler plays, with all of PianoToLife's engines on it (sympathetic resonance, release, una corda, pedals).
+
+- **Your samples, a few clicks**: load your WAV / AIFF samples in **EDIT** (Kontakt-style key / velocity map). **AUTO KEY** finds each sample's note, **AUTO LAYERS** builds the velocity layers, **RECAL A4** measures the tuning and the loudness of your layers by listening to them. Fine edits per key: tune, gain, low-pass, envelope; **SELECT BY MIDI**, **UNDO / REDO**.
+- **Smooth dynamics even with few layers**: **SOFT TIMBRE** gives the notes softer than a layer the spectrum of a softer strike, **HARD TIMBRE** (option) brightens the strikes above it. A map shows the step at every layer boundary (green / orange / red) and **FIX STEPS** evens it out, smoothed between neighbouring keys (one UNDO). A 3-layer Steinway B now plays like a deeply sampled piano.
+- **Attacks aligned (ALIGN ATTACKS)**: after the mapping, one click finds the strike in every sample and makes every strike of the whole keyboard come 3 ms after the key is played, whatever the layer — no more flutter when the dynamics change, no flam on repeated notes. Every microphone is aligned on its own strike too (10.1.5): in phase, no clicks; the files are not changed; one UNDO.
+- **COLOR of SOFT TIMBRE and HARD TIMBRE**: how much darker the soft strikes and how much brighter the loud ones, for the whole set (-100 % to +100 %, 0 = as measured).
+- **A real piano release**: **AUTO RELEASE** sets each key's damper time by register; the release velocity counts (a slow key release lands the damper later and softer); keys without dampers ring on.
+- **A native half pedal**: under a half pedal the released notes are damped by the samples themselves, continuously, with the two-part decay of a real damper (fast part + long residue); re-pedalling keeps the level reached.
+- **A native una corda**: each voice keeps the velocity played and gets the una corda measured on the real una corda samples of a concert grand (level and partials, per register and velocity), plus the halo of the string not struck.
+- **Sustain: Progressive / Switch**: for keyboards whose pedal should act as on / off (Switch: 64 and above = down). Progressive (the half pedal) stays the default. SAMPLER always uses Host Sustain and Una Corda Simu (both greyed there; your HOST choices are kept). Sostenuto works.
+- **Large sets stream from the disk** (DFD): only the beginning of each sample stays in memory. Choose the preload, the cache and the polyphony (60…256, Max 512) in **MIX**; a disk test tells you if your drive is fast enough.
+- **Microphones**: **MIX** mixes up to 5 microphone positions (level, pan, width, delay, meters); a microphone switched off is not loaded.
+- **BODY** (main window, left of SOFT; was in MIX before 10.1.7): the perceived size of the piano — every note's own fundamental raised or lowered, fully in the bass and the middle, fading out in the treble.
+- **TRUE PEAK** (MIX): per microphone and for all 5 together, 4 x oversampled; red as soon as it clipped, until you reset it.
+- **Protected sets**: every save hides the samples in an encrypted container (`.wptl`), rewritten only when samples change. A password protects **EDIT**, never playing. A set saved on Mac opens on Windows and back.
+- **Presets**: SAMPLER presets are marked `[SAMP]` and kept in `Presets/Sampler`; the preset list follows the mode.
+- **Tuning**: SR Transpose, SR Fine Pitch and SR A4 Tuning play on the sampler; the A4 measured by RECAL is sent to SR A4 Tuning, so 440 Hz plays the set as recorded.
+
+HOST mode is unchanged: everything from 9.5.3 is there.
+
+## 9.5.3
+
+<table>
+<tr><td>🎯 <b>Automatic velocity calibration</b></td><td>In the Velocity panel, click <b>ANALYSE</b>: PianoToLife plays A4 to your piano at the 127 velocities (about 1 min 20 s), finds its real layers and their levels, then proposes a velocity curve calibrated for <i>your</i> piano (<b>Apply</b> / <b>Keep my curve</b>). The CAL button is gone. Before ANALYSE, set the piano's own velocity curve to <b>linear</b> and its dynamics to <b>100 %</b>.</td></tr>
+<tr><td>🎹 <b>The dynamics of a real piano</b></td><td>Choose the curve in the list: <b>Even</b> (each velocity the same step louder), <b>Grand D</b> (concert grand, Steinway D type), <b>Grand B</b> (grand, Steinway B type) or <b>Upright</b> (Yamaha U4 type). These come from the loudness of A4 measured on real piano models, stretched onto your piano's own range from softest to loudest; no real layer is skipped. Choosing a curve applies it at once. Many VST pianos are played with a much wider range than a real piano has (ppp that no real piano makes): the calibration brings back a natural touch.</td></tr>
+<tr><td>🎛 <b>CURVE adapts it to your keyboard</b></td><td>The CURVE knob no longer replaces the curve: it bends what you play before it. Right = louder with less effort (heavy keyboard), left = you must play harder (light keyboard). The calibrated or hand-drawn points stay; the preview shows the points (dim line) and what really plays (bright line). Older sessions open with the same touch.</td></tr>
+<tr><td>⚠️ <b>Clear warnings</b></td><td>If the piano varies or blends its samples (Smear, round robin, humanize, velocity or timbre variation), or if too many layers are found, PianoToLife tells you what to switch off instead of calibrating wrongly.</td></tr>
+<tr><td>🛡 <b>Anti-crash on preset loading</b></td><td>When a hosted VST3 / AU could not load its preset or settings (missing or corrupted files, e.g. Kontakt 7), previous versions could crash, and crash again on every relaunch. Now the piano shows its own warning and PianoToLife goes on loading.</td></tr>
+</table>
+
+## 9.5.2
+
+<table>
+<tr><td>🎚 <b>CAL: a velocity curve made for your piano</b></td><td>In the Velocity panel, click <b>ANALYSE</b> (the layer detector, formerly LAYERS), then <b>CAL</b>: PianoToLife writes a velocity curve with even loudness steps, from the softest to the loudest sound of <i>your</i> piano, without skipping any of its real layers. On our reference piano it matches the curve we had tuned by ear for hours. CAL stays greyed out until the layers of the hosted piano are known.</td></tr>
+<tr><td>📊 <b>Your piano's layers on the curve</b></td><td>The real velocity layers are drawn on the left of the velocity curve, with light lines across. A layer your curve never reaches turns <b>orange</b>, and the tooltip lists them.</td></tr>
+<tr><td>🎙 <b>Faster, cleaner capture (about 35 min)</b></td><td>The capture now starts by finding the piano's real layers on A4, then strikes each velocity in the middle of a layer, never in a crossfade. Held notes stop as soon as nothing more can be measured (the treble no longer waits 20 s): about 35 minutes instead of 45, same model. Before capturing, set the piano's own <b>velocity curve to linear</b>.</td></tr>
+<tr><td>🎹 <b>New built-in concert grand model (V8)</b></td><td>Captured again with the piano's velocity curve linear: 60 layers found on A4, 1730 partials.</td></tr>
+<tr><td>🦶 <b>Pedal: Host Sustain (strict)</b></td><td>For scripted libraries that ignore a softer restrike of a note they still hold: every restrike first releases the previous one, and a softer restrike starts at the level the previous note still had, so the sound never drops. To our ears, such libraries sound even better this way than with its own pedal (Pass-through).</td></tr>
+<tr><td>🔄 <b>Changing pedal mode = pedals up</b></td><td>Switching between Pass-through and Host Sustain, or between una corda BP and Simu, now lifts the pedals for everyone (the piano and PianoToLife) until you move the pedal again. No more notes left hanging or a pedal stuck down after a switch.</td></tr>
+<tr><td>🚨 <b>"HOSTED PIANO CLIPPING!"</b></td><td>If the hosted piano itself clips (its own output reaches 0 dBFS or is flattened), PianoToLife shows it in red in place of TRUE PEAK MAX: lower the volume in the piano, then raise the level in PianoToLife if needed.</td></tr>
+<tr><td>🖥 <b>Standalone: safer audio</b></td><td>On first launch the buffer is never under 64 samples, the sample rate is never under 44.1 kHz, and if the audio device stalls (after a CPU overload in another application, sleep or a sample-rate change), PianoToLife reopens it by itself within about 2 s.</td></tr>
+</table>
+
+## 9.5.0
+
+<table>
+<tr><td>🎹 <b>Una corda for every piano</b></td><td>A new <b>Una Corda</b> selector next to the pedal mode. <b>BP</b> (default) sends the soft pedal (CC67) to your piano, as before: use it if your piano has its own una corda samples. <b>Simu</b>: PianoToLife makes the una corda itself, for any piano. Each note struck with the soft pedal is played at the velocity that gives <i>this</i> piano the softer, rounder sound of a una corda (measured on real una corda recordings, then adapted to each piano from its model). PianoToLife also adds the soft halo of a real grand: with the soft pedal, the hammer strikes one string less, and that free string rings in sympathy with the others. Your velocity curve still applies: the una corda velocity is computed after it.</td></tr>
+<tr><td>🎚 <b>Layer detector</b></td><td>In the Velocity panel, choose a note and click <b>ANALYSE</b> (LAYERS in 9.5.0): PianoToLife plays it at the 127 velocities (about 1 min 20 s) and finds your piano's real velocity layers, whatever their volume. Useful to shape your velocity curve. The result is shown in the tooltip; <b>EXPORT</b> saves it as a text file. Before running, switch off in the piano anything that varies or blends the samples (smear, progressive velocity, key noise, resonance, reverb).</td></tr>
+<tr><td>🎙 <b>A richer capture</b></td><td>The capture now also records short strikes at 8 velocities (about 35 minutes in total since 9.5.2, done once), warns you if anything clipped, and cleans the model automatically. These strikes adapt the una corda to your piano. Models captured before still work (they use a general una corda). New built-in concert grand model.</td></tr>
+<tr><td>📁 <b>Remembered folders</b></td><td>Load MIDI, Save MIDI and Bounce open the last folder you used.</td></tr>
+</table>
+
+## 9.4.7
+
+<table>
+<tr><td>🎹 <b>Velocity by points</b></td><td>The velocity curve is now a line of points you can drag (double-click to add or remove a point). The CURVE knob quickly writes a smooth curve. COPY and PASTE exchange the curve as text, in a common text format, so you can reuse a curve made for your keyboard in other piano software, or share yours. Example:<br><code>Velocity = [0, 49, 66, 77, 85, 95, 102, 108, 114, 121, 127; 0, 9, 12, 19, 31, 51, 68, 88, 116, 127, 127]</code><br>The first list is the velocity you play, the second the velocity sent to the piano. Slope is gone: sessions that used Curve or Slope open with the same touch, as points.</td></tr>
+<tr><td>🦶 <b>Cleaner damper lift</b></td><td>When you press the pedal, the freed strings now carry the sound of the dampers lifting, without the diffuse noise on top.</td></tr>
+</table>
+
+## 9.4.6
+
+Some fixes and half pedal improvements.
+
+## 9.4.4
+
+<table>
+<tr><td>🎵 <b>No more phantom staccato</b></td><td>In Host Sustain, a note struck again at the very moment the pedal comes up could be cut short, even with the key still held. Fixed.</td></tr>
+<tr><td>🔔 <b>Ring follows the dampers</b></td><td>With fast dampers, the Ring of the undamped strings could ring on alone after the release and sound too bright. It now follows the damper speed; at the default setting nothing changes.</td></tr>
+<tr><td>🪶 <b>Damper Damping stops at -40 %</b></td><td>Faster dampers don't exist on a real grand and could give a bright or rubbing release. Older sessions below -40 % open at -40 %. For a drier staccato, use <b>Release Decay</b>.</td></tr>
+<tr><td>🎹 <b>Keyboard: Standard = the reference release</b></td><td>In Standard, every key release sounds like the calibrated normal release, whatever your keyboard sends; the Note-Off curves have no effect there and are greyed out. Before 9.4.2, keyboards sending high release values got a firmer, shorter release and low values a longer one; now all sound the same in Standard. To shorten or lengthen the release, use <b>Release Decay</b>; to play with your keyboard's real release speed, choose <b>Release Velocity 1-127</b> (or your keyboard's own mode) and shape it with the <b>Note-Off Velocity Curve</b>.</td></tr>
+<tr><td>⌨️ <b>Release Velocity 1-127 and Key Noise</b></td><td>Very low release values, often sent by mistake on an ordinary release, are read as a slow release, never an endless one. The Key Noise now follows the Note-Off Velocity Curve too (a normal release sounds as before). The Keyboard Note-Off Curve is only active in the N1X and P-525 modes.</td></tr>
+</table>
+
+## 9.4.3
+
+<table>
+<tr><td>🎹 <b>Kawai VPC1 mode</b></td><td>For Kawai VPC1 owners. The VPC1 measures the key release, but never above about 100, and a slightly slow release easily sends 1 (sometimes 0): taken literally, ordinary releases ring on much too long. The new <b>Keyboard: Kawai VPC1</b> mode reads it so that normal releases sound like a normal damper and slow releases stay natural, never endless. If it does not suit your playing, adjust the <b>Note-Off Velocity Curve</b>, or go back to <b>Keyboard: Standard</b>.</td></tr>
+<tr><td>🔌 <b>Standalone: MIDI reconnects by itself</b></td><td>After a short USB drop (heavy CPU load, another audio application), the MIDI keyboard could stay silent until the application was restarted. It now reopens on its own.</td></tr>
+</table>
+
+## 9.4.2
+
+> **Capture a model of each piano you use.** The resonance now follows the exact partials of the model: with the model of another piano, many strings no longer match and the resonance gets poorer. Click **Capture** on each of your pianos (see "For a clean capture" below). **Models captured before 9.4.0 should be captured again**: the capture is much richer since 9.4.0. The built-in Steinway D-274 model is ready to use.
+
+<table>
+<tr><td>🎶 <b>A selective resonance</b></td><td>Each free string now answers only the partials of the notes that really match it, within about 1.5 Hz (a little more in the high treble), as on a real grand: a clearer sustain "harp", cleaner chords, and the small detunings between strings that make a real piano sound alive.</td></tr>
+<tr><td>🎛 <b>Fullness and Shimmer</b></td><td>Two settings replace Coupling. <b>Fullness</b> (default 100 %): how much every free string answers on its lowest partials, the body and the bass fundamentals. <b>Shimmer</b> (default 25 %): how much the free strings answer on their upper partials, the brilliance of the harp; the bass strings get less of it. Inharmonicity is no longer needed and has been removed.</td></tr>
+<tr><td>🎚 <b>Resonance Level recalibrated</b></td><td>3 dB lower at the same setting, matched to the real sustain of a concert grand library.</td></tr>
+<tr><td>🎹 <b>Keyboard modes</b></td><td><b>Standard</b> (default) works with every keyboard: a key release always sounds like a normal release. Choose <b>Release Velocity 1-127</b> if your keyboard sends real release velocities or behaves in its own way. N1X and P-525 unchanged. A keyboard that still behaves differently? Please tell us.</td></tr>
+<tr><td>🐞 <b>No more long release tails</b></td><td>Keyboards that send a release velocity of 0 no longer make some harmonics ring for seconds after short notes.</td></tr>
+<tr><td>⚙️ <b>New defaults</b></td><td>Sessions and presets saved with earlier versions open with Harmonic Balance 25 %, Fullness 100 % and Shimmer 25 %.</td></tr>
+</table>
+
+## 9.4.0
+
+> **The capture is much richer since 9.4.0**: up to 255 partials per note instead of 48, so the bass strings keep the high harmonics that make the bright "harp" of a real sustain. Models captured before 9.4.0 still work, but capture again to get the new sound.
+>
+> **For a clean capture**, set up the hosted piano before clicking **Capture**:
+> - its output **as loud as possible without clipping** (no red on its meters);
+> - **no reverb, no compression, no EQ or other effect** in the piano;
+> - **everything switched off in the piano that is not the plain note**: release samples, sustain / pedal resonance, sympathetic / string resonance, key and pedal noises;
+> - its **velocity curve set to linear** (no smear or progressive velocity), so the layers found are the piano's real ones (since 9.5.2).
+> - Preferably the **close microphones**: room microphones put the hall into the model. If you play with hall microphones, use PianoToLife's **Ambience** (next to Resonance and Release) to put the hall back.
+
+<table>
+<tr><td>🎶 <b>A truer sustain "harp"</b></td><td>On a real grand, most of the sustain shimmer comes from the high harmonics of the bass strings. The new capture and model bring them in at their real level: a brighter, calmer sustain. New built-in Steinway D-274 model (1487 partials).</td></tr>
+<tr><td>🎛 <b>Harmonic Balance</b></td><td>Harmonic Balance 0-50 %, default 25 % (tuned by ear against the real sustain). Stereo Phase removed. (Coupling, added in 9.4.0, is replaced by Fullness and Shimmer in 9.4.2.)</td></tr>
+<tr><td>🎹 <b>A cleaner bass release</b></td><td>Release Weights now 100 % by default (the colour as measured): the weak upper harmonics of the bass no longer stand out after the key release, and the Ring of the undamped strings fades out below E4, as on the reference library. Older sessions open at 100 %.</td></tr>
+<tr><td>🦶 <b>Pedal Release Time</b></td><td>Letting the pedal go at once no longer stops the strings abruptly: the dampers land as if the pedal took 80 ms (adjustable 30-200 ms). Slower releases and key releases unchanged. Progressive Dampers is now on for every session.</td></tr>
+<tr><td>🎹 <b>A fuller release</b></td><td>The release added after the key release is 6.5 dB stronger, with the register balance measured on a concert grand library: strongest in the low bass (up to 18 dB more from A0 to C1, less and less up to E2). Release Level keeps its Default.</td></tr>
+<tr><td>🎸 <b>A truer bass release</b></td><td>Below C3 the release continues up to 48 harmonics (bright wound-string colour up to 1.3-2 kHz) and dies away like a real damper. C3 and above unchanged.</td></tr>
+<tr><td>🏛️ <b>Ambience closer to the piano's own room</b></td><td>Measured against the room in a concert grand library's release samples: shorter in the middle range (2.2 s instead of 2.9 s) and much less wide, nearly mono in the low bass. Its Default is now 9 dB higher, matched by ear to VSL's own release room (older sessions open at the new Default).</td></tr>
+<tr><td>🔉 <b>Pedal Noise</b></td><td>Optimisations.</td></tr>
+<tr><td>🚪 <b>Room choice for Ambience</b></td><td>Next to the Ambience slider: Small, Medium, Default or Hall, same level. The room now surrounds everything PianoToLife adds, noises included; only your piano's own samples stay out.</td></tr>
+<tr><td>🎹 <b>The felt plateau</b></td><td>When the damper falls, the string keeps its level for 20-40 ms while the felt settles, then dies away; a slow key release holds it longer. PianoToLife adds this plateau to your piano's notes, on their own harmonics, only adding sound.</td></tr>
+<tr><td>🔔 <b>A more natural Ring</b></td><td>After the key release, Ring now mostly makes the undamped top strings sound through their matching harmonics; the beating copies that dominated it below F4 are gone.</td></tr>
+<tr><td>📟 <b>Sample rate and buffer at a glance</b></td><td>In the standalone, under the title: the sample rate and buffer the audio really runs at; red with a warning below 44.1 kHz.</td></tr>
+<tr><td>🔊 <b>The standalone follows your sound card</b></td><td>At every launch it uses the sample rate your card is running at, not the one saved from the last session; your card, buffer and outputs are still remembered.</td></tr>
+</table>
+
+## 9.2.0
+
+Listen to what PianoToLife adds, and more lifelike felts and pedal, rebuilt from measurements case by case.
+
+<table>
+<tr><td>🎧 <b>Full Piano = Piano Only + Half/rel/catch Pedal + Symp Res + Release + Noises + Ambience</b></td><td>A listening selector at the top: light one or several parts to hear only them (they add up; none lit = the full piano). Comp, Reverb and Ceiling stay on; no latency. The selection is kept in the preset and the session - e.g. one DAW track per group of parts.</td></tr>
+<tr><td>🪶 <b>Felt-Contact (formerly Damper Noise)</b></td><td>The felt touching a string that still vibrates: made from the note's own partials, it now beats gently against the string instead of sounding like a second strike, follows your release speed, and starts as soon as the pedal's dampers first touch the strings (half-pedal too).</td></tr>
+<tr><td>🦶 <b>Pedal Noise</b></td><td>A deeper wooden thump, dampers lifting and landing at the right point of the pedal travel, the mechanism's natural delay, a softer slow pedal, and mostly the bass strings ringing after the pedal, as on a real grand.</td></tr>
+<tr><td>🏛 <b>Ambience follows Release Level</b></td><td>Release Level off: no end of note in the Ambience. Notes caught by the pedal and strings carried on in half-pedal now go into the Ambience too.</td></tr>
+</table>
+
+At the same setting, Pedal Noise and Felt-Contact are louder and fuller than before; everything else opens with the same sound.
+
+## 9.1.8
+
+The idea of 9.1.8: make the **release** clear. On a real piano, the release is part of the resonance: when a
+damper lands, the string and its harmonics die away with the rest of the instrument. PianoToLife now shows it
+that way, and the choice is simple: your piano's own release, PianoToLife's release (recommended), or a blend
+of both.
+
+<table>
+<tr><td>🎚 <b>Three levels, side by side</b></td><td><b>Resonance Level</b>, <b>Release Level</b> (formerly Release Noise) and <b>Ambience</b> now sit together at the top, with a bracket showing that the Ambience is the room around both the resonance and the release. The Compact view shows all three.</td></tr>
+<tr><td>🔘 <b>Release Level on / off</b></td><td>On by default. Turn it off if you prefer your piano's own release samples; keep it on (recommended) to get the release from the real partials of each string, or lower your piano's release and blend the two.</td></tr>
+<tr><td>🎯 <b>"Default" instead of 0</b></td><td>The three levels are in dB around <b>Default</b> (our reference setting, tuned by ear), in the middle of each slider: +3 dB, −6 dB… or Off. In the drawer, every setting reads <b>Default</b> at its default value. Double-click (or Delete) to go back.</td></tr>
+</table>
+
+## 9.1.7
+
+<table>
+<tr><td>🎹 <b>Every damped string, up to your piano's last damper</b></td><td>Sustain Free To and Max Free Strings now follow <b>Undamped Keys Above</b>: at their maximum they read <b>All</b> and free every damped string, up to the last damper of your piano (Steinway D: G6, Shigeru Kawai: A#6...). Moving Undamped Keys Above sets them to All; you can still lower them.</td></tr>
+<tr><td>🎼 <b>Bösendorfer Imperial</b></td><td>Sustain Free To now has two handles. Drag the left one below A0, down to C0, and the pedal also frees the 9 extra bass strings of an Imperial (C0 to G#0), made from the A0 of the resonance model. A subtle, richer bass halo.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor, side by side</b></td><td>What PianoToLife receives and what it sends to your piano are on the same line, with one scroll bar. Every difference is in amber: a changed value, a message sent later (with the reason), one added or not sent. The export uses the same two columns.</td></tr>
+<tr><td>🎵 <b>Crisper staccato in Host Sustain</b></td><td>The short pedal-catch window (about 40 ms) is now only used during a pedal change, where a catch is likely. The rest of the time the Note Off reaches the piano at once, so a staccato played without the pedal is not lengthened.</td></tr>
+</table>
+
+## 9.1.6
+
+<table>
+<tr><td>🎹 <b>Yamaha hybrids: repeated notes</b></td><td>N1, N1X and P-525 repeat a note before the key is fully up, like a real grand. PianoToLife now follows it: the release velocity is measured on the key's last movement (a key that stops halfway no longer counts as a very slow release), and in Host Sustain a note struck again replaces the previous strike if at least as loud, or rings over it if softer.</td></tr>
+<tr><td>🤫 <b>Disklavier / N1 silent key</b></td><td>Aftertouch 127 frees the string and aftertouch 0 lets the damper fall back, read directly as the keyboard sends them: no hidden note, no changed velocity. Tested on a real AvantGrand N1.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor export</b></td><td>Times in seconds, a resizable window and <b>Export...</b> to a text file, to see exactly what your keyboard sends and what reaches your piano.</td></tr>
+<tr><td>✨ <b>And more</b></td><td>One key noise per release, the standalone MIDI player plays files exactly as recorded, Stop never leaves a note stuck.</td></tr>
+</table>
+
+## 9.1.4
+
+<table>
+<tr><td>🤫 <b>Silent Key list</b></td><td>Off, ≤ 1 (default), ≤ 2, ≤ 3, or <b>Disklavier / N1</b>: silent presses sent as aftertouch 127 (Yamaha AvantGrand N1, Disklavier XP) lift the damper so the string resonates, without playing a note. A real strike on a key held silently takes over smoothly.</td></tr>
+<tr><td>🔍 <b>MIDI Monitor</b></td><td>See the MIDI received (<b>Before</b>) and the MIDI sent to your piano (<b>After</b>), side by side; silent keys in grey.</td></tr>
+<tr><td>🪟 <b>Comfort</b></td><td><b>ALL DEFAULT</b> button, zoom remembered (90 % the first time), an <b>Auto open</b> check box to choose whether the piano's window opens by itself after loading, and Multicore Processing on by default.</td></tr>
+</table>
+
+## 9.1.2
+
+<table>
+<tr><td>🎨 <b>A new interface</b></td><td>Envelope, Timbre, Strings and Pedal &amp; Release fold away in one <b>Resonance drawer</b>; closed, it shows the strings and dampers of a grand piano with the resonance rising from them. Level &amp; Pitch and Pedal Noise stay in view.</td></tr>
+<tr><td>🎯 <b>0 % = our setting</b></td><td>Every setting in the drawer reads <b>0 % at its default</b>, from −100 % to +100 %. Double-click (or Delete) to go back; the tooltip still shows the real value.</td></tr>
+<tr><td>🔁 <b>Natural repeated notes</b></td><td>In Host Sustain, a softer strike under the pedal now rings over the previous one, as on a real piano: a soft repeat no longer cuts a loud note still sounding (most audible in the bass). A strike at least as loud replaces them.</td></tr>
+<tr><td>♿ <b>Screen readers</b></td><td>Windows Narrator / NVDA and macOS VoiceOver: every control has a spoken name and help, Tab follows a logical order, and sliders can be moved from the keyboard.</td></tr>
+<tr><td>🪶 <b>Damper Noise COLOR</b></td><td>New knob: darker or brighter felts, same level (Damper Noise is now Felt-Contact).</td></tr>
+<tr><td>🪟 <b>Hosted piano window</b></td><td>Opens by itself when an instrument or a preset you chose has finished loading, centred on PianoToLife.</td></tr>
+<tr><td>✨ <b>And more</b></td><td>Shorter tooltips, message boxes and menus in the interface colours, Ambience at 25 % when switched on, a simpler pedal menu (Host Sustain 2 removed: its sessions open in Host Sustain).</td></tr>
+</table>
+
+## 9.0.4
+
+🐞 **Important fix:** no more stray notes when changing chords with the pedal (old notes could come back as pure, slightly out-of-tune tones).
+
+## 9.0.2
+
+<table>
+<tr><td>✨ <b>New name</b></td><td>SympResHost is now <b>PianoToLife</b>. Same plug-in: your sessions and presets open as before.</td></tr>
+<tr><td>🎹 <b>Upright key noise</b></td><td>GRAND or UPRIGHT action under KEY NOISE.</td></tr>
+<tr><td>🦶 <b>Half pedal</b></td><td>A held half pedal decays naturally in one slope; the resonance follows the dampers through the whole zone; slow pedal-ups are seamless.</td></tr>
+<tr><td>🎼 <b>Pedal on held notes</b></td><td>Press the pedal after the attack while still holding the keys (syncopated pedalling): the resonance now blooms in about a second, a little less the later the pedal comes, richer on chords. New <b>Held</b> control next to Pedal Catch to make it bolder or subtler.</td></tr>
+<tr><td>🎯 <b>Re-pedalling and catch</b></td><td>Quick re-pedals keep their energy like a real piano; the catch is crisper in the treble, fuller in the bass.</td></tr>
+<tr><td>🎚 <b>Better defaults</b></td><td>Resonance Level 0 dB is 3 dB richer (old sessions sound the same); Harmonic Balance (formerly Mode Weights) centred on a natural balance of octaves and harmonics; Pedal Damper Curve 32; Inharmonicity 50 ct; Half Pedal Damping 25–95; quieter Key / Pedal Noise at 0 dB (old sessions sound the same).</td></tr>
+<tr><td>🖥 <b>Standalone</b></td><td>First launch opens at your audio card's own sample rate with a 256-sample buffer.</td></tr>
+<tr><td>🎨 <b>Themes</b></td><td>NOIR &amp; OR, GRAPHITE, NOIR &amp; ROUGE or CLASSIC, chosen in the title bar.</td></tr>
+</table>
+
+All the details in the <a href="../../releases/latest">release notes</a>.
+
+## 8.2.12
+
+- **Musical half pedal**, **realistic pedal catch**, **Damper Noise** (felts on the vibrating strings) and a
+  **MIDI player / recorder** with 16-bit bounce in the standalone app.
+
+## 8.2.11
+
+- **About 2× faster** resonance engine, same sound.
+- **Wooden key action** and **wooden pedal** (Key Noise, Pedal Noise with VOL / MECH).
+- **Output Ceiling** (true-peak limiter), TRUE PEAK and LUFS meters.
+
+## Earlier versions
+
+Multicore Processing (8.2.8), re-pedaling with the note's own string, Damper Slope and Release Decay (8.2.6), Ambience, Velocity Curve and the Windows installer (8.2.4), Key Noise and Pedal Noise
+(8.2.1), N1X release velocity and Compact view (8.2.0), the pedal modes (8.0.98) and everything before: see the notes of each version in
+[Releases](../../releases).
+
