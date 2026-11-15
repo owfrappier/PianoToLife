@@ -1,6 +1,32 @@
 # PianoToLife — version history
 
-The newest version is described in the [README](README.md).
+Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
+
+## 11.2.0
+
+**The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**
+
+- **LYRICS**: the lyrics of a piece found by listening to its separated voice (whisper.cpp with the Whisper *small*
+  model, on your computer). The model (488 MB) is downloaded the first time. LANG: automatic, or the language sung.
+  The `.lrc` goes beside the audio file (asked before replacing one), and SCREEN shows it. The LYRICS button lights up
+  when the piece has its lyrics.
+- **LYRICS EDIT**: the real lyrics from LRCLIB, aligned on the voice with the engine of the author's AI-LYRICS-FIX
+  (LRC SYNC when LRCLIB has its own times, SMART for a plain text). Choose another result, change the text, TAP, OFFSET,
+  SAVE.
+- **TRANSPOSE**: -6 to +6 semitones, its tempo kept, live, after the A4 tuning. A MIDI take stays in time; the stems,
+  the BOUNCE with the audio, CHORDS and MAGIC VIEW follow. Remembered for each piece.
+- **FOLDERS**: your folders of pieces as playlists, one click to switch. **Playlist SEARCH** (click the piece's name):
+  as you type, without case, accents or punctuation.
+- **FFmpeg (optional)**: when macOS or Windows cannot read a file, PianoToLife uses the FFmpeg installed on your computer
+  (found by itself, or chosen in LOAD > FFmpeg). Files with several audio tracks: the track is asked once, then a
+  right-click on the name changes it; each track has its own stems, lyrics, chords and levels.
+- **SCREEN**: LYRICS ON / OFF (a video may already show its own words).
+- **Quieter levels**: LEVEL and BOUNCE's Normalise also at -20, -21 and -22 LUFS; the media's CEIL. down to -7 dB, the
+  bounce's true peak down to -7 dBTP.
+
+**Internet:** PianoToLife uses the Internet only when you ask: to download the Whisper model once (from Hugging Face),
+and when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length of the piece are sent). Nothing
+else, and nothing about you.
 
 ## 11.1.7
 
@@ -1070,7 +1096,7 @@ Some fixes and half pedal improvements.
 <tr><td>🦶 <b>Pedal Release Time</b></td><td>Letting the pedal go at once no longer stops the strings abruptly: the dampers land as if the pedal took 80 ms (adjustable 30-200 ms). Slower releases and key releases unchanged. Progressive Dampers is now on for every session.</td></tr>
 <tr><td>🎹 <b>A fuller release</b></td><td>The release added after the key release is 6.5 dB stronger, with the register balance measured on a concert grand library: strongest in the low bass (up to 18 dB more from A0 to C1, less and less up to E2). Release Level keeps its Default.</td></tr>
 <tr><td>🎸 <b>A truer bass release</b></td><td>Below C3 the release continues up to 48 harmonics (bright wound-string colour up to 1.3-2 kHz) and dies away like a real damper. C3 and above unchanged.</td></tr>
-<tr><td>🏛️ <b>Ambience closer to the piano's own room</b></td><td>Measured against the room in a concert grand library's release samples: shorter in the middle range (2.2 s instead of 2.9 s) and much less wide, nearly mono in the low bass. Its Default is now 9 dB higher, matched by ear to VSL's own release room (older sessions open at the new Default).</td></tr>
+<tr><td>🏛️ <b>Ambience closer to the piano's own room</b></td><td>Measured against the room in a concert grand library's release samples: shorter in the middle range (2.2 s instead of 2.9 s) and much less wide, nearly mono in the low bass. Its Default is now 9 dB higher, matched by ear to that library's own release room (older sessions open at the new Default).</td></tr>
 <tr><td>🔉 <b>Pedal Noise</b></td><td>Optimisations.</td></tr>
 <tr><td>🚪 <b>Room choice for Ambience</b></td><td>Next to the Ambience slider: Small, Medium, Default or Hall, same level. The room now surrounds everything PianoToLife adds, noises included; only your piano's own samples stay out.</td></tr>
 <tr><td>🎹 <b>The felt plateau</b></td><td>When the damper falls, the string keeps its level for 20-40 ms while the felt settles, then dies away; a slow key release holds it longer. PianoToLife adds this plateau to your piano's notes, on their own harmonics, only adding sound.</td></tr>
