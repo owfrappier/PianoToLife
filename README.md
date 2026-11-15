@@ -28,7 +28,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="screenshot.png?v=1116" alt="PianoToLife interface" width="900">
+  <img src="screenshot.png?v=1117" alt="PianoToLife interface" width="900">
 </p>
 
 <p align="center">
@@ -56,7 +56,26 @@ so it plays like a deeply sampled piano, even when the library is badly cut or n
 
 ---
 
-## What's new in 11.1.6
+## What's new in 11.1.7
+
+**The standalone now watches the sample rate: another program can no longer put PianoToLife out of tune without you
+knowing.**
+
+- **Your preferred sample rate**: the standalone remembers the sample rate you choose in Options > Audio/MIDI Settings
+  (never one imposed by another program). At start-up, if the sound card opens at another rate, PianoToLife sets it back
+  and tells you, or tells you why it couldn't (another program holding the card).
+- **Sample rate changed while playing**: when another program (a DAW opening a project at 48 kHz...) or the sound card
+  itself changes the rate, PianoToLife follows and says so once.
+- **And when nobody tells it**: some systems and drivers change the rate without telling the applications (more often on
+  Windows). Everything then sounds out of tune. PianoToLife now measures the sound card's real rate itself and, if it no
+  longer matches, offers **RESTART AUDIO**. It costs nothing in CPU.
+- **BOUNCE: silence before the music** (right-click on BOUNCE): none, 0.5 s or 1 s, for a piece that starts on its very
+  first note (some players cut the first milliseconds).
+
+The VST3 and AU were already safe: the DAW sets the sample rate and tells the plugin, and PianoToLife recomputes
+everything at the new rate.
+
+### Also in 11.1.6
 
 **The diapason explained, takes named by their date, SYNC from REC — and lighter keys under the pedal.**
 
