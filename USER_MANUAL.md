@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.1.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.1.7 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -467,7 +467,13 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   speed; **x1** is real time. The MIDI line shows the speed, then how it went. The metronome is never in the file.
   **BOUNCE ALL** (11.0.2): with a playlist, **Pieces: All N pieces of the playlist** bounces every piece, one file each,
   in the folder chosen, named after the piece (never written over: *name (2).wav*). The MIDI line shows *Bounce all:
-  i/N*; STOP stops the series. The media player's recording is never in a BOUNCE ALL.
+  i/N*; STOP stops the series. The media player's recording is never in a BOUNCE ALL. **Right-click on BOUNCE** (11.1.7):
+  **Silence before the music**, none, 0.5 s or 1 s, written at the start of the file (for a piece that starts on its first
+  note: some players cut the first milliseconds).
+  **Sample rate in the standalone** (11.1.7): PianoToLife remembers the sample rate you choose in Options >
+  Audio/MIDI Settings and sets the card back to it at start-up (it says so, or why it couldn't: another program holding
+  the card). If another program or the card changes the rate while you play, PianoToLife follows and says so; if the
+  system doesn't tell it, it measures the card's real rate and offers **RESTART AUDIO**. The VST3 and AU follow the DAW.
   You can also **drop MIDI files on the window** (10.6.2): one file, several (a playlist, in the order of their names)
   or an .m3u, as with LOAD MIDI. **II (PAUSE)** (10.6.2): the sound stops where it is and the place is kept; click
   again to go on from there (from a clean piano, with the pedals the file has at that point). PLAY starts from the

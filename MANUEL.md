@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.1.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.1.7 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -505,7 +505,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   Le métronome n'est jamais dans le fichier.
   **BOUNCE ALL** (11.0.2) : avec une playlist, **Pieces : All N pieces of the playlist** bounce tous les morceaux, un
   fichier chacun, dans le dossier choisi, au nom du morceau (jamais écrasé : *nom (2).wav*). La ligne MIDI affiche
-  *Bounce all: i/N* ; STOP arrête la série. L'enregistrement du lecteur média n'est jamais dans un BOUNCE ALL.
+  *Bounce all: i/N* ; STOP arrête la série. L'enregistrement du lecteur média n'est jamais dans un BOUNCE ALL. **Clic droit
+  sur BOUNCE** (11.1.7) : **Silence before the music**, aucun, 0,5 s ou 1 s, écrit au début du fichier (pour un morceau qui
+  commence sur sa première note : certains lecteurs coupent les premières millisecondes).
+  **Fréquence d'échantillonnage du standalone** (11.1.7) : PianoToLife retient la fréquence que vous choisissez dans
+  Options > Audio/MIDI Settings et y remet la carte au démarrage (il le dit, ou pourquoi il n'a pas pu : un autre
+  logiciel tient la carte). Si un autre logiciel ou la carte change la fréquence pendant que vous jouez, PianoToLife suit
+  et le dit ; si le système ne le prévient pas, il mesure la fréquence réelle de la carte et propose **RESTART AUDIO**. Le
+  VST3 et l'AU suivent le DAW.
   Vous pouvez aussi **déposer des fichiers MIDI sur la fenêtre** (10.6.2) : un fichier, plusieurs (une liste de
   lecture, dans l'ordre de leurs noms) ou un .m3u, comme avec LOAD MIDI. **II (PAUSE)** (10.6.2) : le son s'arrête là
   où il est et la position est gardée ; recliquez pour reprendre de là (avec un piano propre et les pédales du fichier
