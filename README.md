@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1125" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1126" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1125" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1126" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1125" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1126" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
@@ -81,7 +81,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1125" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1126" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1125" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1126" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -105,7 +105,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1125" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1126" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -117,7 +117,25 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.5
+## What's new in 11.2.6
+
+**Lyrics without separating, your windows on any screen, RESET STEMS / RESET LYRICS, and measured speeds.**
+
+- **LYRICS without separating first**: on a piece not separated yet, LYRICS asks **BEST** (the voice separated first,
+  the most accurate) or **FASTER** (the whole piece heard at once — handy on a computer without a graphics card; correct
+  the result with EDIT). *Remember my choice*; changed in LANG's menu.
+- **The window buttons open and close**: CHORDS, SCREEN, PADS, MAGIC VIEW and VIEW open their window, a second click
+  closes it, and the button stays lit while its window is open.
+- **A window lost on a screen switched off**: right-click on a lit button — **Bring it to this screen**, or **Move it to
+  screen 2, 3...** (each screen with its size).
+- **RESET STEMS** and **RESET LYRICS** (under FAST / QUALITY): the separated tracks, or the lyrics PianoToLife found, of
+  the piece playing deleted, to make them again. RESET STEMS keeps the lyrics; a `.lrc` of your own is never deleted.
+- **LYRICS on a laptop's graphics card** (Windows): Whisper took the first graphics card it found, often the laptop's
+  integrated one; it now uses the dedicated card (NVIDIA / AMD) — about 6 s instead of about a minute for a piece of 3 min 25.
+- The separation times shown are corrected: QUALITY about half of the piece's length, FAST about a quarter (M2 Pro).
+- **Measured speeds**, and which computer for the stems: see [Requirements](#requirements).
+
+### Also in 11.2.5
 
 **PADS for the live, and your separated pieces at a glance.**
 
@@ -475,6 +493,27 @@ How fast you let a key come up changes how the damper lands, so PianoToLife list
 | **Processor** | Apple Silicon (M2 or later recommended). Intel Macs are not supported. | Intel / AMD x64 (also runs on Windows on ARM through emulation) |
 | **Formats** | Audio Unit, VST3, Standalone application | VST3, Standalone application (ASIO) |
 | **Hosted piano** | Any AU or VST3 piano plug-in built for Apple Silicon | Any x64 VST3 piano plug-in, installed in `C:\Program Files\Common Files\VST3` |
+| **Separation (stems)** | The Apple Silicon GPU (Metal) | A graphics card through Vulkan: an NVIDIA RTX with 8 GB of video memory or more recommended; AMD works; integrated Intel graphics are very slow |
+
+### Separation speed (measured, November 2026)
+
+One piece of 3 min 25 s:
+
+| Computer | Stems FAST | Stems QUALITY | LYRICS |
+|---|---|---|---|
+| Mac mini M2 Pro (16 GB) | 48 s | 99 s | 8–9 s |
+| Windows laptop, NVIDIA GeForce RTX 5050 Laptop (8 GB), Intel i7-13650HX | 22 s | 39 s | about 6 s |
+
+Each piece is separated only once, then kept. A recent NVIDIA RTX card, even a laptop one, separates 2 to 2.5 times
+faster than an M2 Pro; Macs with M5 or later have neural accelerators in their GPU (not measured yet). Without a
+graphics card (the processor only), a piece can take 20 to 30 minutes. LYRICS: the first time, the Whisper model
+(488 MB) is downloaded once, and on a PC the graphics card's driver prepares itself (a few seconds more).
+
+**Help complete this table.** If you have a **Mac with Apple Silicon** (M1 to M6, any model) or a **PC with an NVIDIA
+RTX card**, time a separation and send your result to pianotolife@outlook.com: your computer (Mac model and chip, or the
+RTX card and its video memory), the length of the piece, and the FAST and QUALITY times (the first separation after a
+start can take a few seconds more). Results from other computers are not needed: without an RTX card or Apple Silicon,
+the separation is much slower.
 
 On macOS, the plug-in does not load in a host running under Rosetta.
 

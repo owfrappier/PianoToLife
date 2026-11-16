@@ -2,6 +2,24 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.2.6
+
+**Lyrics without separating, your windows on any screen, RESET STEMS / RESET LYRICS, and measured speeds.**
+
+- **LYRICS without separating first**: on a piece not separated yet, LYRICS asks **BEST** (the voice separated first,
+  the most accurate) or **FASTER** (the whole piece heard at once — handy on a computer without a graphics card; correct
+  the result with EDIT). *Remember my choice*; changed in LANG's menu.
+- **The window buttons open and close**: CHORDS, SCREEN, PADS, MAGIC VIEW and VIEW open their window, a second click
+  closes it, and the button stays lit while its window is open.
+- **A window lost on a screen switched off**: right-click on a lit button — **Bring it to this screen**, or **Move it to
+  screen 2, 3...** (each screen with its size).
+- **RESET STEMS** and **RESET LYRICS** (under FAST / QUALITY): the separated tracks, or the lyrics PianoToLife found, of
+  the piece playing deleted, to make them again. RESET STEMS keeps the lyrics; a `.lrc` of your own is never deleted.
+- **LYRICS on a laptop's graphics card** (Windows): Whisper took the first graphics card it found, often the laptop's
+  integrated one; it now uses the dedicated card (NVIDIA / AMD) — about 6 s instead of about a minute for a piece of 3 min 25.
+- The separation times shown are corrected: QUALITY about half of the piece's length, FAST about a quarter (M2 Pro).
+- **Measured speeds**, and which computer for the stems: see the README (Requirements).
+
 ## 11.2.5
 
 **PADS for the live, and your separated pieces at a glance.**

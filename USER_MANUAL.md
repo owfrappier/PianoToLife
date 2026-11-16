@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -548,8 +548,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     with PianoToLife.
   - **In the player too** (11.1.1): **NO VOICE / NO PIANO / CLEAN** under REC and PLAY, with the progress and
     **CANCEL** — the same switches as in CHORDS.
-  - **FAST / QUALITY** (11.1.4, in the player and in CHORDS): **QUALITY** = the best separation (about a third of the
-    piece's length on a recent Mac), **FAST** = about twice as fast, a little less clean. Each is kept apart in the
+  - **FAST / QUALITY** (11.1.4, in the player and in CHORDS): **QUALITY** = the best separation (about half of the
+    piece's length on a Mac M2 Pro, 2 to 2.5 times faster with a recent NVIDIA RTX), **FAST** = about twice as fast, a little less clean. Each is kept apart in the
     Stems folder; the better one already separated is played (FAST chosen and QUALITY there: QUALITY plays, nothing is
     separated again). QUALITY chosen with only FAST there: FAST plays while QUALITY is separated. Remembered.
   - **CLEAN PIANO** (11.1.4, formerly CLEAN) with its **strength slider** beside it: 0 % = no cleaning, 100 % = as
@@ -627,6 +627,25 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **STEMS READY** (11.2.5): a virtual folder made by PianoToLife — the pieces already separated (each separation writes
     *source.txt* in its Stems folder; older ones are found from FOLDERS and the virtual folders). In the lists (the
     playlist and its SEARCH, the virtual folders) and on the pads, a **green dot and a bold name** show them.
+  - **11.2.6 — LYRICS on a piece not separated yet**: LYRICS asks **BEST** (the voice separated first, the most
+    accurate) or **FASTER** (the whole piece heard at once, much quicker without a graphics card; correct with EDIT),
+    with *Remember my choice*; the choice is changed in LANG's menu (*A piece not separated yet*). The lyrics found on
+    the whole piece are kept when the piece is separated later.
+  - **11.2.6 — the window buttons**: CHORDS, SCREEN, PADS, MAGIC VIEW (player) and VIEW (MAGIC VIEW MIDI) open their
+    window, a second click closes it (its place and size are kept); the button is lit while its window is open.
+    Right-click on a lit button: **Bring it to this screen**, and with several screens **Move it to screen N** (its size,
+    the main one said; the one it is on ticked) — for a window left on a screen switched off or a projector.
+  - **11.2.6 — RESET STEMS** (under FAST / QUALITY): after a confirmation, the separated tracks of the piece (FAST and
+    QUALITY) are deleted from Samples/Stems; its lyrics are kept; the player goes back to the recording, NO VOICE / NO
+    PIANO off (a click separates it again). **RESET LYRICS** (under it): the lyrics PianoToLife found for the piece are
+    deleted (in Samples/Stems, and the `.lrc` beside the audio only when PianoToLife wrote it; a `.lrc` of your own is
+    never deleted; the changes made with EDIT are lost too); LYRICS then finds them again.
+  - **11.2.6 — measured speeds** (a piece of 3 min 25): Mac mini M2 Pro — FAST 48 s, QUALITY 99 s, LYRICS 8–9 s;
+    Windows laptop with an NVIDIA GeForce RTX 5050 Laptop (8 GB) — FAST 22 s, QUALITY 39 s, LYRICS about 6 s. Without a
+    graphics card, a separation can take 20 to 30 minutes. On Windows, LYRICS now uses a laptop's dedicated graphics
+    card (before: its integrated one — about a minute). **Help complete these figures**: with a Mac with Apple
+    Silicon or a PC with an NVIDIA RTX card only, send your computer, the length of the piece and the FAST / QUALITY
+    times to pianotolife@outlook.com.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -592,8 +592,8 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     le moteur BSRoformer.cpp (tous deux sous licence MIT) ; les textes des licences sont installés avec PianoToLife.
   - **Aussi dans le lecteur** (11.1.1) : **NO VOICE / NO PIANO / CLEAN** sous REC and PLAY, avec la progression et
     **CANCEL** — les mêmes interrupteurs que dans CHORDS.
-  - **FAST / QUALITY** (11.1.4, dans le lecteur et dans CHORDS) : **QUALITY** = la meilleure séparation (environ un tiers
-    de la durée du morceau sur un Mac récent), **FAST** = environ deux fois plus rapide, un peu moins propre. Chacune est
+  - **FAST / QUALITY** (11.1.4, dans le lecteur et dans CHORDS) : **QUALITY** = la meilleure séparation (environ la moitié
+    de la durée du morceau sur un Mac M2 Pro, 2 à 2,5 fois plus vite avec une NVIDIA RTX récente), **FAST** = environ deux fois plus rapide, un peu moins propre. Chacune est
     gardée à part dans le dossier Stems ; la meilleure déjà séparée est jouée (FAST choisi et QUALITY présente : QUALITY
     joue, rien n'est séparé à nouveau). QUALITY choisie avec seulement FAST présente : FAST joue pendant que QUALITY se
     sépare. Le choix est retenu.
@@ -679,6 +679,27 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     écrit *source.txt* dans son dossier Stems ; les plus anciens sont retrouvés depuis FOLDERS et les dossiers
     virtuels). Dans les listes (la playlist et sa recherche, les dossiers virtuels) et sur les pads, **un point vert et
     un nom en gras** les signalent.
+  - **11.2.6 — LYRICS sur un morceau pas encore séparé** : LYRICS demande **BEST** (la voix séparée d'abord, le plus
+    juste) ou **FASTER** (le morceau entier écouté d'un coup, bien plus rapide sans carte graphique ; corrigez avec
+    EDIT), avec *Remember my choice* ; le choix se change dans le menu de LANG (*A piece not separated yet*). Les paroles
+    trouvées sur le morceau entier sont gardées quand le morceau est séparé plus tard.
+  - **11.2.6 — les boutons des fenêtres** : CHORDS, SCREEN, PADS, MAGIC VIEW (lecteur) et VIEW (MAGIC VIEW MIDI) ouvrent
+    leur fenêtre, un 2e clic la ferme (sa place et sa taille sont gardées) ; le bouton est allumé tant que sa fenêtre est
+    ouverte. Clic droit sur un bouton allumé : **Bring it to this screen**, et avec plusieurs écrans **Move it to screen
+    N** (sa taille, le principal indiqué ; celui où elle est coché) — pour une fenêtre restée sur un écran éteint ou un
+    projecteur.
+  - **11.2.6 — RESET STEMS** (sous FAST / QUALITY) : après confirmation, les pistes séparées du morceau (FAST et QUALITY)
+    sont supprimées de Samples/Stems ; ses paroles sont gardées ; le lecteur repart sur l'enregistrement, NO VOICE / NO
+    PIANO éteints (un clic le sépare à nouveau). **RESET LYRICS** (dessous) : les paroles trouvées par PianoToLife pour le
+    morceau sont supprimées (dans Samples/Stems, et le `.lrc` à côté de l'audio seulement si c'est PianoToLife qui l'a
+    écrit ; un `.lrc` à vous n'est jamais supprimé ; les corrections faites avec EDIT sont perdues aussi) ; LYRICS les
+    retrouve ensuite.
+  - **11.2.6 — vitesses mesurées** (un morceau de 3 min 25) : Mac mini M2 Pro — FAST 48 s, QUALITY 99 s, LYRICS 8–9 s ;
+    portable Windows avec une NVIDIA GeForce RTX 5050 Laptop (8 Go) — FAST 22 s, QUALITY 39 s, LYRICS environ 6 s. Sans
+    carte graphique, une séparation peut prendre 20 à 30 minutes. Sous Windows, LYRICS utilise maintenant la carte
+    graphique dédiée d'un portable (avant : la carte intégrée — environ une minute). **Aidez à compléter ces
+    chiffres** : seulement avec un Mac Apple Silicon ou un PC avec une carte NVIDIA RTX, envoyez votre ordinateur, la
+    durée du morceau et les temps FAST / QUALITY à pianotolife@outlook.com.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
