@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -206,7 +206,9 @@ jamais dans l'audio).
   les joue, et comparées au Piano Model : le timbre de chaque touche, le niveau entre les touches et la balance gauche /
   droite. Le voyant prend ensuite la couleur du résultat, et un tableau des écarts s'affiche. SAMPLER : partout, aussi
   dans un DAW ; HOST : dans l'application autonome (le piano hébergé rendu hors ligne, comme pour la capture). Une
-  capture ne peut pas démarrer pendant ce temps.
+  capture ne peut pas démarrer pendant ce temps. Depuis la 11.2.4, il suit SR A4 Tuning et Fine Pitch (un modèle vérifié loin
+  de sa propre hauteur, à 350 Hz par exemple), et chaque contrôle est écrit touche par touche dans
+  **Stems/last-check-by-ear.txt**.
 
 ### Diapason et tempérament (10.9.4)
 
@@ -581,8 +583,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     **CANCEL** ; environ la moitié de la durée du morceau sur un Mac Apple Silicon), et gardé dans le dossier **Stems** de
     votre dossier de samples : la fois suivante, c'est instantané. Les boutons basculent ensuite aussitôt, pendant la
     lecture ; le TUNING s'y applique, et un BOUNCE avec le média reprend ce que vous entendez. **CLEAN** (avec NO PIANO) :
-    là où le piano joue presque seul (une intro), ses derniers restes sont retirés aussi. Rien n'est exporté. Un nouveau
-    morceau chargé avec NO VOICE ou NO PIANO allumé est séparé tout seul. Si une séparation échoue, ce qu'a dit le moteur
+    là où le piano joue presque seul (une intro), ses derniers restes sont retirés aussi. Rien n'est exporté. Depuis la
+    11.2.4, chaque nouveau morceau (et chaque démarrage) commence avec NO VOICE et NO PIANO éteints : rien n'est
+    séparé sans un clic (CLEAN garde son choix). Si une séparation échoue, ce qu'a dit le moteur
     est dans **Stems/last-separation-error.txt**. Fonctionne au mieux sur un Mac Apple Silicon ou un PC avec une carte
     NVIDIA RTX (Windows : la carte graphique via Vulkan, sinon le processeur, bien plus lent) ; sur des ordinateurs plus
     anciens, cela peut être très lent et n'est pas garanti. **CREDITS** : le modèle « MVSep Mega 53 Stems » de ZFTurbo et
@@ -655,6 +658,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     *SympResHost Virtual folders*, à côté des réglages. Un clic sur une liste dans FOLDERS la joue.
   - **VOL du lecteur** (11.2.3) : **0 dB** à chaque démarrage, pour entendre exactement le LUFS choisi dans LEVEL ; revient
     à 0 dB quand LEVEL ou CEIL. change ; double-clic : 0 dB. À la première ouverture, LEVEL est à -20 LUFS et CEIL. à -7 dB.
+  - **Karaoké et OFFSET dans SCREEN** (11.2.4) : la ligne chantée se remplit de gauche à droite pendant qu'elle est
+    chantée — sur les mots entendus par Whisper quand le morceau est passé par LYRICS, sinon régulièrement sur la ligne —
+    et les lignes montent en douceur. **OFFSET** (dans la barre, de -1000 à +1000 ms, double-clic 0) : les paroles
+    affichées plus tôt (+, le temps de les lire) ou plus tard (-), pour tous les morceaux ; le `.lrc` n'est pas modifié
+    (l'OFFSET d'EDIT corrige le fichier d'un morceau).
+  - **Dossier virtuel à gauche** (11.2.4) : dans la fenêtre des dossiers virtuels, la liste de gauche propose aussi les
+    dossiers virtuels (PLAYED compris) : tout sélectionner (Cmd / Ctrl + A) puis ADD pour verser une liste entière dans
+    une autre.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

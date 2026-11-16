@@ -2,6 +2,21 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.2.4
+
+**Karaoke lyrics, no separation you didn't ask for, and Check by ear at any tuning.**
+
+- **SCREEN karaoke**: the line sung fills as it is sung (on the words Whisper heard when they are there), and the lines
+  glide up smoothly. **OFFSET** in SCREEN's bar: the lyrics shown up to 1 s earlier or later (for all pieces; the
+  `.lrc` is not changed).
+- **No separation you didn't ask for**: each new piece (and each start) begins with NO VOICE and NO PIANO off — nothing
+  is separated without a click. CLEAN PIANO keeps your choice.
+- **Virtual folders**: a virtual folder can be the source too — add a whole list to another one (Cmd / Ctrl + A, ADD).
+- **Check by ear at any SR A4 Tuning** (thanks to a user's precise report): it measured the keys at the Piano Model's own
+  pitch, so far from it (350 Hz...) it reported big differences that did not exist. It now follows SR A4 Tuning and
+  Fine Pitch, and the unison of the high keys. Your Piano Models were right: nothing to capture again.
+- The `.lrc` written by EDIT says where its times come from: Whisper, or LRCLIB.
+
 ## 11.2.3
 
 **Virtual folders, the media at the LUFS you choose, and the DRY version kept.**

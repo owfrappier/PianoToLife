@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1123" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1124" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1123" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1124" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1123" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1124" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
@@ -88,7 +88,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1123" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1124" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -99,7 +99,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1123" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1124" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -111,7 +111,22 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.3
+## What's new in 11.2.4
+
+**Karaoke lyrics, no separation you didn't ask for, and Check by ear at any tuning.**
+
+- **SCREEN karaoke**: the line sung fills as it is sung (on the words Whisper heard when they are there), and the lines
+  glide up smoothly. **OFFSET** in SCREEN's bar: the lyrics shown up to 1 s earlier or later (for all pieces; the
+  `.lrc` is not changed).
+- **No separation you didn't ask for**: each new piece (and each start) begins with NO VOICE and NO PIANO off — nothing
+  is separated without a click. CLEAN PIANO keeps your choice.
+- **Virtual folders**: a virtual folder can be the source too — add a whole list to another one (Cmd / Ctrl + A, ADD).
+- **Check by ear at any SR A4 Tuning** (thanks to a user's precise report): it measured the keys at the Piano Model's own
+  pitch, so far from it (350 Hz...) it reported big differences that did not exist. It now follows SR A4 Tuning and
+  Fine Pitch, and the unison of the high keys. Your Piano Models were right: nothing to capture again.
+- The `.lrc` written by EDIT says where its times come from: Whisper, or LRCLIB.
+
+### Also in 11.2.3
 
 **Virtual folders, the media at the LUFS you choose, and the DRY version kept.**
 

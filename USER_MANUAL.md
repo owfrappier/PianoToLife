@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -193,6 +193,8 @@ for the details and **Check by ear**. It costs no CPU (compared once a second, n
   compared with the Piano Model: the timbre of each key, the level between the keys and the left / right balance. The
   light then takes the result's colour, and a table of the differences is shown. SAMPLER: anywhere, also in a DAW;
   HOST: in the standalone (the hosted piano rendered offline, as for the capture). A capture cannot start meanwhile.
+  Since 11.2.4 it follows SR A4 Tuning and Fine Pitch (a model checked far from its own pitch, at 350 Hz for instance),
+  and each check is written key by key to **Stems/last-check-by-ear.txt**.
 
 ### Diapason and temperament (10.9.4)
 
@@ -538,8 +540,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     the piece's length on a Mac with Apple Silicon), and kept in the **Stems** folder of your samples folder: the next
     time is instant. The buttons then switch at once while playing; the TUNING applies to them, and a BOUNCE with the
     media plays what you hear. **CLEAN** (with NO PIANO): where the piano plays almost alone (an intro), its last
-    remains are taken out too. Nothing is exported. A new piece loaded with NO VOICE or NO PIANO on is separated by
-    itself. If a separation fails, what the engine said is in **Stems/last-separation-error.txt**. Works best on a Mac
+    remains are taken out too. Nothing is exported. Since 11.2.4 each new piece (and each start) begins with NO VOICE
+    and NO PIANO off: nothing is separated without a click (CLEAN keeps its choice). If a separation fails, what the engine said is in **Stems/last-separation-error.txt**. Works best on a Mac
     with Apple Silicon or a PC with an NVIDIA RTX card (Windows: the graphics card through Vulkan, otherwise the
     processor, much slower); on older computers it may be very slow and cannot be guaranteed. **CREDITS**: the model
     "MVSep Mega 53 Stems" by ZFTurbo and the engine BSRoformer.cpp (both MIT License); the licence texts are installed
@@ -608,6 +610,12 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     A click on a list in FOLDERS plays it.
   - **VOL of the media** (11.2.3): **0 dB** at each start, so that you hear exactly the LUFS chosen in LEVEL; back to 0 dB
     when LEVEL or CEIL. changes; double-click: 0 dB. At the first opening LEVEL is at -20 LUFS and CEIL. at -7 dB.
+  - **SCREEN karaoke and OFFSET** (11.2.4): the line sung fills from left to right as it is sung — on the words Whisper
+    heard when the piece went through LYRICS, else evenly over the line — and the lines glide up smoothly. **OFFSET**
+    (in the bar, -1000 to +1000 ms, double-click 0): the lyrics shown earlier (+, time to read them) or later (-), for
+    every piece; the `.lrc` is not changed (EDIT's OFFSET corrects a piece's file).
+  - **Virtual folder on the left** (11.2.4): in the virtual folders' window, the left list also offers the virtual
+    folders (PLAYED too): select all (Cmd / Ctrl + A) and ADD to put a whole list into another one.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete
