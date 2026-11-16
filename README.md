@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1122" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1123" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1122" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1123" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1122" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1123" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
@@ -72,7 +72,8 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   moves it up to 6 semitones higher or lower, its tempo kept. Both are remembered for each piece.
 - **LEVEL and CEIL.**: every file at the same loudness (-14 to -23 LUFS), its own true-peak ceiling (-1 to -7 dB).
 - **REC and PLAY with the MIDI**: your take and the recording start together; BOUNCE can put the recording in the file.
-- **FOLDERS** and **SEARCH**: your folders of pieces as playlists, and a search that ignores case, accents and punctuation.
+- **FOLDERS** and **SEARCH**: your folders of pieces as playlists, **virtual folders** (PLAYED and your own lists), and a
+  search that ignores case, accents and punctuation.
 - **Any format, any audio track** (optional): with FFmpeg installed on your computer, PianoToLife also reads MKV, WebM,
   Opus, APE, WavPack, DSD… shows the picture of any video (AV1, MKV, WebM...) and lets you choose the audio track of a
   film in several languages.
@@ -87,7 +88,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1122" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1123" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -98,7 +99,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1122" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1123" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -110,7 +111,20 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.2
+## What's new in 11.2.3
+
+**Virtual folders, the media at the LUFS you choose, and the DRY version kept.**
+
+- **VIRTUAL FOLDERS** (in FOLDERS): **PLAYED**, the 500 pieces played last, newest first (remove what you don't want),
+  and **your own lists**, named as you like, filled from your folders (with a search) or from anywhere on the disk.
+  Only links: nothing is copied. Each list is an `.m3u` file (VLC, Music... read it too).
+- **The media at the LUFS you choose**: the player's VOL starts at **0 dB** (it was -6 dB, under the LEVEL chosen), goes
+  back to 0 dB when LEVEL or CEIL. changes, and a double-click puts it at 0 dB. First opening: LEVEL **-20 LUFS**,
+  CEIL. **-7 dB**.
+- **SAMPLER: the version kept** (ORIG. / DRY n): each instrument comes back with the version it played last — when you
+  choose it again in the list, and when you come back from HOST mode (it came back as ORIG.).
+
+### Also in 11.2.2
 
 **The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**
 
@@ -136,7 +150,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 and when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length of the piece are sent). Nothing
 else, and nothing about you.
 
-**Also in 11.2.2**
+**And in 11.2.2**
 
 - **Every video shows its picture**: when macOS or Windows cannot decode a video's pictures (AV1 on a Mac M1 / M2 — many
   recent YouTube videos —, MKV, WebM, AVI...), PianoToLife decodes them with the FFmpeg installed on your computer, as it

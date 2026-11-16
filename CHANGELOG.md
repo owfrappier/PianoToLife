@@ -2,6 +2,19 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.2.3
+
+**Virtual folders, the media at the LUFS you choose, and the DRY version kept.**
+
+- **VIRTUAL FOLDERS** (in FOLDERS): **PLAYED**, the 500 pieces played last, newest first (remove what you don't want),
+  and **your own lists**, named as you like, filled from your folders (with a search) or from anywhere on the disk.
+  Only links: nothing is copied. Each list is an `.m3u` file (VLC, Music... read it too).
+- **The media at the LUFS you choose**: the player's VOL starts at **0 dB** (it was -6 dB, under the LEVEL chosen), goes
+  back to 0 dB when LEVEL or CEIL. changes, and a double-click puts it at 0 dB. First opening: LEVEL **-20 LUFS**,
+  CEIL. **-7 dB**.
+- **SAMPLER: the version kept** (ORIG. / DRY n): each instrument comes back with the version it played last — when you
+  choose it again in the list, and when you come back from HOST mode (it came back as ORIG.).
+
 ## 11.2.2
 
 **The MEDIA player becomes a practice studio: lyrics found and corrected, transposition, any format.**

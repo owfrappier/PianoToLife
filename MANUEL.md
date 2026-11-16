@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -647,6 +647,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     écrans restent tels quels. Double-cliquez sur l'image, ou dans SCREEN utilisez le bouton **FULL SCREEN** (en haut à
     droite, dans la barre qui apparaît quand la souris bouge) : sur Mac, le bouton vert de la barre de titre est le plein
     écran de macOS, qui peut rendre les autres écrans noirs.
+  - **Dossiers virtuels** (11.2.3, dans FOLDERS) : **PLAYED** — les 500 morceaux joués en dernier, les plus récents en
+    haut, rempli tout seul (on peut en retirer) — et **vos propres listes**. *New, edit, fill the virtual folders...*
+    ouvre une fenêtre : à gauche un dossier de FOLDERS (avec une recherche), à droite un dossier virtuel — **ADD ▶** (ou
+    double-clic), **FILES...** (n'importe où), **REMOVE**, **NEW...**, **RENAME...**, **DELETE**, **PLAY** (un double-clic
+    joue à partir de ce morceau). Des liens seulement, rien n'est copié : chaque liste est un `.m3u` dans le dossier
+    *SympResHost Virtual folders*, à côté des réglages. Un clic sur une liste dans FOLDERS la joue.
+  - **VOL du lecteur** (11.2.3) : **0 dB** à chaque démarrage, pour entendre exactement le LUFS choisi dans LEVEL ; revient
+    à 0 dB quand LEVEL ou CEIL. change ; double-clic : 0 dB. À la première ouverture, LEVEL est à -20 LUFS et CEIL. à -7 dB.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

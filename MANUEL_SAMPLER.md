@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.2.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.2.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -311,7 +311,8 @@ sélectionné** en haut, et MAKE traite tous les micros :
    des traitements. À la fin, le piano joue la version faite : réglez-la à l'oreille et faites **SAVE**.
 3. **PIANO PLAYS : ORIG. | DRY 1 | DRY 2 | DRY 3** — la version que joue tout le piano (aussi après le nom de
    l'instrument, dans le titre de la fenêtre principale : cliquez dessus). Chacune avec ses propres réglages : une
-   version jamais enregistrée part de ceux d'ORIG. Changer de version propose d'abord d'enregistrer les modifications.
+   version jamais enregistrée part de ceux d'ORIG. Changer de version propose d'abord d'enregistrer les modifications. Depuis la 11.2.3, chaque instrument revient
+   avec la dernière version jouée (choisi à nouveau dans la liste, ou au retour du mode HOST).
    **Delete...** supprime une version qui ne joue pas (ses échantillons et ses réglages ; les originaux et les autres
    versions ne sont pas touchés). Changer ne remesure pas AUTO BODY.
 4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et de Recorded Room** :

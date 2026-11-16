@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -600,6 +600,14 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     as they are. Double-click the picture, or in SCREEN use the **FULL SCREEN** button (top right, in the bar shown when
     the mouse moves): on a Mac, the green button of the title bar is the macOS full screen, which can turn the other
     screens black.
+  - **Virtual folders** (11.2.3, in FOLDERS): **PLAYED** — the 500 pieces played last, newest first, filled by itself
+    (pieces can be removed from it) — and **your own lists**. *New, edit, fill the virtual folders...* opens a window: on
+    the left a folder of FOLDERS (with a search), on the right a virtual folder — **ADD ▶** (or double-click), **FILES...**
+    (from anywhere), **REMOVE**, **NEW...**, **RENAME...**, **DELETE**, **PLAY** (a double-click plays from that piece).
+    Only links, nothing copied: each list is an `.m3u` in the folder *SympResHost Virtual folders*, beside the settings.
+    A click on a list in FOLDERS plays it.
+  - **VOL of the media** (11.2.3): **0 dB** at each start, so that you hear exactly the LUFS chosen in LEVEL; back to 0 dB
+    when LEVEL or CEIL. changes; double-click: 0 dB. At the first opening LEVEL is at -20 LUFS and CEIL. at -7 dB.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete
