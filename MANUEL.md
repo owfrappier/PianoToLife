@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.2.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -666,6 +666,19 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **Dossier virtuel à gauche** (11.2.4) : dans la fenêtre des dossiers virtuels, la liste de gauche propose aussi les
     dossiers virtuels (PLAYED compris) : tout sélectionner (Cmd / Ctrl + A) puis ADD pour verser une liste entière dans
     une autre.
+  - **PADS** (11.2.5, à gauche de FOLDERS) : 4 x 4 pads sur 5 pages (◀ ▶, elles glissent). Déposez des fichiers audio ou
+    vidéo sur les pads (plusieurs fichiers remplissent les pads suivants), ou cliquez sur un pad vide ; chaque pad montre
+    la pochette ou une image de la vidéo (par FFmpeg) et son nom. Clic : jouer. Clic droit : **MEDIA (A)** — dans le
+    lecteur, comme un morceau (stems, paroles, SCREEN...) — ou **PAD (B)** — par-dessus tout, les pads B se cumulent, au
+    niveau **PAD VOL** et sous le CEIL. du lecteur ; **TOGGLE** (un clic lance, un autre arrête) ou **HOLD** (joue tant
+    qu'on tient) ; **MIDI LEARN** (puis jouez une touche, un pad ou un CC du périphérique choisi en haut) ; oublier son
+    MIDI ; vider le pad. Clic droit sur ◀ ▶ : leur MIDI LEARN. Le MIDI des pads marche sur toutes les pages et fenêtre
+    fermée. **STOP ALL** arrête tout. Fondus de 100 ms : ni pop ni clic. Rangés dans *SympResHost Pads.json*, à côté des
+    réglages.
+  - **STEMS READY** (11.2.5) : un dossier virtuel fait par PianoToLife — les morceaux déjà séparés (chaque séparation
+    écrit *source.txt* dans son dossier Stems ; les plus anciens sont retrouvés depuis FOLDERS et les dossiers
+    virtuels). Dans les listes (la playlist et sa recherche, les dossiers virtuels) et sur les pads, **un point vert et
+    un nom en gras** les signalent.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

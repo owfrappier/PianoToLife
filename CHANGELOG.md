@@ -2,6 +2,19 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.2.5
+
+**PADS for the live, and your separated pieces at a glance.**
+
+- **PADS** (left of FOLDERS): 4 x 4 pads on 5 pages that slide. Drop audio or video files on them — each pad shows the
+  cover or a picture of the video — and play them with a click or your **MIDI controller (MIDI LEARN** per pad and for
+  the pages; it works with the window closed). **MEDIA** pads play in the media player (stems, lyrics, SCREEN...);
+  **PAD** pads play over everything and add up (their own level). **TOGGLE** (a click plays, another one stops) or
+  **HOLD** (plays while held).
+- **No pop, no click**: 100 ms fades when a pad starts or stops, and each piece of the player comes in smoothly.
+- **STEMS READY**: a virtual folder that fills itself with the pieces already separated — and everywhere, a **green dot
+  and bold names** show the pieces whose NO VOICE / NO PIANO is instant.
+
 ## 11.2.4
 
 **Karaoke lyrics, no separation you didn't ask for, and Check by ear at any tuning.**

@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.2.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -616,6 +616,17 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     every piece; the `.lrc` is not changed (EDIT's OFFSET corrects a piece's file).
   - **Virtual folder on the left** (11.2.4): in the virtual folders' window, the left list also offers the virtual
     folders (PLAYED too): select all (Cmd / Ctrl + A) and ADD to put a whole list into another one.
+  - **PADS** (11.2.5, left of FOLDERS): 4 x 4 pads on 5 pages (◀ ▶, they slide). Drop audio or video files on the pads
+    (several files fill the pads that follow), or click an empty pad; each pad shows the cover or a picture of the video
+    (through FFmpeg) and its name. Click: play. Right-click: **MEDIA (A)** — in the media player, as a piece (stems,
+    lyrics, SCREEN...) — or **PAD (B)** — over everything, the B pads add up, at **PAD VOL** and through the media's
+    CEIL.; **TOGGLE** (a click plays, another one stops) or **HOLD** (plays while held); **MIDI LEARN** (then play a key, a
+    pad or a CC of the device chosen at the top); forget its MIDI; empty the pad. Right-click on ◀ ▶: their MIDI LEARN.
+    The MIDI of the pads works on every page and with the window closed. **STOP ALL** stops everything. 100 ms fades:
+    no pop, no click. Kept in *SympResHost Pads.json*, beside the settings.
+  - **STEMS READY** (11.2.5): a virtual folder made by PianoToLife — the pieces already separated (each separation writes
+    *source.txt* in its Stems folder; older ones are found from FOLDERS and the virtual folders). In the lists (the
+    playlist and its SEARCH, the virtual folders) and on the pads, a **green dot and a bold name** show them.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

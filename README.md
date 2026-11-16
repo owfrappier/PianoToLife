@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1124" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1125" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1124" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1125" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1124" alt="The MEDIA player: FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1125" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
@@ -72,11 +72,17 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   moves it up to 6 semitones higher or lower, its tempo kept. Both are remembered for each piece.
 - **LEVEL and CEIL.**: every file at the same loudness (-14 to -23 LUFS), its own true-peak ceiling (-1 to -7 dB).
 - **REC and PLAY with the MIDI**: your take and the recording start together; BOUNCE can put the recording in the file.
-- **FOLDERS** and **SEARCH**: your folders of pieces as playlists, **virtual folders** (PLAYED and your own lists), and a
-  search that ignores case, accents and punctuation.
+- **FOLDERS** and **SEARCH**: your folders of pieces as playlists, **virtual folders** (PLAYED, STEMS READY and your own
+  lists), and a search that ignores case, accents and punctuation; the pieces already separated show a green dot.
+- **PADS**: your pieces, videos and jingles on 80 pads, launched with a click or your MIDI controller — in the player
+  (MEDIA) or over everything (PAD).
 - **Any format, any audio track** (optional): with FFmpeg installed on your computer, PianoToLife also reads MKV, WebM,
   Opus, APE, WavPack, DSD… shows the picture of any video (AV1, MKV, WebM...) and lets you choose the audio track of a
   film in several languages.
+
+<p align="center">
+  <img src="Screenshot-F.png?v=1125" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+</p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
 > FFmpeg (MKV, WebM, Opus...) or another audio track of a film — is decoded **once and kept** in a cache on your
@@ -88,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1124" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1125" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -99,7 +105,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1124" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1125" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -111,7 +117,20 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.4
+## What's new in 11.2.5
+
+**PADS for the live, and your separated pieces at a glance.**
+
+- **PADS** (left of FOLDERS): 4 x 4 pads on 5 pages that slide. Drop audio or video files on them — each pad shows the
+  cover or a picture of the video — and play them with a click or your **MIDI controller (MIDI LEARN** per pad and for
+  the pages; it works with the window closed). **MEDIA** pads play in the media player (stems, lyrics, SCREEN...);
+  **PAD** pads play over everything and add up (their own level). **TOGGLE** (a click plays, another one stops) or
+  **HOLD** (plays while held).
+- **No pop, no click**: 100 ms fades when a pad starts or stops, and each piece of the player comes in smoothly.
+- **STEMS READY**: a virtual folder that fills itself with the pieces already separated — and everywhere, a **green dot
+  and bold names** show the pieces whose NO VOICE / NO PIANO is instant.
+
+### Also in 11.2.4
 
 **Karaoke lyrics, no separation you didn't ask for, and Check by ear at any tuning.**
 
