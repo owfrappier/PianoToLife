@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.2.6 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.3.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -498,8 +498,16 @@ resonance follows (each free string, and how strongly it answers).
   samples, A2 to C6), **Played** and **Shift**. **Click a Shift value to type your own** (−60 to +60): the
   temperament becomes **Custom (edited)**, saved with the set. Under it: the stretch recorded (C2 to C7) and the
   temperament closest to the recording (e.g. *closest to Equal, 1.5 c rms*).
+- **FIX KEYS** (11.3.0): for a piano recorded with some keys out of tune. Each key's own error, apart from the
+  piano's stretch and the temperament it was recorded in, is measured (on a smooth curve through its neighbours) and
+  corrected. The correction is kept apart and shown beside the key's Tune in EDIT (*fix +x.x*); your Tune is not
+  changed. It plays with every temperament but *Original (as recorded)*: AS RECORDED lets you hear the piano as it was
+  recorded. Keys measured unreliably are left alone. **CLEAR FIX** removes the corrections. Both are UNDO steps; the
+  corrections are saved with the set. **Stretch 100 %** with FIX KEYS is recommended: a good tuner keeps the stretch the
+  piano's strings ask for, and FIX KEYS only takes out the keys that leave it. Equal + Stretch 0 % gives an exact equal
+  temperament with exact octaves, a theoretical tuning.
 
-Each key keeps its own small differences (a real tuning is never perfect); only the temperament and the stretch
+Without FIX KEYS, each key keeps its own small differences (a real tuning is never perfect); only the temperament and the stretch
 change. The temperament is saved in the set, the presets and the sessions; every change is a named UNDO step in EDIT.
 Pitch bends and tuning messages of MIDI files are not used. The Piano Model capture always measures the samples as
 recorded, so it never needs to be done again for a temperament.

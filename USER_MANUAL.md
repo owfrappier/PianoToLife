@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.2.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -227,6 +227,24 @@ piano itself is not changed):
 Pure intervals make the resonance stronger, as on a real piano: lower Resonance Level if needed. Most exact of all:
 a Piano Model captured in the temperament played (**CAPTURE...**), then Played = Original. Name each model after its
 temperament (e.g. *My Piano – Werckmeister III.srpiano*).
+
+**HOST: the tuning of the hosted piano** (11.3.0). In HOST mode, TEMPERAMENT also shows the tuning of the hosted piano,
+measured on its Piano Model: how many keys were measured, its A4, the temperament it is closest to, its stretch (C2,
+C7) and the keys off its line. **Tune it to** a temperament (with its tonic), set the **Stretch** (100 % = the stretch
+it is tuned with) and **FIX KEYS** (each key's own error taken out too), then **EXPORT .txt + .scl...** writes the table
+of corrections: a `.txt` key by key, to enter in the hosted piano's own Tune of each key, and the same as Scala
+`.scl` + `.kbm` for a piano that loads Scala files. **0.1 cent / 1 cent**: the rounding (some pianos accept only whole
+cents). The line under it gives the largest correction. PianoToLife does not change the hosted piano itself.
+
+**MIDI files** (11.3.0): pitch bend, tuning messages (RPN / NRPN, CC 6 / 38 / 96–101) and SysEx in MIDI files are
+ignored by default: meant for a sound module, they detuned the piano or made its notes slide (old General MIDI files).
+MIDI LOAD's menu: *Ignore pitch bend, tuning (RPN / NRPN) and SysEx in MIDI files*. The keyboard you play is never
+filtered.
+
+**"PianoToLife cannot keep up"** (11.3.0): when sound is lost for several seconds (audio blocks not computed in time),
+PianoToLife says so, apart from a real change of the sound card's rate, with what to do: a larger buffer (Options >
+Audio), the power plan or the charger, other programs closed, the hosted piano's polyphony. *Don't show again* turns
+it off.
 
 **SAMPLER: TEMPERAMENT.** The same button opens the temperament of your samples: measured, then changed key by key
 without touching the files — see the [Sampler Manual](SAMPLER_MANUAL.md#temperament-and-diapason-1094). A SAMPLER
@@ -646,6 +664,18 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     card (before: its integrated one — about a minute). **Help complete these figures**: with a Mac with Apple
     Silicon or a PC with an NVIDIA RTX card only, send your computer, the length of the piece and the FAST / QUALITY
     times to pianotolife@outlook.com.
+  - **11.3.0 — the stems folder**: right-click FAST / QUALITY: **Choose the stems folder...**, **Back to Samples/Stems
+    (this computer)**, **Show it**. A folder shared on the network (a Mac's folder used by a PC, or the other way round)
+    lets two computers use the same stems: the separation is done on the computer that asks for it, then only its
+    result is copied to the shared folder. If the chosen folder cannot be reached, Samples/Stems is used meanwhile.
+  - **11.3.0 — stems found by their content**: a piece's stems are found from what the file contains, not its path: a
+    piece moved, renamed or played on another computer finds its stems and its lyrics again. Stems separated before
+    11.3.0 are found too (by the piece's name and length) and renamed once.
+  - **11.3.0 — played from memory**: the piece and its stems are read into memory, as DJ software does, so the disk is
+    free while you play (a very long file, over 600 MB, is still read from the disk). On the network, the piece and its
+    stems are prepared in the background (*Loading...*): the original plays first, then the stems. A folder or a
+    virtual folder on the network is listed in the background too; a missing piece is skipped when its turn comes.
+  - **11.3.0 — no click at PLAY / STOP**: the player starts from silence and STOP goes down to zero cleanly.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

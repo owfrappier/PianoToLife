@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.2.6 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.3.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -528,8 +528,17 @@ répond).
   sur les samples, de La 2 à Do 6), **Played** et **Shift**. **Cliquez une valeur de Shift pour taper la vôtre**
   (−60 à +60) : le tempérament devient **Custom (edited)**, enregistré avec le set. En dessous : le stretch enregistré
   (Do 2 à Do 7) et le tempérament le plus proche de l'enregistrement (par exemple *closest to Equal, 1.5 c rms*).
+- **FIX KEYS** (11.3.0) : pour un piano enregistré avec des touches fausses. L'écart propre à chaque touche, en dehors
+  du stretch du piano et du tempérament dans lequel il a été enregistré, est mesuré (sur une courbe lissée passant par
+  ses voisines) et corrigé. La correction est gardée à part et affichée à côté du Tune de la touche dans EDIT
+  (*fix +x.x*) ; votre Tune n'est pas modifié. Elle joue avec tous les tempéraments sauf *Original (as recorded)* :
+  AS RECORDED fait entendre le piano tel qu'enregistré. Les touches mal mesurées ne sont pas touchées. **CLEAR FIX**
+  retire les corrections. Les deux sont des étapes UNDO ; les corrections sont enregistrées avec le set. **Stretch
+  100 %** avec FIX KEYS est conseillé : un bon accordeur garde le stretch que demandent les cordes du piano, et FIX KEYS
+  ne retire que les touches qui s'en écartent. Equal + Stretch 0 % donne un tempérament égal exact avec des octaves
+  exactes, un accord théorique.
 
-Chaque touche garde ses petites différences (un accord réel n'est jamais parfait) ; seuls le tempérament et le
+Sans FIX KEYS, chaque touche garde ses petites différences (un accord réel n'est jamais parfait) ; seuls le tempérament et le
 stretch changent. Le tempérament est enregistré dans le set, les presets et les sessions ; chaque changement est une
 étape UNDO nommée dans EDIT. Les pitch bends et les messages d'accord des fichiers MIDI ne sont pas utilisés. La
 capture du Piano Model mesure toujours les samples tels qu'enregistrés : elle n'est jamais à refaire pour un

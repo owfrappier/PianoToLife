@@ -2,6 +2,33 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.0
+
+**FIX KEYS for pianos recorded out of tune, your hosted piano's tuning exported key by key, stems shared between two computers, and a cleaner media player.**
+
+- **FIX KEYS** (TEMPERAMENT, SAMPLER mode): for a piano recorded with some keys out of tune. Each key's own error,
+  apart from the piano's stretch and the temperament it was recorded in, is measured and corrected. The correction is
+  shown beside its Tune in EDIT; your Tune is not changed. Any temperament and the Stretch then apply to clean keys.
+  **Stretch 100 %** keeps the stretch this piano was tuned with, as a good tuner does; 0 % gives exact octaves.
+  **AS RECORDED** plays the piano as recorded, and **CLEAR FIX** removes the corrections. Undoable.
+- **The tuning of the hosted piano** (TEMPERAMENT, HOST mode): measured on its Piano Model: its A4, its stretch, and the
+  keys off its line. Choose a temperament in **Tune it to**, with the Stretch and FIX KEYS, then **EXPORT** the table of
+  corrections: a `.txt` key by key, to type into the hosted piano's own Tune of each key, and a Scala `.scl` + `.kbm`,
+  for pianos that load Scala files. The values are rounded to 0.1 cent or 1 cent.
+- **Check by ear** and the capture measure the samples as recorded, whatever temperament is played, so there is no
+  false alarm after a temperament change.
+- **Stems found by their content**: a piece that is moved, renamed or played on another computer finds its stems and
+  lyrics again. Stems separated before 11.3.0 are found too. **Right-click FAST / QUALITY** to choose the stems folder:
+  a folder shared on the network lets a Mac and a PC use the same stems.
+- **Pieces and stems played from memory**, as DJ software does: the disk is free while you play. A folder or a virtual
+  folder on the network is read in the background, so the player never waits for the network.
+- **No click at PLAY or STOP.** The piano's REVERB, EQ and COMP also start from rest when switched back on.
+- **"PianoToLife cannot keep up"**: audio dropouts are now told apart from a real change of the sound card's rate, with
+  advice (buffer size, power plan) and a *Don't show again* option.
+- **MIDI files**: pitch bend, tuning messages (RPN / NRPN) and SysEx meant for a sound module are ignored (an option in
+  MIDI LOAD's menu). An old General MIDI file no longer detunes the piano.
+- **STEMS READY** lists each separated piece once.
+
 ## 11.2.6
 
 **Lyrics without separating, your windows on any screen, RESET STEMS / RESET LYRICS, and measured speeds.**

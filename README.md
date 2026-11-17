@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1126" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1130" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1126" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1130" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,10 +63,10 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1126" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1130" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
-- **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in Samples/Stems), then played
+- **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
   without its voice, or without its piano so that you play the piano part.
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
   moves it up to 6 semitones higher or lower, its tempo kept. Both are remembered for each piece.
@@ -81,7 +81,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1126" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1130" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1126" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1130" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -105,7 +105,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1126" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1130" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -117,7 +117,42 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.2.6
+## What's new in 11.3.0
+
+**FIX KEYS for pianos recorded out of tune, your hosted piano's tuning exported key by key, stems shared between two computers, and a cleaner media player.**
+
+- **FIX KEYS** (TEMPERAMENT, SAMPLER mode): for a piano recorded with some keys out of tune. Each key's own error,
+  apart from the piano's stretch and the temperament it was recorded in, is measured and corrected. The correction is
+  shown beside its Tune in EDIT; your Tune is not changed. Any temperament and the Stretch then apply to clean keys.
+  **Stretch 100 %** keeps the stretch this piano was tuned with, as a good tuner does; 0 % gives exact octaves.
+  **AS RECORDED** plays the piano as recorded, and **CLEAR FIX** removes the corrections. Undoable.
+- **The tuning of the hosted piano** (TEMPERAMENT, HOST mode): measured on its Piano Model: its A4, its stretch, and the
+  keys off its line. Choose a temperament in **Tune it to**, with the Stretch and FIX KEYS, then **EXPORT** the table of
+  corrections: a `.txt` key by key, to type into the hosted piano's own Tune of each key, and a Scala `.scl` + `.kbm`,
+  for pianos that load Scala files. The values are rounded to 0.1 cent or 1 cent.
+- **Check by ear** and the capture measure the samples as recorded, whatever temperament is played, so there is no
+  false alarm after a temperament change.
+- **Stems found by their content**: a piece that is moved, renamed or played on another computer finds its stems and
+  lyrics again. Stems separated before 11.3.0 are found too. **Right-click FAST / QUALITY** to choose the stems folder:
+  a folder shared on the network lets a Mac and a PC use the same stems.
+- **Pieces and stems played from memory**, as DJ software does: the disk is free while you play. A folder or a virtual
+  folder on the network is read in the background, so the player never waits for the network.
+- **No click at PLAY or STOP.** The piano's REVERB, EQ and COMP also start from rest when switched back on.
+- **"PianoToLife cannot keep up"**: audio dropouts are now told apart from a real change of the sound card's rate, with
+  advice (buffer size, power plan) and a *Don't show again* option.
+- **MIDI files**: pitch bend, tuning messages (RPN / NRPN) and SysEx meant for a sound module are ignored (an option in
+  MIDI LOAD's menu). An old General MIDI file no longer detunes the piano.
+- **STEMS READY** lists each separated piece once.
+
+<p align="center">
+  <img src="Screenshot-G.png?v=1130" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+</p>
+
+<p align="center">
+  <img src="Screenshot-H.png?v=1130" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+</p>
+
+### Also in 11.2.6
 
 **Lyrics without separating, your windows on any screen, RESET STEMS / RESET LYRICS, and measured speeds.**
 

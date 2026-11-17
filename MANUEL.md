@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.2.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -244,6 +244,25 @@ hébergé lui-même n'est pas modifié) :
 Les intervalles purs renforcent la résonance, comme sur un vrai piano : baissez Resonance Level si besoin. Le plus
 exact : un Piano Model capturé dans le tempérament joué (**CAPTURE...**), puis Played = Original. Nommez chaque modèle
 d'après son tempérament (par exemple *Mon Piano – Werckmeister III.srpiano*).
+
+**HOST : l'accord du piano hébergé** (11.3.0). En mode HOST, TEMPERAMENT montre aussi l'accord du piano hébergé, mesuré
+sur son Piano Model : le nombre de touches mesurées, son La 4, le tempérament le plus proche, son stretch (Do 2, Do 7) et
+les touches qui s'écartent de sa courbe. Choisissez un tempérament dans **Tune it to** (avec sa tonique), réglez le
+**Stretch** (100 % = le stretch avec lequel il est accordé) et **FIX KEYS** (l'écart propre de chaque touche retiré
+aussi), puis **EXPORT .txt + .scl...** écrit la table des corrections : un `.txt` touche par touche, à reporter dans le
+Tune de chaque touche du piano hébergé, et la même chose en Scala `.scl` + `.kbm` pour un piano qui charge les fichiers
+Scala. **0.1 cent / 1 cent** : l'arrondi (certains pianos n'acceptent que des cents entiers). La ligne en dessous donne
+la plus grande correction. PianoToLife ne modifie pas le piano hébergé lui-même.
+
+**Fichiers MIDI** (11.3.0) : le pitch bend, les messages d'accord (RPN / NRPN, CC 6 / 38 / 96–101) et les SysEx des
+fichiers MIDI sont ignorés par défaut : prévus pour un module de sons, ils désaccordaient le piano ou faisaient glisser
+ses notes (vieux fichiers General MIDI). Menu de MIDI LOAD : *Ignore pitch bend, tuning (RPN / NRPN) and SysEx in MIDI
+files*. Le clavier que vous jouez n'est jamais filtré.
+
+**« PianoToLife cannot keep up »** (11.3.0) : quand du son est perdu pendant plusieurs secondes (blocs audio pas
+calculés à temps), PianoToLife le dit, à part d'un vrai changement de fréquence de la carte son, avec quoi faire : un
+buffer plus grand (Options > Audio), le mode d'alimentation ou le chargeur, les autres programmes fermés, la polyphonie
+du piano hébergé. *Don't show again* le désactive.
 
 **SAMPLER : TEMPERAMENT.** Le même bouton ouvre le tempérament de vos samples : mesuré, puis changé touche par touche
 sans toucher aux fichiers — voir le [Manuel du sampler](MANUEL_SAMPLER.md#tempérament-et-diapason-1094). Une capture
@@ -700,6 +719,21 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     graphique dédiée d'un portable (avant : la carte intégrée — environ une minute). **Aidez à compléter ces
     chiffres** : seulement avec un Mac Apple Silicon ou un PC avec une carte NVIDIA RTX, envoyez votre ordinateur, la
     durée du morceau et les temps FAST / QUALITY à pianotolife@outlook.com.
+  - **11.3.0 — le dossier des stems** : clic droit sur FAST / QUALITY : **Choose the stems folder...**, **Back to
+    Samples/Stems (this computer)**, **Show it**. Un dossier partagé sur le réseau (le dossier d'un Mac utilisé par un
+    PC, ou l'inverse) permet à deux ordinateurs d'utiliser les mêmes stems : la séparation se fait sur l'ordinateur qui
+    la demande, puis seul son résultat est copié dans le dossier partagé. Si le dossier choisi n'est pas joignable,
+    Samples/Stems est utilisé en attendant.
+  - **11.3.0 — les stems retrouvés par leur contenu** : les stems d'un morceau sont retrouvés d'après ce que contient le
+    fichier, pas son chemin : un morceau déplacé, renommé ou joué sur un autre ordinateur retrouve ses stems et ses
+    paroles. Les stems séparés avant la 11.3.0 sont retrouvés aussi (par le nom et la durée du morceau) et renommés
+    une fois.
+  - **11.3.0 — lu depuis la mémoire** : le morceau et ses stems sont lus en mémoire, comme le font les logiciels DJ, et
+    le disque reste libre pendant que vous jouez (un fichier très long, de plus de 600 Mo, reste lu sur le disque). Sur
+    le réseau, le morceau et ses stems sont préparés en arrière-plan (*Loading...*) : l'original joue d'abord, puis les
+    stems. Un dossier ou un dossier virtuel sur le réseau est aussi lu en arrière-plan ; un morceau manquant est sauté
+    quand vient son tour.
+  - **11.3.0 — plus de clic au PLAY / STOP** : le lecteur repart du silence et STOP descend proprement à zéro.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
