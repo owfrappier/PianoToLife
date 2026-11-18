@@ -2,6 +2,16 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.2
+
+**Windows: the session is always kept when PianoToLife closes.**
+
+- The session (the instrument, its version ORIG. / DRY, the Piano Model, the last preset) is written as soon as the
+  window closes, before anything else. On Windows, with folders on network drives, PianoToLife could stay running after
+  its window was closed and the session was not written: it then reopened an older state (another version, another
+  Piano Model, a preset renamed since not reopened).
+- On Windows, the closing can no longer stay blocked: PianoToLife always ends a few seconds after its window is closed.
+
 ## 11.3.1
 
 **A fluid media player on network folders, MIDI files played as in a DAW, and LISTEN on a range of velocities.**

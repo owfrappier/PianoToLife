@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1131" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1132" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1131" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1132" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
 </p>
 
 
@@ -63,7 +63,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1131" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1132" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -81,7 +81,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1131" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1132" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1131" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
+  <img src="Screenshot-D.png?v=1132" alt="SCREEN with the lyrics, CHORDS, the MEDIA player and MAGIC VIEW with its staff" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -105,7 +105,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1131" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
+  <img src="Screenshot-C.png?v=1132" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -117,7 +117,17 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.1
+## What's new in 11.3.2
+
+**Windows: the session is always kept when PianoToLife closes.**
+
+- The session (the instrument, its version ORIG. / DRY, the Piano Model, the last preset) is written as soon as the
+  window closes, before anything else. On Windows, with folders on network drives, PianoToLife could stay running after
+  its window was closed and the session was not written: it then reopened an older state (another version, another
+  Piano Model, a preset renamed since not reopened).
+- On Windows, the closing can no longer stay blocked: PianoToLife always ends a few seconds after its window is closed.
+
+### Also in 11.3.1
 
 **A fluid media player on network folders, MIDI files played as in a DAW, and LISTEN on a range of velocities.**
 
@@ -165,11 +175,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1131" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1132" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1131" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1132" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6
