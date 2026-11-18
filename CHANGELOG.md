@@ -2,6 +2,22 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.3
+
+**LIVE STEMS: NO VOICE / NO PIANO within seconds, while the piece is still being separated.**
+
+- **LIVE STEMS** (media player, beside FAST / QUALITY): a click separates the piece loaded slice by slice. The button
+  counts down to the first slice, then the piece starts again from its beginning with NO VOICE / NO PIANO; the rest is
+  separated while it plays (the part not separated yet plays as recorded). Right-click: **AUTO** (the shortest first slice
+  with which the playing never catches up with the separation, from your computer's speed, learnt at each separation)
+  or 10 to 60 s, and what turns on at 0 (NO VOICE, NO PIANO, both, or as chosen). Off at each new piece.
+- **Separate on another computer**: a PC or a Mac can do the separations for the one you play on, through a stems folder
+  shared on the network (right-click FAST / QUALITY).
+- Another piece shown while the previous one is still separated: **PREVIOUS NOT FINISHED** in red.
+- **LYRICS EDIT**: SAVED shown at once, **SAVE AND CLOSE**, **CLOSE** (without saving), **ANALYSE**; nothing can be changed
+  while an analysis runs, and the window opens again with the new lyrics; it follows the piece playing (lyrics can no
+  longer be saved into another piece's file). **LYRICS C.** when PianoToLife's lyrics were corrected.
+
 ## 11.3.2
 
 **Windows: the session is always kept when PianoToLife closes.**

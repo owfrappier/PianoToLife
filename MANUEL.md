@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -750,6 +750,31 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **11.3.1 — les dossiers** : la liste d'un dossier est gardée tant qu'il ne change pas (une seule question au disque au
     lieu de toute la liste) ; FOLDERS coche le dossier ou le dossier virtuel choisi ; STEMS READY montre tout de suite un
     morceau qui vient d'être séparé.
+  - **11.3.3 — LIVE STEMS** : un clic sur **LIVE STEMS** sépare le morceau chargé tranche par tranche et le joue
+    pendant ce temps. Le bouton décompte jusqu'à la première tranche (*LIVE STEMS 12*, *11*...) ; à 0 le morceau repart
+    du début avec ses stems, et les tranches suivantes sont séparées pendant qu'il joue (la partie pas encore séparée joue
+    telle qu'enregistrée, sans trou). Clic droit : la première tranche — **AUTO** (par défaut : la plus courte avec
+    laquelle la lecture ne rattrape jamais la séparation, d'après la vitesse de votre ordinateur, apprise à chaque
+    séparation, FAST et QUALITY à part) ou 10 à 60 s — et **At 0, turn on** : NO VOICE, NO PIANO, les deux, ou comme
+    choisi. LIVE STEMS est éteint à chaque démarrage et à chaque nouveau morceau. CLEAN PIANO nettoie une fois le morceau
+    entier séparé ; à la fin les stems sont gardés comme d'habitude. Morceaux jusqu'à 15 minutes (leurs pistes sont
+    gardées en mémoire) ; un ordinateur trop lent pour suivre sépare comme d'habitude.
+  - **11.3.3 — séparer sur un autre ordinateur** : la séparation utilise le processeur de l'ordinateur qui la fait. Pour
+    garder libre celui sur lequel vous jouez, faites séparer par un autre ordinateur (un PC ou un Mac du même réseau) :
+    sur **les deux** ordinateurs, clic droit sur FAST / QUALITY > **Choose the stems folder...** et choisissez le **même**
+    dossier partagé sur le réseau, avec la même qualité (FAST ou QUALITY). Séparez les morceaux sur l'autre ordinateur ;
+    ils apparaissent dans **STEMS READY** sur le vôtre dès que chacun est fini (un morceau n'y est écrit qu'une fois
+    complet), et sont joués depuis la mémoire. Précautions : sur l'ordinateur où vous jouez, NO VOICE / NO PIANO / LIVE
+    STEMS sur un morceau pas encore séparé le sépare sur place ; ne séparez jamais le même morceau sur les deux
+    ordinateurs en même temps.
+  - **11.3.3 — PREVIOUS NOT FINISHED** : un autre morceau affiché pendant que le précédent se sépare encore : dit en rouge
+    à côté de son pourcentage (LIVE STEMS bloqué pendant ce temps ; CANCEL l'arrête).
+  - **11.3.3 — LYRICS EDIT** : SAVE affiche *SAVED* ; **SAVE AND CLOSE** ; **CLOSE** ferme sans enregistrer (la croix de
+    la fenêtre demande) ; **ANALYSE** fait comme LYRICS (grisé une fois le morceau écouté). Pendant une analyse, *ANALYSIS
+    IN PROGRESS* et rien ne peut être modifié (PLAY et CLOSE seulement) ; à la fin la fenêtre se rouvre avec les nouvelles
+    paroles. Elle suit le morceau qui joue : un autre morceau, elle se rouvre pour lui (des paroles ne sont jamais
+    enregistrées dans le fichier d'un autre morceau). Le bouton LYRICS affiche **LYRICS C.** quand les paroles de
+    PianoToLife ont été corrigées.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
