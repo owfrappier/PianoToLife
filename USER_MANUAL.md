@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -240,6 +240,11 @@ cents). The line under it gives the largest correction. PianoToLife does not cha
 ignored by default: meant for a sound module, they detuned the piano or made its notes slide (old General MIDI files).
 MIDI LOAD's menu: *Ignore pitch bend, tuning (RPN / NRPN) and SysEx in MIDI files*. The keyboard you play is never
 filtered.
+
+**MIDI files on one channel** (11.3.1): every event of a MIDI file is played on channel 1, as a DAW's MIDI track does.
+Some files put the sustain pedal on another channel than the notes (e.g. the hands on channels 8 and 9, the pedal on 3):
+by the MIDI rule that pedal holds no note, and the piano sounded dry while the resonance rang. MIDI LOAD's menu: *Play
+every channel of MIDI files on one channel* (on by default). The keyboard you play is never changed.
 
 **"PianoToLife cannot keep up"** (11.3.0): when sound is lost for several seconds (audio blocks not computed in time),
 PianoToLife says so, apart from a real change of the sound card's rate, with what to do: a larger buffer (Options >
@@ -676,6 +681,15 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     stems are prepared in the background (*Loading...*): the original plays first, then the stems. A folder or a
     virtual folder on the network is listed in the background too; a missing piece is skipped when its turn comes.
   - **11.3.0 — no click at PLAY / STOP**: the player starts from silence and STOP goes down to zero cleanly.
+  - **11.3.1 — network folders really in the background**: on Windows, mapped network drives (M:, S:...) are recognised
+    as network drives, so pieces, stems and lists on them are prepared in the background (the window never waits).
+  - **11.3.1 — the next piece prepared**: a few seconds after a piece starts, the next one of the playlist is read into
+    memory with its stems and lyrics; NEXT and the end of a piece install it at once.
+  - **11.3.1 — PADS in memory**: the files of the page of pads shown are read into memory beforehand (at most 1.5 GB, the
+    least recently used dropped); a pad starts at once.
+  - **11.3.1 — folders**: a folder's list is kept while the folder does not change (one question to the disk instead of
+    the whole list); FOLDERS ticks the folder or the virtual folder chosen; STEMS READY shows a piece just separated at
+    once.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

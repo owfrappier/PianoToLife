@@ -2,6 +2,26 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.1
+
+**A fluid media player on network folders, MIDI files played as in a DAW, and LISTEN on a range of velocities.**
+
+- **Network folders** (a PC playing a Mac's shared folders, or the other way round): pieces, stems and lists on a
+  network drive are now read in the background, so the window never freezes. On Windows, mapped network drives (M:,
+  S:...) were not recognised as network drives before.
+- **The next piece prepared while one plays**, with its stems and lyrics: NEXT and the end of a piece go on at once.
+- **PADS in memory**: the files of the page shown are read beforehand, so a pad starts at once, even from a network
+  folder.
+- **Folders open at once**: a folder's list is kept while it does not change, and changing virtual folder is immediate.
+  FOLDERS ticks the folder or the virtual folder you chose.
+- **STEMS READY** shows a piece as soon as it is separated.
+- **MIDI files played on one channel**, as a DAW track does: in a file whose sustain pedal is on another channel than
+  its notes, the pedal now holds them (an option in LOAD MIDI's menu, on by default).
+- **LISTEN** (SAMPLER EDIT) **from one velocity to another**: right-click LISTEN for a two-handle slider, with ALL, THIS
+  LAYER and ITS BOUNDARY (the transition between the layer selected and the next one).
+- The player's line names the real stems folder; a new piece starts exactly as it is (no fade-in); the loading bar no
+  longer stays shown after EXPAND.
+
 ## 11.3.0
 
 **FIX KEYS for pianos recorded out of tune, your hosted piano's tuning exported key by key, stems shared between two computers, and a cleaner media player.**

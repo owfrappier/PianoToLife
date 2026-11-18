@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.3.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.3.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -180,6 +180,12 @@ HARD TIMBRE, HAMMER and XCOLOR have their own row in SAMPLER EDIT (the third one
 4 or 8 (menu beside it), as you will hear it — its layers, their boundaries and the colours. Click again to stop.
 Nothing is measured or changed. The ideal way to hear the transitions between layers after AUTO DYN, AUTO COLOR or
 XCOLOR.
+
+**LISTEN on a range** (11.3.1): right-click LISTEN for a bubble with a two-handle slider (*LISTEN from v.. to v..*) and
+three choices: **ALL 1-127**, **THIS LAYER** (the velocities of the layer selected) and **ITS BOUNDARY** (12 velocities
+under and over the top of the layer selected, or its bottom for the loudest layer: the transition heard). LISTEN then
+shows the range (e.g. *LISTEN 40-90*) and plays it with the step beside it; the last velocity of the range is always
+played.
 
 ---
 

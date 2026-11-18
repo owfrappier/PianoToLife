@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.3.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.3.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -190,6 +190,12 @@ la 10.6.3, SOFT, MEDIUM et HARD TIMBRE, HAMMER et XCOLOR ont leur propre rangée
 sur 1, 2, 4 ou 8 (menu à côté), telle que vous l'entendrez — ses couches, leurs frontières et les couleurs. Recliquez
 pour arrêter. Rien n'est mesuré ni modifié. Idéal pour écouter les passages entre couches après AUTO DYN, AUTO COLOR
 ou XCOLOR.
+
+**LISTEN sur une plage** (11.3.1) : clic droit sur LISTEN pour une bulle avec un curseur à deux poignées (*LISTEN from
+v.. to v..*) et trois choix : **ALL 1-127**, **THIS LAYER** (les vélocités de la couche sélectionnée) et **ITS
+BOUNDARY** (12 vélocités sous et au-dessus du haut de la couche sélectionnée, ou de son bas pour la couche la plus
+forte : la transition entendue). LISTEN affiche alors la plage (par ex. *LISTEN 40-90*) et la joue avec le pas choisi à
+côté ; la dernière vélocité de la plage est toujours jouée.
 
 ---
 

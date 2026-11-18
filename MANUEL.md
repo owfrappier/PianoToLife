@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -258,6 +258,12 @@ la plus grande correction. PianoToLife ne modifie pas le piano hébergé lui-mê
 fichiers MIDI sont ignorés par défaut : prévus pour un module de sons, ils désaccordaient le piano ou faisaient glisser
 ses notes (vieux fichiers General MIDI). Menu de MIDI LOAD : *Ignore pitch bend, tuning (RPN / NRPN) and SysEx in MIDI
 files*. Le clavier que vous jouez n'est jamais filtré.
+
+**Fichiers MIDI sur un seul canal** (11.3.1) : tous les événements d'un fichier MIDI sont joués sur le canal 1, comme
+le fait une piste MIDI d'un DAW. Certains fichiers mettent la pédale de sustain sur un autre canal que les notes (par
+ex. les mains sur les canaux 8 et 9, la pédale sur le 3) : selon la règle MIDI, cette pédale ne tient aucune note, et le
+piano sonnait sec pendant que la résonance sonnait. Menu de MIDI LOAD : *Play every channel of MIDI files on one channel*
+(activé par défaut). Le clavier que vous jouez n'est jamais modifié.
 
 **« PianoToLife cannot keep up »** (11.3.0) : quand du son est perdu pendant plusieurs secondes (blocs audio pas
 calculés à temps), PianoToLife le dit, à part d'un vrai changement de fréquence de la carte son, avec quoi faire : un
@@ -734,6 +740,16 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     stems. Un dossier ou un dossier virtuel sur le réseau est aussi lu en arrière-plan ; un morceau manquant est sauté
     quand vient son tour.
   - **11.3.0 — plus de clic au PLAY / STOP** : le lecteur repart du silence et STOP descend proprement à zéro.
+  - **11.3.1 — dossiers réseau vraiment en arrière-plan** : sous Windows, les lecteurs réseau (M:, S:...) sont reconnus
+    comme tels ; les morceaux, stems et listes qui s'y trouvent sont préparés en arrière-plan (la fenêtre n'attend
+    jamais).
+  - **11.3.1 — le morceau suivant préparé** : quelques secondes après le début d'un morceau, le suivant de la liste est
+    lu en mémoire avec ses stems et ses paroles ; NEXT et la fin d'un morceau l'installent tout de suite.
+  - **11.3.1 — les PADS en mémoire** : les fichiers de la page de pads affichée sont lus en mémoire à l'avance (1,5 Go
+    au plus, les moins récemment utilisés retirés) ; un pad part tout de suite.
+  - **11.3.1 — les dossiers** : la liste d'un dossier est gardée tant qu'il ne change pas (une seule question au disque au
+    lieu de toute la liste) ; FOLDERS coche le dossier ou le dossier virtuel choisi ; STEMS READY montre tout de suite un
+    morceau qui vient d'être séparé.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
