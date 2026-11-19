@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.3.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.3.4 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -152,7 +152,7 @@ delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MI
 | **AUTO KEY** | Each sample goes to the key of its sound (checked against its file name). Off: key from the file name, else where you drop it | On |
 | **AUTO LAYERS** | Velocity ranges and gains placed on the reference. Off: the layers of a key share the velocities equally (or take the ranges written in the names) | On |
 | **Samples** (auto / Normalised / Not normalised, 10.3.8; next to AUTO LAYERS since 10.4.6) | How AUTO LAYERS and AUTO DYN order and place the layers of a key. **Not normalised** (the library keeps its dynamics): by their levels, on the reference's loudness curve. **Normalised** (every layer raised to the same level): by their brightness. **Auto**: by the levels when the layers of the key are more than 12 dB apart. AUTO DYN in auto also treats A4 as normalised when its layers peak at the same level. A change places every key again (keys set by hand kept). **Since 10.9.1, AUTO DYN tells you which one suits** (see AUTO DYN1 / AUTO DYN2) | Auto |
-| **AUTO NAME** | The dynamics, velocities or layer numbers in the file names set the order of the layers (safer when two layers sound alike) | On |
+| **AUTO NAME** | The dynamics, velocities or layer numbers in the file names set the order of the layers (safer when two layers sound alike). Since 11.3.4 also a dynamic with a layer number attached (*1pp*, *2mp*, *pp1*) | On |
 | **SOFT TIMBRE** + COLOR | A note played below its layer's own velocity gets the darker timbre of a softer strike (the 2–4 kHz and 4–8 kHz colour of the reference piano, measured on every key and velocity), not only a lower level: pp under the softest layer and smooth boundaries. COLOR (−100 to +100 %) sets how much | On, 0 % |
 | **HARD TIMBRE** + COLOR | A note played above its layer's velocity gets brighter, like a harder strike on the reference piano (measured on every key, up to +18 dB): with few layers, the velocities in between sound like real strikes. For a top layer that is not really fff, or a set with few layers | Off, 0 % |
 | **MEDIUM TIMBRE** + COLOR (10.6.3) | The colour of the middle velocities (about v48–84, mp to mf), between SOFT and HARD, as the reference piano's voicing (measured). Higher = brighter, lower = darker; 0 % = as measured. The level does not change | On, 0 % |
@@ -206,6 +206,8 @@ a selection before working on every key.
    127 velocities, place its layers where their loudness belongs on the reference curve and level them. They also
    measure A4's tuning (sent to SR A4 Tuning: that value plays the set as recorded; RESET in the TEMPERAMENT window
    goes back to it). Then:
+   - **Your order is kept** (11.3.4): on a key whose layers were all set by hand, without overlapping velocity ranges,
+     AUTO DYN1 and AUTO DYN2 keep that order (the values found follow it).
    - **AUTO DYN1** (global, as before 10.5.6): every key with **as many layers as A4** gets A4's velocity ranges and is
      levelled; keys with another number of layers are left as they are (AUTO DYN2 places them). For a library
      recorded evenly key to key.
@@ -269,6 +271,11 @@ room (80 to 600 ms, measured on each sample), then comes in gradually. **100 % i
 
 **DENOISE** is light and careful: the hiss is measured on each sample and lowered by 12 dB at most, smoothed in time so
 that it never warbles.
+
+**NOISY LIBRARY** (11.3.4, right of DENOISE): for libraries recorded with a lot of hiss. DRY shortens the room, and on a
+noisy sample the hiss left in the tail can then be heard more, around the note. NOISY LIBRARY measures that hiss in the
+tail of each note and lowers it only in the bands of the note's partials (up to 24 dB); the attack and the note itself
+are untouched. Off by default; it is used by the next MAKE (and by > PROCESSED).
 
 **DRY / DENOISE / BODY is optional** (10.9.5): an extra processing of a set **already saved**. Finish your mapping and
 **SAVE SAMPLES** first — MAKE works on the samples inside the set's .wptl (if they are not there yet, a message says so).

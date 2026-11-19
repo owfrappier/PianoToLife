@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1133" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1134" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,7 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1133" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel" width="900">
+  <img src="Screenshot-E.png?v=1134" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY LIBRARY" width="900">
+</p>
+
+<p align="center">
+  <img src="Screenshot-J.png?v=1134" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -63,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1133" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LIVE STEMS, FAST, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1134" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LIVE STEMS, FAST, LYRICS" width="640">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -71,10 +75,10 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **LIVE STEMS** (11.3.3): a click separates the piece slice by slice; a countdown, then the piece starts again from its
   beginning without its voice or its piano while the rest is separated. **Another computer can separate for the one you
   play on**: on both, right-click FAST / QUALITY > *Choose the stems folder...* and choose the same folder shared on the
-  network.
+  network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1133" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1134" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -90,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1133" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1134" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -103,7 +107,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1133" alt="SCREEN with the lyrics, LYRICS EDIT, CHORDS, MAGIC VIEW with its staff and the MEDIA player (LYRICS C.)" width="900">
+  <img src="Screenshot-D.png?v=1134" alt="SCREEN with the lyrics, LYRICS EDIT, CHORDS, MAGIC VIEW with its staff and the MEDIA player (LYRICS C.)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -114,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1133" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right; ANALYSE, CLOSE, SAVE AND CLOSE, SAVE" width="900">
+  <img src="Screenshot-C.png?v=1134" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right; ANALYSE, CLOSE, SAVE AND CLOSE, SAVE" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -126,7 +130,26 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.3
+## What's new in 11.3.4
+
+**Another computer separates when you ask; drop your pieces on the media player; NOISY LIBRARY.**
+
+- **LOCAL / MASTER / FOLLOW** (right-click FAST / QUALITY, both computers on the same shared stems folder): the computer
+  you play on is **MASTER**, the other one **FOLLOW**. NO VOICE / NO PIANO or LYRICS on a piece not ready yet is asked to
+  the other computer, which shows the same piece, separates it at the quality asked, then makes its lyrics if asked.
+  *Separating on <computer>...* is shown meanwhile, and the stems and lyrics appear on yours as soon as they are ready,
+  without reloading the piece. If the other computer cannot find the piece (a folder not shared), it says so and the
+  next click works on yours. LOCAL at each start.
+- Stems and lyrics made by another computer are seen at once, without PREV / NEXT.
+- **Drag and drop** (media player): audio or video files, a folder or an .m3u dropped on its window load as LOAD; audio
+  or video files dropped on the main window open the media player.
+- **NOISY LIBRARY** (SAMPLER EDIT > DRY / DENOISE / BODY): for libraries with a lot of hiss, removes the hiss DRY can
+  bring out in the tail of the notes. Off by default.
+- A .ptlset dropped on the window is named at once in the PRESET box.
+- AUTO NAME reads layer names with a number attached (*1pp*, *2mp*, *pp1*); AUTO DYN1 / DYN2 keep the order of keys whose
+  layers were all set by hand.
+
+### Also in 11.3.3
 
 **LIVE STEMS: NO VOICE / NO PIANO within seconds, while the piece is still being separated.**
 
@@ -200,11 +223,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1133" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1134" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1133" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1134" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6
@@ -274,7 +297,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   model, on your computer). The model (488 MB) is downloaded the first time. LANG: automatic, or the language sung.
   The `.lrc` goes beside the audio file (asked before replacing one), and SCREEN shows it. The LYRICS button lights up
   when the piece has its lyrics.
-- **LYRICS EDIT**: the real lyrics from LRCLIB, aligned on the voice with the engine of the author's AI-LYRICS-FIX
+- **LYRICS EDIT**: the real lyrics from LRCLIB, aligned on the voice with PianoToLife's own engine
   (LRC SYNC when LRCLIB has its own times, SMART for a plain text). Choose another result, change the text, TAP, OFFSET,
   SAVE.
 - **TRANSPOSE**: -6 to +6 semitones, its tempo kept, live, after the A4 tuning. A MIDI take stays in time; the stems,

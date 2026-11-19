@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -609,7 +609,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     placed between them, blue = LRCLIB's time only. **LRC SYNC** uses LRCLIB's times checked on the voice; **SMART**
     aligns a plain text (pasted or typed). Click a line on the right: play from it; **TAP** (key T): the selected line
     starts now; **OFFSET**: all the lines earlier / later; **SAVE**: the .lrc beside the audio, shown in SCREEN at once.
-    The alignment engine is the one of the author's AI-LYRICS-FIX FOR VIRTUAL DJ. The lyrics are for your personal use
+    The alignment engine is PianoToLife's own. The lyrics are for your personal use
     only: PianoToLife never distributes lyrics.
   - **SCREEN: LYRICS ON / OFF** (11.2.0) in its bar: the picture alone (a video that shows its own words).
   - **FFmpeg** (11.2.0, optional): when macOS or Windows cannot read a file (MKV, WebM, Opus, APE, WavPack, DSD, AC3,
@@ -712,6 +712,24 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     PROGRESS* and nothing can be changed (PLAY and CLOSE only); at its end the window opens again with the new lyrics. It
     follows the piece playing: another piece, it opens again for that one (lyrics are never saved into another piece's
     file). The LYRICS button shows **LYRICS C.** when PianoToLife's lyrics were corrected.
+  - **11.3.4 — LOCAL / MASTER / FOLLOW**: with two computers on the same shared stems folder (see above), right-click
+    FAST / QUALITY on each: **MASTER** on the one you play on, **FOLLOW** on the other (**LOCAL**, the default at each
+    start: each computer works for itself). On the MASTER, NO VOICE / NO PIANO on a piece without stems, or LYRICS on a
+    piece without lyrics, is asked to the FOLLOW computer: *Separating on <computer>...* or *LYRICS asked to
+    <computer>...* is shown, and the piece keeps playing as recorded. The FOLLOW computer finds the same piece (same
+    path, or the same file under one of its drives: same name, size and content), shows it stopped in its playlist,
+    separates it at the quality asked (stems already there at any quality are enough), then makes its lyrics if asked
+    and if it has none. The stems and lyrics appear on the MASTER as soon as they are ready, without reloading the
+    piece. A new request goes first. If the FOLLOW computer cannot find the piece (its folder not shared, another
+    drive), the MASTER says *<computer> cannot find this piece* and the next click works on the MASTER; if the FOLLOW
+    computer stops answering for more than 2 minutes, the MASTER works for itself.
+  - **11.3.4 — stems and lyrics made elsewhere, seen at once**: while the piece shown has no stems or no lyrics,
+    PianoToLife checks every 5 s whether another computer has made them in the stems folder; they are used at once,
+    without PREV / NEXT.
+  - **11.3.4 — drag and drop**: drop audio or video files, a folder or an .m3u on the media player's window: as LOAD (the
+    playlist is replaced; several files in the order of their names; a folder joins FOLDERS). Audio or video files or a
+    folder dropped on the main window open the media player and load there (an .m3u dropped on the main window stays a
+    MIDI playlist).
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

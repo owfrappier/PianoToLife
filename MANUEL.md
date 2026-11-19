@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -659,7 +659,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     temps de LRCLIB vérifiés sur la voix ; **SMART** aligne un texte simple (collé ou tapé). Clic sur une ligne à
     droite : lecture à partir d'elle ; **TAP** (touche T) : la ligne sélectionnée commence maintenant ; **OFFSET** :
     toutes les lignes plus tôt / plus tard ; **SAVE** : le .lrc à côté de l'audio, montré aussitôt dans SCREEN. Le
-    moteur d'alignement est celui d'AI-LYRICS-FIX FOR VIRTUAL DJ, du même auteur. Les paroles sont pour votre usage
+    moteur d'alignement est celui de PianoToLife. Les paroles sont pour votre usage
     personnel : PianoToLife ne distribue jamais de paroles.
   - **SCREEN : LYRICS ON / OFF** (11.2.0) dans sa barre : l'image seule (une vidéo qui montre déjà ses paroles).
   - **FFmpeg** (11.2.0, facultatif) : quand macOS ou Windows ne lisent pas un fichier (MKV, WebM, Opus, APE, WavPack,
@@ -775,6 +775,25 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     paroles. Elle suit le morceau qui joue : un autre morceau, elle se rouvre pour lui (des paroles ne sont jamais
     enregistrées dans le fichier d'un autre morceau). Le bouton LYRICS affiche **LYRICS C.** quand les paroles de
     PianoToLife ont été corrigées.
+  - **11.3.4 — LOCAL / MASTER / FOLLOW** : avec deux ordinateurs sur le même dossier de stems partagé (voir plus haut),
+    clic droit sur FAST / QUALITY sur chacun : **MASTER** sur celui où vous jouez, **FOLLOW** sur l'autre (**LOCAL**, par
+    défaut à chaque démarrage : chaque ordinateur travaille pour lui-même). Sur le MASTER, NO VOICE / NO PIANO sur un
+    morceau sans stems, ou LYRICS sur un morceau sans paroles, est demandé à l'ordinateur FOLLOW : *Separating on
+    <ordinateur>...* ou *LYRICS asked to <ordinateur>...* s'affiche, et le morceau continue de jouer tel qu'enregistré.
+    L'ordinateur FOLLOW retrouve le même morceau (même chemin, ou le même fichier sous un de ses disques : même nom,
+    même taille, même contenu), l'affiche à l'arrêt dans sa playlist, le sépare à la qualité demandée (des stems déjà
+    là, de n'importe quelle qualité, suffisent), puis fait ses paroles si c'est demandé et qu'il n'en a pas. Les stems et
+    les paroles apparaissent sur le MASTER dès qu'ils sont prêts, sans recharger le morceau. Une nouvelle demande passe
+    devant. Si l'ordinateur FOLLOW ne trouve pas le morceau (son dossier pas partagé, un autre disque), le MASTER affiche
+    *<ordinateur> cannot find this piece* et le clic suivant travaille sur le MASTER ; si l'ordinateur FOLLOW ne répond
+    plus depuis plus de 2 minutes, le MASTER travaille pour lui-même.
+  - **11.3.4 — stems et paroles faits ailleurs, vus tout de suite** : tant que le morceau affiché n'a pas ses stems ou
+    ses paroles, PianoToLife regarde toutes les 5 s si un autre ordinateur les a faits dans le dossier de stems ; ils
+    sont utilisés tout de suite, sans PREV / NEXT.
+  - **11.3.4 — glisser-déposer** : déposez des fichiers audio ou vidéo, un dossier ou un .m3u sur la fenêtre du lecteur
+    média : comme LOAD (la playlist est remplacée ; plusieurs fichiers dans l'ordre de leurs noms ; un dossier rejoint
+    FOLDERS). Des fichiers audio ou vidéo ou un dossier déposés sur la fenêtre principale ouvrent le lecteur média et
+    s'y chargent (un .m3u déposé sur la fenêtre principale reste une playlist MIDI).
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

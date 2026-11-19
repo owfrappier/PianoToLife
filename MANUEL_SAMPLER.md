@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.3.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.3.4 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -162,7 +162,7 @@ des micros.
 | **AUTO KEY** | Chaque échantillon va sur la touche de son son (vérifiée avec le nom de fichier). Désactivé : touche du nom de fichier, sinon là où on le dépose | Activé |
 | **AUTO LAYERS** | Plages de vélocité et gains placés sur la référence. Désactivé : les couches d'une touche se partagent les vélocités à parts égales (ou prennent les plages écrites dans les noms) | Activé |
 | **Samples** (auto / Normalised / Not normalised, 10.3.8 ; à côté d'AUTO LAYERS depuis la 10.4.6) | Comment AUTO LAYERS et AUTO DYN rangent et placent les couches d'une touche. **Not normalised** (la banque garde sa dynamique) : selon leurs niveaux, sur la courbe d'intensité de la référence. **Normalised** (chaque couche remontée au même niveau) : selon leur brillance. **Auto** : selon les niveaux quand les couches de la touche ont plus de 12 dB d'écart. En auto, AUTO DYN traite aussi le A4 comme normalisé quand ses couches culminent au même niveau. Un changement replace toutes les touches (les touches réglées à la main sont gardées). **Depuis la 10.9.1, AUTO DYN vous dit lequel convient** (voir AUTO DYN1 / AUTO DYN2) | Auto |
-| **AUTO NAME** | Les nuances, vélocités ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent) | Activé |
+| **AUTO NAME** | Les nuances, vélocités ou numéros de couche des noms de fichier fixent l'ordre des couches (plus sûr quand deux couches se ressemblent). Depuis la 11.3.4 aussi une nuance collée à un numéro de couche (*1pp*, *2mp*, *pp1*) | Activé |
 | **SOFT TIMBRE** + COLOR | Une note jouée sous la vélocité de sa couche prend le timbre plus sombre d'une frappe plus douce (la couleur 2–4 kHz et 4–8 kHz du piano de référence, mesurée sur chaque touche et chaque vélocité), pas seulement un niveau plus bas : des pp sous la couche la plus douce et des frontières lisses. COLOR (−100 à +100 %) dose l'effet | Activé, 0 % |
 | **HARD TIMBRE** + COLOR | Une note jouée au-dessus de la vélocité de sa couche devient plus brillante, comme une frappe plus dure sur le piano de référence (mesuré sur chaque touche, jusqu'à +18 dB) : avec peu de couches, les vélocités intermédiaires sonnent comme de vraies frappes. Pour une couche du haut qui n'est pas vraiment fff, ou un set avec peu de couches | Désactivé, 0 % |
 | **MEDIUM TIMBRE** + COLOR (10.6.3) | La couleur des vélocités du milieu (environ v48–84, mp à mf), entre SOFT et HARD, comme le voicing du piano de référence (mesuré). Plus haut = plus brillant, plus bas = plus sombre ; 0 % = tel que mesuré. Le niveau ne change pas | Activé, 0 % |
@@ -217,6 +217,8 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : cette valeur joue le set tel qu'il a été
    enregistré ; RESET dans la fenêtre TEMPERAMENT y revient).
    Ensuite :
+   - **Votre ordre est gardé** (11.3.4) : sur une touche dont toutes les couches ont été réglées à la main, sans
+     chevauchement des vélocités, AUTO DYN1 et AUTO DYN2 gardent cet ordre (les valeurs trouvées le suivent).
    - **AUTO DYN1** (global, comme avant la 10.5.6) : chaque touche qui a **autant de couches que le A4** reçoit les
      plages de vélocité du A4 et est mise à niveau ; les touches qui ont un autre nombre de couches restent telles
      quelles (AUTO DYN2 les place). Pour une banque enregistrée de façon régulière d'une touche à l'autre.
@@ -290,6 +292,12 @@ retombés juste au-dessus de la salle (80 à 600 ms, mesuré sur chaque échanti
 
 **DENOISE** est léger et prudent : le souffle est mesuré sur chaque échantillon et baissé de 12 dB au plus, lissé dans
 le temps pour ne jamais « gazouiller ».
+
+**NOISY LIBRARY** (11.3.4, à droite de DENOISE) : pour les banques enregistrées avec beaucoup de souffle. DRY raccourcit
+la salle, et sur un échantillon bruité le souffle resté dans la queue peut alors s'entendre davantage, autour de la note.
+NOISY LIBRARY mesure ce souffle dans la queue de chaque note et le baisse seulement dans les bandes des partiels de la
+note (jusqu'à 24 dB) ; l'attaque et la note elle-même ne sont pas touchées. Désactivé par défaut ; utilisé par le
+prochain MAKE (et par > PROCESSED).
 
 **DRY / DENOISE / BODY est facultatif** (10.9.5) : un traitement complémentaire d'un set **déjà enregistré**. Terminez
 votre mapping et faites d'abord **SAVE SAMPLES** — MAKE travaille sur les échantillons qui sont dans le .wptl du set (s'ils

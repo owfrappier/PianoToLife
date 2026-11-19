@@ -2,6 +2,25 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.4
+
+**Another computer separates when you ask; drop your pieces on the media player; NOISY LIBRARY.**
+
+- **LOCAL / MASTER / FOLLOW** (right-click FAST / QUALITY, both computers on the same shared stems folder): the computer
+  you play on is **MASTER**, the other one **FOLLOW**. NO VOICE / NO PIANO or LYRICS on a piece not ready yet is asked to
+  the other computer, which shows the same piece, separates it at the quality asked, then makes its lyrics if asked.
+  *Separating on <computer>...* is shown meanwhile, and the stems and lyrics appear on yours as soon as they are ready,
+  without reloading the piece. If the other computer cannot find the piece (a folder not shared), it says so and the
+  next click works on yours. LOCAL at each start.
+- Stems and lyrics made by another computer are seen at once, without PREV / NEXT.
+- **Drag and drop** (media player): audio or video files, a folder or an .m3u dropped on its window load as LOAD; audio
+  or video files dropped on the main window open the media player.
+- **NOISY LIBRARY** (SAMPLER EDIT > DRY / DENOISE / BODY): for libraries with a lot of hiss, removes the hiss DRY can
+  bring out in the tail of the notes. Off by default.
+- A .ptlset dropped on the window is named at once in the PRESET box.
+- AUTO NAME reads layer names with a number attached (*1pp*, *2mp*, *pp1*); AUTO DYN1 / DYN2 keep the order of keys whose
+  layers were all set by hand.
+
 ## 11.3.3
 
 **LIVE STEMS: NO VOICE / NO PIANO within seconds, while the piece is still being separated.**
@@ -142,7 +161,7 @@ Every version, the newest first. The [README](README.md) shows what PianoToLife 
   model, on your computer). The model (488 MB) is downloaded the first time. LANG: automatic, or the language sung.
   The `.lrc` goes beside the audio file (asked before replacing one), and SCREEN shows it. The LYRICS button lights up
   when the piece has its lyrics.
-- **LYRICS EDIT**: the real lyrics from LRCLIB, aligned on the voice with the engine of the author's AI-LYRICS-FIX
+- **LYRICS EDIT**: the real lyrics from LRCLIB, aligned on the voice with PianoToLife's own engine
   (LRC SYNC when LRCLIB has its own times, SMART for a plain text). Choose another result, change the text, TAP, OFFSET,
   SAVE.
 - **TRANSPOSE**: -6 to +6 semitones, its tempo kept, live, after the A4 tuning. A MIDI take stays in time; the stems,
