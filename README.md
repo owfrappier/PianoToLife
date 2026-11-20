@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1134" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1135" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1134" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY LIBRARY" width="900">
+  <img src="Screenshot-E.png?v=1135" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1134" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1135" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1134" alt="The MEDIA player: PADS, FOLDERS, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LIVE STEMS, FAST, LYRICS" width="640">
+  <img src="Screenshot-B.png?v=1135" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1134" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1135" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1134" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1135" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -107,7 +107,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1134" alt="SCREEN with the lyrics, LYRICS EDIT, CHORDS, MAGIC VIEW with its staff and the MEDIA player (LYRICS C.)" width="900">
+  <img src="Screenshot-D.png?v=1135" alt="SCREEN with the lyrics, LYRICS EDIT, CHORDS, MAGIC VIEW with its staff and the MEDIA player (LYRICS C.)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -118,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1134" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right; ANALYSE, CLOSE, SAVE AND CLOSE, SAVE" width="900">
+  <img src="Screenshot-C.png?v=1135" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right; ANALYSE, CLOSE, SAVE AND CLOSE, SAVE" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,27 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.4
+## What's new in 11.3.5
+
+**A media player made for the stage: FOLDERS and the pieces always in sight, a countdown, SPEED, karaoke like a film's credits.**
+
+- **FOLDERS and the pieces beside the player**: at its left, your folders and virtual folders, and the pieces of the
+  one chosen with their SEARCH, the same height as the player; a tab folds them. A **blue dot** beside the green one:
+  the piece has its lyrics.
+- **AUTO** (beside LOOP, off by default): off, a piece stays at its start when it ends - choose the next one yourself.
+- **Countdown** before a piece played from its beginning (5 s; right-click PLAY: off, 5, 10, 20, 30 s), on PLAY and in
+  big digits in SCREEN.
+- **SPEED** (50 to 150 %): the tempo without changing the pitch, remembered for each piece. **TUNING** stays a
+  varispeed (the cleanest); right-click on the A4: *Keep the original tempo*.
+- **MEDIA pads** start at once and give the playlist back when they end; each pad can start at a chosen time.
+- **SCREEN**: the album's **COVER** behind the lyrics, **SPLIT** (long lines in two, much bigger text),
+  **SCROLL: CREDITS** (the lyrics roll on like a film's credits, up or down).
+- **LYRICS EDIT** searches LRCLIB with the file's tags first (artist, title, album); a version edited otherwise (a
+  shorter or longer instrumental) is now followed to the end.
+- **NOISY 0-100 %** (SAMPLER EDIT > DRY): 50 % = 11.3.4's NOISY LIBRARY; above, stronger, with a warning - it can take
+  harmonics and resonance with the hiss.
+
+### Also in 11.3.4
 
 **Another computer separates when you ask; drop your pieces on the media player; NOISY LIBRARY.**
 
@@ -223,11 +243,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1134" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1135" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1134" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1135" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6

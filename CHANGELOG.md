@@ -2,6 +2,26 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.5
+
+**A media player made for the stage: FOLDERS and the pieces always in sight, a countdown, SPEED, karaoke like a film's credits.**
+
+- **FOLDERS and the pieces beside the player**: at its left, your folders and virtual folders, and the pieces of the
+  one chosen with their SEARCH, the same height as the player; a tab folds them. A **blue dot** beside the green one:
+  the piece has its lyrics.
+- **AUTO** (beside LOOP, off by default): off, a piece stays at its start when it ends - choose the next one yourself.
+- **Countdown** before a piece played from its beginning (5 s; right-click PLAY: off, 5, 10, 20, 30 s), on PLAY and in
+  big digits in SCREEN.
+- **SPEED** (50 to 150 %): the tempo without changing the pitch, remembered for each piece. **TUNING** stays a
+  varispeed (the cleanest); right-click on the A4: *Keep the original tempo*.
+- **MEDIA pads** start at once and give the playlist back when they end; each pad can start at a chosen time.
+- **SCREEN**: the album's **COVER** behind the lyrics, **SPLIT** (long lines in two, much bigger text),
+  **SCROLL: CREDITS** (the lyrics roll on like a film's credits, up or down).
+- **LYRICS EDIT** searches LRCLIB with the file's tags first (artist, title, album); a version edited otherwise (a
+  shorter or longer instrumental) is now followed to the end.
+- **NOISY 0-100 %** (SAMPLER EDIT > DRY): 50 % = 11.3.4's NOISY LIBRARY; above, stronger, with a warning - it can take
+  harmonics and resonance with the hiss.
+
 ## 11.3.4
 
 **Another computer separates when you ask; drop your pieces on the media player; NOISY LIBRARY.**

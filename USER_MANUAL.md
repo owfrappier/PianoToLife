@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -730,6 +730,33 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     playlist is replaced; several files in the order of their names; a folder joins FOLDERS). Audio or video files or a
     folder dropped on the main window open the media player and load there (an .m3u dropped on the main window stays a
     MIDI playlist).
+  - **11.3.5 — FOLDERS and the pieces beside the player**: at the player's left, the same height, a column with your
+    folders and then the virtual folders (with their number of pieces; the one playing lit) - a click loads it as the
+    FOLDERS menu does - and, at its left, the pieces of the playlist with their SEARCH (the piece playing lit, the green
+    dot of the stems and a **blue dot** when the piece has its lyrics); a click plays it. The tab ◀ / ▶ folds or opens
+    them (the window grows to the left, the player stays where it is); remembered.
+  - **11.3.5 — AUTO** (beside LOOP, off by default): off, at the end of a piece it stays there, back at its start (LOOP:
+    it again) - in live you choose the next piece yourself; on, the next one starts by itself (LOOP: the playlist again).
+  - **11.3.5 — countdown**: a piece played from its beginning starts after a countdown (5 s by default; right-click on
+    PLAY: off, 5, 10, 20 or 30 s), shown on PLAY and in big digits in SCREEN; PLAY again starts it at once; never for a
+    pad.
+  - **11.3.5 — SPEED** (beside the volume): the piece slower or faster, 50 to 150 %, its pitch kept (transparent from
+    about 80 to 115 %); remembered for each piece; double-click 100 %. The lyrics, CHORDS and MAGIC VIEW follow.
+  - **11.3.5 — TUNING and the tempo**: Play at A4 stays a varispeed by default - the cleanest, as an old recording's
+    pitch comes from its tape's speed (20 cents = 1.2 % of tempo). Right-click on the A4: **Keep the original tempo**
+    (the pitch alone corrected). With TRANSPOSE or SPEED at work, the tuning goes into the same process: the tempo is
+    exact.
+  - **11.3.5 — MEDIA pads**: a MEDIA pad starts at once and takes over; at its end, at STOP, at a 2nd click (TOGGLE) or
+    when released (HOLD), the playlist's piece comes back, where it was. Right-click on a pad: **Start at...** (m:ss or
+    seconds), *Start where the media player is now*, *Start at its beginning* (shown on the pad: ▶ 1:23.5); for MEDIA
+    and PAD.
+  - **11.3.5 — SCREEN**: **COVER** - the album's picture (inside the file, or cover.jpg / folder.jpg beside it) behind
+    the lyrics of an audio piece; **SPLIT** - each long line in two halves, one under the other, so that Size (now up to
+    300 %) can make them much bigger; **SCROLL** - STEP (line by line) or **CREDITS** ▲ / ▼: the lyrics roll on without
+    stopping, like a film's credits, each line in the middle when it is sung.
+  - **11.3.5 — LYRICS EDIT**: the artist, title and album are read from the file's tags (MP3, FLAC, M4A, MP4...); the
+    file's name only without them. When LRCLIB has a version edited otherwise (an instrumental shorter or longer), its
+    lines are followed to the end.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

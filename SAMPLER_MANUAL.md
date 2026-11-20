@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.3.4 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.3.5 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -276,6 +276,11 @@ that it never warbles.
 noisy sample the hiss left in the tail can then be heard more, around the note. NOISY LIBRARY measures that hiss in the
 tail of each note and lowers it only in the bands of the note's partials (up to 24 dB); the attack and the note itself
 are untouched. Off by default; it is used by the next MAKE (and by > PROCESSED).
+Since 11.3.5 it is a **NOISY 0-100 %** setting: **50 %** is the NOISY LIBRARY above. **Above 50 %** (in orange) it is
+stronger - the hiss lowered down to 40 dB, from earlier in the tail, and DENOISE deeper between the partials - but it
+can take harmonics and resonance with the hiss: the hiss that lies on a partial cannot be told from the note. Keep the
+lowest setting that sounds clean to you, comparing > ORIGINAL and > PROCESSED; a little noise left is better than a
+piano that loses its depth. The DRY version made keeps its NOISY %.
 
 **DRY / DENOISE / BODY is optional** (10.9.5): an extra processing of a set **already saved**. Finish your mapping and
 **SAVE SAMPLES** first — MAKE works on the samples inside the set's .wptl (if they are not there yet, a message says so).

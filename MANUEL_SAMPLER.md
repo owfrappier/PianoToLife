@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.3.4 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.3.5 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -298,6 +298,12 @@ la salle, et sur un échantillon bruité le souffle resté dans la queue peut al
 NOISY LIBRARY mesure ce souffle dans la queue de chaque note et le baisse seulement dans les bandes des partiels de la
 note (jusqu'à 24 dB) ; l'attaque et la note elle-même ne sont pas touchées. Désactivé par défaut ; utilisé par le
 prochain MAKE (et par > PROCESSED).
+Depuis la 11.3.5, c'est un réglage **NOISY 0-100 %** : **50 %** correspond au NOISY LIBRARY ci-dessus. **Au-dessus de
+50 %** (en orange), il est plus fort - le souffle baissé jusqu'à 40 dB, plus tôt dans la queue, et DENOISE plus
+profond entre les partiels - mais il peut emporter des harmoniques et de la résonance avec le souffle : le souffle qui
+tombe sur un partiel ne peut pas être distingué de la note. Gardez le réglage le plus bas qui vous paraît propre, en
+comparant > ORIGINAL et > PROCESSED ; un peu de bruit restant vaut mieux qu'un piano qui perd sa profondeur. La version
+DRY produite garde son pourcentage NOISY.
 
 **DRY / DENOISE / BODY est facultatif** (10.9.5) : un traitement complémentaire d'un set **déjà enregistré**. Terminez
 votre mapping et faites d'abord **SAVE SAMPLES** — MAKE travaille sur les échantillons qui sont dans le .wptl du set (s'ils

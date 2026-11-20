@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -794,6 +794,35 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     média : comme LOAD (la playlist est remplacée ; plusieurs fichiers dans l'ordre de leurs noms ; un dossier rejoint
     FOLDERS). Des fichiers audio ou vidéo ou un dossier déposés sur la fenêtre principale ouvrent le lecteur média et
     s'y chargent (un .m3u déposé sur la fenêtre principale reste une playlist MIDI).
+  - **11.3.5 — FOLDERS et les morceaux à côté du lecteur** : à gauche du lecteur, de la même hauteur, une colonne avec
+    vos dossiers puis les dossiers virtuels (avec leur nombre de morceaux ; celui qui joue allumé) - un clic le charge
+    comme le menu FOLDERS - et, à sa gauche, les morceaux de la playlist avec leur SEARCH (le morceau qui joue allumé, le
+    point vert des stems et un **point bleu** quand le morceau a ses paroles) ; un clic le joue. La languette ◀ / ▶ les
+    replie ou les ouvre (la fenêtre grandit vers la gauche, le lecteur ne bouge pas) ; retenu.
+  - **11.3.5 — AUTO** (à côté de LOOP, désactivé par défaut) : désactivé, à la fin d'un morceau il reste là, remis au
+    début (LOOP : il repart) - en live vous choisissez vous-même le suivant ; activé, le suivant démarre tout seul (LOOP :
+    la playlist repart).
+  - **11.3.5 — décompte** : un morceau joué depuis son début démarre après un décompte (5 s par défaut ; clic droit sur
+    PLAY : désactivé, 5, 10, 20 ou 30 s), affiché sur PLAY et en très gros dans SCREEN ; PLAY à nouveau le lance tout
+    de suite ; jamais pour un pad.
+  - **11.3.5 — SPEED** (à côté du volume) : le morceau plus lent ou plus rapide, de 50 à 150 %, sa hauteur gardée
+    (transparent d'environ 80 à 115 %) ; retenu pour chaque morceau ; double-clic 100 %. Les paroles, CHORDS et MAGIC
+    VIEW suivent.
+  - **11.3.5 — TUNING et le tempo** : Play at A4 reste un varispeed par défaut - le plus propre, car la hauteur d'un
+    vieil enregistrement vient de la vitesse de sa bande (20 cents = 1,2 % de tempo). Clic droit sur le A4 : **Keep the
+    original tempo** (la hauteur seule corrigée). Avec TRANSPOSE ou SPEED actifs, l'accordage passe dans le même
+    traitement : le tempo est exact.
+  - **11.3.5 — pads MEDIA** : un pad MEDIA démarre tout de suite et prend la main ; à sa fin, à STOP, au 2e clic
+    (TOGGLE) ou au relâché (HOLD), le morceau de la playlist revient, là où il était. Clic droit sur un pad : **Start
+    at...** (m:ss ou secondes), *Start where the media player is now*, *Start at its beginning* (affiché sur le pad :
+    ▶ 1:23.5) ; pour MEDIA et PAD.
+  - **11.3.5 — SCREEN** : **COVER** - la pochette de l'album (dans le fichier, ou cover.jpg / folder.jpg à côté)
+    derrière les paroles d'un morceau audio ; **SPLIT** - chaque ligne longue en deux moitiés, l'une sous l'autre, pour
+    que Size (maintenant jusqu'à 300 %) les agrandisse beaucoup ; **SCROLL** - STEP (ligne par ligne) ou **CREDITS**
+    ▲ / ▼ : les paroles défilent sans s'arrêter, comme un générique de film, chaque ligne au milieu quand elle est chantée.
+  - **11.3.5 — LYRICS EDIT** : l'artiste, le titre et l'album sont lus dans les tags du fichier (MP3, FLAC, M4A,
+    MP4...) ; le nom du fichier seulement sans eux. Quand LRCLIB a une version montée autrement (un instrumental plus
+    court ou plus long), ses lignes sont suivies jusqu'à la fin.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
