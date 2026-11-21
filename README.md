@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1135" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1136" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1135" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
+  <img src="Screenshot-E.png?v=1136" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1135" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1136" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1135" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1136" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1135" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1136" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1135" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1136" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -107,18 +107,18 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1135" alt="SCREEN with the lyrics, LYRICS EDIT, CHORDS, MAGIC VIEW with its staff and the MEDIA player (LYRICS C.)" width="900">
+  <img src="Screenshot-D.png?v=1136" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
 - **MAGIC VIEW**: the notes of the separated piano (or voice, or other instruments) falling onto a keyboard, with a
   staff.
-- **SCREEN**: a window for a second screen — the lyrics in time with the piece, over its video if it has one.
+- **VIDEO** (SCREEN before 11.3.6): a window for a second screen — the lyrics in time with the piece, over its video if it has one.
 
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1135" alt="LYRICS EDIT: the lyrics proposed by LRCLIB on the left, aligned on the voice on the right; ANALYSE, CLOSE, SAVE AND CLOSE, SAVE" width="900">
+  <img src="Screenshot-C.png?v=1136" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS, ANALYSE DUO" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,30 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.5
+## What's new in 11.3.6
+
+**Karaoke for the stage: VIDEO, KARAOKE, FOR LIVE, duets - and lyrics that are found more often.**
+
+- **VIDEO** (formerly SCREEN) and a **KARAOKE** button in the player: the lyrics shown in VIDEO or not (turned on, it
+  opens VIDEO). As a window, VIDEO keeps 16:9; its options are in **SETTINGS** (colour, cover, split, fill, scrolling,
+  text, band, size, offset). Full screen on the Mac's own screen hides the menu bar and the Dock.
+- **The words are never cut**: a long line gets smaller, then takes more lines; the lines around it make room.
+- **FOR LIVE** (a screen filmed with a phone): a thick outline around the letters, the line sung framed, the next line
+  in full colour. **FILL OFF**: the whole line to sing lit at once.
+- **Duets**: HE / SHE / 1 / 2 / BOTH / CHOIR at the start of a line, or for a few words inside it (*Who sings each
+  word...*), each in its own colour in VIDEO; **ANALYSE DUO** proposes them from the height of the voice.
+- **LYRICS EDIT**: a **HEARD BY WHISPER** column (click a word: play from it), STOP, UNDO / REDO, DELETE LYRICS, the
+  language beside ANALYSE; lines added or moved keep LRCLIB's times; the lyrics saved here stay when it opens again.
+- **LYRICS** finds the words more often: Whisper starts at the first phrase sung (live recordings with a long intro),
+  its notes such as "[Music]" are dropped, AUTO finds the language on the part sung the most, and it tries again
+  (on the processor, then on the whole piece) before giving up.
+- **Media player**: SEARCH by the tags (artist, title, album), a **TAGS** editor (right-click a piece; written into the
+  file through FFmpeg), the pieces column wider or narrower, a double-click plays, *Show in Finder / Explorer*,
+  **VOICE** and **PIANO** alone.
+- **HOST tuning**: each key of the Piano Model is measured on its first partial when there is one - fewer false
+  corrections in the treble with FIX KEYS.
+
+### Also in 11.3.5
 
 **A media player made for the stage: FOLDERS and the pieces always in sight, a countdown, SPEED, karaoke like a film's credits.**
 
@@ -243,11 +266,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1135" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1136" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1135" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1136" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6

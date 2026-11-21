@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -546,7 +546,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     METRO), then the MIDI take and the recording start together; the recording's name, place and tuning are written in
     the MIDI file. PLAY of such a take asks (11.1.1) **With the audio** (both in sync — PAUSE and STOP too, LOOP repeats both) or **MIDI only**; a MIDI file recorded without the audio never starts the media player. **BOUNCE** can put the recording
     in the audio file with your piano (option "Audio file: in the bounce").
-  - **SCREEN**: a window for a second screen, resizable, full screen with a double-click (its place and size are
+  - **VIDEO** (SCREEN before 11.3.6): a window for a second screen, resizable, full screen with a double-click (its place and size are
     remembered). It shows the **video** in time with the player and the **lyrics** of a **.lrc** file of the same name
     beside the audio or video file (current line in bold, the next ones under it). Move the mouse: a bar for the
     lyrics' **colour**, **text** opacity, a see-through **band** behind them (over a video), **size** and full screen.
@@ -757,6 +757,44 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **11.3.5 — LYRICS EDIT**: the artist, title and album are read from the file's tags (MP3, FLAC, M4A, MP4...); the
     file's name only without them. When LRCLIB has a version edited otherwise (an instrumental shorter or longer), its
     lines are followed to the end.
+  - **11.3.6 — VIDEO** (SCREEN before): the same window, renamed. In the player, **KARAOKE** beside it shows or hides
+    the lyrics in VIDEO (the same as LYRICS ON / OFF in VIDEO); turned on, it opens VIDEO. As a window, VIDEO keeps
+    16:9. Its bar keeps LYRICS, FOR LIVE, **SETTINGS** and FULL SCREEN; SETTINGS opens a panel inside VIDEO (also on a
+    second screen and in full screen) with COLOUR, COVER, SPLIT, FILL, STEP / CREDITS and the Text, Band, Size and
+    Offset sliders; a click beside it closes it. Full screen on the Mac's own screen hides the menu bar and the Dock
+    while it lasts.
+  - **11.3.6 — the words are never cut**: a line too long for the window is drawn smaller (down to half its size), then
+    on as many lines as it needs; the lines before and after it move to make room.
+  - **11.3.6 — FOR LIVE** (VIDEO's bar; for a screen filmed with a phone): a thick black outline around the letters, the
+    line sung in a frame, the next line in full colour - in every mode. **FILL** (SETTINGS): OFF, the whole line to sing
+    is lit at once instead of filling as it is sung.
+  - **11.3.6 — duets**: who sings a line, written at its start in the .lrc - **HE :**, **SHE :**, **1 :**, **2 :**,
+    **BOTH :**, **CHOIR :** (also read: LUI, ELLE, ENSEMBLE, HIM, HER, CHOEUR...). In LYRICS EDIT, right-click a line:
+    who sings it, *Rename all* (HE / SHE <-> 1 / 2, swap the two), or *Who sings each word...* - a brush per singer, a
+    click or a drag over the words: those words are written "(SHE: words)" inside the line. In VIDEO the mark is shown
+    when the singer changes, each singer in its colour. **ANALYSE DUO** proposes the marks from the height of the
+    separated voice (HE / SHE for a man and a woman, 1 / 2 for two voices closer, BOTH when they sing together);
+    check them, then SAVE.
+  - **11.3.6 — LYRICS EDIT**: three columns - the lyrics proposed, **HEARD BY WHISPER** (its words with their times;
+    the word heard now lit; click a word: play from it) and the lines aligned. **STOP** beside PLAY, **UNDO / REDO**
+    (Cmd+Z / Cmd+Shift+Z) for what is typed and the marks put, **DELETE LYRICS** (what PianoToLife found for this piece;
+    a .lrc of your own is kept), the **language** beside ANALYSE (the same as LANG in the player). ANALYSE listens to
+    the separated voice when there is one, else to the whole piece. Lines added, pasted or moved keep LRCLIB's times
+    even without words heard; lyrics saved here (or with duet marks) are kept when the window opens again.
+  - **11.3.6 — LYRICS finds the words more often**: Whisper starts where the singing starts (a live recording with
+    shouts or a long instrumental before the voice), its notes about the sound ("[Music]", "(applause)"...) are dropped,
+    long silences are shortened, AUTO finds the language on the 30 s sung the most, and with almost nothing heard it
+    listens again on the processor, then to the whole piece. When nothing is found, a folder "lyrics (failed)" in the
+    piece's Stems folder keeps what Whisper was given and what it answered.
+  - **11.3.6 — media player**: SEARCH finds the pieces by their tags too (artist, title, album; no case, no accents),
+    shown in grey beside the name. Right-click a piece: **Tags...** - the tags edited and written into the file through
+    FFmpeg (the sound copied as it is; the original to the Trash; its stems and lyrics follow it) - and **Show in Finder**
+    (Mac) / **Show in Explorer** (Windows). A double-click on a piece plays it. The pieces column is wider or narrower
+    with its left edge (double-click: back). **VOICE** and **PIANO**: that track alone (the stems row), CLEAN PIANO on
+    its own line under them.
+  - **11.3.6 — HOST tuning** (TEMPERAMENT, Piano Model): each key's pitch is its first partial when the capture measured
+    it; the line of the partials (inharmonicity) is used only where it is missing - fewer false corrections in the
+    treble with FIX KEYS.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

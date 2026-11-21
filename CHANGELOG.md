@@ -2,6 +2,29 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.6
+
+**Karaoke for the stage: VIDEO, KARAOKE, FOR LIVE, duets - and lyrics that are found more often.**
+
+- **VIDEO** (formerly SCREEN) and a **KARAOKE** button in the player: the lyrics shown in VIDEO or not (turned on, it
+  opens VIDEO). As a window, VIDEO keeps 16:9; its options are in **SETTINGS** (colour, cover, split, fill, scrolling,
+  text, band, size, offset). Full screen on the Mac's own screen hides the menu bar and the Dock.
+- **The words are never cut**: a long line gets smaller, then takes more lines; the lines around it make room.
+- **FOR LIVE** (a screen filmed with a phone): a thick outline around the letters, the line sung framed, the next line
+  in full colour. **FILL OFF**: the whole line to sing lit at once.
+- **Duets**: HE / SHE / 1 / 2 / BOTH / CHOIR at the start of a line, or for a few words inside it (*Who sings each
+  word...*), each in its own colour in VIDEO; **ANALYSE DUO** proposes them from the height of the voice.
+- **LYRICS EDIT**: a **HEARD BY WHISPER** column (click a word: play from it), STOP, UNDO / REDO, DELETE LYRICS, the
+  language beside ANALYSE; lines added or moved keep LRCLIB's times; the lyrics saved here stay when it opens again.
+- **LYRICS** finds the words more often: Whisper starts at the first phrase sung (live recordings with a long intro),
+  its notes such as "[Music]" are dropped, AUTO finds the language on the part sung the most, and it tries again
+  (on the processor, then on the whole piece) before giving up.
+- **Media player**: SEARCH by the tags (artist, title, album), a **TAGS** editor (right-click a piece; written into the
+  file through FFmpeg), the pieces column wider or narrower, a double-click plays, *Show in Finder / Explorer*,
+  **VOICE** and **PIANO** alone.
+- **HOST tuning**: each key of the Piano Model is measured on its first partial when there is one - fewer false
+  corrections in the treble with FIX KEYS.
+
 ## 11.3.5
 
 **A media player made for the stage: FOLDERS and the pieces always in sight, a countdown, SPEED, karaoke like a film's credits.**

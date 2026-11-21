@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -590,7 +590,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     mesure avec METRO), puis la prise MIDI et l'enregistrement démarrent ensemble ; le nom, la position et le diapason
     de l'enregistrement sont écrits dans le fichier MIDI. PLAY d'une telle prise demande (11.1.1) **With the audio** (les deux synchronisés — PAUSE et STOP aussi, LOOP répète les deux) ou **MIDI only** ; un fichier MIDI enregistré sans l'audio ne lance jamais le lecteur média. **BOUNCE** peut mettre l'enregistrement dans le fichier audio avec votre piano (option « Audio
     file: in the bounce »).
-  - **SCREEN** : une fenêtre pour un deuxième écran, redimensionnable, plein écran par double-clic (sa place et sa
+  - **VIDEO** (SCREEN avant la 11.3.6) : une fenêtre pour un deuxième écran, redimensionnable, plein écran par double-clic (sa place et sa
     taille sont retenues). Elle montre la **vidéo** en synchro avec le lecteur et les **paroles** d'un fichier **.lrc**
     du même nom à côté du fichier audio ou vidéo (ligne en cours en gras, les suivantes dessous). Bougez la souris : une
     barre pour la **couleur** des paroles, l'opacité du **texte**, un **bandeau** transparent derrière elles (sur une
@@ -823,6 +823,46 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **11.3.5 — LYRICS EDIT** : l'artiste, le titre et l'album sont lus dans les tags du fichier (MP3, FLAC, M4A,
     MP4...) ; le nom du fichier seulement sans eux. Quand LRCLIB a une version montée autrement (un instrumental plus
     court ou plus long), ses lignes sont suivies jusqu'à la fin.
+  - **11.3.6 — VIDEO** (SCREEN avant) : la même fenêtre, renommée. Dans le lecteur, **KARAOKE** à côté montre ou cache
+    les paroles dans VIDEO (comme LYRICS ON / OFF dans VIDEO) ; activé, il ouvre VIDEO. En fenêtre, VIDEO garde le
+    format 16:9. Sa barre garde LYRICS, FOR LIVE, **SETTINGS** et FULL SCREEN ; SETTINGS ouvre un panneau dans VIDEO
+    (aussi sur un deuxième écran et en plein écran) avec COLOUR, COVER, SPLIT, FILL, STEP / CREDITS et les curseurs
+    Text, Band, Size et Offset ; un clic à côté le referme. Le plein écran sur l'écran principal du Mac cache la barre
+    des menus et le Dock tant qu'il dure.
+  - **11.3.6 — les mots ne sont jamais coupés** : une ligne trop longue pour la fenêtre est dessinée plus petite (jusqu'à
+    la moitié de sa taille), puis sur autant de lignes qu'il faut ; les lignes avant et après s'écartent pour lui faire
+    de la place.
+  - **11.3.6 — FOR LIVE** (barre de VIDEO ; pour un écran filmé au téléphone) : un contour noir épais autour des lettres,
+    la ligne chantée encadrée, la ligne suivante en pleine couleur - dans tous les modes. **FILL** (SETTINGS) : OFF, toute
+    la ligne à chanter s'allume d'un coup au lieu de se remplir pendant qu'elle est chantée.
+  - **11.3.6 — duos** : qui chante une ligne, écrit à son début dans le .lrc - **HE :**, **SHE :**, **1 :**, **2 :**,
+    **BOTH :**, **CHOIR :** (lus aussi : LUI, ELLE, ENSEMBLE, HIM, HER, CHOEUR...). Dans LYRICS EDIT, clic droit sur une
+    ligne : qui la chante, *Rename all* (HE / SHE <-> 1 / 2, échanger les deux), ou *Who sings each word...* - un pinceau
+    par chanteur, un clic ou un glisser sur les mots : ces mots sont écrits « (SHE: mots) » dans la ligne. Dans VIDEO, la
+    marque s'affiche quand le chanteur change, chaque chanteur dans sa couleur. **ANALYSE DUO** propose les marques
+    d'après la hauteur de la voix séparée (HE / SHE pour un homme et une femme, 1 / 2 pour deux voix plus proches, BOTH
+    quand ils chantent ensemble) ; vérifiez-les, puis SAVE.
+  - **11.3.6 — LYRICS EDIT** : trois colonnes - les paroles proposées, **HEARD BY WHISPER** (ses mots avec leurs temps ;
+    le mot entendu en ce moment allumé ; clic sur un mot : lecture à partir de lui) et les lignes alignées. **STOP** à
+    côté de PLAY, **UNDO / REDO** (Cmd+Z / Cmd+Maj+Z) pour ce qui est tapé et les marques posées, **DELETE LYRICS** (ce
+    que PianoToLife a trouvé pour ce morceau ; un .lrc à vous est gardé), la **langue** à côté d'ANALYSE (la même que LANG
+    dans le lecteur). ANALYSE écoute la voix séparée quand elle existe, sinon le morceau entier. Les lignes ajoutées,
+    collées ou déplacées gardent les temps de LRCLIB même sans mots entendus ; les paroles enregistrées ici (ou avec des
+    marques de duo) sont gardées quand la fenêtre se rouvre.
+  - **11.3.6 — LYRICS trouve les mots plus souvent** : Whisper commence là où le chant commence (un enregistrement live
+    avec des cris ou un long instrumental avant la voix), ses notes sur le son (« [Musique] », « (applaudissements) »...)
+    sont retirées, les longs silences raccourcis, AUTO trouve la langue sur les 30 s les plus chantées, et s'il n'entend
+    presque rien il réécoute sur le processeur, puis le morceau entier. Quand rien n'est trouvé, un dossier
+    « lyrics (failed) » dans le dossier Stems du morceau garde ce qui a été donné à Whisper et ce qu'il a répondu.
+  - **11.3.6 — lecteur** : SEARCH trouve aussi les morceaux par leurs tags (artiste, titre, album ; sans casse ni
+    accents), affichés en gris à côté du nom. Clic droit sur un morceau : **Tags...** - les tags modifiés et écrits dans
+    le fichier par FFmpeg (le son copié tel quel ; l'original à la Corbeille ; ses stems et paroles le suivent) - et
+    **Show in Finder** (Mac) / **Show in Explorer** (Windows). Un double-clic sur un morceau le joue. La colonne des
+    morceaux s'élargit ou se rétrécit par son bord gauche (double-clic : retour). **VOICE** et **PIANO** : cette piste
+    seule (rangée des stems), CLEAN PIANO sur sa propre ligne en dessous.
+  - **11.3.6 — accordage HOST** (TEMPERAMENT, Piano Model) : la hauteur de chaque touche est son premier partiel quand la
+    capture l'a mesuré ; la droite des partiels (inharmonicité) ne sert que là où il manque - moins de fausses
+    corrections dans l'aigu avec FIX KEYS.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
