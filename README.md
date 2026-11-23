@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1137" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1138" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1137" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
+  <img src="Screenshot-E.png?v=1138" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1137" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1138" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1137" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, the singers' buttons (SHE, CHOIR), CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1138" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, the singers' buttons (SHE, CHOIR), CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1137" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1138" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1137" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1138" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -103,11 +103,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > PianoToLife/Video sound`, on Windows in `%APPDATA%\PianoToLife\Video sound`. The 30 newest are kept; a long film can
 > take more than a gigabyte, so delete that folder whenever you like (it is made again when needed). Ordinary files
 > (MP3, FLAC, WAV, AIFF, M4A...) are read directly and never copied. The separated pieces (NO VOICE / NO PIANO,
-> 150–200 MB each) and the Whisper model (488 MB) go to your samples folder, in **Stems** and **Whisper**: choose a
+> 150–200 MB each) and the Whisper model (1.6 GB) go to your samples folder, in **Stems** and **Whisper**: choose a
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1137" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
+  <img src="Screenshot-D.png?v=1138" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -118,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1137" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS" width="900">
+  <img src="Screenshot-C.png?v=1138" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,21 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.7
+## What's new in 11.3.8
+
+**Better lyrics: a larger speech model, Whisper's slips caught, and FIND / REPLACE.**
+
+- **LYRICS** now listens with **Whisper large-v3-turbo** (downloaded once, 1.6 GB): far fewer wrong words, almost as
+  fast with a graphics card. Pieces already done: press ANALYSE again to hear them with it.
+- Whisper's loops (the same word written again and again) are dropped, and two short words sung as one
+  ("elle l'a") are found in time.
+- **LYRICS EDIT**: **FIND / REPLACE** above the lyrics (NEXT, REPLACE ALL, CLEAR; UNDO takes it back); a line you add
+  takes the time it is heard at; lines never pile up within half a second.
+- **VIDEO** follows at once a change of times saved in LYRICS EDIT.
+- **Fast bounce**: a silence in the music no longer makes it start again in real time - only a sound cut in the
+  middle of a note does.
+
+### Also in 11.3.7
 
 **Duets on stage: each singer's voice on its own, a ball over the words, lyrics that follow the version sung.**
 
@@ -288,11 +302,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1137" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1138" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1137" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1138" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6
@@ -685,7 +699,7 @@ One piece of 3 min 25 s:
 Each piece is separated only once, then kept. A recent NVIDIA RTX card, even a laptop one, separates 2 to 2.5 times
 faster than an M2 Pro; Macs with M5 or later have neural accelerators in their GPU (not measured yet). Without a
 graphics card (the processor only), a piece can take 20 to 30 minutes. LYRICS: the first time, the Whisper model
-(488 MB) is downloaded once, and on a PC the graphics card's driver prepares itself (a few seconds more).
+(1.6 GB) is downloaded once, and on a PC the graphics card's driver prepares itself (a few seconds more).
 
 **Help complete this table.** If you have a **Mac with Apple Silicon** (M1 to M6, any model) or a **PC with an NVIDIA
 RTX card**, time a separation and send your result to pianotolife@outlook.com: your computer (Mac model and chip, or the

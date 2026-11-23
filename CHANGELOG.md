@@ -2,6 +2,20 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.8
+
+**Better lyrics: a larger speech model, Whisper's slips caught, and FIND / REPLACE.**
+
+- **LYRICS** now listens with **Whisper large-v3-turbo** (downloaded once, 1.6 GB): far fewer wrong words, almost as
+  fast with a graphics card. Pieces already done: press ANALYSE again to hear them with it.
+- Whisper's loops (the same word written again and again) are dropped, and two short words sung as one
+  ("elle l'a") are found in time.
+- **LYRICS EDIT**: **FIND / REPLACE** above the lyrics (NEXT, REPLACE ALL, CLEAR; UNDO takes it back); a line you add
+  takes the time it is heard at; lines never pile up within half a second.
+- **VIDEO** follows at once a change of times saved in LYRICS EDIT.
+- **Fast bounce**: a silence in the music no longer makes it start again in real time - only a sound cut in the
+  middle of a note does.
+
 ## 11.3.7
 
 **Duets on stage: each singer's voice on its own, a ball over the words, lyrics that follow the version sung.**

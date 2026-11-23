@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.7 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.8 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -645,7 +645,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **LEVEL** aussi à **-20 / -21 / -22 LUFS** et **CEIL.** jusqu'à **-7 dB** (11.2.0) ; le gain de LEVEL reste alors
     sous le CEIL. choisi. Le **Normalise** du BOUNCE a les mêmes trois niveaux, et son plafond true peak descend à -7 dBTP.
   - **LYRICS** (11.2.0) : PianoToLife écoute la **voix séparée** du morceau (séparée d'abord si besoin) et écrit ses
-    paroles en place — whisper.cpp avec le modèle Whisper *small* (MIT), sur votre ordinateur. Le modèle (488 Mo) est
+    paroles en place — whisper.cpp avec le modèle Whisper *large-v3-turbo* (MIT), sur votre ordinateur. Le modèle (1,6 Go) est
     téléchargé une fois, la première fois (barre de progression, CANCEL). **LANG** : AUTO ou la langue chantée (aide
     pour une voix courte ou peu claire). Le résultat est un fichier **.lrc** standard **à côté du fichier audio**, même
     nom (d'autres logiciels le lisent aussi ; demandé avant d'en remplacer un), gardé aussi dans le dossier Stems. Le
@@ -894,12 +894,25 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     de leurs tags.
   - **11.3.7 — ANALYSE DUO** est mis de côté dans cette version : posez les marques à la main (clic droit sur une ligne,
     *Who sings each word...*).
+  - **11.3.8 — LYRICS avec Whisper large-v3-turbo** (MIT) : un modèle de reconnaissance plus grand, téléchargé une fois
+    (1,6 Go) à la place de small - beaucoup moins de mots faux, presque aussi rapide avec une carte graphique (plus lent
+    sur le processeur seul). Les morceaux déjà faits gardent leurs mots : ANALYSE (ou RESET LYRICS) pour les réécouter
+    avec lui. Les boucles de Whisper (le même mot écrit encore et encore, serré) sont retirées ; deux mots courts chantés
+    comme un seul (« elle l'a ») sont retrouvés en place.
+  - **11.3.8 — LYRICS EDIT** : **FIND / REPLACE** au-dessus des paroles de gauche - FIND (mots entiers, majuscules ou
+    non ; le nombre trouvé affiché ; jamais une marque de duo), REPLACE, **NEXT** (le suivant remplacé), **REPLACE ALL**
+    (Entrée), **CLEAR** ; UNDO annule chaque changement. Une ligne ajoutée (sans temps à elle) prend le temps où Whisper
+    l'a entendue ; deux lignes ne sont jamais placées à moins d'une demi-seconde l'une de l'autre.
+  - **11.3.8 — VIDEO** prend tout de suite un changement de temps enregistré dans LYRICS EDIT (avant : seul un changement
+    de texte était vu).
+  - **11.3.8 — bounce rapide** : un trou n'est compté que si le son s'arrête au milieu d'une note (encore fort juste
+    avant) ; un silence de la musique, même court, ne fait plus recommencer le bounce en temps réel.
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
     un long film peut dépasser 1 Go. Vous pouvez effacer ce dossier quand vous voulez : il est refait au besoin. Les
     fichiers ordinaires (MP3, FLAC, WAV, AIFF, M4A...) sont lus directement, jamais copiés. Les stems (150 à 200 Mo par
-    morceau) et le modèle Whisper (488 Mo) vont dans votre dossier de samples.
+    morceau) et le modèle Whisper (1,6 Go) vont dans votre dossier de samples.
   - **Internet** (11.2.0) : PianoToLife ne va sur Internet que si vous le demandez — pour télécharger une fois le modèle
     Whisper, et quand EDIT cherche des paroles sur LRCLIB (seuls l'artiste, le titre et la durée sont envoyés). Rien
     d'autre, rien sur vous.

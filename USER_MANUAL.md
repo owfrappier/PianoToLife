@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.7 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.8 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -597,7 +597,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **LEVEL** also at **-20 / -21 / -22 LUFS** and **CEIL.** down to **-7 dB** (11.2.0); LEVEL's gain then stays under
     the CEIL. chosen. BOUNCE's **Normalise** has the same three levels, and its true-peak ceiling goes down to -7 dBTP.
   - **LYRICS** (11.2.0): PianoToLife listens to the **separated voice** of the piece (separated first if needed) and
-    writes its lyrics in time — whisper.cpp with the Whisper *small* model (MIT), on your computer. The model (488 MB) is
+    writes its lyrics in time — whisper.cpp with the Whisper *large-v3-turbo* model (MIT), on your computer. The model (1.6 GB) is
     downloaded once, the first time (a progress bar, CANCEL). **LANG**: AUTO or the language sung (helps short or
     unclear voices). The result is a standard **.lrc** file **beside the audio file**, same name (other programs read it
     too; asked before replacing one), also kept in the Stems folder. The **LYRICS** button lights up when the piece has
@@ -822,11 +822,23 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     master is done on the follower too. Windows: the list of pieces no longer jumps back up while their tags are read.
   - **11.3.7 — ANALYSE DUO** is set aside in this version: put the marks by hand (right-click a line, *Who sings each
     word...*).
+  - **11.3.8 — LYRICS with Whisper large-v3-turbo** (MIT): a larger speech model, downloaded once (1.6 GB) instead of
+    small - far fewer wrong words, almost as fast with a graphics card (slower on the processor alone). The pieces
+    already done keep their words: press ANALYSE (or RESET LYRICS) to hear them again with it. Whisper's loops (the
+    same word written again and again, squeezed together) are dropped; two short words sung as one ("elle l'a") are
+    found in time.
+  - **11.3.8 — LYRICS EDIT**: **FIND / REPLACE** above the lyrics on the left - FIND (whole words, capitals or not; the
+    number found shown; never a duet mark), REPLACE, **NEXT** (the next one replaced), **REPLACE ALL** (Enter),
+    **CLEAR**; UNDO takes each change back. A line you add (with no time of its own) takes the time Whisper heard it
+    at; two lines are never placed within half a second of each other.
+  - **11.3.8 — VIDEO** takes at once a change of times saved in LYRICS EDIT (before, only a change of text was seen).
+  - **11.3.8 — fast bounce**: a hole is counted only when the sound stops in the middle of a note (still loud just
+    before); a silence in the music, however short, no longer makes the bounce start again in real time.
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete
     that folder whenever you like: it is made again when needed. Ordinary files (MP3, FLAC, WAV, AIFF, M4A...) are read
-    directly, never copied. The stems (150–200 MB per piece) and the Whisper model (488 MB) go to your samples folder.
+    directly, never copied. The stems (150–200 MB per piece) and the Whisper model (1.6 GB) go to your samples folder.
   - **Internet** (11.2.0): PianoToLife goes on the Internet only when you ask — to download the Whisper model once, and
     when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length are sent). Nothing else, nothing
     about you.
