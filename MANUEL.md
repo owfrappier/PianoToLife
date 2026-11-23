@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.6 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.3.7 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -839,9 +839,7 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     **BOTH :**, **CHOIR :** (lus aussi : LUI, ELLE, ENSEMBLE, HIM, HER, CHOEUR...). Dans LYRICS EDIT, clic droit sur une
     ligne : qui la chante, *Rename all* (HE / SHE <-> 1 / 2, échanger les deux), ou *Who sings each word...* - un pinceau
     par chanteur, un clic ou un glisser sur les mots : ces mots sont écrits « (SHE: mots) » dans la ligne. Dans VIDEO, la
-    marque s'affiche quand le chanteur change, chaque chanteur dans sa couleur. **ANALYSE DUO** propose les marques
-    d'après la hauteur de la voix séparée (HE / SHE pour un homme et une femme, 1 / 2 pour deux voix plus proches, BOTH
-    quand ils chantent ensemble) ; vérifiez-les, puis SAVE.
+    marque s'affiche quand le chanteur change, chaque chanteur dans sa couleur. Vérifiez-les, puis SAVE.
   - **11.3.6 — LYRICS EDIT** : trois colonnes - les paroles proposées, **HEARD BY WHISPER** (ses mots avec leurs temps ;
     le mot entendu en ce moment allumé ; clic sur un mot : lecture à partir de lui) et les lignes alignées. **STOP** à
     côté de PLAY, **UNDO / REDO** (Cmd+Z / Cmd+Maj+Z) pour ce qui est tapé et les marques posées, **DELETE LYRICS** (ce
@@ -863,6 +861,39 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   - **11.3.6 — accordage HOST** (TEMPERAMENT, Piano Model) : la hauteur de chaque touche est son premier partiel quand la
     capture l'a mesuré ; la droite des partiels (inharmonicité) ne sert que là où il manque - moins de fausses
     corrections dans l'aigu avec FIX KEYS.
+  - **11.3.7 — boutons des chanteurs** (sous les stems, quand les paroles ont des marques de duo) : **LEAD** (les mots
+    sans marque, quand d'autres en ont une), **HE**, **SHE**, **1**, **2**, **3**, **4**, **BOTH**, **CHOIR** - seulement
+    ceux que les paroles utilisent. Allumé : ce chanteur est entendu ; plusieurs peuvent être allumés ; aucun : toute la
+    voix. Les mots des chanteurs non allumés sont retirés de la voix, sans interruption entre eux quel que soit le
+    silence, pour que vous chantiez leur partie. NO VOICE passe d'abord (toute la voix retirée). Clic droit sur NO
+    VOICE : **CUT** (quand la voix part) et **BACK** (quand elle revient), de -1200 à +1200 ms, -300 par défaut ;
+    **FADE OUT** et **FADE IN** (0 à 500 ms, 100 par défaut). Une marque en début de ligne (HE :) vaut pour les lignes
+    suivantes, jusqu'à la prochaine ; « (SHE: mots) » seulement pour ces mots. Marques **3** et **4** pour quatre
+    chanteurs.
+  - **11.3.7 — VIDEO** : **BALL** (SETTINGS, à la place du remplissage pâle) : une balle saute de mot en mot au-dessus de
+    la ligne chantée, sur chaque mot quand il commence. Les lignes ne se chevauchent jamais ; après un saut du lecteur,
+    VIDEO suit tout de suite.
+  - **11.3.7 — LYRICS EDIT** : un clic sur une ligne la joue tout de suite ; les colonnes ne bougent pas sous la souris.
+    La ligne choisie à droite : **◀ 1 / ◀ .1 / .1 ▶ / 1 ▶** (ou les flèches, Maj : 1 s) la déplacent, Cmd+Z annule le
+    dernier déplacement, SAVE garde les temps ; sa ligne est allumée à gauche. **TIMES** - **AUTO** : les temps des
+    paroles quand ils collent à la voix, sinon **VOICE** : calées sur la voix, les lignes non entendues étirées entre
+    celles entendues (une reprise chantée plus lentement ou plus vite) ; **LRC** : les temps des paroles tels quels. En
+    VOICE, les lignes que cette version ne chante pas sont grisées et non enregistrées (clic droit : *Sung here*). Les
+    mots sont aussi comparés par leur son (un mot entendu un peu autrement est retrouvé). Les paroles sont enregistrées
+    d'elles-mêmes avant *Who sings each word...* et à son OK - la coupure de la voix suit tout de suite ; les mots du
+    chanteur de la ligne sont montrés dans sa couleur. Le menu des langues a **MULTI** pour une chanson en deux langues
+    (une passe dans chacune). Les résultats LRCLIB sont classés d'après ce que Whisper a entendu (les mots hors
+    parenthèses) : **% heard** à côté de chacun.
+  - **11.3.7 — LYRICS** : le début du chant est retrouvé en remontant jusqu'à 4 s de calme.
+  - **11.3.7 — BOUNCE ALL** : les morceaux peuvent être *From this piece to the end of the playlist* ; chaque morceau
+    attend que le précédent soit écrit (2 minutes au plus), sinon il est sauté et listé à la fin ; le temps restant est
+    affiché. Un bounce rapide ne recommence plus en temps réel pour un long silence de la musique (pauses entre les
+    mouvements) ; quand il le fait, la note dit où le son avait un trou.
+  - **11.3.7 — MASTER / FOLLOW** : CANCEL sur le maître arrête une séparation qu'il a envoyée ; RESET STEMS / RESET
+    LYRICS sur le maître est refait sur le suiveur. Windows : la liste des morceaux ne remonte plus pendant la lecture
+    de leurs tags.
+  - **11.3.7 — ANALYSE DUO** est mis de côté dans cette version : posez les marques à la main (clic droit sur une ligne,
+    *Who sings each word...*).
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;

@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1136" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1137" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1136" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
+  <img src="Screenshot-E.png?v=1137" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1136" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1137" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1136" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1137" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, the singers' buttons (SHE, CHOIR), CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1136" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1137" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1136" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1137" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -107,7 +107,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1136" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
+  <img src="Screenshot-D.png?v=1137" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -118,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1136" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS, ANALYSE DUO" width="900">
+  <img src="Screenshot-C.png?v=1137" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,29 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.6
+## What's new in 11.3.7
+
+**Duets on stage: each singer's voice on its own, a ball over the words, lyrics that follow the version sung.**
+
+- **Singers' buttons** under the stems: **LEAD / HE / SHE / 1 / 2 / 3 / 4 / BOTH / CHOIR** (the ones the lyrics use).
+  Lit: heard; the others' voice is taken out - sing their part. Right-click **NO VOICE**: **CUT** and **BACK**
+  (when the voice goes and comes back, -1200 to +1200 ms, -300 by default), **FADE OUT** and **FADE IN** (0 to 500 ms).
+- **VIDEO**: **BALL** - a ball jumps from word to word over the line sung (SETTINGS; instead of the pale fill); lines
+  never overlap; VIDEO follows a jump of the player at once. Marks **3** and **4** for four singers.
+- **LYRICS EDIT**: a click on a line plays it at once; **◀ 1 / ◀ .1 / .1 ▶ / 1 ▶** (or the arrow keys) move a line,
+  kept by SAVE; the line on the right shows its line on the left; **TIMES: AUTO / LRC / VOICE** - a cover sung slower or
+  faster is timed on its voice, lines it does not sing are greyed (right-click: *Sung here*); words compared by their
+  sound too; saved by itself before *Who sings each word...* and at its OK, so the change is heard at once.
+- **LYRICS**: **MULTI** for a song in two languages (a pass in each); the singing found from its first phrase; the
+  LRCLIB results ranked by what Whisper heard (**% heard** in the list).
+- **BOUNCE ALL**: *From this piece to the end of the playlist*; it waits for the piece before, skips one that cannot be
+  done (listed at the end) and shows the time left; long silences (pauses between movements) no longer make a
+  bounce start again in real time.
+- **MASTER / FOLLOW**: CANCEL on the master, RESET seen on the follower. Windows: the list of pieces no longer jumps
+  back up while their tags are read.
+- **ANALYSE DUO** is set aside in this version; the marks are put by hand (right-click a line, *Who sings each word...*).
+
+### Also in 11.3.6
 
 **Karaoke for the stage: VIDEO, KARAOKE, FOR LIVE, duets - and lyrics that are found more often.**
 
@@ -141,7 +163,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **FOR LIVE** (a screen filmed with a phone): a thick outline around the letters, the line sung framed, the next line
   in full colour. **FILL OFF**: the whole line to sing lit at once.
 - **Duets**: HE / SHE / 1 / 2 / BOTH / CHOIR at the start of a line, or for a few words inside it (*Who sings each
-  word...*), each in its own colour in VIDEO; **ANALYSE DUO** proposes them from the height of the voice.
+  word...*), each in its own colour in VIDEO.
 - **LYRICS EDIT**: a **HEARD BY WHISPER** column (click a word: play from it), STOP, UNDO / REDO, DELETE LYRICS, the
   language beside ANALYSE; lines added or moved keep LRCLIB's times; the lyrics saved here stay when it opens again.
 - **LYRICS** finds the words more often: Whisper starts at the first phrase sung (live recordings with a long intro),
@@ -266,11 +288,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1136" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1137" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1136" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1137" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6

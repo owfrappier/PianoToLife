@@ -2,6 +2,28 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.3.7
+
+**Duets on stage: each singer's voice on its own, a ball over the words, lyrics that follow the version sung.**
+
+- **Singers' buttons** under the stems: **LEAD / HE / SHE / 1 / 2 / 3 / 4 / BOTH / CHOIR** (the ones the lyrics use).
+  Lit: heard; the others' voice is taken out - sing their part. Right-click **NO VOICE**: **CUT** and **BACK**
+  (when the voice goes and comes back, -1200 to +1200 ms, -300 by default), **FADE OUT** and **FADE IN** (0 to 500 ms).
+- **VIDEO**: **BALL** - a ball jumps from word to word over the line sung (SETTINGS; instead of the pale fill); lines
+  never overlap; VIDEO follows a jump of the player at once. Marks **3** and **4** for four singers.
+- **LYRICS EDIT**: a click on a line plays it at once; **◀ 1 / ◀ .1 / .1 ▶ / 1 ▶** (or the arrow keys) move a line,
+  kept by SAVE; the line on the right shows its line on the left; **TIMES: AUTO / LRC / VOICE** - a cover sung slower or
+  faster is timed on its voice, lines it does not sing are greyed (right-click: *Sung here*); words compared by their
+  sound too; saved by itself before *Who sings each word...* and at its OK, so the change is heard at once.
+- **LYRICS**: **MULTI** for a song in two languages (a pass in each); the singing found from its first phrase; the
+  LRCLIB results ranked by what Whisper heard (**% heard** in the list).
+- **BOUNCE ALL**: *From this piece to the end of the playlist*; it waits for the piece before, skips one that cannot be
+  done (listed at the end) and shows the time left; long silences (pauses between movements) no longer make a
+  bounce start again in real time.
+- **MASTER / FOLLOW**: CANCEL on the master, RESET seen on the follower. Windows: the list of pieces no longer jumps
+  back up while their tags are read.
+- **ANALYSE DUO** is set aside in this version; the marks are put by hand (right-click a line, *Who sings each word...*).
+
 ## 11.3.6
 
 **Karaoke for the stage: VIDEO, KARAOKE, FOR LIVE, duets - and lyrics that are found more often.**
@@ -13,7 +35,7 @@ Every version, the newest first. The [README](README.md) shows what PianoToLife 
 - **FOR LIVE** (a screen filmed with a phone): a thick outline around the letters, the line sung framed, the next line
   in full colour. **FILL OFF**: the whole line to sing lit at once.
 - **Duets**: HE / SHE / 1 / 2 / BOTH / CHOIR at the start of a line, or for a few words inside it (*Who sings each
-  word...*), each in its own colour in VIDEO; **ANALYSE DUO** proposes them from the height of the voice.
+  word...*), each in its own colour in VIDEO.
 - **LYRICS EDIT**: a **HEARD BY WHISPER** column (click a word: play from it), STOP, UNDO / REDO, DELETE LYRICS, the
   language beside ANALYSE; lines added or moved keep LRCLIB's times; the lyrics saved here stay when it opens again.
 - **LYRICS** finds the words more often: Whisper starts at the first phrase sung (live recordings with a long intro),

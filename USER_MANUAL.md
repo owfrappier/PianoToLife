@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.3.7 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -772,9 +772,7 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     **BOTH :**, **CHOIR :** (also read: LUI, ELLE, ENSEMBLE, HIM, HER, CHOEUR...). In LYRICS EDIT, right-click a line:
     who sings it, *Rename all* (HE / SHE <-> 1 / 2, swap the two), or *Who sings each word...* - a brush per singer, a
     click or a drag over the words: those words are written "(SHE: words)" inside the line. In VIDEO the mark is shown
-    when the singer changes, each singer in its colour. **ANALYSE DUO** proposes the marks from the height of the
-    separated voice (HE / SHE for a man and a woman, 1 / 2 for two voices closer, BOTH when they sing together);
-    check them, then SAVE.
+    when the singer changes, each singer in its colour. Check them, then SAVE.
   - **11.3.6 — LYRICS EDIT**: three columns - the lyrics proposed, **HEARD BY WHISPER** (its words with their times;
     the word heard now lit; click a word: play from it) and the lines aligned. **STOP** beside PLAY, **UNDO / REDO**
     (Cmd+Z / Cmd+Shift+Z) for what is typed and the marks put, **DELETE LYRICS** (what PianoToLife found for this piece;
@@ -795,6 +793,35 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **11.3.6 — HOST tuning** (TEMPERAMENT, Piano Model): each key's pitch is its first partial when the capture measured
     it; the line of the partials (inharmonicity) is used only where it is missing - fewer false corrections in the
     treble with FIX KEYS.
+  - **11.3.7 — singers' buttons** (under the stems, when the lyrics have duet marks): **LEAD** (the words without a
+    mark, when some have one), **HE**, **SHE**, **1**, **2**, **3**, **4**, **BOTH**, **CHOIR** - only the ones the lyrics
+    use. Lit: that singer is heard; several can be lit; none lit: the whole voice. The words of the singers not lit
+    are taken out of the voice, without a break between them however long the silence, so that you sing their part.
+    NO VOICE comes first (the whole voice out). Right-click NO VOICE: **CUT** (when the voice goes) and **BACK** (when
+    it comes back), -1200 to +1200 ms, -300 by default; **FADE OUT** and **FADE IN** (0 to 500 ms, 100 by default).
+    A mark at the start of a line (HE :) counts for the lines after it, up to the next one; "(SHE: words)" only for
+    those words. Marks **3** and **4** for four singers.
+  - **11.3.7 — VIDEO**: **BALL** (SETTINGS, instead of the pale fill): a ball jumps from word to word over the line
+    sung, landing on each word as it starts. The lines never overlap; after a jump of the player VIDEO follows at once.
+  - **11.3.7 — LYRICS EDIT**: a click on a line plays it at once; the columns stay where they are under the mouse.
+    The line chosen on the right: **◀ 1 / ◀ .1 / .1 ▶ / 1 ▶** (or the arrow keys, Shift: 1 s) move it, Cmd+Z undoes the
+    last move, SAVE keeps the times; its line is lit on the left. **TIMES** - **AUTO**: the lyrics' own times when they
+    fit the voice, else **VOICE**: timed on the voice, the lines not heard stretched between the ones heard (a cover
+    sung slower or faster); **LRC**: the lyrics' times as they are. With VOICE, lines this version does not sing are
+    greyed and not saved (right-click: *Sung here*). The words are compared by their sound too (a word heard a little
+    differently is found). The lyrics are saved by themselves before *Who sings each word...* and at its OK - the
+    voice cut follows at once; the words of the line's singer are shown in its colour. The language menu has
+    **MULTI** for a song in two languages (a pass in each). The LRCLIB results are ranked by what Whisper heard (the
+    words outside brackets): **% heard** beside each one.
+  - **11.3.7 — LYRICS**: the start of the singing is found back over up to 4 s of quiet.
+  - **11.3.7 — BOUNCE ALL**: the pieces can be *From this piece to the end of the playlist*; each piece waits for the
+    one before to be written (2 minutes at most), else it is skipped and listed at the end; the time left is shown.
+    A fast bounce no longer starts again in real time for a long silence in the music (pauses between movements);
+    when it does, the note says where the sound had a hole.
+  - **11.3.7 — MASTER / FOLLOW**: CANCEL on the master stops a separation it sent; RESET STEMS / RESET LYRICS on the
+    master is done on the follower too. Windows: the list of pieces no longer jumps back up while their tags are read.
+  - **11.3.7 — ANALYSE DUO** is set aside in this version: put the marks by hand (right-click a line, *Who sings each
+    word...*).
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete
