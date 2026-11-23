@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1138" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
+  <img src="Screenshot-A.png?v=1140" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1138" alt="SAMPLER EDIT: the DRY / DENOISE / BODY panel, NOISY 0-100 %" width="900">
+  <img src="Screenshot-E.png?v=1140" alt="SAMPLER EDIT: MIC 1-5 and MIX, the DRY / DENOISE / BODY panel, NOISY 0-100 %, MAKE DRY 1 (all microphones), PIANO PLAYS ORIG. / DRY 1-3" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1138" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1140" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1138" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, the singers' buttons (SHE, CHOIR), CLEAN PIANO, LIVE STEMS, LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1140" alt="The MEDIA player with FOLDERS and the pieces (SEARCH) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, CLEAN PIANO, PREPARE STEMS / STEMS READY, LIVE STEMS, LYRICS / FIND LYRICS (AI), EDIT LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1138" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
+  <img src="Screenshot-I.png?v=1140" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one)" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1138" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1140" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -107,7 +107,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1138" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
+  <img src="Screenshot-D.png?v=1140" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -118,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1138" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); STOP, UNDO / REDO, DELETE LYRICS" width="900">
+  <img src="Screenshot-C.png?v=1140" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); FIND / REPLACE, STOP, UNDO / REDO, DELETE LYRICS, TIMES" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,27 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.3.8
+## What's new in 11.4.0
+
+**AUTO COLOR that never makes a piano metallic - every piano we tried sounds better with it.**
+
+- **AUTO COLOR** (SAMPLER EDIT) asks two more questions: **Never brighter than the reference** (on by default) and
+  **Never darker than the piano is** (off by default). Most libraries have many loud layers and few soft ones: AUTO
+  COLOR darkens the soft notes as before, but no longer adds brightness to a forte that is already bright.
+  **We recommend the default setting.**
+- **MAKE (all microphones)**: a MAKE already running can no longer be broken by a second one (the other microphones
+  were then never made); MAKE stays greyed until every microphone is done; the progress says which microphone, and
+  of how many.
+- **SAMPLER EDIT**: **MIX** hears every microphone together while you edit one (off: the edited one alone, neutral, as
+  before); **SAVE SAMPLES** can be stopped (**STOP SAVING**).
+- **Media player**: **FIND LYRICS (AI)** when a piece has no lyrics yet, **EDIT LYRICS**, and the stems' state as a button:
+  **PREPARE STEMS** (a click separates the piece), **PREPARING n %**, **STEMS READY** (green).
+
+<p align="center">
+  <img src="Screenshot-K.png?v=1140" alt="AUTO COLOR: SOFT, MEDIUM, HARD, Never brighter than the reference (on), Never darker than the piano is (off)" width="520">
+</p>
+
+### Also in 11.3.8
 
 **Better lyrics: a larger speech model, Whisper's slips caught, and FIND / REPLACE.**
 
@@ -302,11 +322,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1138" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1140" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1138" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1140" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6

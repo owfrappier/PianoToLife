@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.3.8 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.4.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -143,6 +143,8 @@ or the ▲ / ▼ lines, and follows the selection.
 
 **What you hear in EDIT** (10.3.8): the microphone shown (MIC 1–5) alone and neutral — 0 dB, centred, full width, no
 delay, no L↔R, BODY at 0 — whatever the MIX. Back to the main window, the MIX drives the microphones again.
+**MIX** (11.4.0, right of MIC 5): every microphone heard together, as in the main window (each at its MIX level, with the
+settings), while you go on editing the one shown. Off by default.
 
 ### Options at the top
 
@@ -241,6 +243,14 @@ a selection before working on every key.
    leave it as it is — it is then switched off, and its TIMBRE box in the row follows. HAMMER is never touched. Run it
    again after AUTO DYN. UNDO puts the sliders back. Since 10.9.0 it follows **RANGE**: a velocity made softer is aimed
    at a darker colour, a louder one at a brighter colour, as on a real piano.
+   **Since 11.4.0, two limits** in the same window (your choice is remembered):
+   - **Never brighter than the reference** (on by default, for pianos that are already bright): a layer can be made
+     brighter up to the reference, never beyond.
+   - **Never darker than the piano is** (off by default, for pianos that are already dull): the colour never takes
+     brightness away from the original samples.
+   Most libraries are sampled with many loud layers and few soft ones; without the first limit, AUTO COLOR could add
+   brightness to a forte that was already bright, and the piano got metallic. **We recommend the default setting** (the
+   first limit on, the second off): every piano we tried sounds better and more even with it.
 6. **BALANCE** — evens out the volume from one key to the next, measured at velocity 127 (each key's layers follow).
    - **Smooth**: the set's own curve without the jumps (the register balance of the recording is kept).
    - **Grand D / Grand B / Upright**: the bass-to-treble balance of a reference piano, at your set's level.
@@ -410,7 +420,7 @@ keys.
 |---|---|
 | **NEW** | An empty set (the set open now is not changed on disk) |
 | **Name** (under the title) | Click to **RENAME** the set and its sample file (10.9.8: an instrument with DRY versions is renamed with its versions, and its samples keep their names) |
-| **SAVE SAMPLES...** (10.6.0, was SAVE SET) | Makes the instrument: the samples go into an encrypted container (`.wptl`) in your library, rewritten only when samples change. The **mapping and all the settings are saved in the instrument** (`.ptlset`, **SAVE AS** in the main window) and in the session, as you hear them |
+| **SAVE SAMPLES...** (10.6.0, was SAVE SET) | Makes the instrument: the samples go into an encrypted container (`.wptl`) in your library, rewritten only when samples change. The **mapping and all the settings are saved in the instrument** (`.ptlset`, **SAVE AS** in the main window) and in the session, as you hear them. **11.4.0**: while it saves, the button becomes **STOP SAVING** - the file being written is dropped, the samples already in the set are untouched |
 | Variants | A bright and a dark version of the same samples are simply **two instruments** (`.ptlset`) on the same `.wptl` - SAVE AS under another name (SAVE AS VARIANT is retired; old variants still open) |
 | **PICTURE...** (10.6.0) | The picture of the sample bank (PNG / JPEG, like a Kontakt wallpaper), kept encrypted in its `.wptl` and shown in the main window in place of the strings photo, for every instrument of these samples. Remove it from the same menu |
 | **PASSWORD...** | Protects EDIT with a password (playing the set never asks for it). Empty = no password |

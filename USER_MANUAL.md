@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.3.8 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -834,6 +834,10 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **11.3.8 — VIDEO** takes at once a change of times saved in LYRICS EDIT (before, only a change of text was seen).
   - **11.3.8 — fast bounce**: a hole is counted only when the sound stops in the middle of a note (still loud just
     before); a silence in the music, however short, no longer makes the bounce start again in real time.
+  - **11.4.0 — clearer buttons**: **FIND LYRICS (AI)** when the piece has no lyrics yet (then LYRICS, or LYRICS C. once
+    corrected); **EDIT LYRICS** (was EDIT). The stems' state is a button at the start of its line: **PREPARE STEMS** (a
+    click separates the piece once - kept, never done again), **PREPARING n %** (CANCEL beside it), **STEMS READY** (green:
+    NO VOICE, NO PIANO, VOICE, PIANO and CLEAN PIANO play at once).
   - **Disk space** (11.2.1): a file the system cannot read directly — a video's sound, a format decoded by FFmpeg, or
     another audio track — is decoded once and **kept** in a cache (Mac: `~/Library/Application Support/PianoToLife/Video
     sound`; Windows: `%APPDATA%\PianoToLife\Video sound`), the 30 newest; a long film can take more than 1 GB. Delete

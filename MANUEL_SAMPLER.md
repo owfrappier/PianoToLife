@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.3.8 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -152,7 +152,8 @@ le fait entendre seul. Une longue liste défile avec la molette ou les lignes �
 
 **Ce qu'on entend en EDIT** (10.3.8) : le micro affiché (MIC 1 à 5) seul et neutre — 0 dB, centré, pleine largeur,
 sans délai, sans L↔R, BODY à 0 — quel que soit le MIX. De retour dans la fenêtre principale, le MIX reprend la gestion
-des micros.
+des micros. **MIX** (11.4.0, à droite de MIC 5) : tous les micros entendus ensemble, comme dans la fenêtre principale
+(chacun à son niveau du MIX, avec les réglages), pendant que vous continuez à éditer celui affiché. Éteint par défaut.
 
 ### Les options du haut
 
@@ -256,6 +257,15 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    marchent mieux ensemble) ; décochez une zone pour la laisser telle quelle — elle est alors éteinte, et sa case TIMBRE
    de la rangée suit. HAMMER n'est jamais touché. À relancer après un AUTO DYN. UNDO remet les curseurs. Depuis la 10.9.0, il suit **RANGE** : une vélocité rendue
    plus douce vise une couleur plus sombre, une plus forte une couleur plus claire, comme sur un vrai piano.
+   **Depuis la 11.4.0, deux limites** dans la même fenêtre (votre choix est retenu) :
+   - **Never brighter than the reference** (cochée par défaut, pour les pianos déjà brillants) : une couche peut être
+     rendue plus claire jusqu'à la référence, jamais au-delà.
+   - **Never darker than the piano is** (décochée par défaut, pour les pianos déjà mats) : la couleur n'enlève jamais de
+     brillance aux samples d'origine.
+   La plupart des banques sont échantillonnées avec beaucoup de couches fortes et peu de douces ; sans la première
+   limite, AUTO COLOR pouvait ajouter de la brillance à un forte déjà clair, et le piano devenait métallique. **Nous
+   conseillons le réglage par défaut** (la première limite cochée, la seconde non) : tous les pianos essayés sonnent
+   mieux et plus égaux avec lui.
 6. **BALANCE** — égalise le volume d'une touche à l'autre, mesuré à la vélocité 127 (les couches de chaque touche
    suivent).
    - **Smooth** : la courbe propre du set, sans les sauts (l'équilibre grave-aigu de l'enregistrement est gardé).
@@ -441,7 +451,7 @@ les couches des touches choisies.
 |---|---|
 | **NEW** | Un set vide (le set ouvert n'est pas modifié sur le disque) |
 | **Nom** (sous le titre) | Cliquez pour **RENOMMER** le set et son fichier d'échantillons (10.9.8 : un instrument qui a des versions DRY est renommé avec ses versions, et ses échantillons gardent leur nom) |
-| **SAVE SAMPLES...** (10.6.0, anciennement SAVE SET) | Fabrique l'instrument : les échantillons vont dans un conteneur chiffré (`.wptl`) de votre bibliothèque, réécrit seulement quand les échantillons changent. **Le mapping et tous les réglages sont enregistrés dans l'instrument** (`.ptlset`, **SAVE AS** dans la fenêtre principale) et dans la session, tels que vous les entendez |
+| **SAVE SAMPLES...** (10.6.0, anciennement SAVE SET) | Fabrique l'instrument : les échantillons vont dans un conteneur chiffré (`.wptl`) de votre bibliothèque, réécrit seulement quand les échantillons changent. **Le mapping et tous les réglages sont enregistrés dans l'instrument** (`.ptlset`, **SAVE AS** dans la fenêtre principale) et dans la session, tels que vous les entendez. **11.4.0** : pendant la sauvegarde, le bouton devient **STOP SAVING** - le fichier en cours d'écriture est abandonné, les échantillons déjà dans le set ne bougent pas |
 | Variantes | Une version brillante et une version sombre des mêmes échantillons sont simplement **deux instruments** (`.ptlset`) sur le même `.wptl` - SAVE AS sous un autre nom (SAVE AS VARIANT est retiré ; les anciennes variantes s'ouvrent toujours) |
 | **PICTURE...** (10.6.0) | L'image de la banque d'échantillons (PNG / JPEG, comme le fond d'écran d'un instrument Kontakt), gardée chiffrée dans son `.wptl` et affichée dans la fenêtre principale à la place de la photo des cordes, pour tous les instruments de ces échantillons. Elle se retire depuis le même menu |
 | **PASSWORD...** | Protège EDIT par un mot de passe (jouer le set ne le demande jamais). Vide = pas de mot de passe |

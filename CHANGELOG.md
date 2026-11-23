@@ -2,6 +2,22 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.0
+
+**AUTO COLOR that never makes a piano metallic - every piano we tried sounds better with it.**
+
+- **AUTO COLOR** (SAMPLER EDIT) asks two more questions: **Never brighter than the reference** (on by default) and
+  **Never darker than the piano is** (off by default). Most libraries have many loud layers and few soft ones: AUTO
+  COLOR darkens the soft notes as before, but no longer adds brightness to a forte that is already bright.
+  **We recommend the default setting.**
+- **MAKE (all microphones)**: a MAKE already running can no longer be broken by a second one (the other microphones
+  were then never made); MAKE stays greyed until every microphone is done; the progress says which microphone, and
+  of how many.
+- **SAMPLER EDIT**: **MIX** hears every microphone together while you edit one (off: the edited one alone, neutral, as
+  before); **SAVE SAMPLES** can be stopped (**STOP SAVING**).
+- **Media player**: **FIND LYRICS (AI)** when a piece has no lyrics yet, **EDIT LYRICS**, and the stems' state as a button:
+  **PREPARE STEMS** (a click separates the piece), **PREPARING n %**, **STEMS READY** (green).
+
 ## 11.3.8
 
 **Better lyrics: a larger speech model, Whisper's slips caught, and FIND / REPLACE.**

@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.3.8 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -907,6 +907,10 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     de texte était vu).
   - **11.3.8 — bounce rapide** : un trou n'est compté que si le son s'arrête au milieu d'une note (encore fort juste
     avant) ; un silence de la musique, même court, ne fait plus recommencer le bounce en temps réel.
+  - **11.4.0 — des boutons plus clairs** : **FIND LYRICS (AI)** quand le morceau n'a pas encore de paroles (puis LYRICS,
+    ou LYRICS C. une fois corrigées) ; **EDIT LYRICS** (anciennement EDIT). L'état des stems est un bouton au début de sa
+    ligne : **PREPARE STEMS** (un clic sépare le morceau une fois - gardé, jamais refait), **PREPARING n %** (CANCEL à
+    côté), **STEMS READY** (vert : NO VOICE, NO PIANO, VOICE, PIANO et CLEAN PIANO jouent tout de suite).
   - **Place sur le disque** (11.2.1) : un fichier que le système ne lit pas directement — le son d'une vidéo, un format
     décodé par FFmpeg ou une autre piste audio — est décodé une fois et **gardé** dans un cache (Mac : `~/Library/
     Application Support/PianoToLife/Video sound` ; Windows : `%APPDATA%\PianoToLife\Video sound`), les 30 plus récents ;
