@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.0 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -213,6 +213,16 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
 2. **ALIGN ATTACKS** — trouve la frappe dans chaque échantillon et fait démarrer chaque couche et chaque micro 3 ms
    avant : plus de flottement quand la nuance change, des micros en phase. Les fichiers ne sont pas modifiés. Avant
    AUTO DYN, pour qu'il écoute des frappes bien alignées.
+   **11.4.1 — plusieurs micros : la question est posée.** **EACH ON ITS OWN** (par défaut, comme avant) : chaque micro
+   sur sa propre frappe. **TOGETHER** : la frappe mesurée sur un seul micro - choisissez-le dans la liste, **le plus
+   proche du piano est conseillé** (sa frappe est la plus nette) - et tous les micros de la couche déplacés d'autant :
+   le décalage entre les micros reste exactement celui de la librairie. TOGETHER quand la librairie joue en place en
+   HOST mais que des notes se décalent ici entre micros (sur les micros d'ambiance, la frappe douce peut être trouvée à
+   quelques ms près). Certaines librairies ne sont pas alignées dans leurs samples (leur propre lecteur corrige) : réglez
+   alors le délai de chaque micro dans MIX. Une fois fait, le bouton devient **ORIG. ATTACKS** : un clic remet les
+   attaques d'origine des samples sur tous les micros (une étape d'UNDO), à tout moment, même après SAVE. Sous KEY -
+   MIC - LAYERS, une petite ligne indique : *Attacks: original / aligned - EACH ON ITS OWN / aligned - TOGETHER
+   (measured on MIC n) / partly aligned*. **DRY ne change jamais le décalage entre les micros.**
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2 ; un seul AUTO DYN avant, appelé RECAL A4 avant la 10.4.2) — tous deux écoutent
    le A4 aux 127 vélocités, placent ses couches là où leur intensité les met sur la courbe de référence et les mettent
    à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : cette valeur joue le set tel qu'il a été

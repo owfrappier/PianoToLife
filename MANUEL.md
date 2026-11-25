@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.4.0 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -546,6 +546,14 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
   à cet endroit). PLAY repart du début.
   **Le lecteur MIDI se souvient** (11.1.1) de son fichier ou de sa playlist et du morceau en cours : ils reviennent au
   démarrage suivant (prêts, sans jouer ; une prise jamais enregistrée n'est pas gardée).
+  **11.4.1 — les mesures** dans MAGIC VIEW (MIDI) : une ligne et un numéro à chaque mesure (les temps plus discrets),
+  lus dans les changements de tempo et de signature du fichier (4/4 et 120 BPM tant qu'il ne dit rien d'autre ; une prise
+  enregistrée dans PianoToLife n'en a pas : « no bars »). En haut : ligne 1 HANDS / VELOCITY / STAFF / ahead ; ligne 2
+  **PLAY / PAUSE**, **STOP**, **BAR n : b**, la signature et le tempo à cet endroit, **GO TO** (un numéro de mesure,
+  Entrée : la lecture repart au début de cette mesure, les notes relâchées et les pédales comme le fichier les a là ;
+  l'audio lié suit), puis le temps et le nom du fichier. La fenêtre principale affiche aussi BAR n : b sur la ligne du
+  lecteur MIDI. **BOUNCE avec l'audio du lecteur** (11.4.1) : **End** - à la fin du MIDI (une prise enregistrée : le
+  moment de son STOP), l'audio en fondu sur 3 s (par défaut), ou à la fin du fichier audio.
   **VIEW** (11.1.1, à droite de LOAD MIDI, aussi dans la barre compacte) : **MAGIC VIEW (MIDI)** — les notes du fichier
   MIDI joué, ou de la prise qu'on vient d'enregistrer, qui tombent sur un clavier et allument ses touches quand elles
   sonnent, dans leur propre fenêtre (redimensionnable, sa place retenue). **HANDS** : la main gauche en orange, la droite
@@ -907,6 +915,22 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     de texte était vu).
   - **11.3.8 — bounce rapide** : un trou n'est compté que si le son s'arrête au milieu d'une note (encore fort juste
     avant) ; un silence de la musique, même court, ne fait plus recommencer le bounce en temps réel.
+  - **11.4.1 — la liste et le dossier des stems** : sous les morceaux, **BY TAGS** (Artiste - Titre, le nom du fichier
+    s'il n'a pas de tags) ou **BY FILES**, retenu. **DUPLICATES** (un dossier virtuel fait par PianoToLife, comme STEMS
+    READY) : les morceaux de vos FOLDERS et dossiers virtuels qui semblent être là deux fois, côte à côte - même nom ou
+    mêmes tags (ce qui est entre parenthèses est gardé quand cela nomme une version : Club Mix, Edit, Live... ; « Official
+    Video », « Remastered » et les numéros de piste sont ignorés) et même durée à 2 s près, ou le même fichier ; un audio
+    n'est jamais mis avec une vidéo. **FOLDERS > Clean stems...** : DELETE STEMS WITHOUT AUDIO (le morceau supprimé -
+    seulement si son dossier est là ; ses paroles aussi), DELETE FAST IF QUALITY EXISTS, ou les morceaux choisis dans une
+    liste (leurs pistes supprimées, leurs paroles gardées) ; chacun demande d'abord. **KEEP STEMS** (à côté de CLEAN
+    PIANO, cet ordinateur, activé par défaut) : désactivé, les pistes séparées d'un morceau sont supprimées quand on passe
+    à un autre (ses paroles gardées) - en LOCAL seulement, jamais en MASTER / FOLLOW. **STEMS READY et les points**
+    viennent d'un index gardé dans le dossier des stems (*PianoToLife stems index.txt*), rempli par tous les ordinateurs :
+    la même liste sur chacun, que le dossier soit sur cet ordinateur, sur l'autre ou sur un disque partagé ; **FOLDERS >
+    Reanalyse the stems index** relit tous les dossiers de stems. CANCEL est à côté de PREPARE STEMS pendant la
+    préparation ; la ligne à côté ne dit plus que ce qui ne va pas. MASTER / FOLLOW : PREPARING n % montre la vraie
+    progression du suiveur ; le suiveur prend la langue des paroles du maître (et la garde) ; RESET LYRICS / RESET STEMS
+    sont faits sur les deux.
   - **11.4.0 — des boutons plus clairs** : **FIND LYRICS (AI)** quand le morceau n'a pas encore de paroles (puis LYRICS,
     ou LYRICS C. une fois corrigées) ; **EDIT LYRICS** (anciennement EDIT). L'état des stems est un bouton au début de sa
     ligne : **PREPARE STEMS** (un clic sépare le morceau une fois - gardé, jamais refait), **PREPARING n %** (CANCEL à

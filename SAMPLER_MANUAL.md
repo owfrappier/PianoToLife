@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.4.0 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.4.1 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -204,6 +204,16 @@ a selection before working on every key.
 2. **ALIGN ATTACKS** — finds the strike in every sample and makes every layer and every microphone start 3 ms before
    it: no flam when the dynamics change, microphones in phase. The files are not changed. Before AUTO DYN, so that it
    listens to well-aligned strikes.
+   **11.4.1 — several microphones: asked.** **EACH ON ITS OWN** (default, as before): each microphone on its own
+   strike. **TOGETHER**: the strike measured on one microphone - choose it in the list, **the closest to the piano is
+   advised** (its strike is the clearest) - and every microphone of the layer moved by the same amount, so the timing
+   between the microphones stays exactly as the library recorded it. Use TOGETHER when the library plays in time hosted
+   but some notes sound out of time between microphones here (on room microphones the soft strike may be found a few ms
+   wrong). Some libraries are not aligned in their samples themselves (their own player corrects it): then set the
+   delay of each microphone in MIX. Once done, the button becomes **ORIG. ATTACKS**: one click puts the samples' own
+   attacks back on every microphone (one UNDO step), at any time, even after SAVE. Under KEY - MIC - LAYERS a small
+   line says: *Attacks: original / aligned - EACH ON ITS OWN / aligned - TOGETHER (measured on MIC n) / partly
+   aligned*. **DRY never changes the timing between microphones.**
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2; one AUTO DYN before, called RECAL A4 before 10.4.2) — both listen to A4 at all
    127 velocities, place its layers where their loudness belongs on the reference curve and level them. They also
    measure A4's tuning (sent to SR A4 Tuning: that value plays the set as recorded; RESET in the TEMPERAMENT window

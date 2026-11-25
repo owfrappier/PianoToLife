@@ -2,6 +2,33 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.1
+
+**MIDI files read bar by bar, a media player that tidies itself, and microphones aligned the way the library recorded them.**
+
+- **MAGIC VIEW (MIDI)**: a line and a number at each **bar** (the beats fainter), **BAR n : b**, the **time signature and
+  tempo** where it plays (from the file), **GO TO BAR** (a number, Enter: it plays from there, the pedals as the file has
+  them), **PLAY / PAUSE** and **STOP**, and the time. Handy to find a passage, then fix it in your DAW. The main window
+  shows BAR n : b too, on the MIDI player's line (now under its buttons in the wide view).
+- **BOUNCE with the media's audio** ends at the **MIDI's end** (a take: the moment of its STOP), the audio faded out over
+  3 s - or, as an option, at the end of the audio file.
+- **ALIGN ATTACKS** with several microphones asks how: **EACH ON ITS OWN** (default, as before: each microphone on its own
+  strike) or **TOGETHER** (the strike measured on the microphone you choose - the closest to the piano is advised -, every
+  microphone of the layer moved by the same amount: the timing between the microphones stays as the library recorded it).
+  Once done, the button becomes **ORIG. ATTACKS**: the samples' own attacks back at any time, even after SAVE. A line
+  under KEY says how each key is aligned. (DRY never aligns the microphones with each other.)
+- **Media player**: the pieces **BY TAGS** (Artist - Title) or **BY FILES**; a **DUPLICATES** virtual folder (the same
+  piece twice in your folders - remixes, edits and live versions kept apart, an audio never paired with a video);
+  **FOLDERS > Clean stems...** (the stems of pieces deleted, FAST when QUALITY is there, or the pieces you choose);
+  **KEEP STEMS** (off: the separated tracks of a piece are deleted when you go on to another one, its lyrics kept - for
+  a computer fast enough; LOCAL only). CANCEL beside PREPARE STEMS while it prepares.
+- **Two computers (MASTER / FOLLOW) or a shared stems folder**: **STEMS READY** and the green / blue dots are the same on
+  every computer (an index kept in the stems folder; **FOLDERS > Reanalyse the stems index** reads everything again);
+  the follower's real progress on PREPARING n %; the master's lyrics language used by the follower; RESET LYRICS / RESET
+  STEMS done on both.
+- **LYRICS EDIT**: among the LRCLIB results heard equally well, the one whose length is closest to the piece's comes first.
+- **Mac**: the main window's "-" puts it in the Dock.
+
 ## 11.4.0
 
 **AUTO COLOR that never makes a piano metallic - every piano we tried sounds better with it.**

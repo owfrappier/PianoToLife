@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.0 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -505,6 +505,13 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   beginning.
   **The MIDI player remembers** (11.1.1) its file or playlist and the piece it was at: they come back at the next start
   (ready, not playing; a take never saved is not kept).
+  **11.4.1 — bars** in MAGIC VIEW (MIDI): a line and a number at each bar (the beats fainter), read from the file's tempo
+  and time signature changes (4/4 and 120 BPM until it says otherwise; a take recorded in PianoToLife has none: "no bars").
+  Its top: line 1 HANDS / VELOCITY / STAFF / ahead; line 2 **PLAY / PAUSE**, **STOP**, **BAR n : b**, the time signature
+  and tempo there, **GO TO** (a bar number, Enter: it plays from the start of that bar, the notes released and the pedals
+  set as the file has them there; the linked audio follows), then the time and the file's name. The main window shows
+  BAR n : b on the MIDI player's line too. **BOUNCE with the media's audio** (11.4.1): **End** - at the MIDI's end (a
+  take recorded: the moment of its STOP), the audio faded out over 3 s (default), or at the end of the audio file.
   **VIEW** (11.1.1, right of LOAD MIDI, also in the compact bar): **MAGIC VIEW (MIDI)** — the notes of the MIDI file
   playing, or of the take just recorded, falling onto a keyboard and lighting its keys when they sound, in their own
   window (resizable, its place remembered). **HANDS**: the left hand orange, the right hand blue (from the file's two
@@ -834,6 +841,20 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
   - **11.3.8 — VIDEO** takes at once a change of times saved in LYRICS EDIT (before, only a change of text was seen).
   - **11.3.8 — fast bounce**: a hole is counted only when the sound stops in the middle of a note (still loud just
     before); a silence in the music, however short, no longer makes the bounce start again in real time.
+  - **11.4.1 — the list and the stems folder**: under the pieces, **BY TAGS** (Artist - Title, the file's name when it
+    has no tags) or **BY FILES**, remembered. **DUPLICATES** (a virtual folder made by PianoToLife, as STEMS READY): the
+    pieces of your FOLDERS and virtual folders that seem to be there twice, side by side - the same name or tags (what
+    is between brackets is kept when it names a version: Club Mix, Edit, Live...; "Official Video", "Remastered" and
+    track numbers left out) and the same length within 2 s, or the same file; an audio is never paired with a video.
+    **FOLDERS > Clean stems...**: DELETE STEMS WITHOUT AUDIO (the piece deleted - only when its folder is there; its
+    lyrics too), DELETE FAST IF QUALITY EXISTS, or the pieces chosen in a list (their tracks deleted, their lyrics kept);
+    each asks first. **KEEP STEMS** (beside CLEAN PIANO, this computer, on by default): off, the separated tracks of a
+    piece are deleted when you go on to another one (its lyrics kept) - LOCAL only, never in MASTER / FOLLOW.
+    **STEMS READY and the dots** come from an index kept in the stems folder (*PianoToLife stems index.txt*), filled by
+    every computer: the same list on each, whether the folder is on this computer, on the other one or on a shared disk;
+    **FOLDERS > Reanalyse the stems index** reads every stems folder again. CANCEL sits beside PREPARE STEMS while it
+    prepares; the line beside it only says what went wrong. MASTER / FOLLOW: PREPARING n % shows the follower's real
+    progress; the follower takes the master's lyrics language (and keeps it); RESET LYRICS / RESET STEMS are done on both.
   - **11.4.0 — clearer buttons**: **FIND LYRICS (AI)** when the piece has no lyrics yet (then LYRICS, or LYRICS C. once
     corrected); **EDIT LYRICS** (was EDIT). The stems' state is a button at the start of its line: **PREPARE STEMS** (a
     click separates the piece once - kept, never done again), **PREPARING n %** (CANCEL beside it), **STEMS READY** (green:
