@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.4.1 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -925,7 +925,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     liste (leurs pistes supprimées, leurs paroles gardées) ; chacun demande d'abord. **KEEP STEMS** (à côté de CLEAN
     PIANO, cet ordinateur, activé par défaut) : désactivé, les pistes séparées d'un morceau sont supprimées quand on passe
     à un autre (ses paroles gardées) - en LOCAL seulement, jamais en MASTER / FOLLOW. **STEMS READY et les points**
-    viennent d'un index gardé dans le dossier des stems (*PianoToLife stems index.txt*), rempli par tous les ordinateurs :
+    viennent d'un index gardé dans le dossier des stems (*PianoToLife stems index.txt*), rempli par tous les ordinateurs
+    (11.4.2 : chaque morceau par son nom de fichier et ses tags, jamais un chemin - chaque ordinateur le retrouve dans ses
+    propres dossiers) :
     la même liste sur chacun, que le dossier soit sur cet ordinateur, sur l'autre ou sur un disque partagé ; **FOLDERS >
     Reanalyse the stems index** relit tous les dossiers de stems. CANCEL est à côté de PREPARE STEMS pendant la
     préparation ; la ligne à côté ne dit plus que ce qui ne va pas. MASTER / FOLLOW : PREPARING n % montre la vraie

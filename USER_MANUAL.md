@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.1 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -851,7 +851,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     each asks first. **KEEP STEMS** (beside CLEAN PIANO, this computer, on by default): off, the separated tracks of a
     piece are deleted when you go on to another one (its lyrics kept) - LOCAL only, never in MASTER / FOLLOW.
     **STEMS READY and the dots** come from an index kept in the stems folder (*PianoToLife stems index.txt*), filled by
-    every computer: the same list on each, whether the folder is on this computer, on the other one or on a shared disk;
+    every computer (11.4.2: each piece by its file name and tags, never a path - each computer finds it in its own
+    folders): the same list on each, whether the folder is on this computer, on the other one or on a shared disk;
     **FOLDERS > Reanalyse the stems index** reads every stems folder again. CANCEL sits beside PREPARE STEMS while it
     prepares; the line beside it only says what went wrong. MASTER / FOLLOW: PREPARING n % shows the follower's real
     progress; the follower takes the master's lyrics language (and keeps it); RESET LYRICS / RESET STEMS are done on both.

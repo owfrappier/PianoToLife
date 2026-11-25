@@ -6,7 +6,7 @@ with one live, physically modelled string engine — from a single held key to e
 <p align="center"><b>New in 10:</b> no hosted piano needed — play your own samples with the built-in sampler.<br>Pedal-up samples are enough: resonance, pedals and noises are modelled live (hybrid sampling + modelling).</p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1141" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B; the MIDI player's line with BAR n : b)" width="900">
+  <img src="Screenshot-A.png?v=1142" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B; the MIDI player's line with BAR n : b)" width="900">
 </p>
 
 <p align="center">
@@ -53,11 +53,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1141" alt="SAMPLER EDIT: MIC 1-5 and MIX, the DRY / DENOISE / BODY panel, NOISY 0-100 %, MAKE DRY 1 again (all mics), PIANO PLAYS ORIG. / DRY 1-3" width="900">
+  <img src="Screenshot-E.png?v=1142" alt="SAMPLER EDIT: MIC 1-5 and MIX, the DRY / DENOISE / BODY panel, NOISY 0-100 %, MAKE DRY 1 again (all mics), PIANO PLAYS ORIG. / DRY 1-3" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1141" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1142" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -67,7 +67,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1141" alt="The MEDIA player with FOLDERS (DUPLICATES, STEMS READY) and the pieces (SEARCH, BY TAGS) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, HE / SHE / BOTH, CLEAN PIANO, KEEP STEMS, STEMS READY, LIVE STEMS, LYRICS, EDIT LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1142" alt="The MEDIA player with FOLDERS (DUPLICATES, STEMS READY) and the pieces (SEARCH, BY TAGS) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, HE / SHE / BOTH, CLEAN PIANO, KEEP STEMS, STEMS READY, LIVE STEMS, LYRICS, EDIT LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -78,7 +78,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1141" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one), LOCAL / MASTER / FOLLOW" width="520">
+  <img src="Screenshot-I.png?v=1142" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one), LOCAL / MASTER / FOLLOW" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -94,7 +94,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1141" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1142" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -107,7 +107,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1141" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
+  <img src="Screenshot-D.png?v=1142" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -118,7 +118,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1141" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); FIND / REPLACE, STOP, UNDO / REDO, DELETE LYRICS, TIMES" width="900">
+  <img src="Screenshot-C.png?v=1142" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); FIND / REPLACE, STOP, UNDO / REDO, DELETE LYRICS, TIMES" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -130,7 +130,25 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.4.1
+## What's new in 11.4.2
+
+**A fix for two computers sharing a stems folder, and three clearer messages.**
+
+- **STEMS READY and the green / blue dots between a Mac and a PC** (fix of 11.4.1): the stems index no longer keeps a
+  path. It keeps each piece's **file name and tags** (artist, title), and each computer finds the piece in its own
+  folders - the same name, or the same artist and title if it was renamed; accents compared however they are written.
+  11.4.1 kept the path of the computer that made the stems (a PC's *A:\...* never matched on the Mac). After updating,
+  run **FOLDERS > Reanalyse the stems index** once on each computer.
+- **Samples in opposite polarity** at import (left and right cancel each other, "side only"): they were placed nowhere;
+  they are now analysed on their left channel and a window says so - **KEEP THEM** or **LEAVE THEM OUT**.
+- **Resonance Level very low** (-20 dB or less) when you capture the model or run AUTO CAL of the resonance: said, with
+  0 dB offered (a level left at -30 dB made the resonance seem not to work).
+- **The folder shown follows the disk**: files added or deleted in the Finder / Explorer appear or disappear from the
+  pieces' list by themselves within a few seconds (the piece playing untouched); DUPLICATES and STEMS READY follow.
+- **ALIGN ATTACKS** is **lit** when the attacks are aligned (a click puts the samples' own attacks back); the label
+  "ORIG. ATTACKS" was read as the current state.
+
+### Also in 11.4.1
 
 **MIDI files read bar by bar, a media player that tidies itself, and microphones aligned the way the library recorded them.**
 
@@ -143,7 +161,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **ALIGN ATTACKS** with several microphones asks how: **EACH ON ITS OWN** (default, as before: each microphone on its own
   strike) or **TOGETHER** (the strike measured on the microphone you choose - the closest to the piano is advised -, every
   microphone of the layer moved by the same amount: the timing between the microphones stays as the library recorded it).
-  Once done, the button becomes **ORIG. ATTACKS**: the samples' own attacks back at any time, even after SAVE. A line
+  Once done, ALIGN ATTACKS is lit (11.4.2; it read ORIG. ATTACKS in 11.4.1): a click puts the samples' own attacks back at any time, even after SAVE. A line
   under KEY says how each key is aligned. (DRY never aligns the microphones with each other.)
 - **Media player**: the pieces **BY TAGS** (Artist - Title) or **BY FILES**; a **DUPLICATES** virtual folder (the same
   piece twice in your folders - remixes, edits and live versions kept apart, an audio never paired with a video);
@@ -158,7 +176,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **Mac**: the main window's "-" puts it in the Dock.
 
 <p align="center">
-  <img src="Screenshot-L.png?v=1141" alt="MAGIC VIEW (MIDI): PLAY / PAUSE, STOP, BAR 117 : 4, 4/4 117 BPM, GO TO BAR, the time; a line and a number at each bar, the beats fainter; STAFF above" width="900">
+  <img src="Screenshot-L.png?v=1142" alt="MAGIC VIEW (MIDI): PLAY / PAUSE, STOP, BAR 117 : 4, 4/4 117 BPM, GO TO BAR, the time; a line and a number at each bar, the beats fainter; STAFF above" width="900">
 </p>
 
 ### Also in 11.4.0
@@ -178,7 +196,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   **PREPARE STEMS** (a click separates the piece), **PREPARING n %**, **STEMS READY** (green).
 
 <p align="center">
-  <img src="Screenshot-K.png?v=1141" alt="AUTO COLOR: SOFT, MEDIUM, HARD, Never brighter than the reference (on), Never darker than the piano is (off)" width="520">
+  <img src="Screenshot-K.png?v=1142" alt="AUTO COLOR: SOFT, MEDIUM, HARD, Never brighter than the reference (on), Never darker than the piano is (off)" width="520">
 </p>
 
 ### Also in 11.3.8
@@ -353,11 +371,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1141" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1142" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1141" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1142" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6
@@ -497,16 +515,16 @@ everything at the new rate.
 ### More screenshots (11.4.1)
 
 <p align="center">
-  <img src="Screenshot-N.png?v=1141" alt="MAGIC VIEW (Media) with STAFF, CHORDS with HE / SHE / BOTH, and the MEDIA player" width="900">
+  <img src="Screenshot-N.png?v=1142" alt="MAGIC VIEW (Media) with STAFF, CHORDS with HE / SHE / BOTH, and the MEDIA player" width="900">
 </p>
 <p align="center">
-  <img src="Screenshot-M.png?v=1141" alt="The compact view: the MIDI player's line with BAR n : b" width="700">
+  <img src="Screenshot-M.png?v=1142" alt="The compact view: the MIDI player's line with BAR n : b" width="700">
 </p>
 <p align="center">
-  <img src="Screenshot-O.png?v=1141" alt="LOAD MIDI's menu: a folder, a playlist, LOOP, the MIDI files' controllers / tuning / channels, the recent files" width="640">
+  <img src="Screenshot-O.png?v=1142" alt="LOAD MIDI's menu: a folder, a playlist, LOOP, the MIDI files' controllers / tuning / channels, the recent files" width="640">
 </p>
 <p align="center">
-  <img src="Screenshot-P.png?v=1141" alt="REC by a MIDI controller (LEARN), and REC and PLAY with the media's audio (SYNC)" width="640">
+  <img src="Screenshot-P.png?v=1142" alt="REC by a MIDI controller (LEARN), and REC and PLAY with the media's audio (SYNC)" width="640">
 </p>
 
 The full history of the earlier versions: **[CHANGELOG.md](CHANGELOG.md)**.

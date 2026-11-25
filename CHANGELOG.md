@@ -2,6 +2,24 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.2
+
+**A fix for two computers sharing a stems folder, and three clearer messages.**
+
+- **STEMS READY and the green / blue dots between a Mac and a PC** (fix of 11.4.1): the stems index no longer keeps a
+  path. It keeps each piece's **file name and tags** (artist, title), and each computer finds the piece in its own
+  folders - the same name, or the same artist and title if it was renamed; accents compared however they are written.
+  11.4.1 kept the path of the computer that made the stems (a PC's *A:\...* never matched on the Mac). After updating,
+  run **FOLDERS > Reanalyse the stems index** once on each computer.
+- **Samples in opposite polarity** at import (left and right cancel each other, "side only"): they were placed nowhere;
+  they are now analysed on their left channel and a window says so - **KEEP THEM** or **LEAVE THEM OUT**.
+- **Resonance Level very low** (-20 dB or less) when you capture the model or run AUTO CAL of the resonance: said, with
+  0 dB offered (a level left at -30 dB made the resonance seem not to work).
+- **The folder shown follows the disk**: files added or deleted in the Finder / Explorer appear or disappear from the
+  pieces' list by themselves within a few seconds (the piece playing untouched); DUPLICATES and STEMS READY follow.
+- **ALIGN ATTACKS** is **lit** when the attacks are aligned (a click puts the samples' own attacks back); the label
+  "ORIG. ATTACKS" was read as the current state.
+
 ## 11.4.1
 
 **MIDI files read bar by bar, a media player that tidies itself, and microphones aligned the way the library recorded them.**

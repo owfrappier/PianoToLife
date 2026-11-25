@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.1 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -219,10 +219,19 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    le décalage entre les micros reste exactement celui de la librairie. TOGETHER quand la librairie joue en place en
    HOST mais que des notes se décalent ici entre micros (sur les micros d'ambiance, la frappe douce peut être trouvée à
    quelques ms près). Certaines librairies ne sont pas alignées dans leurs samples (leur propre lecteur corrige) : réglez
-   alors le délai de chaque micro dans MIX. Une fois fait, le bouton devient **ORIG. ATTACKS** : un clic remet les
-   attaques d'origine des samples sur tous les micros (une étape d'UNDO), à tout moment, même après SAVE. Sous KEY -
+   alors le délai de chaque micro dans MIX. Une fois fait, **ALIGN ATTACKS est allumé** (11.4.2) : allumé = attaques alignées ; un
+   clic remet alors les attaques d'origine des samples sur tous les micros (une étape d'UNDO), à tout moment, même après
+   SAVE ; éteint = les attaques d'origine. Si les attaques d'origine jouent mal, ce sont les samples eux-mêmes qui sont
+   mal découpés à leur début - pas PianoToLife. Sous KEY -
    MIC - LAYERS, une petite ligne indique : *Attacks: original / aligned - EACH ON ITS OWN / aligned - TOGETHER
    (measured on MIC n) / partly aligned*. **DRY ne change jamais le décalage entre les micros.**
+   **11.4.2 — samples en opposition de phase** : un sample stéréo dont la gauche et la droite s'annulent une fois
+   additionnées (« side only » : un micro câblé à l'envers, ou un enregistrement Mid / Side à décoder) n'était placé nulle
+   part (PianoToLife entendait un silence). Il est maintenant analysé sur son canal gauche, et à la fin de l'import une
+   fenêtre les liste : **KEEP THEM** (en stéréo ils jouent tels qu'enregistrés ; en mono et pour la résonance ils sont
+   presque muets) ou **LEAVE THEM OUT** (une étape d'UNDO). Mieux : corriger les fichiers de la librairie et les
+   réimporter. **Resonance Level très bas** : une capture du modèle ou un AUTO CAL de la résonance avec Resonance Level
+   à -20 dB ou moins est signalé d'abord, avec 0 dB proposé.
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2 ; un seul AUTO DYN avant, appelé RECAL A4 avant la 10.4.2) — tous deux écoutent
    le A4 aux 127 vélocités, placent ses couches là où leur intensité les met sur la courbe de référence et les mettent
    à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : cette valeur joue le set tel qu'il a été
