@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.2 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -869,7 +869,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     when EDIT looks for lyrics on LRCLIB (only the artist, the title and the length are sent). Nothing else, nothing
     about you.
   - MEDIA is an **option (29 EUR or 29 USD minimum, one payment, no subscription)**: at the first click a window shows what it does and the PayPal
-    link; write "Media" in the PayPal message and you receive the password by e-mail. Once entered, it is remembered on
+    link; write "Media" in the PayPal message and you receive the password by e-mail. **Buy Me a Coffee** works too (11.4.3,
+    buymeacoffee.com/olivierfra7): then send a copy of the payment to pianotolife@outlook.com. Once entered, it is remembered on
     this computer. **TRY** (11.0.1): everything for **3 minutes of playing** each time you start PianoToLife (the time
     left shows in the player's title); a BOUNCE with the media needs the password.
   - **MIDI loop** (11.0.0): LOOP in the LOAD MIDI menu now also repeats a single MIDI file.

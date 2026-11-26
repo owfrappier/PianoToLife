@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.4.2 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -947,7 +947,9 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     Whisper, et quand EDIT cherche des paroles sur LRCLIB (seuls l'artiste, le titre et la durée sont envoyés). Rien
     d'autre, rien sur vous.
   - MEDIA est une **option (29 EUR ou 29 USD minimum, paiement unique, sans abonnement)** : au premier clic, une fenêtre montre ce qu'il fait et le lien
-    PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. Une fois saisi, il
+    PayPal ; écrivez « Media » dans le message PayPal et vous recevez le mot de passe par e-mail. **Buy Me a Coffee**
+    convient aussi (11.4.3, buymeacoffee.com/olivierfra7) : envoyez ensuite une copie du paiement à
+    pianotolife@outlook.com. Une fois saisi, il
     est retenu sur cet ordinateur. **TRY** (11.0.1) : tout essayer pendant **3 minutes de lecture** à chaque lancement
     de PianoToLife (le temps restant s'affiche dans le titre du lecteur) ; un BOUNCE avec le média demande le mot de
     passe.

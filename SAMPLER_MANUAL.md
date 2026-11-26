@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.4.2 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.4.3 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -223,6 +223,46 @@ a selection before working on every key.
    **LEAVE THEM OUT** (one UNDO step). Better: fix the library's files and import them again.
    **Resonance Level very low**: capturing the model or AUTO CAL of the resonance with Resonance Level at -20 dB or
    less is said first, with 0 dB offered.
+   **11.4.3 — SAME LAYERS** (second row of SAMPLER EDIT, after DRY): every other microphone takes exactly the velocity
+   ranges (and the gains) of the **reference microphone** you choose - the closest to the piano -, sample by sample, so at
+   each velocity every microphone plays **the same strike** of the recording. AUTO LAYERS (and AUTO NAME when the names
+   do not give the order) place each microphone on its own measures: a room microphone hears another level and timbre
+   than the close one and could play another strike - never in phase, whatever ALIGN ATTACKS does. The samples are
+   paired by their **file names** (what is in all of a microphone's names - its own name, e.g. *Close* / *Room* - left
+   out), else by their order on the key. The samples with no counterpart on the reference microphone (an extra strike,
+   a sample of another key, a leftover key-off) are listed at the end: **REMOVE THEM** (one UNDO step) or **KEEP THEM**.
+   The keys done are set by hand (AUTO LAYERS no longer moves them). Order for several microphones: **AUTO NAME only →
+   SAME LAYERS → ALIGN ATTACKS TOGETHER** (on the same reference microphone).
+   **11.4.3 — KEY COLOR** (bottom row, between FIX STEPS and AUTO COLOR): evens the hammers from key to key. Every
+   strike's brightness is measured (energy above 2.5 kHz in the first 100 ms), each key compared with its neighbours (3 on
+   each side, A0..C6) at the same velocity, on every microphone. A key that stands out on at least 70 % of its layers by
+   1.5 dB or more is evened by two high shelves (2 and 4 kHz, at most 6 dB, no CPU added); a sample odd on its own is
+   left; the natural slope (darker bass, brighter treble) stays. The **reference key** (C3..C5) keeps its colour and the
+   whole piano follows it - choose the hammer you like best. **Strength** 25-100 %. **Lit = heard**: a click turns it off,
+   its values kept (compare at once); clicked off, a window says it is already measured: **TURN IT ON**, **MEASURE AGAIN**
+   (another reference or strength) or **TAKE IT OFF** (every key back as recorded). Applied the same to every microphone
+   of a key (the same strike: the microphones stay together). The side panel shows *key color +x dB* per sample. Order: ... FIX STEPS > KEY ATTACK > **KEY COLOR** > AUTO
+   COLOR > AUTO GAIN.
+   **11.4.3 — KEY ATTACK** (bottom row, before KEY COLOR): evens the strikes from key to key. How much each strike stands
+   out - the peak of its first 5 ms against the level of the next 45 ms - is measured on every microphone and compared with
+   the neighbouring keys (3 on each side) at the same velocity; a key that stands out on at least 70 % of its layers by
+   1.5 dB or more has its first 5 ms after the strike raised or lowered (back to normal in 10 ms, at most 6 dB, each
+   microphone at its own strike, so the microphones stay together). Reference key, strength, lit / off and the window as
+   KEY COLOR. It evens the strike's weight, not the hammer's timing on a badly regulated piano. Order: ... FIX STEPS >
+   **KEY ATTACK** > **KEY COLOR** > AUTO COLOR > AUTO GAIN. SAMPLER EDIT is 1440 wide (11.4.3).
+   **11.4.3 — lit = heard**: ALIGN ATTACKS, KEY ATTACK, KEY COLOR, AUTO COLOR, AUTO GAIN and AUTO PAN are lit when what they did is
+   heard; a click on a lit one turns it off (its values kept), so you compare at once. Off, a click offers TURN IT ON or
+   doing it again. AUTO GAIN is now kept apart from each key's Gain (your own Gain settings stay; a set balanced before
+   11.4.3 keeps its balance in Gain until AUTO GAIN is run again).
+   **11.4.3 — order with several microphones**: AUTO NAME only at import; on the reference (closest) microphone AUTO
+   DYN, FIX STEPS, KEY ATTACK, KEY COLOR, AUTO COLOR, AUTO GAIN (was BALANCE), AUTO PAN, AUTO RELEASE; then **SAME LAYERS**
+   from it - every microphone takes its layers (a set aligned TOGETHER is aligned again). FIX STEPS: a second click
+   changes nothing once the boundaries are right.
+   **11.4.3 — the key in the file names**: PianoToLife finds, over the whole drop, the part of the names that is the
+   key (the same place in at least 80 % of them) and reads that one, so a code after it (*Grand_C6_v127_B8OP*: not
+   *B8*) no longer moves a sample. Best still: names with only the key and the layer (*Grand_C6_v127.aif*).
+   **Changing microphone** in SAMPLER EDIT loads nothing again: every microphone with samples stays in memory while you
+   edit (asked first if it would take more than half of the computer's memory).
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2; one AUTO DYN before, called RECAL A4 before 10.4.2) — both listen to A4 at all
    127 velocities, place its layers where their loudness belongs on the reference curve and level them. They also
    measure A4's tuning (sent to SR A4 Tuning: that value plays the set as recorded; RESET in the TEMPERAMENT window

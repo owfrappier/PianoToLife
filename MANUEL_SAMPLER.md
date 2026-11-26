@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.2 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -232,6 +232,50 @@ partie vide de la grille pour vider la sélection avant de travailler sur toutes
    presque muets) ou **LEAVE THEM OUT** (une étape d'UNDO). Mieux : corriger les fichiers de la librairie et les
    réimporter. **Resonance Level très bas** : une capture du modèle ou un AUTO CAL de la résonance avec Resonance Level
    à -20 dB ou moins est signalé d'abord, avec 0 dB proposé.
+   **11.4.3 — SAME LAYERS** (deuxième ligne de SAMPLER EDIT, après DRY) : chaque autre micro reprend exactement les
+   plages de vélocité (et les gains) du **micro de référence** choisi - le plus proche du piano -, sample par sample : à
+   chaque vélocité tous les micros jouent **la même frappe** de l'enregistrement. AUTO LAYERS (et AUTO NAME quand les noms
+   ne donnent pas l'ordre) placent chaque micro sur ses propres mesures : un micro d'ambiance entend un autre niveau et un
+   autre timbre que le micro proche et pouvait jouer une autre frappe - jamais en phase, quoi que fasse ALIGN ATTACKS. Les
+   samples sont associés par leur **nom de fichier** (ce qui est dans tous les noms d'un micro - son propre nom, ex.
+   *Close* / *Room* - retiré), sinon par leur ordre sur la touche. Les samples sans correspondant sur le micro de
+   référence (une frappe en trop, un sample d'une autre touche, un key-off oublié) sont listés à la fin : **REMOVE THEM**
+   (une étape d'UNDO) ou **KEEP THEM**. Les touches traitées passent « à la main » (AUTO LAYERS ne les déplace plus).
+   Ordre avec plusieurs micros : **AUTO NAME seul → SAME LAYERS → ALIGN ATTACKS TOGETHER** (sur le même micro de
+   référence).
+   **11.4.3 — KEY COLOR** (ligne du bas, entre FIX STEPS et AUTO COLOR) : égalise les marteaux d'une touche à l'autre.
+   La brillance de chaque frappe est mesurée (énergie au-dessus de 2,5 kHz dans les 100 premières ms), chaque touche
+   comparée à ses voisines (3 de chaque côté, A0..C6) à la même vélocité, sur chaque micro. Une touche qui sort du lot sur
+   au moins 70 % de ses couches de 1,5 dB ou plus est égalisée par deux filtres en plateau (2 et 4 kHz, au plus 6 dB, sans
+   CPU en plus) ; un sample isolé est laissé ; la pente naturelle (basses plus sombres, aigus plus brillants) reste. La
+   **touche de référence** (C3..C5) garde sa couleur et tout le piano la suit - choisissez le marteau que vous préférez.
+   **Force** 25-100 %. **Allumé = entendu** : un clic l'éteint en gardant ses valeurs (comparaison immédiate) ; éteint, un
+   clic ouvre une fenêtre qui dit qu'il est déjà mesuré : **TURN IT ON**, **MEASURE AGAIN** (autre référence ou force) ou
+   **TAKE IT OFF** (toutes les touches telles qu'enregistrées). Appliqué de la même façon à tous les micros d'une touche
+   (la même frappe : les micros restent ensemble). Le panneau de droite affiche
+   *key color +x dB* par sample. Ordre : ... FIX STEPS > KEY ATTACK > **KEY COLOR** > AUTO COLOR > AUTO GAIN.
+   **11.4.3 — KEY ATTACK** (ligne du bas, avant KEY COLOR) : égalise les frappes d'une touche à l'autre. La saillie de
+   chaque frappe - la crête de ses 5 premières ms contre le niveau des 45 ms suivantes - est mesurée sur chaque micro et
+   comparée aux touches voisines (3 de chaque côté) à la même vélocité ; une touche qui sort du lot sur au moins 70 % de ses
+   couches de 1,5 dB ou plus voit ses 5 premières ms après la frappe montées ou baissées (retour à la normale en 10 ms, au
+   plus 6 dB, chaque micro à sa propre frappe : les micros restent ensemble). Touche de référence, force, allumé / éteint
+   et la fenêtre comme KEY COLOR. Il égalise le poids de la frappe, pas le moment du marteau sur un piano mal réglé.
+   Ordre : ... FIX STEPS > **KEY ATTACK** > **KEY COLOR** > AUTO COLOR > AUTO GAIN. SAMPLER EDIT fait 1440 de large (11.4.3).
+   **11.4.3 — allumé = entendu** : ALIGN ATTACKS, KEY ATTACK, KEY COLOR, AUTO COLOR, AUTO GAIN et AUTO PAN sont allumés quand ce
+   qu'ils ont fait est entendu ; un clic sur un bouton allumé l'éteint (ses valeurs gardées) pour comparer tout de suite.
+   Éteint, un clic propose TURN IT ON ou de le refaire. AUTO GAIN est maintenant gardé à part du Gain de chaque touche (vos
+   propres réglages de Gain restent ; un set équilibré avant la 11.4.3 garde son équilibre dans Gain jusqu'à un nouveau
+   AUTO GAIN).
+   **11.4.3 — ordre avec plusieurs micros** : AUTO NAME seul à l'import ; sur le micro de référence (le plus proche)
+   AUTO DYN, FIX STEPS, KEY ATTACK, KEY COLOR, AUTO COLOR, AUTO GAIN (ex-BALANCE), AUTO PAN, AUTO RELEASE ; puis **SAME
+   LAYERS** depuis ce micro - tous les micros reprennent ses couches (un set aligné TOGETHER est réaligné). FIX STEPS : un
+   deuxième clic ne change plus rien une fois les frontières bonnes.
+   **11.4.3 — la touche dans les noms de fichiers** : PianoToLife trouve, sur tout le dépôt, la partie des noms qui
+   est la touche (au même endroit dans au moins 80 % d'entre eux) et lit celle-là : un code après elle
+   (*Grand_C6_v127_B8OP* : pas *B8*) ne déplace plus un sample. Le mieux reste des noms avec seulement la touche et la
+   couche (*Grand_C6_v127.aif*).
+   **Changer de micro** dans SAMPLER EDIT ne recharge plus rien : tous les micros qui ont des samples restent en mémoire
+   pendant l'édition (demandé d'abord si cela prendrait plus de la moitié de la mémoire de l'ordinateur).
 3. **AUTO DYN1 / AUTO DYN2** (10.6.2 ; un seul AUTO DYN avant, appelé RECAL A4 avant la 10.4.2) — tous deux écoutent
    le A4 aux 127 vélocités, placent ses couches là où leur intensité les met sur la courbe de référence et les mettent
    à niveau. Ils mesurent aussi l'accord du A4 (envoyé à SR A4 Tuning : cette valeur joue le set tel qu'il a été

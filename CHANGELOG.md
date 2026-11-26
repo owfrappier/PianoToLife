@@ -2,6 +2,61 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.3
+
+**A piano evened out key by key - KEY ATTACK, KEY COLOR, SAME LAYERS - and an editor where every tool can be compared on / off.**
+
+- **SAME LAYERS** (SAMPLER EDIT, new): with AUTO LAYERS each microphone was placed on its own measures - a room
+  microphone hears another level and timbre than the close one, so at one velocity MIC 1 could play one strike and
+  MIC 2 another one (or a stray sample): two different strikes never sound in phase, whatever ALIGN ATTACKS does.
+  SAME LAYERS gives every other microphone exactly the velocity ranges of the reference microphone you choose (the
+  closest to the piano), sample by sample, paired by their **file names** (else by their order on the key). The samples
+  with no counterpart on the reference microphone - an extra strike, a sample of another key, a leftover key-off - are
+  listed at the end: **REMOVE THEM** or **KEEP THEM**. One UNDO step. Do it **before ALIGN ATTACKS TOGETHER**.
+- **KEY COLOR** (SAMPLER EDIT, new, before AUTO COLOR): evens the hammers from key to key. The brightness of every strike
+  is measured, each key compared with its neighbours at the same velocity on every microphone; a key brighter or darker
+  than its neighbours on most of its layers is evened (high shelves at 2 and 4 kHz, at most 6 dB, no CPU added), a
+  sample odd on its own is left, and the natural slope of the piano stays. You choose the **reference key** (C3..C5): it
+  keeps its colour and the whole piano follows it. Strength 25-100 %; the files are not changed. **Lit = heard**: a click
+  turns it off with its values kept (a quick A / B), another click offers TURN IT ON / MEASURE AGAIN / TAKE IT OFF.
+- **KEY ATTACK** (SAMPLER EDIT, new, before KEY COLOR): evens the strikes from key to key - a hammer that hits harder or
+  softer than its neighbours on most of its layers. How much each strike stands out (the peak of its first 5 ms against
+  the next 45 ms) is measured; the key's first 5 ms after the strike are raised or lowered (at most 6 dB, on each
+  microphone at its own strike). The same reference key, strength, lit / off switch and window as KEY COLOR. It evens the
+  strike, not the hammer's timing.
+- **AUTO COLOR and AUTO GAIN lit = heard** (as ALIGN ATTACKS, KEY ATTACK and KEY COLOR): a click turns them off with their
+  settings kept, to compare at once; clicked off, TURN IT ON or set them again (AUTO GAIN: also TAKE IT OFF). AUTO GAIN is
+  now kept apart from each key's own Gain (a set balanced before 11.4.3 keeps it in Gain until AUTO GAIN is run again).
+- **The tools of SAMPLER EDIT, in the order to use them**: FILL GAPS > ALIGN ATTACKS > AUTO DYN1 / DYN2 > FIX STEPS >
+  KEY ATTACK > KEY COLOR > AUTO COLOR > **AUTO GAIN** (was BALANCE) > **AUTO PAN** (the AUTO of Pan for every key; lit = heard, off = every key at the centre) > AUTO
+  RELEASE > **SAME LAYERS** (last: every microphone takes the reference microphone's layers; a set aligned TOGETHER is
+  aligned again on it). The row runs under the right panel too.
+- **The layers of ORIG. / DRY 1-3**: each version keeps its own settings. After a SAVE, the other versions whose layers
+  differ (which samples, keys, velocity ranges, starts) are listed, none ticked: COPY THE LAYERS gives the ticked ones the
+  layers just saved, their own sound settings (gain, KEY ATTACK, KEY COLOR...) kept. A version set otherwise on purpose:
+  leave it unticked.
+- **FIX STEPS fixed**: each click moved the boundaries again, until the layers had the same width; now only the
+  boundaries at 2 dB or more move, a move is kept only if the step gets smaller, and a second click changes nothing.
+- **SAMPLER EDIT is wider** (1440 instead of 1280): room for the tools' row; the messages have their own line again, and
+  KEY ATTACK / KEY COLOR / AUTO / AUTO COLOR / AUTO GAIN say "processing..." while they work. **PLAYS** (ORIG. / DRY 1-3) at
+  the top of the key's panel, the versions not made greyed.
+- **DRY versions kept after a SAVE under another name**: a piano saved under a new name lost its DRY versions ("not
+  made") although they were still on the disk. They are found again (the set names them, and their key is checked);
+  MAKE and delete only touch the new piano's own DRY files.
+- **Changing microphone in SAMPLER EDIT loads nothing again**: before SAVE SAMPLES, each change of microphone read
+  every sample's beginning again. Every microphone with samples now stays in memory while you edit; if that would take
+  more than half of the computer's memory, PianoToLife asks first (KEEP THEM ALL / LOAD EACH WHEN CHOSEN).
+- **Import options by default**: entering SAMPLER EDIT or changing microphone leaves only **AUTO NAME** ticked (AUTO KEY
+  and AUTO LAYERS off); NEW and CLEAR ALL also tick FLAC.
+- **The key read from the file names, safer**: a name ending with a code such as *Grand_C6_v127_B8OP* was read as
+  B8 (the last note-like letters won), and the sample landed on the key under the drop. PianoToLife now finds, over the
+  whole drop, the part of the names that is the key (*C6*) and reads that one. Checked on 11 211 samples of 7 libraries:
+  no other key changed.
+- **Mac**: the main window's "-" minimises the main window only (the MEDIA player and the other windows stay - 11.4.2
+  could hide them all).
+- **Fix (Windows)**: a piece whose name has accents could appear twice in the pieces' list after the folder was read
+  again.
+
 ## 11.4.2
 
 **A fix for two computers sharing a stems folder, and three clearer messages.**
