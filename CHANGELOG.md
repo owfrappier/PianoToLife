@@ -2,6 +2,40 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.4
+
+**Several microphones played as one, hollow notes put back in phase, and a VOICE that follows the singer.**
+
+- **MERGE MICS** (SAMPLER EDIT, second row, new): the microphones heard in the MIX mixed exactly as the MIX plays them
+  (level, PowerPan, WIDE, delay, each from its own start) into **one stereo sample per strike**, played alone: one voice
+  per note (half the polyphony and the disk of two microphones), and nothing can drift between microphones any more.
+  **Into a free microphone** of the set (the merged samples become MIC n, the others are switched off in the MIX to
+  compare) or **into a version V1-V3** (the original stays as ORIG.). Its window stays open beside the MIX and follows it
+  live: each microphone's state, the share of each one, the strikes merged. **OPEN MIX** is always there; with fewer than
+  two microphones heard, **SWITCH ON ALL** switches every microphone with samples on. When the microphones' layers differ,
+  each strike is merged with the layer that plays at its velocity (as the MIX does), and the window suggests **SAME
+  LAYERS** first (orange) for the most faithful merge.
+- **SWAP MICS**: right-click on a MIC button of SAMPLER EDIT to swap two microphones (their samples, versions and MIX
+  settings).
+- **PHASE FIX** (DRY panel, new option of MAKE): a sample whose left and right channels are offset in time far more than
+  its neighbouring keys' (a spaced pair of microphones, a note recorded apart) loses its fundamental when the two channels
+  meet - in mono, in a narrow MIX, in the room: **a hollow note**. MAKE measures every sample of every microphone in the
+  lows, compares it with the keys around it and re-aligns **the lows of the hollow ones only** (below 300-500 Hz): the
+  highs, and so the stereo image, stay as recorded. A note that gains less than 1 dB, or whose sound is diffuse (the
+  room), is left as it is. On a three-microphone grand: about 20 hollow notes, up to -15 dB in mono, back to about
+  -0.5 dB. Hover PHASE FIX to read, microphone by microphone, the keys it re-aligned. For the phase alone: DRY 0 %,
+  DENOISE 0 %.
+- **The versions are named V1 / V2 / V3** (were DRY 1-3): a version can now be merged, phase-fixed or denoised only.
+  Hover a version to read what it holds. The files on the disk keep their names: every piano opens as before.
+- **MAGIC VIEW - VOICE**: the sung line, one note at a time, read as a pitch (no more notes of the voice's harmonics, of
+  its breaths or of the instruments left in the stem). Silent during the instrumental parts; an octave too high on a
+  voice whose second harmonic is stronger than its fundamental is folded back. **sens. - / +** now sets the quietest
+  phrase shown.
+- **NEED NEW SR - USE IT FOR THIS SET**: a set renamed or saved under another name asked for a new Piano Model capture
+  although nothing had changed; when only the set's name differs, USE IT FOR THIS SET keeps the capture.
+- **MIX in SAMPLER EDIT** opens the MIX window when switched on.
+- **Tooltips** in the DRY, LISTEN, TEMPERAMENT, UNA CORDA, METRONOME and playlist search panels (they never showed one).
+
 ## 11.4.3
 
 **A piano evened out key by key - KEY ATTACK, KEY COLOR, SAME LAYERS - and an editor where every tool can be compared on / off.**

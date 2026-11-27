@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.3 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -587,7 +587,8 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
     instruments playing the same notes). A new strength is computed once from the separated tracks (a few seconds;
     the state line says so). Double-click: 100 %.
   - **MAGIC VIEW** (11.1.1, in the player, once the piece is separated): the notes of its **PIANO**, its **VOICE** (one
-    note at a time) or its **OTHER** instruments (the bass in orange), read on the separated tracks and falling onto a
+    note at a time; 11.4.4: the sung line read as a pitch - no harmonics, breaths or instruments left in the stem;
+    sens. sets the quietest phrase shown) or its **OTHER** instruments (the bass in orange), read on the separated tracks and falling onto a
     keyboard in time with the music (pauses, jumps, TUNING). It is a reading of the sound, not a transcription:
     **sens. − / +** shows more or fewer notes. **HANDS** (PIANO): the two hands guessed, left orange, right blue. The
     tuning of the recording is the one CHORDS measured (otherwise it is measured on the track). Its own window, which

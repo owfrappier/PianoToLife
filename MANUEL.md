@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.4.3 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -635,7 +635,8 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
     les instruments qui jouent les mêmes notes). Une nouvelle force est calculée une fois à partir des pistes séparées
     (quelques secondes ; la ligne d'état l'indique). Double-clic : 100 %.
   - **MAGIC VIEW** (11.1.1, dans le lecteur, une fois le morceau séparé) : les notes de son **PIANO**, de sa **VOIX**
-    (une note à la fois) ou de ses **autres** instruments (**OTHER**, la basse en orange), lues sur les pistes séparées
+    (une note à la fois ; 11.4.4 : la ligne chantée lue comme une hauteur - plus d'harmoniques, de souffles ni
+    d'instruments restés dans la piste ; sens. règle la phrase la plus faible affichée) ou de ses **autres** instruments (**OTHER**, la basse en orange), lues sur les pistes séparées
     et qui tombent sur un clavier en rythme avec la musique (pauses, sauts, TUNING). C'est une lecture du son, pas une
     transcription : **sens. − / +** montre plus ou moins de notes. **HANDS** (PIANO) : les deux mains estimées, gauche en
     orange, droite en bleu. Le diapason de l'enregistrement est celui mesuré par CHORDS (sinon il est mesuré sur la

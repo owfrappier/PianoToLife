@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="Screenshot-A.png?v=1143" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B; the MIDI player's line with BAR n : b)" width="900">
+  <img src="Screenshot-A.png?v=1144" alt="PianoToLife: the main window (SAMPLER mode, a sampled Steinway B; the MIDI player's line with BAR n : b)" width="900">
 </p>
 
 <p align="center">
@@ -59,11 +59,11 @@ release or resonance samples. A 3- to 6-layer pedal-up library is enough: PianoT
 so it plays like a deeply sampled piano, even when the library is badly cut or normalised.
 
 <p align="center">
-  <img src="Screenshot-E.png?v=1143" alt="SAMPLER EDIT (11.4.3): the DRY / DENOISE / BODY panel (PIANO PLAYS ORIG. / DRY 1-3), PLAYS above the key panel, and the tools in their order: FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > KEY ATTACK > KEY COLOR > AUTO COLOR > AUTO GAIN > AUTO PAN > AUTO RELEASE > SAME LAYERS" width="900">
+  <img src="Screenshot-E.png?v=1144" alt="SAMPLER EDIT (11.4.4): the DRY / DENOISE / BODY panel with PHASE FIX (PIANO PLAYS ORIG. / V1-V3), MERGE MICS, PLAYS above the key panel, and the tools in their order: FILL GAPS > ALIGN ATTACKS > AUTO DYN > FIX STEPS > KEY ATTACK > KEY COLOR > AUTO COLOR > AUTO GAIN > AUTO PAN > AUTO RELEASE > SAME LAYERS" width="900">
 </p>
 
 <p align="center">
-  <img src="Screenshot-J.png?v=1143" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
+  <img src="Screenshot-J.png?v=1144" alt="SAMPLER EDIT: LISTEN from one velocity to another - ALL 1-127, THIS LAYER, ITS BOUNDARY" width="520">
 </p>
 
 
@@ -73,7 +73,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 (29 EUR or 29 USD minimum, one payment, no subscription; 3 minutes of demo per session without the password).
 
 <p align="center">
-  <img src="Screenshot-B.png?v=1143" alt="The MEDIA player with FOLDERS (DUPLICATES, STEMS READY) and the pieces (SEARCH, BY TAGS) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, HE / SHE / BOTH, CLEAN PIANO, KEEP STEMS, STEMS READY, LIVE STEMS, LYRICS, EDIT LYRICS" width="900">
+  <img src="Screenshot-B.png?v=1144" alt="The MEDIA player with FOLDERS (DUPLICATES, STEMS READY) and the pieces (SEARCH, BY TAGS) at its left; VIDEO and KARAOKE, AUTO, SPEED, LEVEL and CEIL., Play at A4 and TRANSP., NO VOICE / NO PIANO / VOICE / PIANO, HE / SHE / BOTH, CLEAN PIANO, KEEP STEMS, STEMS READY, LIVE STEMS, LYRICS, EDIT LYRICS" width="900">
 </p>
 
 - **NO VOICE / NO PIANO / CLEAN PIANO**: the piece separated once on your computer (kept in the stems folder: Samples/Stems, or a folder you choose, shared on the network), then played
@@ -84,7 +84,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   network. Then **MASTER** on the one you play on and **FOLLOW** on the other (11.3.4): it separates what you ask.
 
 <p align="center">
-  <img src="Screenshot-I.png?v=1143" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one), LOCAL / MASTER / FOLLOW" width="520">
+  <img src="Screenshot-I.png?v=1144" alt="Right-click FAST / QUALITY: the stems folder (one shared on the network lets another computer separate for this one), LOCAL / MASTER / FOLLOW" width="520">
 </p>
 
 - **In tune and in your key**: *Play at A4* plays the recording at the A4 of your piano (432 to 448 Hz), and **TRANSP.**
@@ -100,7 +100,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   film in several languages.
 
 <p align="center">
-  <img src="Screenshot-F.png?v=1143" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
+  <img src="Screenshot-F.png?v=1144" alt="PADS: 4 x 4 pads on 5 pages, a MIDI controller, MEDIA or PAD, TOGGLE or HOLD, MIDI LEARN" width="640">
 </p>
 
 > **Disk space.** A file that macOS or Windows cannot read directly — a video's sound (MP4, MOV...), a format decoded by
@@ -113,7 +113,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 > large disk for it.
 
 <p align="center">
-  <img src="Screenshot-D.png?v=1143" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
+  <img src="Screenshot-D.png?v=1144" alt="VIDEO with FOR LIVE: the line sung framed, the next one in full colour (the picture blurred here)" width="900">
 </p>
 
 - **CHORDS**: the chords and the key of the piece, scrolling in time with it (and transposed with it).
@@ -124,7 +124,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 ### LYRICS: found, corrected, in time
 
 <p align="center">
-  <img src="Screenshot-C.png?v=1143" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); FIND / REPLACE, STOP, UNDO / REDO, DELETE LYRICS, TIMES" width="900">
+  <img src="Screenshot-C.png?v=1144" alt="LYRICS EDIT: the lyrics proposed by LRCLIB, what Whisper heard, the lines aligned on the voice; the duet menu (HE, SHE, 1, 2, BOTH, CHOIR); FIND / REPLACE, STOP, UNDO / REDO, DELETE LYRICS, TIMES" width="900">
 </p>
 
 - **LYRICS** listens to the separated voice of the piece and writes its lyrics in time (Whisper, on your computer). The
@@ -136,7 +136,45 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 
 ---
 
-## What's new in 11.4.3
+## What's new in 11.4.4
+
+**Several microphones played as one, hollow notes put back in phase, and a VOICE that follows the singer.**
+
+- **MERGE MICS** (SAMPLER EDIT, second row, new): the microphones heard in the MIX mixed exactly as the MIX plays them
+  (level, PowerPan, WIDE, delay, each from its own start) into **one stereo sample per strike**, played alone: one voice
+  per note (half the polyphony and the disk of two microphones), and nothing can drift between microphones any more.
+  **Into a free microphone** of the set (the merged samples become MIC n, the others are switched off in the MIX to
+  compare) or **into a version V1-V3** (the original stays as ORIG.). Its window stays open beside the MIX and follows it
+  live: each microphone's state, the share of each one, the strikes merged. **OPEN MIX** is always there; with fewer than
+  two microphones heard, **SWITCH ON ALL** switches every microphone with samples on. When the microphones' layers differ,
+  each strike is merged with the layer that plays at its velocity (as the MIX does), and the window suggests **SAME
+  LAYERS** first (orange) for the most faithful merge.
+- **SWAP MICS**: right-click on a MIC button of SAMPLER EDIT to swap two microphones (their samples, versions and MIX
+  settings).
+- **PHASE FIX** (DRY panel, new option of MAKE): a sample whose left and right channels are offset in time far more than
+  its neighbouring keys' (a spaced pair of microphones, a note recorded apart) loses its fundamental when the two channels
+  meet - in mono, in a narrow MIX, in the room: **a hollow note**. MAKE measures every sample of every microphone in the
+  lows, compares it with the keys around it and re-aligns **the lows of the hollow ones only** (below 300-500 Hz): the
+  highs, and so the stereo image, stay as recorded. A note that gains less than 1 dB, or whose sound is diffuse (the
+  room), is left as it is. On a three-microphone grand: about 20 hollow notes, up to -15 dB in mono, back to about
+  -0.5 dB. Hover PHASE FIX to read, microphone by microphone, the keys it re-aligned. For the phase alone: DRY 0 %,
+  DENOISE 0 %.
+- **The versions are named V1 / V2 / V3** (were DRY 1-3): a version can now be merged, phase-fixed or denoised only.
+  Hover a version to read what it holds. The files on the disk keep their names: every piano opens as before.
+- **MAGIC VIEW - VOICE**: the sung line, one note at a time, read as a pitch (no more notes of the voice's harmonics, of
+  its breaths or of the instruments left in the stem). Silent during the instrumental parts; an octave too high on a
+  voice whose second harmonic is stronger than its fundamental is folded back. **sens. - / +** now sets the quietest
+  phrase shown.
+- **NEED NEW SR - USE IT FOR THIS SET**: a set renamed or saved under another name asked for a new Piano Model capture
+  although nothing had changed; when only the set's name differs, USE IT FOR THIS SET keeps the capture.
+- **MIX in SAMPLER EDIT** opens the MIX window when switched on.
+- **Tooltips** in the DRY, LISTEN, TEMPERAMENT, UNA CORDA, METRONOME and playlist search panels (they never showed one).
+
+<p align="center">
+  <img src="Screenshot-T.png?v=1144" alt="MERGE MICS: the window beside the MIX - each microphone's state, the MIX's shares, the layers that differ (SAME LAYERS...), Into a free microphone or a version V1-V3" width="640">
+</p>
+
+### Also in 11.4.3
 
 **A piano evened out key by key - KEY ATTACK, KEY COLOR, SAME LAYERS - and an editor where every tool can be compared on / off.**
 
@@ -192,13 +230,13 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   again.
 
 <p align="center">
-  <img src="Screenshot-Q.png?v=1143" alt="SAMPLER EDIT: SAME LAYERS, the reference microphone chosen" width="760">
+  <img src="Screenshot-Q.png?v=1144" alt="SAMPLER EDIT: SAME LAYERS, the reference microphone chosen" width="760">
 </p>
 <p align="center">
-  <img src="Screenshot-R.png?v=1143" alt="SAMPLER EDIT: KEY COLOR, already measured - TURN IT ON / MEASURE AGAIN / TAKE IT OFF" width="640">
+  <img src="Screenshot-R.png?v=1144" alt="SAMPLER EDIT: KEY COLOR, already measured - TURN IT ON / MEASURE AGAIN / TAKE IT OFF" width="640">
 </p>
 <p align="center">
-  <img src="Screenshot-S.png?v=1143" alt="SAMPLER EDIT: KEY ATTACK, already measured (reference key, strength) - TURN IT ON / MEASURE AGAIN / TAKE IT OFF" width="640">
+  <img src="Screenshot-S.png?v=1144" alt="SAMPLER EDIT: KEY ATTACK, already measured (reference key, strength) - TURN IT ON / MEASURE AGAIN / TAKE IT OFF" width="640">
 </p>
 
 ### Also in 11.4.2
@@ -247,7 +285,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **Mac**: the main window's "-" puts it in the Dock.
 
 <p align="center">
-  <img src="Screenshot-L.png?v=1143" alt="MAGIC VIEW (MIDI): PLAY / PAUSE, STOP, BAR 117 : 4, 4/4 117 BPM, GO TO BAR, the time; a line and a number at each bar, the beats fainter; STAFF above" width="900">
+  <img src="Screenshot-L.png?v=1144" alt="MAGIC VIEW (MIDI): PLAY / PAUSE, STOP, BAR 117 : 4, 4/4 117 BPM, GO TO BAR, the time; a line and a number at each bar, the beats fainter; STAFF above" width="900">
 </p>
 
 ### Also in 11.4.0
@@ -267,7 +305,7 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
   **PREPARE STEMS** (a click separates the piece), **PREPARING n %**, **STEMS READY** (green).
 
 <p align="center">
-  <img src="Screenshot-K.png?v=1143" alt="AUTO COLOR: SOFT, MEDIUM, HARD, Never brighter than the reference (on), Never darker than the piano is (off)" width="520">
+  <img src="Screenshot-K.png?v=1144" alt="AUTO COLOR: SOFT, MEDIUM, HARD, Never brighter than the reference (on), Never darker than the piano is (off)" width="520">
 </p>
 
 ### Also in 11.3.8
@@ -442,11 +480,11 @@ Load a song, a playlist, a folder or a video, and play your piano with it. The M
 - **STEMS READY** lists each separated piece once.
 
 <p align="center">
-  <img src="Screenshot-G.png?v=1143" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
+  <img src="Screenshot-G.png?v=1144" alt="TEMPERAMENT (SAMPLER): Equal, Stretch 100 %, FIX KEYS and CLEAR FIX, the table Recorded / Played / Shift" width="640">
 </p>
 
 <p align="center">
-  <img src="Screenshot-H.png?v=1143" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
+  <img src="Screenshot-H.png?v=1144" alt="TEMPERAMENT (HOST): the hosted piano tuned to Equal, Stretch 100 %, FIX KEYS, EXPORT .txt + .scl" width="640">
 </p>
 
 ### Also in 11.2.6
@@ -586,16 +624,16 @@ everything at the new rate.
 ### More screenshots (11.4.1)
 
 <p align="center">
-  <img src="Screenshot-N.png?v=1143" alt="MAGIC VIEW (Media) with STAFF, CHORDS with HE / SHE / BOTH, and the MEDIA player" width="900">
+  <img src="Screenshot-N.png?v=1144" alt="MAGIC VIEW (Media) with STAFF, CHORDS with HE / SHE / BOTH, and the MEDIA player" width="900">
 </p>
 <p align="center">
-  <img src="Screenshot-M.png?v=1143" alt="The compact view: the MIDI player's line with BAR n : b" width="700">
+  <img src="Screenshot-M.png?v=1144" alt="The compact view: the MIDI player's line with BAR n : b" width="700">
 </p>
 <p align="center">
-  <img src="Screenshot-O.png?v=1143" alt="LOAD MIDI's menu: a folder, a playlist, LOOP, the MIDI files' controllers / tuning / channels, the recent files" width="640">
+  <img src="Screenshot-O.png?v=1144" alt="LOAD MIDI's menu: a folder, a playlist, LOOP, the MIDI files' controllers / tuning / channels, the recent files" width="640">
 </p>
 <p align="center">
-  <img src="Screenshot-P.png?v=1143" alt="REC by a MIDI controller (LEARN), and REC and PLAY with the media's audio (SYNC)" width="640">
+  <img src="Screenshot-P.png?v=1144" alt="REC by a MIDI controller (LEARN), and REC and PLAY with the media's audio (SYNC)" width="640">
 </p>
 
 The full history of the earlier versions: **[CHANGELOG.md](CHANGELOG.md)**.

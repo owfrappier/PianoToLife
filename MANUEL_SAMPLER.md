@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.3 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.4 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -383,9 +383,9 @@ votre mapping et faites d'abord **SAVE SAMPLES** — MAKE travaille sur les éch
 n'y sont pas encore, un message le dit). Vous pouvez passer à tout moment des échantillons d'origine aux échantillons
 traités.
 
-**Les versions du piano** (10.9.8) : un piano a jusqu'à **quatre versions — ORIG., DRY 1, DRY 2, DRY 3**. Une version,
+**Les versions du piano** (10.9.8) : un piano a jusqu'à **quatre versions — ORIG., V1, V2, V3**. Une version,
 c'est **tout le piano** (tous les micros), et **chaque version garde ses propres réglages** : mapping, options d'EDIT et
-tous les réglages de la fenêtre principale — réglez DRY 1 à l'oreille (AUTO COLOR, BALANCE...) sans toucher à ORIG.
+tous les réglages de la fenêtre principale — réglez V1 à l'oreille (AUTO COLOR, BALANCE...) sans toucher à ORIG.
 
 **Le bouton DRY / DENOISE / BODY...** (deuxième rangée d'EDIT, après FLAC) ouvre le panneau ; on écoute le **micro
 sélectionné** en haut, et MAKE traite tous les micros :
@@ -396,13 +396,13 @@ sélectionné** en haut, et MAKE traite tous les micros :
    relâchement, la fin d'une note aiguë, c'est surtout la salle). Avec **SHOW BY MIDI** coché, la touche que vous jouez
    (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans la Recorded Room.
 2. **MAKE** (10.9.8 : **tous les micros**, l'un après l'autre, chacun avec sa propre mesure AUTO BODY) traite tous les
-   échantillons dans un conteneur séparé, à côté de l'original — `<nom>-dry.wptl` pour DRY 1, `-dry2`, `-dry3` (même
+   échantillons dans un conteneur séparé, à côté de l'original — `<nom>-dry.wptl` pour V1, `-dry2`, `-dry3` (même
    chiffrement, même mot de passe). En arrière-plan, avec une barre de progression, et **STOP** à côté de MAKE pour
    annuler : rien n'est écrit. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux
-   (jamais de « dry sur dry »). Le piano joue ORIG. : MAKE fait la première version libre. Le piano joue DRY n : MAKE
-   demande s'il faut **remplacer** DRY n (ses réglages restent) ou faire une **nouvelle version** à côté, pour comparer
+   (jamais de « dry sur dry »). Le piano joue ORIG. : MAKE fait la première version libre. Le piano joue Vn : MAKE
+   demande s'il faut **remplacer** Vn (ses réglages restent) ou faire une **nouvelle version** à côté, pour comparer
    des traitements. À la fin, le piano joue la version faite : réglez-la à l'oreille et faites **SAVE**.
-3. **PIANO PLAYS : ORIG. | DRY 1 | DRY 2 | DRY 3** — la version que joue tout le piano (aussi après le nom de
+3. **PIANO PLAYS : ORIG. | V1 | V2 | V3** — la version que joue tout le piano (aussi après le nom de
    l'instrument, dans le titre de la fenêtre principale : cliquez dessus). Chacune avec ses propres réglages : une
    version jamais enregistrée part de ceux d'ORIG. Changer de version propose d'abord d'enregistrer les modifications. Depuis la 11.2.3, chaque instrument revient
    avec la dernière version jouée (choisi à nouveau dans la liste, ou au retour du mode HOST).
@@ -411,6 +411,30 @@ sélectionné** en haut, et MAKE traite tous les micros :
 4. **Refaites ensuite une capture du Piano Model (.srpiano), puis relancez les AUTO CAL de Resonance et de Recorded Room** :
    ils avaient été mesurés sur le son avec sa salle. L'AUTO CAL de la Recorded Room ne trouve alors plus de salle et **décoche
    Recorded Room** (10.9.9) : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
+
+**11.4.4 — les versions s'appellent V1 / V2 / V3** (ex-DRY 1-3) : une version peut être fusionnée (MERGE MICS), corrigée
+en phase ou seulement débruitée. Les fichiers gardent leur nom (`-dry.wptl`, `-dry2`, `-dry3`, `Nom.dry.ptlset`...).
+
+**11.4.4 — PHASE FIX** (panneau DRY, sur la ligne DRY ; allumé = actif) : un sample dont les canaux gauche et droit sont
+décalés dans le temps bien plus que ceux de ses touches voisines perd sa fondamentale quand les canaux se rejoignent
+(mono, un MIX étroit, la salle) - une note creuse. MAKE mesure chaque sample de chaque micro dans le grave (sous 300 Hz,
+jusqu'à 500 Hz pour les notes au-dessus de D4 : leur fondamentale), le compare aux touches autour (3 de chaque côté, la
+même touche exclue) et recale le grave d'un sample qui perd plus de 2 dB en mono et 1,5 dB de plus que ses voisines -
+les aigus, donc l'image stéréo, intacts. Un recalage qui ne gagne pas 1 dB, ou un son diffus (la salle), laisse le
+sample tel quel. Le message de MAKE et l'infobulle de PHASE FIX nomment les touches recalées (et celles laissées). Ne
+s'entend pas avec > PROCESSED (il faut le micro entier) : MAKE, puis comparer ORIG. et la version. Pour la phase seule :
+DRY 0 %, DENOISE 0 %.
+
+**11.4.4 — MERGE MICS** (deuxième ligne de SAMPLER EDIT) : les micros entendus dans le MIX mélangés comme le MIX les joue
+(niveau, PowerPan, WIDE, délai, chacun depuis son propre départ) en un sample stéréo par frappe. **Vers un micro libre** :
+les fichiers vont dans `<set> - MERGED MIC n/` à côté du set (SAVE SAMPLES les met dans le .wptl), les zones sont des
+copies de celles du premier micro, et le MIX joue MIC n seul (rallumez les autres pour comparer ; UNDO le retire).
+**Vers une version V1-V3** : l'original reste en ORIG. La fenêtre reste ouverte à côté du MIX et le suit (état de chaque
+micro, sa part, les frappes fusionnées) : **OPEN MIX** ; **SWITCH ON ALL** quand moins de deux micros sont entendus. Une
+frappe dont la couche diffère sur un autre micro est fusionnée avec la couche qui joue à sa vélocité ; **SAME LAYERS**
+d'abord donne la fusion la plus fidèle (la fenêtre le dit en orange). Écoutez avec MIX allumé dans EDIT : ce que vous
+entendez est ce qui est fusionné. **SWAP MICS** : clic droit sur un bouton MIC pour échanger deux micros (samples,
+versions, réglages du MIX).
 
 **Formats.** Les échantillons d'origine restent exactement tels qu'enregistrés. Les échantillons -dry sont toujours en
 **FLAC 24 bits** (sans perte), à la fréquence de l'original, même quand les originaux sont en 16 bits : une fois la
@@ -424,7 +448,7 @@ retrouvé tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versio
 d'origine.
 
 **Les fichiers des versions** (10.9.8). SAVE écrit la version jouée dans son propre fichier — `Nom.ptlset` pour ORIG.,
-`Nom.dry.ptlset`, `Nom.dry2.ptlset`, `Nom.dry3.ptlset` pour DRY 1 à 3 — à côté des échantillons. Vous n'avez jamais à
+`Nom.dry.ptlset`, `Nom.dry2.ptlset`, `Nom.dry3.ptlset` pour V1 à V3 — à côté des échantillons. Vous n'avez jamais à
 vous en occuper : la liste affiche **Nom** une seule fois, et **Rename**, **Move to the Trash** et **SAVE AS** sous un
 nouveau nom emmènent les versions. Rename garde le nom des échantillons (`.wptl`, `-dry.wptl`), que toutes les
 versions utilisent. Un instrument enregistré avant la 10.9.8 avec des micros en -DRY s'ouvre comme il a été
@@ -482,8 +506,8 @@ Chaque étape mesure ce que la précédente a laissé : l'ordre compte (10.9.5 :
    **IR** (REVERB) ; **TEMPERAMENT** si besoin.
 
 **En option, une version dry** : une fois les échantillons et l'instrument enregistrés, **DRY / DENOISE / BODY**
-(BODY : **LAYERS** d'abord), **MAKE** (tous les micros : le piano joue alors DRY 1) ; puis une nouvelle **capture du
-Piano Model** et de nouveau les **AUTO CAL** (ils avaient été mesurés sur le son avec sa salle), et **SAVE** : DRY 1
+(BODY : **LAYERS** d'abord), **MAKE** (tous les micros : le piano joue alors V1) ; puis une nouvelle **capture du
+Piano Model** et de nouveau les **AUTO CAL** (ils avaient été mesurés sur le son avec sa salle), et **SAVE** : V1
 les garde, ORIG. garde les siens.
 
 ---
