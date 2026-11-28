@@ -2,6 +2,40 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.6
+
+**Your Piano Model now lives in your preset - and the whole piano is one file.**
+
+- **The Piano Model is part of the preset** (HOST and SAMPLER): capture, and PianoToLife offers to keep the new model
+  in the preset or instrument playing - one click on **SAVE**, and that's all. No file to name, nothing to keep, nothing
+  to load again: the model comes back every time the preset is opened, on this computer or on another one (copy the
+  preset, the model goes with it), even if its `.srpiano` file is deleted. No more piano playing another piano's model.
+  - The capture takes the name of the preset or instrument and its version ("MY-PIANO V1"): **no name to type**.
+  - The offer comes once the capture's AUTO CALs are done (or put off): SAVE keeps the model **and** its calibration.
+  - In SAMPLER, **each version (ORIG., V1, V2, V3) keeps its own model**: change the version, the model follows. The
+    versions menu shows the model of each.
+  - **EXPORT SR** (new, under Load SR) writes the model playing to a `.srpiano` file, to keep or share it; **Load SR**
+    still loads one into the piano playing (SAVE keeps it there).
+- **One .wptl for the whole piano** (SAMPLER): the versions V1 / V2 / V3 (MAKE, MERGE MICS) are written inside the
+  piano's own `.wptl`, beside its original samples - no more `-dry.wptl`, `-dry2`, `-dry3` beside it. A version can no
+  longer stay tied to the samples of the piano it was saved from. The original samples are never touched, and a stop
+  in the middle leaves the piano as it was.
+- **Your pianos with versions in separate files**: when one is opened, PianoToLife asks once to put them in ("One file
+  for the whole piano"): the samples are copied as they are (same sound), in the background, and the piano's own older
+  files go to the Trash.
+- **Tidied by itself**: a version made again or deleted leaves unused room in the `.wptl`; once a quarter of the file is
+  unused, it is written again on its own (when the disk has room for it).
+- **Where the samples are**: hover the version badge (ORIG. / V1...) or open its menu: "Samples: MY-PIANO.wptl (ORIG. +
+  V1 + V2, 0.9 GB)".
+- **SAVE of a version without a window**: an instrument saved from another one could keep asking for a new name ("an
+  instrument of other samples") at each SAVE of a version. A version now follows its instrument's samples, and SAVE
+  writes the version playing.
+- **Deleted instruments no longer come back**: opening an old copy of an instrument (in a sub-folder of the library,
+  its samples elsewhere) wrote it again beside its samples. Nothing is written when an instrument is opened any more
+  (SAVE writes it), and the list shows only the instruments that play where they are (their `.wptl` beside them).
+- **Fixes**: wrong characters in the capture's progress lines ("analysing real peaks"); Whisper's filter of fake lyrics
+  now recognises its French words with accents ("Sous-titres réalisés par la communauté d'Amara.org"...).
+
 ## 11.4.5
 
 **LIGHTS: your show's lights in time with the music - its tempo, its bars and even its chord changes.**

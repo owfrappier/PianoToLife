@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.6 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -159,6 +159,13 @@ DAW it plays in real time). **Speed** (11.0.2, in the capture window): **Auto** 
 **x2** (offline, slower) or **x1** (real time, safest). If a capture has to be redone or freezes with your hosted
 piano, choose a slower speed: the piano has more time to read its samples from the disk. The choice is kept. In SAMPLER mode it is **read directly from the samples**, offline, at the centres of the
 set's own layers: a few minutes. The progress bar stays until the new model is loaded and AUTO CAL is offered.
+
+**11.4.6 — the model follows the preset.** A capture takes the name of the preset or instrument playing and its version
+("MY-PIANO V1"); a name is asked only without a preset (Last Session, a new piano). At its end, once its AUTO CALs are
+done or put off, PianoToLife asks "Keep this Piano Model in ...?": **SAVE** writes it into the preset (HOST) or the
+instrument and the version playing (SAMPLER) - it comes back with it, there is no file to keep. In SAMPLER each version
+keeps its own model: the versions menu shows it ("V1 ... - model: MY-PIANO V1"). **EXPORT SR** (under Load SR) writes the
+model playing to a `.srpiano` file, to keep or share it; **Load SR** loads one into the piano playing (SAVE keeps it).
 
 Before capturing:
 

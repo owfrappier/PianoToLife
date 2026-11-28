@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.5 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.6 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -396,7 +396,7 @@ sélectionné** en haut, et MAKE traite tous les micros :
    relâchement, la fin d'une note aiguë, c'est surtout la salle). Avec **SHOW BY MIDI** coché, la touche que vous jouez
    (et sa vélocité) est choisie. L'échantillon s'entend tel quel, sans la Recorded Room.
 2. **MAKE** (10.9.8 : **tous les micros**, l'un après l'autre, chacun avec sa propre mesure AUTO BODY) traite tous les
-   échantillons dans un conteneur séparé, à côté de l'original — `<nom>-dry.wptl` pour V1, `-dry2`, `-dry3` (même
+   échantillons dans le `.wptl` du piano, à côté des originaux (11.4.6 ; avant : `<nom>-dry.wptl`, `-dry2`, `-dry3`) (même
    chiffrement, même mot de passe). En arrière-plan, avec une barre de progression, et **STOP** à côté de MAKE pour
    annuler : rien n'est écrit. **Les échantillons d'origine ne sont jamais modifiés**, et MAKE repart toujours d'eux
    (jamais de « dry sur dry »). Le piano joue ORIG. : MAKE fait la première version libre. Le piano joue Vn : MAKE
@@ -413,7 +413,15 @@ sélectionné** en haut, et MAKE traite tous les micros :
    Recorded Room** (10.9.9) : placez le piano dans la salle voulue avec la REVERB (ALGO ou IR).
 
 **11.4.4 — les versions s'appellent V1 / V2 / V3** (ex-DRY 1-3) : une version peut être fusionnée (MERGE MICS), corrigée
-en phase ou seulement débruitée. Les fichiers gardent leur nom (`-dry.wptl`, `-dry2`, `-dry3`, `Nom.dry.ptlset`...).
+en phase ou seulement débruitée. Les fichiers de réglages gardent leur nom (`Nom.dry.ptlset`, `Nom.dry2.ptlset`...).
+
+**11.4.6 — un seul fichier pour tout le piano** : les versions V1 / V2 / V3 sont écrites dans le `.wptl` du piano lui-même
+(des entrées à elles, même chiffrement, même mot de passe), plus dans des fichiers `-dry*.wptl` à côté. Un piano dont les
+versions sont encore dans des fichiers séparés propose, une fois à son ouverture, de les y ranger (copiées telles
+quelles ; ses propres anciens fichiers vont à la Corbeille). Une version refaite ou supprimée laisse de la place
+inutilisée ; dès qu'un quart du `.wptl` ne sert plus, il est réécrit tout seul. Survolez le badge de version, ou ouvrez
+son menu, pour lire où sont les échantillons (« Samples: NOM.wptl (ORIG. + V1 + V2, 0.9 GB) »). SAVE AS sous un nouveau
+nom, SAVE SAMPLES AS, Rename et Move to the Trash emmènent les versions.
 
 **11.4.4 — PHASE FIX** (panneau DRY, sur la ligne DRY ; allumé = actif) : un sample dont les canaux gauche et droit sont
 décalés dans le temps bien plus que ceux de ses touches voisines perd sa fondamentale quand les canaux se rejoignent
@@ -449,7 +457,7 @@ salle et le souffle retirés, les fins de notes descendent sous le plancher du 1
 garde propres. Un -dry fait à partir d'échantillons 16 bits est donc plus gros que le conteneur d'origine (environ le
 double) ; le message de MAKE affiche les deux tailles.
 
-**Sécurité.** Si le fichier -dry est déplacé ou supprimé, ou qu'il lui manque un échantillon, l'original est joué (le
+**Sécurité.** S'il manque les échantillons d'une version (un ancien fichier -dry déplacé ou supprimé), ou qu'il lui manque un échantillon, l'original est joué (le
 panneau le dit) ; la version choisie reste et revient avec le fichier. Un `<nom>-dry.wptl` à côté du `.wptl` est
 retrouvé tout seul. Les instruments sauvés en 10.9.0 s'ouvrent dans les versions précédentes avec leurs échantillons
 d'origine.
@@ -457,7 +465,7 @@ d'origine.
 **Les fichiers des versions** (10.9.8). SAVE écrit la version jouée dans son propre fichier — `Nom.ptlset` pour ORIG.,
 `Nom.dry.ptlset`, `Nom.dry2.ptlset`, `Nom.dry3.ptlset` pour V1 à V3 — à côté des échantillons. Vous n'avez jamais à
 vous en occuper : la liste affiche **Nom** une seule fois, et **Rename**, **Move to the Trash** et **SAVE AS** sous un
-nouveau nom emmènent les versions. Rename garde le nom des échantillons (`.wptl`, `-dry.wptl`), que toutes les
+nouveau nom emmènent les versions. Rename garde le nom des échantillons (`.wptl`), que toutes les
 versions utilisent. Un instrument enregistré avant la 10.9.8 avec des micros en -DRY s'ouvre comme il a été
 enregistré ; choisissez ORIG. pour les remettre sur les originaux.
 **Une librairie protégée** : ses instruments et leurs versions ne sont jamais écrasés — SAVE AS sous votre propre nom
@@ -676,7 +684,7 @@ tempérament.
 |---|---|
 | `.ptlset` | **L'instrument** (comme un `.nki` Kontakt) : le mapping tel que vous l'entendez (vélocités, gains, réglages des touches, AUTO DYN, BALANCE...), le modèle de résonance et tous les réglages de PianoToLife. Toujours dans le dossier de son `.wptl`, qu'il désigne en relatif |
 | `.wptl` | **Les échantillons** (comme un `.nkx` Kontakt), dans un conteneur chiffré (mot de passe si défini), avec l'image de la banque |
-| `<nom>-dry.wptl` | **Les échantillons sans leur salle** (10.9.0, faits par DRY / DENOISE) : même chiffrement, FLAC 24 bits, à côté du `.wptl`. Facultatif : sans lui, les échantillons d'origine sont joués |
+| `<nom>-dry.wptl` | **Les échantillons des versions avant la 11.4.6** (faits par DRY / DENOISE) : même chiffrement, FLAC 24 bits, à côté du `.wptl` ; depuis la 11.4.6 ils sont dans le `.wptl` (rangés quand c'est proposé). Facultatif : sans lui, les échantillons d'origine sont joués |
 
 Depuis la 10.6.0, un piano échantillonné, ce sont **deux fichiers : le `.ptlset` et le `.wptl`**, dans le même dossier
 de votre bibliothèque. En mode SAMPLER, **la liste PRESET affiche les instruments de votre bibliothèque** et le nom de
