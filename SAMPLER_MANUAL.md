@@ -1,6 +1,6 @@
 # PianoToLife Sampler — User Manual
 
-*Version 11.4.4 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
+*Version 11.4.5 · [Version française](MANUEL_SAMPLER.md) · General manual: [User Manual](USER_MANUAL.md)*
 
 PianoToLife's built-in sampler plays **your own piano samples** with all of PianoToLife's engines on top of
 them. This manual explains how to turn a folder of samples into a playable piano, what every button does, and
@@ -404,6 +404,13 @@ its share, the strikes merged): **OPEN MIX**; **SWITCH ON ALL** when fewer than 
 layer differs on another microphone is merged with the layer that plays at its velocity; **SAME LAYERS** first gives the
 most faithful merge (the window says so in orange). Listen with MIX on in EDIT: what you hear is what is merged.
 **SWAP MICS**: right-click on a MIC button swaps two microphones (samples, versions, MIX settings).
+**11.4.5 — the level of the merge**: the MERGE MICS window says how loud the merge is against the first microphone
+alone ("Level of the merge: +4.5 dB against MIC 1 alone"), measured as MERGE mixes on ~24 strikes, again at each change
+of the MIX (orange above +6 dB). **MATCH MIC n** lowers every microphone heard in the MIX by that amount, their
+proportions kept - only the MIX changes. MERGE still merges exactly what the MIX plays. The rule when adding
+microphones at 0 dB: the same sample on 2 / 3 / 4 / 5 microphones +6 / +9.5 / +12 / +14 dB; real, different microphones
+about +3 / +5 / +6 / +7 dB. Nothing clips (one common headroom, given back when played). The main window says
+"Sampler: 2816 samples (1408 heard)" when microphones are off in the MIX.
 
 **Formats.** The original samples stay exactly as recorded. The -dry samples are always **24-bit FLAC** (lossless), at
 the original's sample rate, even when the originals are 16-bit: once the room and the hiss are taken out, the tails of

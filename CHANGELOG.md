@@ -2,6 +2,46 @@
 
 Every version, the newest first. The [README](README.md) shows what PianoToLife does today.
 
+## 11.4.5
+
+**LIGHTS: your show's lights in time with the music - its tempo, its bars and even its chord changes.**
+
+- **LIGHTS** (new): the piece playing drives a lights program (DMX software such as SoundSwitch) by MIDI. **The clock**
+  (MIDI clock, Start / Stop): its loops and effects follow the piece's tempo. **BEAT**: a note at each beat (36; 37 on
+  a bar's first beat). **CHORDS**: a note at each chord change, 48 + its root (C3 = C ... B3 = B) - give each root its
+  own scene: the lights change with the harmony, not only with the beat. **DIVIDE 1 · /2 · /4**: every beat or chord,
+  or every 2nd or 4th - the clock too (/2: the lights at half the tempo, for a verse; 1 for the chorus). The beats: the
+  MIDI file's bars (MIDI player) or CHORDS' grid (media player, analysed by itself). A **LIGHTS** button in the MIDI
+  player's bar (beside METRO) and in the media player's top row (beside CHORDS): click on / off; right-click: OUT,
+  SEND (BEAT / CHORDS / BOTH), DIVIDE, MIDI PAD / CONTROLLER. Only what LIGHTS makes is sent - never what you play.
+  - **Mac**: PianoToLife makes its own MIDI port, **"PianoToLife Lights"**, at launch - choose it in the lights program
+    (SoundSwitch: MIDI Sync In). Nothing to install. It stays open: LIGHTS off only stops sending.
+  - **Windows**: a loopback MIDI port is needed between the two programs (loopMIDI, or Windows 11's own loopback
+    ports), or a MIDI port of the lights program itself: choose it in OUT (right-click on LIGHTS).
+- **A pad for each LIGHTS action** (right-click on LIGHTS > MIDI PAD / CONTROLLER): LIGHTS ON / OFF, DIVIDE 1 / 2 / 4,
+  SEND BEAT / CHORDS / BOTH - LEARN, hit the pad. A pad's DIVIDE changes on the next beat: the lights stay in time.
+- **The media player's buttons by a pad**: right-click on PLAY, STOP, previous, next, LOOP, NO VOICE, NO PIANO, VOICE,
+  PIANO > MIDI PAD LEARN. The pad's note is taken away (never played on the piano nor recorded). Works with the
+  controller chosen in PADS, or one enabled in the MIDI settings.
+- **A show in a few minutes** (example: SoundSwitch): take "PianoToLife Lights" as its MIDI sync input; SEND BOTH; map
+  notes 48-59 to scenes or loops; a pad for /2 or /4 in the verses and one for 1 in the choruses.
+- **MERGE MICS: the level of the merge**: the window says how loud the merge is against the first microphone alone
+  (measured as MERGE mixes, again at each change of the MIX; orange above +6 dB), and **MATCH** lowers every microphone
+  heard in the MIX by that amount, their proportions kept. MERGE still merges exactly what the MIX plays. The rule:
+  the same sample on 2 / 3 / 4 / 5 microphones adds +6 / +9.5 / +12 / +14 dB; real, different microphones about
+  +3 / +5 / +6 / +7 dB. Nothing ever clips (one common headroom, given back when played).
+- **"Sampler: 2816 samples (1408 heard)"**: the main window also says how many samples the MIX plays (a merge into a
+  version keeps the other microphones' samples, switched off).
+- **Lyrics in the language sung**: with a language chosen (LANG: EN...), a piece sung in another one came out
+  translated. The voice's language is now checked first; clearly another one: written in it, and said.
+- **LRCLIB's lyrics checked on the voice by themselves**: taken while the piece was still being separated, their
+  times could not be checked (another version: a minute off). Now said in orange ("NOT checked on the voice yet -
+  separating 86 %"), and as soon as the voice is there they are timed on it, their text kept. LYRICS EDIT shows the
+  analysis' and the separation's progress on its status line.
+- **Fix (in live)**: the pieces' column of the media player could be late on the playlist (a file added and another
+  removed): a click played the neighbour of the piece shown. The column now follows every change, and a click always
+  plays the piece it shows.
+
 ## 11.4.4
 
 **Several microphones played as one, hollow notes put back in phase, and a VOICE that follows the singer.**

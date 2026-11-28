@@ -1,6 +1,6 @@
 # Sampler de PianoToLife — Manuel d'utilisation
 
-*Version 11.4.4 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
+*Version 11.4.5 · [English version](SAMPLER_MANUAL.md) · Manuel général : [Manuel d'utilisation](MANUEL.md)*
 
 Le sampler intégré de PianoToLife joue **vos propres échantillons de piano**, avec tous les moteurs de PianoToLife
 par-dessus. Ce manuel explique comment transformer un dossier d'échantillons en piano jouable, ce que fait chaque
@@ -435,6 +435,13 @@ frappe dont la couche diffère sur un autre micro est fusionnée avec la couche 
 d'abord donne la fusion la plus fidèle (la fenêtre le dit en orange). Écoutez avec MIX allumé dans EDIT : ce que vous
 entendez est ce qui est fusionné. **SWAP MICS** : clic droit sur un bouton MIC pour échanger deux micros (samples,
 versions, réglages du MIX).
+**11.4.5 — le niveau de la fusion** : la fenêtre MERGE MICS dit le volume de la fusion par rapport au premier micro
+seul (« Level of the merge: +4.5 dB against MIC 1 alone »), mesuré comme MERGE mixe sur ~24 frappes, de nouveau à chaque
+changement du MIX (orange au-delà de +6 dB). **MATCH MIC n** baisse tous les micros entendus dans le MIX d'autant, leurs
+proportions gardées - seul le MIX change. MERGE fusionne toujours exactement ce que joue le MIX. La règle en ajoutant
+des micros à 0 dB : le même sample sur 2 / 3 / 4 / 5 micros +6 / +9,5 / +12 / +14 dB ; de vrais micros différents
+environ +3 / +5 / +6 / +7 dB. Rien ne sature (une marge commune, rendue à la lecture). La fenêtre principale affiche
+« Sampler: 2816 samples (1408 heard) » quand des micros sont éteints dans le MIX.
 
 **Formats.** Les échantillons d'origine restent exactement tels qu'enregistrés. Les échantillons -dry sont toujours en
 **FLAC 24 bits** (sans perte), à la fréquence de l'original, même quand les originaux sont en 16 bits : une fois la

@@ -1,6 +1,6 @@
 # PianoToLife — Manuel d'utilisation
 
-*Version 11.4.4 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
+*Version 11.4.5 · [English version](USER_MANUAL.md) · Mapping du sampler : [Manuel du sampler](MANUEL_SAMPLER.md)*
 
 PianoToLife fait **se comporter un piano virtuel comme un vrai** : les cordes qui résonnent par sympathie, la pédale
 de sustain et la demi-pédale, les étouffoirs, le relâchement, l'una corda, les bruits de la mécanique. Ce manuel
@@ -980,6 +980,38 @@ s'entend souvent tout de suite : la salle du piano se révèle, au lieu d'être 
 - **Accessibilité** : l'interface fonctionne avec les lecteurs d'écran (Narrator / NVDA, VoiceOver) et au clavier.
 
 ---
+
+### LIGHTS : la lumière en rythme avec la musique (11.4.5)
+
+Le morceau qui joue pilote un logiciel de lumière (logiciel DMX comme SoundSwitch) en MIDI, sur le canal 1 :
+- **L'horloge** (MIDI clock, 24 par temps, Start / Stop) : les boucles et effets du logiciel de lumière suivent le tempo.
+- **BEAT** : une note à chaque temps - C1 (36), C#1 (37) au premier temps d'une mesure.
+- **CHORDS** : une note à chaque changement d'accord - 48 + sa fondamentale (C3 = Do ... B3 = Si). Donnez à chaque
+  fondamentale sa propre scène.
+- **DIVIDE 1 · /2 · /4** : chaque temps / accord, ou un sur 2 ou sur 4 - l'horloge aussi (/2 : le logiciel voit la
+  moitié du tempo).
+- **D'où viennent les temps** : les mesures du fichier MIDI (lecteur MIDI) ou la grille de CHORDS (lecteur MEDIA ;
+  LIGHTS demande l'analyse lui-même). Pas encore de grille : rien n'est envoyé, l'infobulle dit pourquoi.
+- **Le bouton LIGHTS** : dans la barre du lecteur MIDI (à côté de METRO) et dans la ligne du haut du lecteur MEDIA (à
+  côté de CHORDS). Clic : allumé / éteint. Clic droit : **OUT** (le port), **SEND** (BEAT / CHORDS / BOTH),
+  **DIVIDE**, **MIDI PAD / CONTROLLER**. Tout est retenu.
+- **Mac** : PianoToLife crée son propre port, **« PianoToLife Lights »**, au lancement - choisissez-le dans le logiciel
+  de lumière (SoundSwitch : MIDI Sync In). Il reste ouvert tant que PianoToLife tourne : LIGHTS éteint arrête seulement
+  l'envoi (Stop).
+- **Windows** : il faut un port MIDI loopback entre les deux logiciels (loopMIDI, ou les ports loopback de Windows 11),
+  ou un port MIDI du logiciel de lumière lui-même : choisissez-le dans OUT. Le port choisi absent : le port de
+  PianoToLife à la place (Mac), et le port choisi réessayé toutes les 3 s.
+- **Par un pad** (MIDI PAD / CONTROLLER) : LEARN d'une note ou d'un CC pour LIGHTS ON / OFF, DIVIDE 1, /2, /4, SEND
+  BEAT, CHORDS, BOTH. La note du pad est retirée (jamais jouée ni enregistrée). DIVIDE au pad change au temps suivant.
+- Seul ce que LIGHTS fabrique est envoyé - jamais les notes que vous jouez au piano.
+
+**Un show en quelques minutes** (SoundSwitch) : prenez « PianoToLife Lights » comme entrée de synchro MIDI ; SEND :
+BOTH ; associez les notes 48-59 (les fondamentales des accords) à des scènes ou des boucles ; un pad pour /2 ou /4
+(couplets : boucles plus calmes) et un pour 1 (refrains) ; un pad LIGHTS ON / OFF pour une ballade calme.
+
+**Les boutons du lecteur MEDIA par un pad** (11.4.5) : clic droit sur PLAY, STOP, précédent, suivant, LOOP, NO VOICE,
+NO PIANO, VOICE, PIANO > MIDI PAD : LEARN (le bouton clignote ; frappez le pad) ou forget. Une frappe appuie sur le
+bouton. Marche avec le contrôleur choisi dans PADS, ou un activé dans les réglages MIDI.
 
 ## 13. CPU et performances
 

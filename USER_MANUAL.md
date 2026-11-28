@@ -1,6 +1,6 @@
 # PianoToLife — User Manual
 
-*Version 11.4.4 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
+*Version 11.4.5 · [Version française](MANUEL.md) · Sampler mapping: [Sampler Manual](SAMPLER_MANUAL.md)*
 
 PianoToLife makes a virtual piano **behave like a real one**: the strings that ring in sympathy, the sustain pedal
 and half pedal, the dampers, the release, the una corda, the noises of the mechanism. This manual explains how it
@@ -899,6 +899,35 @@ saved beside it, then the BOUNCE options open); PLAY plays the take at once. LOA
 - **Accessibility**: the interface works with screen readers (Narrator / NVDA, VoiceOver) and from the keyboard.
 
 ---
+
+### LIGHTS: the lights in time with the music (11.4.5)
+
+The piece playing drives a lights program (DMX software such as SoundSwitch) by MIDI, on channel 1:
+- **The clock** (MIDI clock, 24 a beat, Start / Stop): the lights program's loops and effects follow the tempo.
+- **BEAT**: a note at each beat - C1 (36), C#1 (37) on a bar's first beat.
+- **CHORDS**: a note at each chord change - 48 + its root (C3 = C ... B3 = B). Give each root its own scene.
+- **DIVIDE 1 · /2 · /4**: every beat / chord, or every 2nd or 4th - the clock too (/2: the program sees half the tempo).
+- **Where the beats come from**: the MIDI file's bars (MIDI player) or CHORDS' beat grid (media player; LIGHTS asks
+  for the analysis itself). No grid yet: nothing is sent, the tooltip says why.
+- **The button LIGHTS**: in the MIDI player's bar (beside METRO) and in the media player's top row (beside CHORDS).
+  Click: on / off. Right-click: **OUT** (the port), **SEND** (BEAT / CHORDS / BOTH), **DIVIDE**, **MIDI PAD /
+  CONTROLLER**. Everything is remembered.
+- **Mac**: PianoToLife makes its own port, **"PianoToLife Lights"**, at launch - choose it in the lights program
+  (SoundSwitch: MIDI Sync In). It stays open while PianoToLife runs: LIGHTS off only stops sending (Stop).
+- **Windows**: a loopback MIDI port between the two programs is needed (loopMIDI, or Windows 11's own loopback ports),
+  or a MIDI port of the lights program itself: choose it in OUT. The port chosen not there: PianoToLife's own instead
+  (Mac), and the one chosen tried again every 3 s.
+- **By a pad** (MIDI PAD / CONTROLLER): LEARN a note or CC for LIGHTS ON / OFF, DIVIDE 1, /2, /4, SEND BEAT, CHORDS,
+  BOTH. The pad's note is taken away (never played nor recorded). A pad's DIVIDE changes on the next beat.
+- Only what LIGHTS makes is sent - never the notes you play on the piano.
+
+**A show in a few minutes** (SoundSwitch): take "PianoToLife Lights" as its MIDI sync input; SEND: BOTH; map notes
+48-59 (the chord roots) to scenes or loops; learn a pad for /2 or /4 (verses: calmer, slower loops) and one for 1
+(choruses); a pad for LIGHTS ON / OFF for a quiet ballad.
+
+**The media player's buttons by a pad** (11.4.5): right-click on PLAY, STOP, previous, next, LOOP, NO VOICE, NO PIANO,
+VOICE, PIANO > MIDI PAD: LEARN (the button blinks; hit the pad) or forget. A hit presses the button. Works with the
+controller chosen in PADS, or one enabled in the MIDI settings.
 
 ## 13. CPU and performance
 
